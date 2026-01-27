@@ -688,7 +688,7 @@
             font-size: 0.9rem;
         }
 
-        /* Contact Info in Footer */
+        /* Contact Info in Footer - FIXED */
         .contact-info {
             margin-top: 20px;
             padding-top: 15px;
@@ -702,6 +702,34 @@
 
         .contact-info .footer-links {
             font-size: 0.8rem;
+        }
+
+        /* Fixed Contact Info Alignment */
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        .contact-info-item i {
+            width: 16px;
+            margin-top: 2px;
+            margin-right: 10px;
+            color: var(--gold-light);
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .contact-info-item a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--gold-light);
         }
 
         /* Responsive Design */
@@ -1470,22 +1498,21 @@
                         <li><a href="/cookies"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
                     </ul>
                     
-                    <!-- Contact Info -->
+                    <!-- Contact Info - FIXED ALIGNMENT -->
                     <div class="contact-info">
                         <h4>Contact Info</h4>
-                        <ul class="footer-links">
-                            <li>
-                                <i class="fas fa-phone"></i> <a href="tel:+94758244216">+94758244216</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-envelope"></i> 
-                                <a href="mailto:support@tailors.lk">support@tailors.lk</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i> 
-                                Colombo, Sri Lanka
-                            </li>
-                        </ul>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+94758244216">+94 75 824 4216</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:team@tailors.lk">team@tailors.lk</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Colombo, Sri Lanka</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1509,7 +1536,7 @@
     </footer>
 
     <!-- Schema Markup -->
-    <script type="application/ld+json">
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Service",
@@ -1813,6 +1840,7 @@
         // Expose functions to global scope
         window.toggleFAQ = toggleFAQ;
     </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"25f397de012e437fb9ef72bda1af4805","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"25f397de012e437fb9ef72bda1af4805","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
