@@ -31,6 +31,9 @@
             --radius-sm: 10px;
             --radius-xs: 6px;
             --transition: all 0.3s ease;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
         }
 
         * {
@@ -357,11 +360,6 @@
             font-size: 0.9rem;
         }
 
-        /*learn section*/
-        .learn-email::placeholder {
-           color: #fb0808;
-        }
-
         /* Results Section */
         .results-section {
             padding: 50px 0;
@@ -542,6 +540,27 @@
             font-size: 0.85rem;
         }
 
+        /* Loading State for Forms */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Loading State */
         .loading {
             text-align: center;
@@ -557,10 +576,6 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 16px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
         }
 
         /* No Results */
@@ -636,6 +651,35 @@
             color: var(--text-light);
             margin-bottom: 30px;
             line-height: 1.6;
+        }
+
+        /* Newsletter Messages */
+        .newsletter-message {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .newsletter-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .newsletter-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .newsletter-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.2);
         }
 
         /* Testimonials Section */
@@ -1156,7 +1200,11 @@
             animation: fadeIn 0.5s ease;
         }
 
-        /* Target the placeholder text */ #learn-email::placeholder { color: rgb(0, 0, 0); /* Change this to any color you want */ opacity: 1; /* Ensures the color is fully applied */ }
+        /* Target the placeholder text */ 
+        #learn-email::placeholder { 
+            color: rgb(0, 0, 0); 
+            opacity: 1; 
+        }
 
         @keyframes fadeIn {
             from {
@@ -1451,12 +1499,12 @@
                 <p>Courses, guides and masterclasses — launching soon.</p>
                 <div class="newsletter-form" style="max-width: 400px; margin: 30px auto;">
                     <input type="email" placeholder="Enter your email" style="background: #ecf3ab; color:#000100;" class="newsletter-input" id="learn-email" style="background:#041139;  border:1px solid #050505;" />
-                   <!--<input type="email" placeholder="Enter your email" class="newsletter-input" id="learn-email" style="background: #ff1e1e color; var(--text); border-color: var(--border); "> -->
                     <button class="btn btn-primary" id="notify-me">
                         <i class="fas fa-bell"></i>
                         Notify Me
                     </button>
                 </div>
+                <div class="newsletter-message" id="learn-message"></div>
             </div>
         </div>
     </section>
@@ -1777,6 +1825,7 @@
                         <i class="fas fa-paper-plane"></i> Subscribe
                     </button>
                 </div>
+                <div class="newsletter-message" id="footer-message"></div>
             </div>
             
             <div class="copyright">
@@ -1798,8 +1847,9 @@
         let currentPage = 1;
         const itemsPerPage = 9; // Show 6 tailors per page
 
-        // Google Forms URL for newsletter subscription
+        // Email Submission Endpoints
         const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScsDYDEBFGPc4AKH06adAgA2pcWviLKGsQHY68_92JvO2ccDQ/formResponse';
+        const FORM_SUBMIT_URL = 'https://formsubmit.co/ajax/newsletter@tailors.lk';
         const EMAIL_ENTRY_ID = 'entry.270227624';
 
         // DOM Elements
@@ -2171,13 +2221,13 @@
                 });
             });
 
-            // Newsletter form submission
+            // Newsletter form submission - DUAL SUBMISSION
             document.getElementById('notify-me').addEventListener('click', () => subscribeToLearning());
             document.getElementById('learn-email').addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') subscribeToLearning();
             });
 
-            // Footer newsletter submission
+            // Footer newsletter submission - DUAL SUBMISSION
             document.getElementById('footer-subscribe').addEventListener('click', () => subscribeFooterNewsletter());
             document.getElementById('footer-email').addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') subscribeFooterNewsletter();
@@ -2216,153 +2266,182 @@
             }
         }
 
-        // Subscribe to learning notifications
+        // Subscribe to learning notifications - DUAL SUBMISSION
         async function subscribeToLearning() {
             const emailInput = document.getElementById('learn-email');
             const email = emailInput.value.trim();
+            const messageEl = document.getElementById('learn-message');
             
             if (!validateEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
+                showMessage(messageEl, 'Please enter a valid email address', 'error');
                 return;
             }
             
-            await submitToGoogleForms(email, 'learning');
+            // Submit to both Google Forms and FormSubmit simultaneously
+            await submitToBoth(email, 'learning', messageEl, emailInput);
         }
 
-        // Subscribe to footer newsletter
+        // Subscribe to footer newsletter - DUAL SUBMISSION
         async function subscribeFooterNewsletter() {
             const emailInput = document.getElementById('footer-email');
             const email = emailInput.value.trim();
+            const messageEl = document.getElementById('footer-message');
             
             if (!validateEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
+                showMessage(messageEl, 'Please enter a valid email address', 'error');
                 return;
             }
             
-            await submitToGoogleForms(email, 'newsletter');
+            // Submit to both Google Forms and FormSubmit simultaneously
+            await submitToBoth(email, 'newsletter', messageEl, emailInput);
         }
 
-        // Submit email to Google Forms (blocks redirect)
-        async function submitToGoogleForms(email, source = 'newsletter') {
+        // Submit email to both Google Forms and FormSubmit simultaneously
+        async function submitToBoth(email, source, messageEl, emailInput) {
             const button = source === 'learning' ? document.getElementById('notify-me') : document.getElementById('footer-subscribe');
             const originalText = button.innerHTML;
             
             // Show loading state
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            button.classList.add('btn-loading');
             button.disabled = true;
             
             try {
-                // Create form data
+                // Submit to both endpoints simultaneously
+                const [googleFormsResult, formSubmitResult] = await Promise.allSettled([
+                    submitToGoogleForms(email, source),
+                    submitToFormSubmit(email, source)
+                ]);
+                
+                // Check results
+                const googleSuccess = googleFormsResult.status === 'fulfilled' && googleFormsResult.value.success;
+                const formSubmitSuccess = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.success;
+                
+                if (googleSuccess || formSubmitSuccess) {
+                    // Show success message
+                    const successMessage = source === 'learning' 
+                        ? 'Thank you! You will be notified when our courses launch.' 
+                        : 'Thank you! You have been subscribed to our newsletter.';
+                    
+                    showMessage(messageEl, successMessage, 'success');
+                    
+                    // Clear input
+                    emailInput.value = '';
+                    
+                    // Update button to show success
+                    button.innerHTML = source === 'learning' 
+                        ? '<i class="fas fa-check"></i> Notified!' 
+                        : '<i class="fas fa-check"></i> Subscribed!';
+                    
+                    // Log submission status for debugging
+                    console.log(`${source} submission results:`, {
+                        googleForms: googleSuccess ? 'Success' : 'Failed',
+                        formSubmit: formSubmitSuccess ? 'Success' : 'Failed',
+                        email: email
+                    });
+                    
+                } else {
+                    // Both failed
+                    showMessage(messageEl, 'Subscription failed. Please try again later.', 'error');
+                    console.error(`${source} submission failed:`, {
+                        googleForms: googleFormsResult.reason,
+                        formSubmit: formSubmitResult.reason
+                    });
+                }
+                
+            } catch (error) {
+                console.error(`${source} submission error:`, error);
+                showMessage(messageEl, 'An error occurred. Please try again later.', 'error');
+            } finally {
+                // Restore button state
+                button.classList.remove('btn-loading');
+                
+                // Reset button after 3 seconds (if not already changed to success)
+                if (button.innerHTML.includes('check')) {
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }, 3000);
+                } else {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }
+            }
+        }
+
+        // Submit email to Google Forms
+        async function submitToGoogleForms(email, source) {
+            try {
                 const formData = new FormData();
                 formData.append(EMAIL_ENTRY_ID, email);
                 
-                // Submit to Google Forms using fetch (blocks redirect)
+                // Add source information if needed
+                if (source === 'learning') {
+                    formData.append('entry.123456789', 'Learning Notifications');
+                } else {
+                    formData.append('entry.123456789', 'Newsletter Subscription');
+                }
+                
+                // Submit to Google Forms with no-cors mode
                 const response = await fetch(GOOGLE_FORM_URL, {
                     method: 'POST',
                     mode: 'no-cors', // Important: prevents CORS issues and blocks redirect
                     body: formData
                 });
                 
-                // Show success message
-                showNotification('Thank you! You\'ve been added to our list.', 'success');
-                
-                // Clear input
-                if (source === 'learning') {
-                    document.getElementById('learn-email').value = '';
-                } else {
-                    document.getElementById('footer-email').value = '';
-                }
-                
-                // Update button to show success
-                button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
-                
-                // Reset button after 3 seconds
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                }, 3000);
+                // With no-cors mode, we can't read the response, so assume success
+                return { success: true };
                 
             } catch (error) {
-                console.error('Submission error:', error);
-                showNotification('Subscription failed. Please try again.', 'error');
-                
-                // Reset button immediately on error
-                button.innerHTML = originalText;
-                button.disabled = false;
+                console.warn(`Google Forms submission for ${source} failed:`, error);
+                return { success: false, error: error.message };
             }
         }
 
-        // Show notification
-        function showNotification(message, type = 'success') {
-            // Remove existing notification
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-            
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: ${type === 'success' ? 'var(--teal)' : '#e74c3c'};
-                    color: white;
-                    padding: 12px 20px;
-                    border-radius: var(--radius-sm);
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                    z-index: 9999;
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    animation: slideIn 0.3s ease;
-                ">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            // Add animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from {
-                        transform: translateX(100%);
-                        opacity: 0;
+        // Submit email to FormSubmit
+        async function submitToFormSubmit(email, source) {
+            try {
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('_subject', `Tailors.lk ${source === 'learning' ? 'Learning' : 'Newsletter'} Subscription`);
+                formData.append('_template', 'table');
+                formData.append('_captcha', 'false');
+                formData.append('source', source);
+                
+                const response = await fetch(FORM_SUBMIT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
                     }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success === 'true') {
+                    return { success: true, data };
+                } else {
+                    throw new Error(data.message || 'FormSubmit failed');
                 }
                 
-                @keyframes slideOut {
-                    from {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                    to {
-                        transform: translateX(100%);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
+            } catch (error) {
+                console.warn(`FormSubmit submission for ${source} failed:`, error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Show message in newsletter section
+        function showMessage(element, message, type = 'success') {
+            if (!element) return;
             
-            // Add to page
-            document.body.appendChild(notification);
+            element.textContent = message;
+            element.className = `newsletter-message newsletter-${type}`;
+            element.style.display = 'block';
             
-            // Remove after 4 seconds
+            // Auto-hide messages
+            const hideTime = type === 'success' ? 5000 : 8000;
             setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
-                }, 300);
-            }, 4000);
+                element.style.display = 'none';
+            }, hideTime);
         }
 
         // Render tailors to the grid
