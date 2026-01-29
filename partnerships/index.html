@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +31,9 @@
 --radius-sm: 10px;
 --radius-xs: 6px;
 --transition: all 0.3s ease;
+--success: #10b981;
+--error: #ef4444;
+--warning: #f59e0b;
 }
 * {
 margin: 0;
@@ -186,6 +188,24 @@ font-size: 0.85rem;
 .btn-lg {
 padding: 12px 24px;
 font-size: 1rem;
+}
+/* Button Loading State */
+.btn-loading {
+position: relative;
+color: transparent !important;
+}
+.btn-loading::after {
+content: '';
+position: absolute;
+width: 16px;
+height: 16px;
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 50%;
+border-top-color: white;
+animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+to { transform: rotate(360deg); }
 }
 /* Mobile Menu - PRESERVED */
 .hamburger {
@@ -668,6 +688,31 @@ background-repeat: no-repeat;
 background-position: right 16px center;
 background-size: 16px;
 padding-right: 40px;
+}
+/* Form Messages */
+.form-message {
+margin-top: 20px;
+padding: 15px;
+border-radius: var(--radius-sm);
+text-align: center;
+font-size: 0.95rem;
+display: none;
+animation: fadeIn 0.3s ease;
+}
+.form-message.success {
+background: rgba(16, 185, 129, 0.1);
+color: #10b981;
+border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.form-message.error {
+background: rgba(239, 68, 68, 0.1);
+color: #ef4444;
+border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.form-message.warning {
+background: rgba(245, 158, 11, 0.1);
+color: #f59e0b;
+border: 1px solid rgba(245, 158, 11, 0.2);
 }
 /* Mobile Menu CTA Buttons */
 .mobile-cta-buttons {
@@ -1277,26 +1322,26 @@ Complete the form below or contact us directly to discuss partnership opportunit
 <div class="form-row">
 <div class="form-group">
 <label for="contact-name">Full Name *</label>
-<input type="text" id="contact-name" class="form-control" placeholder="Enter your full name" name="entry.1365271417" required>
+<input type="text" id="contact-name" class="form-control" placeholder="Enter your full name" required>
 </div>
 <div class="form-group">
 <label for="contact-business">Business Name</label>
-<input type="text" id="contact-business" class="form-control" placeholder="Your business or company name" name="entry.817484743">
+<input type="text" id="contact-business" class="form-control" placeholder="Your business or company name">
 </div>
 </div>
 <div class="form-row">
 <div class="form-group">
 <label for="contact-email">Email Address *</label>
-<input type="email" id="contact-email" class="form-control" placeholder="your.email@example.com" name="entry.381744360" required>
+<input type="email" id="contact-email" class="form-control" placeholder="your.email@example.com" required>
 </div>
 <div class="form-group">
 <label for="contact-phone">Phone Number *</label>
-<input type="tel" id="contact-phone" class="form-control" placeholder="+94 77 123 4567" name="entry.1314303165" required>
+<input type="tel" id="contact-phone" class="form-control" placeholder="+94 77 123 4567" required>
 </div>
 </div>
 <div class="form-group">
 <label for="contact-partnership">Partnership Type</label>
-<select id="contact-partnership" class="form-control select" name="entry.470699425">
+<select id="contact-partnership" class="form-control select">
 <option value="">Select partnership type</option>
 <option value="Franchise Opportunity">Franchise Opportunity</option>
 <option value="Tailor Partnership">Tailor Partnership</option>
@@ -1309,7 +1354,7 @@ Complete the form below or contact us directly to discuss partnership opportunit
 </div>
 <div class="form-group">
 <label for="contact-message">Notes or Specific Interests</label>
-<textarea id="contact-message" class="form-control" rows="4" placeholder="Tell us about your business and partnership interests..." name="entry.663652090"></textarea>
+<textarea id="contact-message" class="form-control" rows="4" placeholder="Tell us about your business and partnership interests..."></textarea>
 </div>
 <div style="text-align: center; margin-top: 30px;">
 <button type="submit" class="btn btn-primary btn-lg" style="background: white; color: var(--teal); border: none;">
@@ -1321,6 +1366,8 @@ We'll contact you within 24 hours to discuss partnership opportunities.
 </p>
 </div>
 </form>
+<!-- Form Message Display -->
+<div id="form-message" class="form-message"></div>
 </div>
 <div class="hero-cta-buttons" style="margin-top: 40px;">
 <a href="/contact" class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.4);">
@@ -1439,14 +1486,17 @@ Colombo, Sri Lanka
 document.addEventListener('DOMContentLoaded', function() {
 // Set current year
 document.getElementById('current-year').textContent = new Date().getFullYear();
+    
 // Mobile menu functionality
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
+    
 hamburger.addEventListener('click', (e) => {
 e.stopPropagation();
 hamburger.classList.toggle('active');
 mobileMenu.classList.toggle('active');
 });
+    
 // Close mobile menu when clicking outside or on a link
 document.addEventListener('click', (e) => {
 if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
@@ -1454,6 +1504,7 @@ hamburger.classList.remove('active');
 mobileMenu.classList.remove('active');
 }
 });
+    
 // Close mobile menu when clicking a link
 mobileMenu.querySelectorAll('a').forEach(link => {
 link.addEventListener('click', () => {
@@ -1461,122 +1512,229 @@ hamburger.classList.remove('active');
 mobileMenu.classList.remove('active');
 });
 });
-// Partnership form submission handling
+    
+// Partnership form submission handling - DUAL SUBMISSION
 const partnershipForm = document.getElementById('partnership-contact-form');
+const formMessage = document.getElementById('form-message');
+    
 if (partnershipForm) {
 partnershipForm.addEventListener('submit', async function(e) {
 e.preventDefault();
+        
 const submitBtn = this.querySelector('button[type="submit"]');
 const originalText = submitBtn.innerHTML;
-const originalBg = submitBtn.style.background;
-const originalColor = submitBtn.style.color;
-// Show loading state
-submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-submitBtn.disabled = true;
-// Google Form URL
-const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLScMwC-5GgOXpQxrRP0f7FycSabRb8RFatp9aQU0b5eSQ0nBvA/formResponse';
-// Collect form data
-const formData = new FormData(this);
-// Convert form data to URL encoded string
-const params = new URLSearchParams();
-for (const [key, value] of formData.entries()) {
-params.append(key, value);
+        
+// Validate form
+if (!validateForm()) {
+return;
 }
+        
+// Show loading state
+submitBtn.classList.add('btn-loading');
+submitBtn.disabled = true;
+        
+// Clear any existing messages
+clearFormMessage();
+        
+// Collect form data
+const formData = {
+name: document.getElementById('contact-name').value,
+business: document.getElementById('contact-business').value,
+email: document.getElementById('contact-email').value,
+phone: document.getElementById('contact-phone').value,
+partnership: document.getElementById('contact-partnership').value,
+message: document.getElementById('contact-message').value,
+timestamp: new Date().toISOString(),
+source: 'partnerships-page'
+};
+        
 try {
-// Submit to Google Forms using fetch API
-const response = await fetch(googleFormURL, {
+// Submit to both Google Forms and FormSubmit simultaneously
+const [googleFormsResult, formSubmitResult] = await Promise.allSettled([
+submitToGoogleForms(formData),
+submitToFormSubmit(formData)
+]);
+            
+// Check results
+const googleSuccess = googleFormsResult.status === 'fulfilled' && googleFormsResult.value.success;
+const formSubmitSuccess = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.success;
+            
+if (googleSuccess || formSubmitSuccess) {
+// Show success message
+showFormMessage('Thank you! Your partnership inquiry has been submitted. We\'ll contact you within 24 hours.', 'success');
+                
+// Clear form
+this.reset();
+                
+// Log successful submission
+console.log('Partnership form submission successful:', {
+googleForms: googleSuccess ? 'Success' : 'Failed',
+formSubmit: formSubmitSuccess ? 'Success' : 'Failed'
+});
+} else {
+// Both failed
+showFormMessage('Submission failed. Please try again or contact us directly.', 'error');
+console.error('Both submissions failed:', {
+googleForms: googleFormsResult.reason,
+formSubmit: formSubmitResult.reason
+});
+}
+            
+} catch (error) {
+console.error('Form submission error:', error);
+showFormMessage('An error occurred. Please try again later.', 'error');
+} finally {
+// Restore button state
+submitBtn.classList.remove('btn-loading');
+submitBtn.innerHTML = originalText;
+submitBtn.disabled = false;
+}
+});
+}
+    
+// Form validation
+function validateForm() {
+const name = document.getElementById('contact-name').value.trim();
+const email = document.getElementById('contact-email').value.trim();
+const phone = document.getElementById('contact-phone').value.trim();
+    
+// Clear any existing messages
+clearFormMessage();
+    
+if (!name) {
+showFormMessage('Please enter your full name.', 'error');
+document.getElementById('contact-name').focus();
+return false;
+}
+    
+if (!email || !validateEmail(email)) {
+showFormMessage('Please enter a valid email address.', 'error');
+document.getElementById('contact-email').focus();
+return false;
+}
+    
+if (!phone) {
+showFormMessage('Please enter your phone number.', 'error');
+document.getElementById('contact-phone').focus();
+return false;
+}
+    
+return true;
+}
+    
+// Email validation
+function validateEmail(email) {
+const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+return re.test(email);
+}
+    
+// Show form message
+function showFormMessage(message, type = 'success') {
+if (!formMessage) return;
+        
+formMessage.textContent = message;
+formMessage.className = `form-message ${type}`;
+formMessage.style.display = 'block';
+        
+// Auto-hide after 5 seconds
+if (type === 'success') {
+setTimeout(() => {
+formMessage.style.display = 'none';
+}, 5000);
+} else {
+setTimeout(() => {
+formMessage.style.display = 'none';
+}, 8000);
+}
+        
+// Scroll to message
+formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+    
+// Clear form message
+function clearFormMessage() {
+if (formMessage) {
+formMessage.textContent = '';
+formMessage.style.display = 'none';
+}
+}
+    
+// Submit to Google Forms
+async function submitToGoogleForms(data) {
+try {
+// Google Forms URL and field IDs
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScMwC-5GgOXpQxrRP0f7FycSabRb8RFatp9aQU0b5eSQ0nBvA/formResponse';
+        
+// Prepare form data
+const params = new URLSearchParams();
+params.append('entry.1365271417', data.name);
+params.append('entry.817484743', data.business || '');
+params.append('entry.381744360', data.email);
+params.append('entry.1314303165', data.phone);
+params.append('entry.470699425', data.partnership || '');
+params.append('entry.663652090', data.message || '');
+params.append('entry.123456789', data.timestamp); // Custom field for timestamp
+params.append('entry.987654321', data.source); // Custom field for source
+        
+// Submit to Google Forms with no-cors mode
+const response = await fetch(GOOGLE_FORM_URL, {
 method: 'POST',
-mode: 'no-cors', // Important: Use no-cors mode to avoid CORS issues
+mode: 'no-cors', // Important: prevents CORS issues and blocks redirect
 body: params,
 headers: {
 'Content-Type': 'application/x-www-form-urlencoded'
 }
 });
-// Show success message
-submitBtn.innerHTML = '<i class="fas fa-check"></i> Submitted!';
-submitBtn.style.background = '#10b981';
-setTimeout(() => {
-submitBtn.innerHTML = originalText;
-submitBtn.disabled = false;
-submitBtn.style.background = originalBg;
-submitBtn.style.color = originalColor;
-// Show thank you message
-showThankYouMessage();
-// Clear form after submission
-setTimeout(() => {
-this.reset();
-}, 100);
-}, 2000);
+        
+// With no-cors mode, we can't read the response, so assume success
+return { success: true };
+        
 } catch (error) {
-// Show error message
-submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Try Again';
-submitBtn.style.background = '#ef4444';
-console.error('Form submission error:', error);
-setTimeout(() => {
-submitBtn.innerHTML = originalText;
-submitBtn.disabled = false;
-submitBtn.style.background = originalBg;
-submitBtn.style.color = originalColor;
-// Show error message to user
-showErrorMessage();
-}, 2000);
+console.warn('Google Forms submission failed:', error);
+return { success: false, error: error.message };
+}
+}
+    
+// Submit to FormSubmit (pforms@tailors.lk)
+async function submitToFormSubmit(data) {
+try {
+const FORM_SUBMIT_URL = 'https://formsubmit.co/ajax/pforms@tailors.lk';
+        
+const formData = new FormData();
+formData.append('name', data.name);
+formData.append('business', data.business || '');
+formData.append('email', data.email);
+formData.append('phone', data.phone);
+formData.append('partnership', data.partnership || '');
+formData.append('message', data.message || '');
+formData.append('_subject', `Tailors.lk Partnership Inquiry: ${data.name}`);
+formData.append('_template', 'table');
+formData.append('_captcha', 'false');
+formData.append('source', 'partnerships-page');
+formData.append('timestamp', data.timestamp);
+        
+const response = await fetch(FORM_SUBMIT_URL, {
+method: 'POST',
+body: formData,
+headers: {
+'Accept': 'application/json'
 }
 });
+        
+const responseData = await response.json();
+        
+if (response.ok && responseData.success === 'true') {
+return { success: true, data: responseData };
+} else {
+throw new Error(responseData.message || 'FormSubmit failed');
 }
-// Function to show thank you message
-function showThankYouMessage() {
-// Remove any existing message
-const existingMsg = document.querySelector('.thank-you-message');
-if (existingMsg) {
-existingMsg.remove();
+        
+} catch (error) {
+console.warn('FormSubmit submission failed:', error);
+return { success: false, error: error.message };
 }
-const formContainer = document.querySelector('.partnership-form');
-const thankYouMsg = document.createElement('div');
-thankYouMsg.style.cssText = `
-text-align: center;
-padding: 20px;
-background: rgba(16, 185, 129, 0.1);
-border-radius: var(--radius-sm);
-margin-top: 25px;
-color: white;
-border: 1px solid rgba(16, 185, 129, 0.2);
-font-size: 0.95rem;
-`;
-thankYouMsg.innerHTML = `
-<i class="fas fa-check-circle"></i>
-<strong>Thank you for your partnership inquiry!</strong><br>
-Our team will contact you within 24 hours to discuss opportunities.
-`;
-thankYouMsg.className = 'thank-you-message';
-formContainer.insertBefore(thankYouMsg, formContainer.firstChild);
-// Scroll to thank you message
-thankYouMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
-// Function to show error message
-function showErrorMessage() {
-const formContainer = document.querySelector('.partnership-form');
-const errorMsg = document.createElement('div');
-errorMsg.style.cssText = `
-text-align: center;
-padding: 15px;
-background: rgba(239, 68, 68, 0.1);
-border-radius: var(--radius-sm);
-margin-top: 25px;
-color: white;
-border: 1px solid rgba(239, 68, 68, 0.2);
-font-size: 0.9rem;
-`;
-errorMsg.innerHTML = `
-<i class="fas fa-exclamation-triangle"></i>
-<strong>Submission failed. Please try again or contact us directly.</strong>
-`;
-errorMsg.className = 'error-message';
-formContainer.insertBefore(errorMsg, formContainer.firstChild);
-// Remove after 5 seconds
-setTimeout(() => {
-errorMsg.remove();
-}, 5000);
-}
+    
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 anchor.addEventListener('click', function (e) {
@@ -1596,6 +1754,7 @@ block: 'start'
 }
 });
 });
+    
 // Improve mobile touch experience
 document.addEventListener('touchstart', function() {}, {passive: true});
 });
