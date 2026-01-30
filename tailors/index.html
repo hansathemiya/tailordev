@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Find Professional Tailors in Sri Lanka | Tailors Directory | Colombo, Kandy, Galle</title>
-    <meta name="description" content="Search our directory of professional tailors in Sri Lanka for custom suits, saree blouse stitching, bridal wear, alterations, uniforms, and bespoke tailoring. Find trusted tailors in Colombo, Kandy, Galle and islandwide." />
-    <meta name="keywords" content="tailors in sri lanka, tailors in colombo, tailors in kandy, tailors in galle, find tailors, tailor directory, tailors directory sri lanka, search tailors sri lanka, tailoring services, custom tailoring, bespoke tailoring, alterations, wedding tailors, uniform tailors" />
-    <!-- Favicon -->
+    <title>Tailors.lk — Find Trusted Tailors in Sri Lanka | Colombo, Kandy, Galle</title>
+    <meta name="description" content="Find trusted tailors across Sri Lanka for blouse stitching, saree fitting, bespoke suits, alterations. Connect with local professionals in Colombo, Kandy, Galle, and more. Search professional tailors in Sri Lanka for custom suits, bridal wear, alterations, uniforms, and more. Find trusted tailors in Colombo, Kandy, Galle and islandwide. Search professional tailors in Sri Lanka for custom suits, saree blouse stitching, bridal wear, alterations, uniforms, and bespoke tailoring. Find trusted tailors in Colombo, Kandy, Galle and islandwide." />
+    <meta name="keywords" content="tailors in sri lanka, tailors in colombo, tailors in kandy, tailors in galle, blouse stitching, saree fitting, custom tailoring, local tailors, sri lanka tailoring, tailors in sri lanka, tailor colombo sri lanka, best tailor in colombo, tailors in colombo, tailors in kandy, tailors in galle, tailoring shop colombo, custom tailoring sri lanka, bespoke tailoring sri lanka, luxury tailoring colombo, affordable tailoring sri lanka, custom suits sri lanka, tailor made suits colombo, bespoke suits sri lanka, high end custom made suits sri lanka, italian leather suits colombo, office wear tailoring sri lanka, mens trousers tailoring colombo, pants tailoring sri lanka, custom shirts sri lanka, wedding suits for groom sri lanka, saree blouse tailoring sri lanka, bridal saree blouse colombo, designer dresses sri lanka, custom frocks tailoring colombo, skirts tailoring sri lanka, tops tailoring sri lanka, bridal wear sri lanka, bridesmaid dresses colombo, party dresses sri lanka, wedding gowns sri lanka, school uniforms tailor sri lanka, casual clothing tailor colombo, party wear tailoring sri lanka, groom suits tailor colombo, nilame suits sri lanka, traditional wear tailoring sri lanka, groomsmen suits tailor colombo, pants shortening sri lanka, trouser length adjustments colombo, waist resizing tailor sri lanka, sleeve adjustments sri lanka, zip replacement colombo, clothing repair sri lanka, shirt length adjustments tailor sri lanka, alterations tailor colombo, bridal gowns tailor sri lanka, wedding tailoring services colombo, corporate uniforms sri lanka, hotel staff uniforms sri lanka, promotional clothing tailor colombo, bulk tailoring services colombo, company uniforms tailor sri lanka, alterations tailor near me sri lanka, designer tailoring sri lanka, custom suit tailoring sri lanka" />
+    <!-- Updated favicon -->
     <link rel="icon" href="https://data.tailors.lk/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,6 +30,9 @@
             --radius-sm: 10px;
             --radius-xs: 6px;
             --transition: all 0.3s ease;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
         }
 
         * {
@@ -113,12 +116,6 @@
             color: var(--teal);
         }
 
-        .nav-links a.active {
-            background: rgba(31, 78, 95, 0.08);
-            color: var(--teal);
-            font-weight: 600;
-        }
-
         .nav-cta {
             display: flex;
             gap: 8px;
@@ -182,7 +179,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 50px 0 30px;
+            padding: 60px 0 40px;
             background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
             color: white;
             position: relative;
@@ -204,36 +201,36 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 100%;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 12px;
-            color: white;
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, #f0f7fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-subtitle {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             opacity: 0.9;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             font-weight: 300;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        /* Search Panel */
+        /* Enhanced Search Panel */
         .search-panel {
             background: var(--card-bg);
             border-radius: var(--radius);
             padding: 20px;
             box-shadow: var(--shadow);
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .search-grid {
@@ -364,7 +361,7 @@
 
         /* Results Section */
         .results-section {
-            padding: 40px 0 30px;
+            padding: 50px 0;
         }
 
         .section-header {
@@ -542,6 +539,27 @@
             font-size: 0.85rem;
         }
 
+        /* Loading State for Forms */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Loading State */
         .loading {
             text-align: center;
@@ -559,10 +577,6 @@
             margin: 0 auto 16px;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
         /* No Results */
         .no-results {
             text-align: center;
@@ -576,111 +590,259 @@
             margin-bottom: 16px;
         }
 
-        /* SEO Sections */
-        .seo-sections-container {
-            padding: 50px 0;
-            background: linear-gradient(135deg, rgba(31, 78, 95, 0.02) 0%, rgba(13, 54, 69, 0.02) 100%);
+        /* Quick Cities */
+        .quick-cities {
+            padding: 35px 0;
+            background: var(--bg);
         }
 
-        .seo-section {
-            max-width: 900px;
-            margin: 0 auto 40px;
-            padding: 30px;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .seo-section h1 {
-            font-size: 2rem;
-            color: var(--teal);
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .seo-section h2 {
-            font-size: 1.6rem;
-            color: var(--teal);
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-
-        .seo-section p {
-            font-size: 1.05rem;
-            color: var(--text);
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .seo-section ul {
-            margin-left: 24px;
-            margin-bottom: 20px;
-        }
-
-        .seo-section li {
-            font-size: 1.05rem;
-            color: var(--text);
-            line-height: 1.7;
-            margin-bottom: 8px;
-            position: relative;
-        }
-
-        .seo-section li::before {
-            content: "•";
-            color: var(--gold);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-
-        .seo-cta {
-            text-align: center;
-            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
-            color: white;
-        }
-
-        .seo-cta h2,
-        .seo-cta p {
-            color: white;
-        }
-
-        .seo-cta .btn-primary {
-            background: white;
-            color: var(--teal);
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
             margin-top: 20px;
-            font-size: 1.1rem;
-            padding: 12px 30px;
         }
 
-        .seo-cta .btn-primary:hover {
-            background: var(--gold-light);
-            color: white;
-        }
-
-        .join-tailor-section {
-            background: linear-gradient(135deg, rgba(185, 145, 95, 0.05) 0%, rgba(212, 178, 140, 0.05) 100%);
-            border-left: 4px solid var(--gold);
-        }
-
-        .join-tailor-cta {
+        .city-card {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: var(--radius-sm);
             text-align: center;
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid var(--border);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text);
         }
 
-        .join-tailor-cta .btn-primary {
-            font-size: 1.1rem;
-            padding: 12px 30px;
+        .city-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: var(--gold);
+        }
+
+        .city-card i {
+            font-size: 1.7rem;
+            color: var(--gold);
             margin-bottom: 10px;
         }
 
-        .cta-sub {
-            font-size: 0.95rem;
+        /* New Sections */
+        .learn-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.05) 0%, rgba(13, 54, 69, 0.05) 100%);
+            text-align: center;
+        }
+
+        .learn-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .learn-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--teal);
+            margin-bottom: 12px;
+        }
+
+        .learn-section p {
+            font-size: 1.1rem;
             color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Newsletter Messages */
+        .newsletter-message {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .newsletter-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .newsletter-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .newsletter-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 60px 0;
+            background: var(--bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stars {
+            color: #f2c265;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text);
+            margin-bottom: 20px;
             font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--gold-light);
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .customer-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .customer-details h4 {
+            font-size: 1rem;
+            color: var(--teal);
+            margin-bottom: 4px;
+        }
+
+        .customer-details p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .testimonials-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.03) 0%, rgba(13, 54, 69, 0.03) 100%);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--teal);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(31, 78, 95, 0.03);
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+            color: var(--gold);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .faq-answer.open {
+            padding: 0 20px 20px 20px;
+            max-height: 1000px;
+        }
+
+        .faq-answer ul, .faq-answer ol {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
+        .faq-cta {
+            text-align: center;
+            margin-top: 40px;
         }
 
         /* Pagination */
@@ -736,7 +898,7 @@
             color: var(--text-light);
         }
 
-        /* Footer - COMPACT VERSION with FIXED Contact Info */
+        /* Footer - COMPACT VERSION */
         footer {
             background: var(--teal-dark);
             color: white;
@@ -787,46 +949,6 @@
             width: 14px;
             text-align: center;
             font-size: 0.8rem;
-        }
-
-        /* FIXED CONTACT INFO SECTION */
-        .contact-info {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-info .footer-links {
-            margin-top: 8px;
-        }
-
-        .contact-info .footer-links li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-            padding: 0;
-            line-height: 1.4;
-        }
-
-        .contact-info .footer-links li i {
-            width: 16px;
-            color: var(--gold-light);
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .contact-info .footer-links li a,
-        .contact-info .footer-links li span {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.8rem;
-            text-decoration: none;
-            transition: var(--transition);
-            flex: 1;
-        }
-
-        .contact-info .footer-links li a:hover {
-            color: var(--gold-light);
         }
 
         .social-links {
@@ -906,7 +1028,49 @@
             font-size: 0.9rem;
         }
 
-        /* Header CTA Buttons */
+        /* Contact Info in Footer - FIXED ALIGNMENT */
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .contact-info-item i {
+            width: 16px;
+            margin-top: 2px;
+            margin-right: 10px;
+            color: var(--gold-light);
+            flex-shrink: 0;
+        }
+
+        .contact-info-item a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--gold-light);
+        }
+
+        .contact-info-item span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Header CTA Buttons - New Styles */
         .header-cta {
             display: flex;
             gap: 8px;
@@ -930,7 +1094,7 @@
                 gap: 25px;
             }
             
-            .tailors-grid {
+            .testimonials-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -945,11 +1109,11 @@
             }
 
             .hero h1 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
 
             .hero-subtitle {
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
 
             .search-grid {
@@ -978,16 +1142,16 @@
                 display: none;
             }
             
-            .seo-section {
-                padding: 20px;
+            .testimonials-grid {
+                grid-template-columns: 1fr;
             }
             
-            .seo-section h1 {
-                font-size: 1.6rem;
+            .learn-section h2 {
+                font-size: 1.7rem;
             }
             
-            .seo-section h2 {
-                font-size: 1.4rem;
+            .learn-section p {
+                font-size: 1rem;
             }
             
             .pagination {
@@ -1008,25 +1172,37 @@
             }
             
             .hero h1 {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
             }
             
-            .seo-section h1 {
-                font-size: 1.4rem;
+            .city-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .seo-section h2 {
-                font-size: 1.2rem;
+            .faq-question {
+                padding: 16px;
+                font-size: 0.95rem;
             }
             
-            .seo-section p {
-                font-size: 1rem;
+            .faq-answer {
+                padding: 0 16px;
+                font-size: 0.9rem;
+            }
+            
+            .faq-answer.open {
+                padding: 0 16px 16px 16px;
             }
         }
 
         /* Animations */
         .fade-in {
             animation: fadeIn 0.5s ease;
+        }
+
+        /* Target the placeholder text */ 
+        #learn-email::placeholder { 
+            color: rgb(0, 0, 0); 
+            opacity: 1; 
         }
 
         @keyframes fadeIn {
@@ -1052,7 +1228,7 @@
 
             <nav class="nav-links">
                 <a href="/">Home</a>
-                <a href="/tailors" class="active">Find Tailors</a>
+                <a href="#directory">Find Tailors</a>
                 <a href="/services">Services</a>
                 <a href="/learn">Learn</a>
                 <a href="/about">About</a>
@@ -1073,6 +1249,7 @@
                 </div>
                 <a href="https://register.tailors.lk" class="btn btn-primary btn-sm">Join as Tailor</a>
             </div>
+
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -1082,7 +1259,7 @@
 
         <div class="mobile-menu" id="mobileMenu">
             <a href="/">Home</a>
-            <a href="/tailors" class="active">Find Tailors</a>
+            <a href="#directory">Find Tailors</a>
             <a href="/services">Services</a>
             <a href="/learn">Learn</a>
             <a href="/about">About</a>
@@ -1098,13 +1275,13 @@
         </div>
     </header>
 
-    <!-- Hero Section with Search -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>Find Professional Tailors in Sri Lanka</h1>
-            <p class="hero-subtitle">Search our directory of verified tailors for custom suits, saree blouse stitching, alterations, wedding wear, and more across Sri Lanka.</p>
+            <h1>Find Trusted Tailors in Sri Lanka</h1>
+            <p class="hero-subtitle">Connect with local professionals for blouse stitching, saree fitting, bespoke suits, alterations, and more</p>
             
-            <!-- Search Form -->
+            <!-- Enhanced Search Form -->
             <div class="search-panel">
                 <div class="search-grid">
                     <div class="search-field">
@@ -1210,12 +1387,52 @@
             
             <div style="margin-top: 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
                 <span style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Popular: </span>
-                <button class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopular('Colombo')">Colombo</button>
-                <button class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopular('Kandy')">Kandy</button>
-                <button class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopular('Galle')">Galle</button>
-                <button class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopularService('Custom Suits')">Custom Suits</button>
-                <button class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopularService('alterations')">Alterations</button>
-                <button class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopularService('saree')">Saree Fitting</button>
+                <a href="#directory" class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopular('Colombo')">Colombo</a>
+                <a href="#directory" class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopular('Kandy')">Kandy</a>
+                <a href="#directory" class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopular('Galle')">Galle</a>
+                <a href="#directory" class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopularService('Custom Suits')">Custom Suits</a>
+                <a href="#directory" class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopularService('alterations')">Alterations</a>
+                <a href="#directory" class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopularService('saree')">Saree Fitting</a>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Cities -->
+    <section class="quick-cities">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--teal); margin-bottom: 16px; font-size: 1.5rem;">Find Tailors by City</h2>
+            <div class="city-grid">
+                <a href="/colombo" class="city-card">
+                    <i class="fas fa-city"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Colombo</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">50+ tailors</p>
+                </a>
+                <a href="/kandy" class="city-card">
+                    <i class="fas fa-mountain"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Kandy</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">30+ tailors</p>
+                </a>
+                <a href="/galle" class="city-card">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Galle</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">25+ tailors</p>
+                </a>
+                <a href="/jaffna" class="city-card">
+                    <i class="fas fa-landmark"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Jaffna</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">20+ tailors</p>
+                </a>
+                <a href="/ella" class="city-card">
+                    <i class="fas fa-hiking"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Ella</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">15+ tailors</p>
+                </a>
+                <a href="/trinco" class="city-card">
+                    <i class="fas fa-anchor"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Trincomalee</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">12+ tailors</p>
+                </a>
             </div>
         </div>
     </section>
@@ -1225,7 +1442,7 @@
         <div class="container">
             <div class="section-header">
                 <div>
-                    <h2 class="section-title">Professional Tailors in Sri Lanka</h2>
+                    <h2 class="section-title">Featured Tailors</h2>
                     <div class="results-count" id="results-count">Loading tailors...</div>
                 </div>
                 <div style="display: flex; gap: 10px;">
@@ -1258,137 +1475,248 @@
                 <h3 style="font-size: 1.3rem; margin-bottom: 8px;">No tailors found</h3>
                 <p style="font-size: 0.95rem;">Try adjusting your search criteria or browse popular cities above.</p>
             </div>
+            
+            <!-- Join CTA -->
+            <div style="text-align: center; margin-top: 50px; padding: 30px; background: var(--bg); border-radius: var(--radius); border: 2px dashed var(--border);">
+                <h3 style="color: var(--teal); margin-bottom: 12px; font-size: 1.3rem;">Are you a tailor?</h3>
+                <p style="color: var(--text-light); margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto; font-size: 0.95rem;">
+                    Join our directory and reach thousands of customers looking for professional tailoring services across Sri Lanka.
+                </p>
+                <a href="https://register.tailors.lk" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Join as a Tailor
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- SEO Sections -->
-    <div class="seo-sections-container">
+    <!-- Learn Tailoring Section -->
+    <section class="learn-section">
         <div class="container">
-            <!-- SEO Section 1 -->
-            <section class="seo-section">
-                <h1>Find Professional Tailors in Sri Lanka</h1>
-                <p>
-                    Tailors.lk helps you discover trusted tailors in Sri Lanka for custom suits, saree blouse stitching,
-                    bridal wear, alterations, uniforms, and bespoke tailoring services. Whether you are searching for a
-                    tailor in Colombo, Kandy, Galle, or anywhere islandwide, our marketplace connects you with verified
-                    professionals for men's wear, women's wear, wedding outfits, and clothing repairs.
-                </p>
-            </section>
-
-            <!-- SEO Section 2 -->
-            <section class="seo-section">
-                <h2>Men's Tailoring Services in Sri Lanka</h2>
-                <p>
-                    Search for expert men's tailors in Sri Lanka specializing in custom suits, bespoke tailoring,
-                    office wear tailoring, custom shirts, and mens trousers tailoring in Colombo and surrounding areas.
-                    From high end custom made suits to wedding suits for grooms, Tailors.lk helps you find professionals
-                    for luxury tailoring, affordable tailoring, and precision fitting across the country.
-                </p>
-            </section>
-
-            <!-- SEO Section 3 -->
-            <section class="seo-section">
-                <h2>Women's & Bridal Tailoring in Sri Lanka</h2>
-                <p>
-                    Discover women's tailoring services in Sri Lanka for saree blouse tailoring, bridal saree blouse
-                    stitching, designer dresses, custom frocks, skirts, tops, and party dresses. Whether you need
-                    bridal wear in Colombo, bridesmaid dresses, or wedding gowns in Sri Lanka, Tailors.lk connects you
-                    with skilled designers and tailoring shops for elegant, well-fitted outfits.
-                </p>
-            </section>
-
-            <!-- SEO Section 4 -->
-            <section class="seo-section">
-                <h2>Clothing Alterations & Repairs in Colombo and Sri Lanka</h2>
-                <p>
-                    Find alterations tailors in Sri Lanka for pants shortening, trouser length adjustments,
-                    waist resizing, sleeve adjustments, zip replacement, and clothing repair services.
-                    If you are searching for an alterations tailor in Colombo or nearby areas, Tailors.lk helps
-                    you compare professionals for fast, affordable, and accurate garment adjustments.
-                </p>
-            </section>
-
-            <!-- SEO Section 5 -->
-            <section class="seo-section">
-                <h2>Wedding Tailors in Sri Lanka for Bridal & Groom Wear</h2>
-                <p>
-                    Planning a wedding? Search wedding tailoring services in Sri Lanka for bridal gowns,
-                    groom suits, nilame suits, bridal saree blouse tailoring, bridesmaid dresses, and
-                    groomsmen suits. Tailors.lk helps couples in Colombo and across Sri Lanka find experienced
-                    wedding tailors for elegant, custom-made outfits for the big day.
-                </p>
-            </section>
-
-            <!-- SEO Section 6 -->
-            <section class="seo-section">
-                <h2>Corporate & Uniform Tailoring Services in Sri Lanka</h2>
-                <p>
-                    Businesses can find professional uniform tailors in Sri Lanka for hotel staff uniforms,
-                    corporate uniforms, promotional clothing, event outfits, and bulk tailoring services.
-                    Whether you need company uniforms in Colombo or large-scale tailoring for organizations,
-                    Tailors.lk connects you with experienced suppliers for reliable and consistent results.
-                </p>
-            </section>
-
-            <!-- SEO Section 7 -->
-            <section class="seo-section">
-                <h2>Find Tailors by Location in Sri Lanka</h2>
-                <p>
-                    Easily search for tailors in Colombo, Kandy, Galle, Negombo, Kurunegala, and other cities in Sri Lanka.
-                    Whether you are looking for a tailoring shop in Colombo, luxury tailoring services, or affordable
-                    local tailors near you, Tailors.lk helps you compare professionals based on service, price, experience,
-                    and customer reviews.
-                </p>
-            </section>
-
-            <!-- SEO Section 8 - CTA -->
-            <section class="seo-section seo-cta">
-                <h2>Are You a Tailor in Sri Lanka?</h2>
-                <p>
-                    Join Tailors.lk and get discovered by customers searching online for custom tailoring,
-                    alterations, wedding wear, and uniform services. Create your profile, showcase your work,
-                    and receive direct inquiries from clients across Sri Lanka.
-                </p>
-                <a href="/register" class="btn btn-primary btn-sm">Register as a Tailor</a>
-            </section>
-
-            <!-- SEO Section 9 - Join Tailor Section -->
-            <section class="seo-section join-tailor-section">
-                <h2>Join Tailors.lk as a Professional Tailor in Sri Lanka</h2>
-
-                <p>
-                    Are you a tailor in Sri Lanka looking to get more customers online? Tailors.lk helps professional
-                    tailors, designers, and alteration specialists connect with people searching for custom suits,
-                    saree blouse tailoring, wedding wear, alterations, and uniform services. Whether you operate a
-                    tailoring shop in Colombo, Kandy, Galle, or work independently, our platform brings verified leads
-                    directly to you.
-                </p>
-
-                <p>
-                    By registering on Tailors.lk, you can showcase your work, list your services, set your prices,
-                    highlight your experience, and receive direct inquiries from customers searching for trusted
-                    tailors in Sri Lanka. From bespoke tailoring and bridal gowns to corporate uniforms and clothing
-                    repairs, your profile helps you get discovered exactly when customers are ready to book.
-                </p>
-
-                <ul>
-                    <li>Get discovered by customers searching online</li>
-                    <li>Showcase your portfolio and tailoring services</li>
-                    <li>Receive direct inquiries and job requests</li>
-                    <li>Grow your tailoring business in Sri Lanka</li>
-                </ul>
-
-                <div class="join-tailor-cta">
-                    <a href="/register" class="btn btn-primary btn-sm">Register as a Tailor</a>
-                    <p class="cta-sub"><br>
-                        Free to join. Create your tailor profile and start receiving customer requests today.
-                    </p>
+            <div class="learn-content">
+                <h2>Learn Tailoring with Us</h2>
+                <p>Courses, guides and masterclasses — launching soon.</p>
+                <div class="newsletter-form" style="max-width: 400px; margin: 30px auto;">
+                    <input type="email" placeholder="Enter your email" style="background: #ecf3ab; color:#000100;" class="newsletter-input" id="learn-email" style="background:#041139;  border:1px solid #050505;" />
+                    <button class="btn btn-primary" id="notify-me">
+                        <i class="fas fa-bell"></i>
+                        Notify Me
+                    </button>
                 </div>
-            </section>
+                <div class="newsletter-message" id="learn-message"></div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer - COMPACT VERSION with FIXED Contact Info -->
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 10px;">What Clients Say</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Discover what our customers have to say about their experiences with tailors on our platform.
+            </p>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card fade-in">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        Found the perfect tailor for my wedding saree blouse through Tailors.lk. The fitting was perfect and the craftsmanship was exceptional. Highly recommended!
+                    </p>
+                    <div class="customer-info">
+                        <div class="customer-avatar" style="background: #2a6579;">
+                            SP
+                        </div>
+                        <div class="customer-details">
+                            <h4>Sandani Perera</h4>
+                            <p>Colombo</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card fade-in">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        As an expat in Kandy, I needed a reliable tailor for alterations. The platform connected me with a professional who understood exactly what I needed. Great service!
+                    </p>
+                    <div class="customer-info">
+                        <div class="customer-avatar" style="background: #b9915f;">
+                            MR
+                        </div>
+                        <div class="customer-details">
+                            <h4>Michael Roberts</h4>
+                            <p>Kandy</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card fade-in">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        Needed emergency alterations for a business trip. Found a tailor who completed the work in just a few hours through Tailors.lk. Saved my trip!
+                    </p>
+                    <div class="customer-info">
+                        <div class="customer-avatar" style="background: #0d3645;">
+                            AK
+                        </div>
+                        <div class="customer-details">
+                            <h4>Anjali Kumar</h4>
+                            <p>Galle</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials-cta">
+                <a href="/reviews" class="btn btn-outline">
+                    <i class="fas fa-comments"></i>
+                    Read All Reviews
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 10px;">Frequently Asked Questions</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Find answers to common questions about using Tailors.lk to find professional tailoring services in Sri Lanka.
+            </p>
+            
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(1)">
+                        <span>How can I contact a tailor if I have a problem?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-1">
+                        Each tailor's profile on Tailors.lk includes their direct WhatsApp number, phone number, or social media links. You can also click the "Contact" button to message them via WhatsApp. For urgent issues, look for the "Emergency Service" filter to find tailors who can respond quickly.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(2)">
+                        <span>What services are typically offered by tailors on Tailors.lk?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-2">
+                        Tailors on our platform offer a wide range of professional services including:
+                        <ul>
+                            <li>Saree fitting and draping</li>
+                            <li>Bespoke suit tailoring</li>
+                            <li>Alterations for dresses, shirts, and formal wear</li>
+                            <li>Hemming, button sewing, and fabric repairs</li>
+                            <li>Custom design and embroidery</li>
+                            <li>Emergency alterations for events or travel</li>
+                        </ul>
+                        You can browse each tailor's profile to see their specific services and reviews from real customers.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(3)">
+                        <span>How do I find a trusted tailor near me on Tailors.lk?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-3">
+                        Use our powerful search panel on the homepage! Enter your city (e.g., Colombo, Kandy, Galle) or a specific area, then select your service (like saree fitting or alterations). You can also filter by experience level, price range, or rating to find the perfect tailor. Our platform verifies and features top-rated tailors for your convenience.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(4)">
+                        <span>How are tailors verified on Tailors.lk?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-4">
+                        We ensure quality by verifying every tailor through a multi-step process:
+                        <ol>
+                            <li><strong>Profile Submission:</strong> Tailors submit their business details, photos, and service list.</li>
+                            <li><strong>Document Check:</strong> We verify licenses, business registration, or professional certifications.</li>
+                            <li><strong>Customer Reviews:</strong> Only tailors with real, verified reviews can appear on our directory.</li>
+                            <li><strong>Featured Badge:</strong> Top-rated tailors (4.5+ stars, 5+ reviews) receive a "Featured" badge for visibility.</li>
+                        </ol>
+                        You can trust that every tailor listed has been vetted for professionalism and quality.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(5)">
+                        <span>Is Tailors.lk free for customers to use?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-5">
+                        Absolutely! Finding and connecting with tailors is completely free for customers. We help you discover local professionals without any cost. Tailors, however, pay a small fee to join our directory and get featured listings, which helps us maintain a high-quality, verified platform for you.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(6)">
+                        <span>Can I book an appointment or contact a tailor directly?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-6">
+                        Yes! Each tailor's profile includes their WhatsApp number, phone number, and sometimes a direct link to their website or social media. You can also click the "Contact" button to message them directly via WhatsApp. For urgent needs, look for the "Emergency Service" filter to find tailors who can accommodate same-day or next-day appointments.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(7)">
+                        <span>What makes Tailors.lk different from other tailoring directories?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-7">
+                        Tailors.lk is built for Sri Lankan users, with a focus on local, verified professionals. We offer:
+                        <ul>
+                            <li>Real customer reviews and ratings</li>
+                            <li>Advanced filters (experience, price, availability, rating)</li>
+                            <li>Emergency service options</li>
+                            <li>Verified and featured tailors for trust and quality</li>
+                            <li>A seamless, mobile-friendly search experience</li>
+                            <li>Free access for customers — no hidden fees or paywalls</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-cta">
+                <a href="/faq" class="btn btn-outline">
+                    <i class="fas fa-question-circle"></i>
+                    View All FAQs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - COMPACT VERSION -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1412,7 +1740,7 @@
                     <h4>For Users</h4>
                     <ul class="footer-links">
                         <li><a href="/services"><i class="fas fa-scissors"></i> Services</a></li>
-                        <li><a href="/tailors"><i class="fas fa-list"></i> Find Tailors</a></li>
+                        <li><a href="/tailors"><i class="fas fa-list"></i> All Tailors</a></li>
                         <li><a href="/fabrics"><i class="fas fa-tshirt"></i> Fabrics</a></li>
                         <li><a href="/reviews"><i class="fas fa-star"></i> Reviews</a></li>
                         <li><a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a></li>
@@ -1427,7 +1755,7 @@
                         <li><a href="/for-tailors"><i class="fas fa-user-tie"></i> For Tailors</a></li>
                         <li><a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a></li>
                         <li><a href="/for-brands"><i class="fas fa-tag"></i> For Brands</a></li>
-                        <li><a href="/partnership"><i class="fas fa-handshake"></i> Partnerships</a></li>
+                        <li><a href="/partnerships"><i class="fas fa-handshake"></i> Partnerships</a></li>
                         <li><a href="/careers"><i class="fas fa-users"></i> Careers</a></li>
                         <li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li>
                     </ul>
@@ -1458,7 +1786,7 @@
                     </ul>
                 </div>
                 
-                <!-- Legal Section with FIXED Contact Info -->
+                <!-- Legal Section -->
                 <div>
                     <h4>Legal</h4>
                     <ul class="footer-links">
@@ -1467,27 +1795,37 @@
                         <li><a href="/cookies"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
                     </ul>
                     
-                    <!-- Contact Info - FIXED Alignment -->
+                    <!-- Contact Info - FIXED ALIGNMENT -->
                     <div class="contact-info">
                         <h4>Contact Info</h4>
-                        <ul class="footer-links">
-                            <li>
-                                <i class="fas fa-phone"></i>
-                                <a href="tel:+94758244216">+94758244216</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-envelope"></i>
-                                <a href="mailto:team@tailors.lk">team@tailors.lk</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Colombo, Sri Lanka</span>
-                            </li>
-                        </ul>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+94758244216">+94 75 824 4216</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="/cdn-cgi/l/email-protection#a6d2c3c7cbe6d2c7cfcac9d4d588cacd"><span class="__cf_email__" data-cfemail="532736323e1327323a3f3c21207d3f38">[email&#160;protected]</span></a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Colombo, Sri Lanka</span>
+                        </div>
                     </div>
                 </div>
             </div>
-         
+            
+            <!-- Newsletter Signup -->
+            <div class="newsletter">
+                <h4>Stay Updated</h4>
+                <p>Get the latest on tailoring trends, special offers, and new tailors</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email address" class="newsletter-input" id="footer-email">
+                    <button class="btn btn-primary btn-sm" id="footer-subscribe">
+                        <i class="fas fa-paper-plane"></i> Subscribe
+                    </button>
+                </div>
+                <div class="newsletter-message" id="footer-message"></div>
+            </div>
             
             <div class="copyright">
                 <p>&copy; <span id="current-year"></span> Tailors.lk. All rights reserved. | Uplifting Sri Lanka's tailoring tradition</p>
@@ -1495,25 +1833,23 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script>
-        // JSON data URLs
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // JSON data URLs - try multiple sources
         const TAILORS_JSON_URLS = [
             '/data/tailors.json',
             '/tailors.json',
             'https://data.tailors.lk/tailors.json'
         ];
         
-        // Global tailors array
+        // Global tailors array (will be loaded from JSON)
         let allTailors = [];
         let currentPage = 1;
-        const itemsPerPage = 9;
+        const itemsPerPage = 9; // Show 6 tailors per page
 
-        // Check URL parameters for service query
-        function getUrlParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
+        // DUAL SUBMISSION ENDPOINTS
+        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScsDYDEBFGPc4AKH06adAgA2pcWviLKGsQHY68_92JvO2ccDQ/formResponse';
+        const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/newsletter@tailors.lk';
+        const GOOGLE_FORM_EMAIL_ID = 'entry.270227624';
 
         // DOM Elements
         const hamburger = document.getElementById('hamburger');
@@ -1552,54 +1888,52 @@
             // Set current year
             document.getElementById('current-year').textContent = new Date().getFullYear();
             
-            // Check for URL parameters
-            const serviceParam = getUrlParam('service');
-            if (serviceParam) {
-                serviceSearch.value = decodeURIComponent(serviceParam);
-                currentSearch.service = serviceParam.toLowerCase();
-            }
-            
             // Load tailors from JSON
             await loadTailorsFromJSON();
             
             // Setup event listeners
             setupEventListeners();
-            
-            // If service parameter exists, perform search
-            if (serviceParam) {
-                setTimeout(() => {
-                    performSearch();
-                }, 500);
-            }
         });
 
-        // Load tailors from JSON file
+        // Load tailors from JSON file - try multiple sources
         async function loadTailorsFromJSON() {
             let loaded = false;
             
+            // Try each URL in sequence
             for (const url of TAILORS_JSON_URLS) {
                 try {
+                    console.log(`Trying to load tailors from: ${url}`);
                     const response = await fetch(url);
                     
-                    if (!response.ok) continue;
+                    if (!response.ok) {
+                        console.log(`Failed to load from ${url}: ${response.status}`);
+                        continue;
+                    }
                     
                     const data = await response.json();
                     
+                    // Validate data structure
                     if (data && Array.isArray(data.tailors) && data.tailors.length > 0) {
                         allTailors = data.tailors;
+                        console.log(`Successfully loaded ${allTailors.length} tailors from ${url}`);
                         loaded = true;
                         break;
+                    } else {
+                        console.log(`Invalid data structure from ${url}`);
                     }
                 } catch (error) {
+                    console.log(`Error loading from ${url}:`, error.message);
                     continue;
                 }
             }
             
             if (!loaded) {
+                console.log('All JSON sources failed, attempting to load from root...');
                 await loadTailorsFromRoot();
                 return;
             }
             
+            // Render all tailors on homepage with pagination
             renderTailorsWithPagination(allTailors, currentPage);
             loadingEl.style.display = 'none';
         }
@@ -1607,23 +1941,32 @@
         // Load tailors from root directory as last resort
         async function loadTailorsFromRoot() {
             try {
+                // Try to load from root directory
                 const response = await fetch('/tailors.lk');
-                if (!response.ok) throw new Error('Failed to load from root');
+                if (!response.ok) {
+                    throw new Error('Failed to load from root');
+                }
                 
                 const data = await response.json();
                 if (data && Array.isArray(data.tailors)) {
                     allTailors = data.tailors;
+                    console.log(`Loaded ${allTailors.length} tailors from root directory`);
                 } else {
                     throw new Error('Invalid data structure');
                 }
             } catch (error) {
-                console.error('Failed to load tailors:', error);
+                console.error('Failed to load tailors from all sources:', error);
+                // Show error message to user
                 loadingEl.innerHTML = `
                     <div style="color: #e74c3c; margin-bottom: 20px;">
                         <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 10px;"></i>
                         <p>Unable to load tailors directory. Please check back later.</p>
                     </div>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">
+                        You can still use the search functionality with our available tailors.
+                    </p>
                 `;
+                // Use empty array to avoid errors
                 allTailors = [];
             }
             
@@ -1633,24 +1976,30 @@
             }
         }
 
-        // Sort tailors by priority
+        // Sort tailors by priority: verified > featured > others
         function sortTailorsByPriority(tailors) {
             return tailors.sort((a, b) => {
+                // Priority 1: Both verified and featured (Top Rated)
                 const aIsTopRated = a.verified && a.featured;
                 const bIsTopRated = b.verified && b.featured;
                 if (aIsTopRated && !bIsTopRated) return -1;
                 if (!aIsTopRated && bIsTopRated) return 1;
                 
+                // Priority 2: Verified only
                 if (a.verified && !b.verified) return -1;
                 if (!a.verified && b.verified) return 1;
                 
+                // Priority 3: Featured only
                 if (a.featured && !b.featured) return -1;
                 if (!a.featured && b.featured) return 1;
                 
+                // Priority 4: Higher rating
                 if (b.rating !== a.rating) return b.rating - a.rating;
                 
+                // Priority 5: More reviews
                 if (b.review_count !== a.review_count) return b.review_count - a.review_count;
                 
+                // Priority 6: Alphabetical by name
                 return a.name.localeCompare(b.name);
             });
         }
@@ -1672,12 +2021,17 @@
                 return;
             }
 
+            // Sort tailors by priority
             const sortedTailors = sortTailorsByPriority([...tailorsList]);
+            
+            // Get tailors for current page
             const pageTailors = getTailorsForPage(sortedTailors, page);
             const totalPages = Math.ceil(sortedTailors.length / itemsPerPage);
             
+            // Render tailors for current page
             renderTailors(pageTailors);
             
+            // Show/hide pagination
             if (sortedTailors.length > itemsPerPage) {
                 renderPagination(page, totalPages);
                 paginationEl.style.display = 'flex';
@@ -1685,6 +2039,7 @@
                 paginationEl.style.display = 'none';
             }
             
+            // Update results count
             resultsCount.innerHTML = `Showing <span id="count">${pageTailors.length}</span> of ${sortedTailors.length} tailors (Page ${page} of ${totalPages})`;
         }
 
@@ -1692,13 +2047,16 @@
         function renderPagination(currentPage, totalPages) {
             let paginationHTML = '';
             
+            // Previous button
             if (currentPage > 1) {
                 paginationHTML += `<button class="page-btn" onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></button>`;
             } else {
                 paginationHTML += `<button class="page-btn disabled"><i class="fas fa-chevron-left"></i></button>`;
             }
             
+            // Page numbers
             if (totalPages <= 7) {
+                // Show all pages
                 for (let i = 1; i <= totalPages; i++) {
                     if (i === currentPage) {
                         paginationHTML += `<button class="page-btn active">${i}</button>`;
@@ -1707,7 +2065,9 @@
                     }
                 }
             } else {
+                // Complex pagination with ellipsis
                 if (currentPage <= 3) {
+                    // Show first 4 pages, ellipsis, last page
                     for (let i = 1; i <= 4; i++) {
                         if (i === currentPage) {
                             paginationHTML += `<button class="page-btn active">${i}</button>`;
@@ -1718,6 +2078,7 @@
                     paginationHTML += `<span class="page-ellipsis">...</span>`;
                     paginationHTML += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
                 } else if (currentPage >= totalPages - 2) {
+                    // Show first page, ellipsis, last 4 pages
                     paginationHTML += `<button class="page-btn" onclick="changePage(1)">1</button>`;
                     paginationHTML += `<span class="page-ellipsis">...</span>`;
                     for (let i = totalPages - 3; i <= totalPages; i++) {
@@ -1728,6 +2089,7 @@
                         }
                     }
                 } else {
+                    // Show first page, ellipsis, current-1, current, current+1, ellipsis, last page
                     paginationHTML += `<button class="page-btn" onclick="changePage(1)">1</button>`;
                     paginationHTML += `<span class="page-ellipsis">...</span>`;
                     for (let i = currentPage - 1; i <= currentPage + 1; i++) {
@@ -1742,12 +2104,14 @@
                 }
             }
             
+            // Next button
             if (currentPage < totalPages) {
                 paginationHTML += `<button class="page-btn" onclick="changePage(${currentPage + 1})"><i class="fas fa-chevron-right"></i></button>`;
             } else {
                 paginationHTML += `<button class="page-btn disabled"><i class="fas fa-chevron-right"></i></button>`;
             }
             
+            // Page info
             paginationHTML += `<span class="page-info">Page ${currentPage} of ${totalPages}</span>`;
             
             paginationEl.innerHTML = paginationHTML;
@@ -1756,14 +2120,21 @@
         // Change page
         function changePage(page) {
             currentPage = page;
+            
+            // Get filtered tailors based on current search
             const filtered = getFilteredTailors();
+            
+            // Render with new page
             renderTailorsWithPagination(filtered, currentPage);
+            
+            // Scroll to top of results
             tailorsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // Get filtered tailors
+        // Get filtered tailors based on current search
         function getFilteredTailors() {
             return allTailors.filter(tailor => {
+                // Text search filters
                 const matchesLocation = !currentSearch.location || 
                     (tailor.area && tailor.area.toLowerCase().includes(currentSearch.location)) ||
                     (tailor.city && tailor.city.toLowerCase().includes(currentSearch.location)) ||
@@ -1777,6 +2148,7 @@
                 const matchesTailor = !currentSearch.tailor || 
                     (tailor.name && tailor.name.toLowerCase().includes(currentSearch.tailor));
 
+                // Advanced filters
                 const matchesExperience = !currentSearch.experience || 
                     tailor.experience === currentSearch.experience;
                 
@@ -1794,7 +2166,7 @@
             });
         }
 
-        // Setup event listeners
+        // Setup all event listeners
         function setupEventListeners() {
             // Mobile menu toggle
             hamburger.addEventListener('click', () => {
@@ -1839,7 +2211,7 @@
                 filter.addEventListener('change', performSearch);
             });
 
-            // Real-time search
+            // Real-time search as user types (with debounce)
             let searchTimeout;
             [locationSearch, serviceSearch, tailorSearch].forEach(input => {
                 input.addEventListener('input', () => {
@@ -1847,9 +2219,225 @@
                     searchTimeout = setTimeout(performSearch, 300);
                 });
             });
+
+            // Newsletter form submission - DUAL SUBMISSION
+            document.getElementById('notify-me').addEventListener('click', () => subscribeToLearning());
+            document.getElementById('learn-email').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') subscribeToLearning();
+            });
+
+            // Footer newsletter submission - DUAL SUBMISSION
+            document.getElementById('footer-subscribe').addEventListener('click', () => subscribeFooterNewsletter());
+            document.getElementById('footer-email').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') subscribeFooterNewsletter();
+            });
+
+            // Find Tailor button in header
+            document.querySelector('.header-cta .btn-secondary').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('directory').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
         }
 
-        // Render tailors
+        // Toggle FAQ answer visibility
+        function toggleFAQ(faqNumber) {
+            const answer = document.getElementById(`faq-answer-${faqNumber}`);
+            const question = answer.previousElementSibling;
+            const icon = question.querySelector('i');
+            
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
+                    openAnswer.classList.remove('open');
+                    const openIcon = openAnswer.previousElementSibling.querySelector('i');
+                    openIcon.style.transform = 'rotate(0deg)';
+                });
+                
+                // Open clicked FAQ
+                answer.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Subscribe to learning notifications - DUAL SUBMISSION
+        async function subscribeToLearning() {
+            const emailInput = document.getElementById('learn-email');
+            const email = emailInput.value.trim();
+            const messageEl = document.getElementById('learn-message');
+            
+            if (!validateEmail(email)) {
+                showMessage(messageEl, 'Please enter a valid email address', 'error');
+                return;
+            }
+            
+            await submitToBoth(email, 'learning', messageEl, emailInput);
+        }
+
+        // Subscribe to footer newsletter - DUAL SUBMISSION
+        async function submitToBoth(email, source, messageEl, emailInput) {
+            const button = source === 'learning' ? document.getElementById('notify-me') : document.getElementById('footer-subscribe');
+            const originalText = button.innerHTML;
+            
+            // Show loading state
+            button.classList.add('btn-loading');
+            button.disabled = true;
+            
+            try {
+                // Submit to both endpoints simultaneously
+                const [googleFormsResult, formSubmitResult] = await Promise.allSettled([
+                    submitToGoogleForms(email, source),
+                    submitToFormSubmit(email, source)
+                ]);
+                
+                // Check results
+                const googleSuccess = googleFormsResult.status === 'fulfilled' && googleFormsResult.value.success;
+                const formSubmitSuccess = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.success;
+                
+                if (googleSuccess || formSubmitSuccess) {
+                    // Show success message
+                    const successMessage = source === 'learning' 
+                        ? 'Thank you! You will be notified when our courses launch.' 
+                        : 'Thank you! You have been subscribed to our newsletter.';
+                    
+                    showMessage(messageEl, successMessage, 'success');
+                    
+                    // Clear input
+                    emailInput.value = '';
+                    
+                    // Update button to show success
+                    button.innerHTML = source === 'learning' 
+                        ? '<i class="fas fa-check"></i> Notified!' 
+                        : '<i class="fas fa-check"></i> Subscribed!';
+                    
+                    // Log submission status for debugging
+                    console.log(`${source} submission results:`, {
+                        googleForms: googleSuccess ? 'Success' : 'Failed',
+                        formSubmit: formSubmitSuccess ? 'Success' : 'Failed',
+                        email: email
+                    });
+                    
+                } else {
+                    // Both failed
+                    showMessage(messageEl, 'Subscription failed. Please try again later.', 'error');
+                    console.error(`${source} submission failed:`, {
+                        googleForms: googleFormsResult.reason,
+                        formSubmit: formSubmitResult.reason
+                    });
+                }
+                
+            } catch (error) {
+                console.error(`${source} submission error:`, error);
+                showMessage(messageEl, 'An error occurred. Please try again later.', 'error');
+            } finally {
+                // Restore button state
+                button.classList.remove('btn-loading');
+                
+                // Reset button after 3 seconds (if not already changed to success)
+                if (button.innerHTML.includes('check')) {
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }, 3000);
+                } else {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }
+            }
+        }
+
+        // Subscribe to footer newsletter - DUAL SUBMISSION
+        async function subscribeFooterNewsletter() {
+            const emailInput = document.getElementById('footer-email');
+            const email = emailInput.value.trim();
+            const messageEl = document.getElementById('footer-message');
+            
+            if (!validateEmail(email)) {
+                showMessage(messageEl, 'Please enter a valid email address', 'error');
+                return;
+            }
+            
+            await submitToBoth(email, 'newsletter', messageEl, emailInput);
+        }
+
+        // Submit email to Google Forms
+        async function submitToGoogleForms(email, source) {
+            try {
+                const formData = new FormData();
+                formData.append(GOOGLE_FORM_EMAIL_ID, email);
+                
+                // Add source information
+                formData.append('entry.123456789', source === 'learning' ? 'Learning Notifications' : 'Newsletter Subscription');
+                
+                // Submit to Google Forms with no-cors mode
+                const response = await fetch(GOOGLE_FORM_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important: prevents CORS issues
+                    body: formData
+                });
+                
+                // With no-cors mode, we can't read the response, so assume success
+                return { success: true };
+                
+            } catch (error) {
+                console.warn(`Google Forms submission for ${source} failed:`, error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Submit email to FormSubmit
+        async function submitToFormSubmit(email, source) {
+            try {
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('_subject', `Tailors.lk ${source === 'learning' ? 'Learning' : 'Newsletter'} Subscription`);
+                formData.append('_template', 'table');
+                formData.append('_captcha', 'false');
+                formData.append('source', source);
+                
+                const response = await fetch(FORMSUBMIT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success === 'true') {
+                    return { success: true, data };
+                } else {
+                    throw new Error(data.message || 'FormSubmit failed');
+                }
+                
+            } catch (error) {
+                console.warn(`FormSubmit submission for ${source} failed:`, error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Show message in newsletter section
+        function showMessage(element, message, type = 'success') {
+            if (!element) return;
+            
+            element.textContent = message;
+            element.className = `newsletter-message newsletter-${type}`;
+            element.style.display = 'block';
+            
+            // Auto-hide messages
+            const hideTime = type === 'success' ? 5000 : 8000;
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, hideTime);
+        }
+
+        // Render tailors to the grid
         function renderTailors(tailorsList) {
             if (tailorsList.length === 0) {
                 tailorsGrid.style.display = 'none';
@@ -1863,8 +2451,10 @@
                 const card = document.createElement('div');
                 card.className = 'tailor-card fade-in';
                 
+                // Generate stars HTML
                 const stars = generateStars(tailor.rating);
                 
+                // Generate badge HTML based on verified and featured status
                 let badgeHTML = '';
                 if (tailor.verified && tailor.featured) {
                     badgeHTML = `<span class="badge top-rated-badge"><i class="fas fa-crown"></i> Top Rated</span>`;
@@ -1934,7 +2524,7 @@
             noResultsEl.style.display = 'none';
         }
 
-        // Generate star ratings
+        // Generate star ratings HTML
         function generateStars(rating) {
             let stars = '';
             const numRating = parseFloat(rating) || 0;
@@ -1954,10 +2544,12 @@
             return stars;
         }
 
-        // Perform search
+        // Perform search with all filters
         function performSearch() {
+            // Reset to page 1 when searching
             currentPage = 1;
             
+            // Update search state
             currentSearch = {
                 location: locationSearch.value.toLowerCase(),
                 service: serviceSearch.value.toLowerCase(),
@@ -1968,9 +2560,13 @@
                 availability: availabilityFilter.value
             };
 
+            // Get filtered tailors
             const filtered = getFilteredTailors();
+            
+            // Sort and render with pagination
             renderTailorsWithPagination(filtered, currentPage);
             
+            // Scroll to results if search was initiated from hero
             if (currentSearch.location || currentSearch.service || currentSearch.tailor) {
                 document.getElementById('directory').scrollIntoView({ 
                     behavior: 'smooth',
@@ -1993,11 +2589,14 @@
                 async (position) => {
                     try {
                         const { latitude, longitude } = position.coords;
+                        
+                        // Reverse geocoding using OpenStreetMap Nominatim
                         const response = await fetch(
                             `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10`
                         );
                         const data = await response.json();
                         
+                        // Extract city name
                         const city = data.address.city || 
                                     data.address.town || 
                                     data.address.village || 
@@ -2006,15 +2605,19 @@
                         
                         locationSearch.value = city;
                         useLocationBtn.innerHTML = '<i class="fas fa-location-arrow"></i><span>Location Detected</span>';
+                        
+                        // Trigger search
                         performSearch();
                         
                     } catch (error) {
+                        console.error('Geocoding error:', error);
                         alert('Could not determine your location. Please enter it manually.');
                         useLocationBtn.innerHTML = '<i class="fas fa-location-arrow"></i><span>Use My Location</span>';
                         useLocationBtn.classList.remove('active');
                     }
                 },
                 (error) => {
+                    console.error('Geolocation error:', error);
                     alert('Could not access your location. Please check your browser permissions.');
                     useLocationBtn.innerHTML = '<i class="fas fa-location-arrow"></i><span>Use My Location</span>';
                     useLocationBtn.classList.remove('active');
@@ -2027,7 +2630,7 @@
             );
         }
 
-        // Reset filters
+        // Reset all filters
         function resetFilters() {
             locationSearch.value = '';
             serviceSearch.value = '';
@@ -2047,26 +2650,35 @@
                 availability: ''
             };
             
+            // Reset to page 1
             currentPage = 1;
+            
+            // Show all tailors sorted by priority with pagination
             renderTailorsWithPagination(allTailors, currentPage);
         }
 
-        // Quick search
+        // Quick search for popular terms
         function searchPopular(term) {
             locationSearch.value = term;
             performSearch();
         }
 
+        // Quick search for popular services
         function searchPopularService(term) {
             serviceSearch.value = term;
             performSearch();
         }
 
+        // Email validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
         // Expose functions to global scope
         window.searchPopular = searchPopular;
-        window.searchPopularService = searchPopularService;
         window.changePage = changePage;
+        window.toggleFAQ = toggleFAQ;
     </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"25f397de012e437fb9ef72bda1af4805","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
