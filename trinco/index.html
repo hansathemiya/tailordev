@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Best Tailors in Trincomalee, Sri Lanka | Resort Wear & Custom Suits – Tailors.lk</title>
     <meta name="description" content="Find the best tailors in Trincomalee, Sri Lanka for custom suits, resort wear, beach wedding outfits, hotel uniforms and alterations. Tailors.lk connects you with verified Trincomalee tailoring experts." />
-    <meta name="keywords" content="tailor in Trincomalee, tailors Trincomalee, custom suits Trincomalee, bespoke tailoring Trincomalee, resort wear tailor Trincomalee, beach wedding outfits Trincomalee, hotel uniforms Trincomalee, alterations Trincomalee, tailoring services Trincomalee, best tailor in Trincomalee, luxury tailoring Trincomalee, Trincomalee tailoring experts, Eastern Province tailors, Trincomalee Sri Lanka tailors" />
+    <meta name="keywords" content="tailor in Trincomalee, custom suits Trincomalee, tailoring services Trincomalee, resort wear tailor, beach wedding outfits, hotel uniform tailoring, Trincomalee tailors, Eastern Province tailoring" />
+    <!-- Updated favicon -->
     <link rel="icon" href="https://data.tailors.lk/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://data.tailors.lk/ajax/libs/fontawesome/6.0.0/css/all.min.css" />
     <style>
-        /* Inherit all existing Tailors.lk CSS variables and styles */
         :root {
             --teal: #1f4e5f;
             --teal-dark: #0d3645;
@@ -34,362 +34,687 @@
             --error: #ef4444;
             --warning: #f59e0b;
         }
-        
-        /* Trincomalee Page Specific Styles */
-        .coastal-hero {
-            background: linear-gradient(135deg, rgba(31, 78, 95, 0.92) 0%, rgba(13, 54, 69, 0.88) 100%), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><path fill="%230d3645" d="M0 0h1200v800H0z"/><path fill="%232a6579" d="M0 400c150-50 300-100 450-50 150 50 300 150 450 150 150 0 300-100 450-150v400H0z"/></svg>');
-            background-size: cover;
-            background-position: center;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 15px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: var(--radius-xs);
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(31, 78, 95, 0.06);
+            color: var(--teal);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-cta .btn {
+            margin-left: 0;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--teal);
+            transition: var(--transition);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 62px;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border-top: 1px solid var(--border);
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 10px 14px;
+            border-radius: var(--radius-xs);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(31, 78, 95, 0.06);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
             color: white;
-            padding: 80px 0 60px;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(185, 145, 95, 0.25);
+        }
+
+        .btn-secondary {
+            background: var(--teal);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--teal-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .btn-outline:hover {
+            background: rgba(31, 78, 95, 0.05);
+        }
+
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 0.85rem;
+        }
+
+        .btn-call {
+            background: var(--teal-light);
+            color: white;
+            border: none;
+        }
+
+        .btn-call:hover {
+            background: var(--teal);
+        }
+
+        /* Header CTA Buttons */
+        .header-cta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        /* Trincomalee Page Specific Styles */
+        .trincomalee-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section - Coastal Theme */
+        .trincomalee-hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #1f4e5f 0%, #2a6579 100%);
+            border-radius: var(--radius);
+            color: white;
+            box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
         }
-        
-        .coastal-hero::before {
+
+        .trincomalee-hero::before {
             content: '';
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             right: 0;
-            height: 100px;
-            background: linear-gradient(to top, var(--bg), transparent);
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.08"><path d="M0,0 L100,0 L100,100 Z" fill="white"/><path d="M0,100 L100,0 L100,100" fill="white" opacity="0.05"/></svg>');
+            background-size: cover;
+        }
+
+        .trincomalee-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 700;
+            position: relative;
             z-index: 1;
         }
-        
-        .coastal-hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .coastal-hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, #e6f4f1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .coastal-hero-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            margin-bottom: 24px;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-        
-        .coastal-hero p {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .hero-subtitle {
+            font-size: 1.4rem;
             margin-bottom: 30px;
-            line-height: 1.7;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--gold-light);
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
-        
-        .coastal-cta {
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-cta {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 30px;
+            position: relative;
+            z-index: 1;
         }
-        
-        .icon-wave {
-            color: var(--gold-light);
-            margin-right: 8px;
+
+        /* Section Styles */
+        .trincomalee-section {
+            margin-bottom: 60px;
+            padding: 50px 40px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
-        
-        /* Content Sections */
-        .content-section {
-            padding: 60px 0;
+
+        .trincomalee-section:hover {
+            box-shadow: var(--shadow-hover);
         }
-        
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
+
+        .trincomalee-section h2 {
             color: var(--teal);
-            margin-bottom: 20px;
-            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(31, 78, 95, 0.1);
+            font-weight: 600;
         }
-        
-        .section-subtitle {
-            font-size: 1.1rem;
+
+        .section-intro {
             color: var(--text-light);
             margin-bottom: 30px;
-            text-align: center;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.1rem;
             line-height: 1.6;
+            max-width: 800px;
         }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .content-block {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-        
-        .content-block h3 {
-            font-size: 1.3rem;
-            color: var(--teal);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .content-block p {
+
+        .section-content {
             color: var(--text);
             line-height: 1.7;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
         }
-        
-        .content-block ul, .content-block ol {
-            margin-left: 20px;
+
+        .section-content p {
             margin-bottom: 20px;
         }
-        
-        .content-block li {
-            margin-bottom: 8px;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        /* Areas Grid */
-        .areas-grid {
+
+        /* Area Grid */
+        .area-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
-        
+
         .area-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
             padding: 20px;
+            background: rgba(31, 78, 95, 0.03);
+            border-radius: var(--radius-sm);
             border: 1px solid var(--border);
             transition: var(--transition);
             text-align: center;
         }
-        
+
         .area-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--gold);
+            border-color: var(--teal);
+            box-shadow: var(--shadow);
         }
-        
-        .area-card i {
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-        
-        .area-card h4 {
-            font-size: 1.1rem;
+
+        .area-card h3 {
             color: var(--teal);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
-        
+
         .area-card p {
-            font-size: 0.9rem;
             color: var(--text-light);
+            font-size: 0.9rem;
             margin-bottom: 15px;
             line-height: 1.5;
         }
-        
-        /* Services Cards */
+
+        .area-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .area-link:hover {
+            gap: 10px;
+            color: var(--teal-light);
+        }
+
+        /* Services Grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            gap: 30px;
+            margin-top: 40px;
         }
-        
+
         .service-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 25px;
+            padding: 30px;
+            background: rgba(31, 78, 95, 0.03);
+            border-radius: var(--radius-sm);
             border: 1px solid var(--border);
             transition: var(--transition);
         }
-        
+
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+            box-shadow: var(--shadow);
         }
-        
-        .service-card h4 {
-            font-size: 1.2rem;
-            color: var(--teal);
-            margin-bottom: 15px;
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--teal);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.5rem;
         }
-        
+
+        .service-card h3 {
+            color: var(--teal);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
         .service-card p {
             color: var(--text);
-            line-height: 1.7;
+            line-height: 1.6;
             margin-bottom: 20px;
         }
-        
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            gap: 12px;
+            color: var(--teal-light);
+        }
+
         /* CTA Strip */
         .cta-strip {
-            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
-            color: white;
-            padding: 60px 0;
             text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.05) 0%, rgba(185, 145, 95, 0.05) 100%);
             border-radius: var(--radius);
-            margin: 40px 0;
+            border: 1px solid rgba(31, 78, 95, 0.1);
+            margin: 60px 0;
         }
-        
+
         .cta-strip h2 {
+            color: var(--teal);
             font-size: 2rem;
-            font-weight: 700;
             margin-bottom: 20px;
+            font-weight: 600;
         }
-        
+
         .cta-strip p {
+            color: var(--text);
             font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 40px;
             line-height: 1.6;
         }
-        
-        .cta-strip .coastal-cta {
-            margin-top: 20px;
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        
-        /* Link Strip */
-        .link-strip {
-            background: var(--bg);
-            padding: 30px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .link-grid {
+
+        /* Internal Links Strip */
+        .links-strip {
             display: flex;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
+            margin: 60px 0 40px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
         }
-        
-        .link-item {
-            text-align: center;
-        }
-        
-        .link-item a {
+
+        .internal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
             color: var(--teal);
             text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .internal-link:hover {
+            background: rgba(31, 78, 95, 0.05);
+            border-color: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--teal-dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
             font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 6px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
             transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 8px;
+            padding: 2px 0;
+            font-size: 0.8rem;
+            line-height: 1.3;
         }
-        
-        .link-item a:hover {
-            color: var(--gold);
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+            padding-left: 3px;
         }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .coastal-hero {
-                padding: 60px 0 40px;
-            }
-            
-            .coastal-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .coastal-hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .coastal-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .coastal-cta .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-            
-            .content-section {
-                padding: 40px 0;
-            }
-            
-            .content-block {
-                padding: 20px;
-            }
-            
-            .cta-strip {
-                padding: 40px 20px;
-                margin: 30px 0;
-            }
-            
-            .cta-strip h2 {
-                font-size: 1.7rem;
-            }
-            
-            .areas-grid,
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
+
+        .footer-links i {
+            width: 14px;
+            text-align: center;
+            font-size: 0.8rem;
         }
-        
-        @media (max-width: 480px) {
-            .coastal-hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .coastal-hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .link-grid {
-                flex-direction: column;
-                gap: 20px;
-            }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
         }
-        
-        /* Animation */
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .newsletter h4 {
+            color: var(--gold-light);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Info in Footer */
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .contact-info-item i {
+            width: 16px;
+            margin-top: 2px;
+            margin-right: 10px;
+            color: var(--gold-light);
+            flex-shrink: 0;
+        }
+
+        .contact-info-item a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--gold-light);
+        }
+
+        .contact-info-item span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Animations */
         .fade-in {
             animation: fadeIn 0.5s ease;
         }
-        
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -400,10 +725,119 @@
                 transform: translateY(0);
             }
         }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+            
+            .area-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header-cta {
+                display: none;
+            }
+
+            .trincomalee-container {
+                padding: 20px 15px;
+            }
+
+            .trincomalee-hero {
+                padding: 40px 20px;
+                margin-bottom: 60px;
+            }
+
+            .trincomalee-hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .trincomalee-section {
+                padding: 30px 20px;
+                margin-bottom: 60px;
+            }
+
+            .area-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-strip {
+                padding: 40px 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .links-strip {
+                padding: 30px 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .internal-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .trincomalee-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .trincomalee-section {
+                padding: 25px 15px;
+            }
+
+            .cta-strip h2 {
+                font-size: 1.6rem;
+            }
+
+            .area-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 25px 20px;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Header - Preserved from Tailors.lk -->
+    <!-- Header -->
     <header>
         <div class="container nav-container">
             <a href="/" class="logo">
@@ -413,7 +847,7 @@
 
             <nav class="nav-links">
                 <a href="/">Home</a>
-                <a href="#directory">Find Tailors</a>
+                <a href="/tailors">Find Tailors</a>
                 <a href="/services">Services</a>
                 <a href="/learn">Learn</a>
                 <a href="/about">About</a>
@@ -423,7 +857,7 @@
 
             <div class="nav-cta">
                 <div class="header-cta">
-                    <a href="#directory" class="btn btn-secondary btn-sm">
+                    <a href="/tailors" class="btn btn-secondary btn-sm">
                         <i class="fas fa-search"></i>
                         Find Tailor
                     </a>
@@ -432,7 +866,7 @@
                         Call Us
                     </a>
                 </div>
-                <a href="https://register.tailors.lk" class="btn btn-primary btn-sm">Join as Tailor</a>
+                <a href="https://tailors.lk/register" class="btn btn-primary btn-sm">Join as Tailor</a>
             </div>
 
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -444,7 +878,7 @@
 
         <div class="mobile-menu" id="mobileMenu">
             <a href="/">Home</a>
-            <a href="#directory">Find Tailors</a>
+            <a href="/tailors">Find Tailors</a>
             <a href="/services">Services</a>
             <a href="/learn">Learn</a>
             <a href="/about">About</a>
@@ -454,256 +888,304 @@
                 <i class="fas fa-phone"></i>
                 Call Us
             </a>
-            <a href="https://register.tailors.lk" class="btn btn-primary" style="margin-top: 10px;">
+            <a href="https://tailors.lk/register" class="btn btn-primary" style="margin-top: 10px;">
                 Join as Tailor
             </a>
         </div>
     </header>
 
-    <main>
-        <!-- SECTION 1 — Coastal Hero -->
-        <section class="coastal-hero fade-in">
-            <div class="container coastal-hero-content">
-                <h1>Find the Best Tailors in Trincomalee, Sri Lanka</h1>
-                <p class="coastal-hero-subtitle">From custom suits and resort wear to beach wedding outfits, Tailors.lk connects you with verified tailoring experts in Trincomalee.</p>
-                <p>Trincomalee blends coastal lifestyle with skilled craftsmanship. Whether you are a local resident, tourist, hotel, or event organizer, Tailors.lk helps you find trusted tailors in Trincomalee for casual wear, luxury outfits, uniforms, alterations, and custom designs.</p>
-                <div class="coastal-cta">
-                    <a href="/tailors?location=trincomalee" class="btn btn-primary">
-                        <i class="fas fa-scissors icon-wave"></i>
-                        Browse Trincomalee Tailors
+    <!-- Trincomalee Page Content -->
+    <main class="trincomalee-container">
+        <!-- SECTION 1 — HERO -->
+        <section class="trincomalee-hero fade-in">
+            <h1>Find the Best Tailors in Trincomalee, Sri Lanka</h1>
+            <p class="hero-subtitle">From custom suits and resort wear to beach wedding outfits, Tailors.lk connects you with verified tailoring experts in Trincomalee.</p>
+            <p class="hero-description">Trincomalee blends coastal lifestyle with skilled craftsmanship. Whether you are a local resident, tourist, hotel, or event organizer, Tailors.lk helps you find trusted tailors in Trincomalee for casual wear, luxury outfits, uniforms, alterations, and custom designs.</p>
+            <div class="hero-cta">
+                <a href="/tailors?location=trincomalee" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Browse Trincomalee Tailors
+                </a>
+                <a href="/services" class="btn btn-secondary">
+                    <i class="fas fa-scissors"></i>
+                    Explore Services
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION 2 — WHY CHOOSE TAILORS IN TRINCOMALEE -->
+        <section class="trincomalee-section fade-in">
+            <h2>Why Choose a Tailor in Trincomalee</h2>
+            <div class="section-content">
+                <p>Trincomalee's tailoring community combines Eastern Province craftsmanship with understanding of coastal lifestyle needs. Tailors in Trincomalee are skilled at creating garments suitable for both formal occasions and casual beachside living, with expertise in fabrics that work well in tropical coastal climates. Whether you need a custom suit for business, resort wear for vacation, or traditional attire for local events, Trincomalee tailors bring practical experience and quality workmanship to every project.</p>
+                <p>The tailoring industry in Trincomalee has evolved to serve both local residents and the growing tourism sector. This dual focus means tailors in the area are adaptable, able to create everything from traditional Sri Lankan clothing to modern international styles. Many Trincomalee tailors understand the specific needs of coastal living, creating garments that are comfortable in humid conditions while maintaining professional appearance and durability.</p>
+                <p>For families and individuals in Trincomalee, local tailors offer personalized service with understanding of regional lifestyle requirements. From school uniforms for children to professional attire for working adults, and from casual beachwear to formal event clothing, Trincomalee tailors provide comprehensive services with attention to local preferences and climate considerations. The best tailors in Trincomalee maintain strong relationships with their clients, often serving multiple generations with trust and reliability built over years of service.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3 — SERVING LOCALS, TOURISTS & BUSINESSES -->
+        <section class="trincomalee-section fade-in">
+            <h2>Tailoring for Locals, Tourists & Hospitality in Trincomalee</h2>
+            <div class="section-content">
+                <p>Trincomalee's tailoring services cater to a diverse clientele including local residents, domestic and international tourists, and the growing hospitality industry. For residents, Trincomalee tailors provide essential services including everyday clothing, school uniforms, professional workwear, traditional attire for cultural events, and alterations. The convenience of local tailoring combined with understanding of coastal lifestyle needs makes Trincomalee tailors an integral part of community life in the Eastern Province.</p>
+                <p>For tourists visiting Trincomalee's beautiful beaches and cultural sites, local tailors offer specialized services to create custom resort wear, beach wedding outfits, and vacation clothing. Many tourists rely on Trincomalee tailors to create lightweight, comfortable clothing perfect for tropical holidays, with options for custom swimwear, cover-ups, and casual outfits. These tailors understand the specific requirements of visitors working within limited timeframes and can provide expedited services with quality craftsmanship.</p>
+                <p>The hospitality industry in Trincomalee relies on local tailors for uniform creation and maintenance. Hotels, resorts, restaurants, and tour operators require professional uniforms that reflect their brand while being practical for coastal working conditions. Trincomalee tailors specialize in creating durable, comfortable uniforms suitable for hospitality work in tropical environments, with options for customization and bulk orders.</p>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="/tailors?location=trincomalee" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Find a Tailor in Trincomalee
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION 4 — AREAS AROUND TRINCOMALEE -->
+        <section class="trincomalee-section fade-in">
+            <h2>Tailoring Services Across Greater Trincomalee</h2>
+            <p class="section-intro">Find professional tailors in every Trincomalee neighborhood and surrounding coastal areas</p>
+            
+            <div class="area-grid">
+                <div class="area-card">
+                    <h3>Trincomalee Town</h3>
+                    <p>Central Trincomalee with diverse tailoring services</p>
+                    <a href="/tailors?location=trincomalee&area=trincomalee-town" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="/services" class="btn btn-outline" style="background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.3);">
-                        <i class="fas fa-concierge-bell"></i>
-                        Explore Services
+                </div>
+                
+                <div class="area-card">
+                    <h3>Nilaveli</h3>
+                    <p>Beach resort area with tourist-focused tailoring</p>
+                    <a href="/tailors?location=trincomalee&area=nilaveli" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Uppuweli</h3>
+                    <p>Coastal area with beachwear and casual tailoring</p>
+                    <a href="/tailors?location=trincomalee&area=uppuweli" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Kinniya</h3>
+                    <p>Traditional tailoring with cultural expertise</p>
+                    <a href="/tailors?location=trincomalee&area=kinniya" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>China Bay</h3>
+                    <p>Port area with practical and uniform tailoring</p>
+                    <a href="/tailors?location=trincomalee&area=china-bay" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Kantale</h3>
+                    <p>Inland area with comprehensive tailoring services</p>
+                    <a href="/tailors?location=trincomalee&area=kantale" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Morawewa</h3>
+                    <p>Rural area with traditional tailoring expertise</p>
+                    <a href="/tailors?location=trincomalee&area=morawewa" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Sampur</h3>
+                    <p>Coastal community tailoring services</p>
+                    <a href="/tailors?location=trincomalee&area=sampur" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Kuchchaveli</h3>
+                    <p>Beach area with resort wear tailoring</p>
+                    <a href="/tailors?location=trincomalee&area=kuchchaveli" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Seruwawila</h3>
+                    <p>Cultural area with traditional tailoring</p>
+                    <a href="/tailors?location=trincomalee&area=seruwawila" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Muttur</h3>
+                    <p>Coastal town with diverse tailoring services</p>
+                    <a href="/tailors?location=trincomalee&area=muttur" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="area-card">
+                    <h3>Echchilampattai</h3>
+                    <p>Fishing community with practical tailoring</p>
+                    <a href="/tailors?location=trincomalee&area=echchilampattai" class="area-link">
+                        Find Tailors
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 2 — Why Choose Trincomalee Tailors -->
-        <section class="content-section" id="why-trincomalee">
-            <div class="container">
-                <h2 class="section-title">Why Choose a Tailor in Trincomalee</h2>
-                <p class="section-subtitle">Experience the unique blend of coastal craftsmanship and professional tailoring services in Eastern Sri Lanka</p>
+        <!-- SECTION 5 — SERVICES IN TRINCOMALEE -->
+        <section class="trincomalee-section fade-in">
+            <h2>Tailoring Services Available in Trincomalee</h2>
+            <p class="section-intro">Professional tailoring services for every need in Trincomalee and Eastern Province</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Custom Suits Trincomalee</h3>
+                    <p>Bespoke suits tailored for business, formal events, and special occasions. Trincomalee tailors specialize in creating perfectly fitted suits using lightweight fabrics suitable for coastal climate with professional finishing.</p>
+                    <a href="/tailors?location=trincomalee&service=custom-suits" class="service-link">
+                        Find Suit Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
                 
-                <div class="content-block fade-in">
-                    <h3><i class="fas fa-award"></i> Coastal Craftsmanship Excellence</h3>
-                    <p>Trincomalee tailors combine traditional Eastern Province tailoring techniques with modern fashion sensibilities, creating garments perfectly suited to the coastal climate and lifestyle. The best tailor in Trincomalee understands how to work with lightweight fabrics, breathable materials, and designs that complement both casual beachwear and formal occasions.</p>
-                    
-                    <h3><i class="fas fa-tshirt"></i> Versatile Service Range</h3>
-                    <p>Whether you need custom suits in Trincomalee for business or special events, resort wear for holiday relaxation, or alterations for existing garments, Trincomalee tailoring services cover all requirements. Local tailors are adept at creating everything from bespoke suits to comfortable casual wear that withstands the tropical climate while maintaining style and comfort.</p>
-                    
-                    <h3><i class="fas fa-users"></i> For Everyone in Trincomalee</h3>
-                    <p>Trincomalee tailors serve diverse clientele including local residents, tourists, hospitality businesses, and event organizers. From men's formal wear and women's beach outfits to children's clothing and hotel staff uniforms, tailoring services in Trincomalee Sri Lanka cater to all ages and occasions with professional precision and attention to detail.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Resort & Casual Wear</h3>
+                    <p>Lightweight resort wear, beach cover-ups, and casual clothing perfect for Trincomalee's coastal lifestyle. Tailors create comfortable, stylish outfits using breathable fabrics suitable for tropical holidays and everyday wear.</p>
+                    <a href="/tailors?location=trincomalee&service=resort-wear" class="service-link">
+                        Find Resort Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3 — Serving Locals, Tourists & Businesses -->
-        <section class="content-section" style="background: var(--bg);">
-            <div class="container">
-                <h2 class="section-title">Tailoring for Locals, Tourists & Hospitality in Trincomalee</h2>
-                <p class="section-subtitle">Comprehensive tailoring solutions for every need in the coastal paradise</p>
                 
-                <div class="content-grid">
-                    <div class="content-block fade-in">
-                        <h3><i class="fas fa-umbrella-beach"></i> For Tourists & Visitors</h3>
-                        <p>Trincomalee welcomes visitors from around the world who often require quick tailoring services. Whether you need last-minute alterations, resort wear adjustments, or custom beach wedding outfits, Trincomalee tailors provide fast, reliable service. Many offer emergency tailoring for tourists who need garments prepared within tight timelines before events or return journeys.</p>
-                        
-                        <h3><i class="fas fa-glass-cheers"></i> Beach Weddings & Events</h3>
-                        <p>As a premier beach wedding destination, Trincomalee hosts numerous ceremonies requiring specialized wedding tailoring. Local tailors excel at creating beach-appropriate formal wear, lightweight suits, flowing dresses, and traditional outfits that complement seaside celebrations while providing comfort in the coastal climate.</p>
-                        
-                        <h3><i class="fas fa-hotel"></i> Hospitality & Business Uniforms</h3>
-                        <p>Trincomalee's thriving tourism industry demands professional uniform tailoring for hotels, resorts, restaurants, and tour companies. Local tailors specialize in creating durable, climate-appropriate uniforms that maintain brand identity while ensuring staff comfort during long hours in tropical conditions. Bulk orders for businesses are handled with efficiency and attention to corporate requirements.</p>
-                        
-                        <div style="text-align: center; margin-top: 25px;">
-                            <a href="/tailors?location=trincomalee" class="btn btn-secondary">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Find a Tailor in Trincomalee
-                            </a>
-                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
+                    <h3>Beach Wedding Outfits</h3>
+                    <p>Custom wedding attire for beach ceremonies and coastal celebrations. Trincomalee tailors specialize in creating beautiful wedding outfits that work perfectly for seaside venues with lightweight fabrics and elegant designs.</p>
+                    <a href="/tailors?location=trincomalee&service=beach-wedding" class="service-link">
+                        Find Wedding Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-            </div>
-        </section>
-
-        <!-- SECTION 4 — Areas Around Trincomalee -->
-        <section class="content-section">
-            <div class="container">
-                <h2 class="section-title">Tailoring Services Across Greater Trincomalee</h2>
-                <p class="section-subtitle">Find expert tailors throughout Trincomalee district and surrounding areas</p>
                 
-                <div class="areas-grid">
-                    <div class="area-card fade-in">
-                        <i class="fas fa-city"></i>
-                        <h4>Trincomalee Town</h4>
-                        <p>Central business district with established tailoring shops offering full-service custom tailoring</p>
-                        <a href="/tailors?location=trincomalee&area=town" class="btn btn-sm btn-outline">Find Tailors</a>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hotel"></i>
                     </div>
-                    
-                    <div class="area-card fade-in">
-                        <i class="fas fa-water"></i>
-                        <h4>Nilaveli</h4>
-                        <p>Beach area tailors specializing in resort wear, beach wedding outfits, and tourist alterations</p>
-                        <a href="/tailors?location=trincomalee&area=nilaveli" class="btn btn-sm btn-outline">Find Tailors</a>
-                    </div>
-                    
-                    <div class="area-card fade-in">
-                        <i class="fas fa-sun"></i>
-                        <h4>Uppuweli</h4>
-                        <p>Coastal tailors for casual wear, beach outfits, and quick alteration services for visitors</p>
-                        <a href="/tailors?location=trincomalee&area=uppuweli" class="btn btn-sm btn-outline">Find Tailors</a>
-                    </div>
-                    
-                    <div class="area-card fade-in">
-                        <i class="fas fa-bridge"></i>
-                        <h4>Kinniya</h4>
-                        <p>Traditional tailoring services with expertise in cultural and formal wear for local communities</p>
-                        <a href="/tailors?location=trincomalee&area=kinniya" class="btn btn-sm btn-outline">Find Tailors</a>
-                    </div>
-                    
-                    <div class="area-card fade-in">
-                        <i class="fas fa-ship"></i>
-                        <h4>China Bay</h4>
-                        <p>Military and civilian tailoring services near the port area with uniform specialization</p>
-                        <a href="/tailors?location=trincomalee&area=china-bay" class="btn btn-sm btn-outline">Find Tailors</a>
-                    </div>
-                    
-                    <div class="area-card fade-in">
-                        <i class="fas fa-tree"></i>
-                        <h4>Kantale</h4>
-                        <p>Agricultural community tailors offering practical workwear and everyday clothing services</p>
-                        <a href="/tailors?location=trincomalee&area=kantale" class="btn btn-sm btn-outline">Find Tailors</a>
-                    </div>
-                    
-                    <div class="area-card fade-in">
-                        <i class="fas fa-tractor"></i>
-                        <h4>Morawewa</h4>
-                        <p>Rural tailoring services with traditional techniques and community-focused approach</p>
-                        <a href="/tailors?location=trincomalee&area=morawewa" class="btn btn-sm btn-outline">Find Tailors</a>
-                    </div>
-                    
-                    <div class="area-card fade-in">
-                        <i class="fas fa-fish"></i>
-                        <h4>Sampur</h4>
-                        <p>Fishing community tailors specializing in durable work clothing and practical alterations</p>
-                        <a href="/tailors?location=trincomalee&area=sampur" class="btn btn-sm btn-outline">Find Tailors</a>
-                    </div>
+                    <h3>Hotel & Event Uniforms</h3>
+                    <p>Professional uniforms for hotels, resorts, restaurants, and events in Trincomalee. Tailors create durable, comfortable uniforms suitable for hospitality work in tropical conditions with customization options.</p>
+                    <a href="/tailors?location=trincomalee&service=hotel-uniforms" class="service-link">
+                        Find Uniform Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-            </div>
-        </section>
-
-        <!-- SECTION 5 — Services in Trincomalee -->
-        <section class="content-section" style="background: var(--bg);">
-            <div class="container">
-                <h2 class="section-title">Tailoring Services Available in Trincomalee</h2>
-                <p class="section-subtitle">Professional tailoring solutions for every occasion and requirement</p>
                 
-                <div class="services-grid">
-                    <div class="service-card fade-in">
-                        <h4><i class="fas fa-user-tie"></i> Custom Suits Trincomalee</h4>
-                        <p>Bespoke tailoring for business suits, formal wear, and special occasion outfits. Trincomalee tailors create perfectly fitted suits using quality fabrics suitable for both tropical climate and formal events, combining traditional craftsmanship with modern styling.</p>
-                        <a href="/tailors?location=trincomalee&service=custom-suits" class="btn btn-sm btn-primary">Find Suit Tailors</a>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
                     </div>
-                    
-                    <div class="service-card fade-in">
-                        <h4><i class="fas fa-umbrella-beach"></i> Resort & Casual Wear</h4>
-                        <p>Lightweight, comfortable clothing perfect for Trincomalee's coastal lifestyle. Tailors create resort wear, casual outfits, beach cover-ups, and holiday clothing using breathable fabrics that keep you cool while maintaining style and elegance throughout your stay.</p>
-                        <a href="/tailors?location=trincomalee&service=resort-wear" class="btn btn-sm btn-primary">Find Resort Tailors</a>
+                    <h3>Alterations & Repairs</h3>
+                    <p>Professional alterations for all clothing types including resort wear, formal attire, and everyday garments. Trincomalee tailors provide expert repair services to extend garment life with precise fitting adjustments.</p>
+                    <a href="/tailors?location=trincomalee&service=alterations" class="service-link">
+                        Find Alteration Experts
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tshirt"></i>
                     </div>
-                    
-                    <div class="service-card fade-in">
-                        <h4><i class="fas fa-ring"></i> Beach Wedding Outfits</h4>
-                        <p>Specialized tailoring for beach weddings and seaside ceremonies. Trincomalee tailors understand the unique requirements of beach wedding attire, creating outfits that are elegant yet practical for sand and sea settings, from lightweight suits to flowing bridal wear.</p>
-                        <a href="/tailors?location=trincomalee&service=wedding" class="btn btn-sm btn-primary">Find Wedding Tailors</a>
-                    </div>
-                    
-                    <div class="service-card fade-in">
-                        <h4><i class="fas fa-concierge-bell"></i> Hotel & Event Uniforms</h4>
-                        <p>Professional uniform tailoring for Trincomalee's hospitality industry. Tailors create durable, climate-appropriate uniforms for hotels, resorts, restaurants, and event staff that maintain brand standards while ensuring comfort during long tropical working hours.</p>
-                        <a href="/tailors?location=trincomalee&service=uniforms" class="btn btn-sm btn-primary">Find Uniform Tailors</a>
-                    </div>
-                    
-                    <div class="service-card fade-in">
-                        <h4><i class="fas fa-tools"></i> Alterations & Repairs</h4>
-                        <p>Expert alteration services for perfect fit adjustments, repairs, and modifications. Whether you're a tourist needing quick adjustments or a local resident updating your wardrobe, Trincomalee tailors provide precise alterations, hemming, resizing, and repair services.</p>
-                        <a href="/tailors?location=trincomalee&service=alterations" class="btn btn-sm btn-primary">Find Alteration Experts</a>
-                    </div>
+                    <h3>Traditional & Cultural Wear</h3>
+                    <p>Traditional Sri Lankan clothing including sarees, sarongs, and cultural attire for local events and ceremonies. Trincomalee tailors combine traditional techniques with modern comfort for cultural celebrations.</p>
+                    <a href="/tailors?location=trincomalee&service=traditional-wear" class="service-link">
+                        Find Traditional Tailors
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 6 — SEO Content Hub -->
-        <section class="content-section">
-            <div class="container">
-                <div class="content-block fade-in">
-                    <h2 style="color: var(--teal); margin-bottom: 25px; font-size: 1.8rem;">Professional Tailoring in Trincomalee, Sri Lanka</h2>
-                    
-                    <p><strong>Tailors.lk marketplace in Trincomalee</strong> connects customers with verified tailoring professionals throughout Eastern Sri Lanka. Our platform carefully vets each tailor, ensuring they meet quality standards and have proven expertise in their specialized areas. Whether you need a tailor in Trincomalee Sri Lanka for a single alteration or multiple custom garments, our directory provides trusted options with transparent reviews and service details.</p>
-                    
-                    <p><strong>Casual, luxury, and hospitality tailoring</strong> services thrive in Trincomalee thanks to its dual role as a residential hub and tourist destination. The best tailoring services Trincomalee offers range from high-end bespoke suits for formal events to lightweight resort wear perfect for beach relaxation. Hospitality businesses benefit from uniform tailoring that combines durability with tropical comfort, while tourists find expert tailors who understand the need for quick turnarounds before important events or return travels.</p>
-                    
-                    <p><strong>Services for tourists, locals, and businesses</strong> are comprehensively covered by Trincomalee's tailoring community. Visitors often seek emergency alterations, beach wedding outfits, or custom resort wear. Local residents require everyday clothing, school uniforms, formal wear for cultural events, and wardrobe maintenance. Businesses need bulk uniform orders, corporate wear, and specialized garments for staff. Trincomalee tailors adapt to these diverse needs with flexible scheduling and customized service approaches.</p>
-                    
-                    <p><strong>Verified quality standards</strong> ensure every tailor listed on Tailors.lk meets professional benchmarks. Our verification process includes checking credentials, reviewing customer feedback, confirming service specialties, and validating business operations. This commitment to quality means customers can confidently choose from our directory of Trincomalee tailoring experts, knowing they'll receive professional service, fair pricing, and quality craftsmanship whether they need bespoke suits Trincomalee or simple alterations.</p>
-                    
-                    <p><strong>Luxury tailoring Trincomalee</strong> services cater to those seeking premium garments for special occasions. From wedding outfits that combine traditional elegance with beach-appropriate practicality to high-end business suits suitable for tropical executive wear, Trincomalee's master tailors work with quality fabrics and precise measurements to create garments that impress while providing comfort in the coastal climate. Their expertise in lightweight luxury fabrics makes them particularly valuable for formal events in warm settings.</p>
-                </div>
+        <!-- SECTION 6 — SEO CONTENT HUB -->
+        <section class="trincomalee-section fade-in">
+            <h2>Professional Tailoring in Trincomalee, Sri Lanka</h2>
+            <div class="section-content">
+                <p>Tailors.lk serves as Trincomalee's trusted marketplace for professional tailoring services, connecting customers with verified tailors across Sri Lanka's Eastern Province coastal capital. Trincomalee has developed a unique tailoring industry that combines traditional Sri Lankan craftsmanship with understanding of coastal lifestyle needs and growing tourism requirements. Whether you need custom suits for professional wear, resort outfits for vacation, traditional attire for cultural events, or uniforms for hospitality businesses, Trincomalee tailors provide reliable service with attention to coastal climate considerations and lifestyle preferences.</p>
+                <p>Custom suits in Trincomalee represent specialized tailoring expertise adapted to coastal living conditions, with tailors who understand both formal wear requirements and tropical climate considerations. Trincomalee's tailoring community includes specialists in business suits, resort wear, wedding attire, casual garments, and hospitality uniforms, all available through Tailors.lk's verified network. The city's tailors work with fabrics specifically chosen for comfort in humid coastal conditions while maintaining professional appearance and traditional construction quality.</p>
+                <p>Resort and casual wear tailoring in Trincomalee combines practical design with stylish aesthetics perfect for beachside living and tourism. Trincomalee tailors excel at creating lightweight, comfortable clothing for vacations and everyday coastal life, with expertise in fabrics that breathe well in tropical humidity. The city's position as a major tourist destination means local tailors understand international styles and can create garments that appeal to both domestic and international visitors.</p>
+                <p>Beach wedding outfit tailoring in Trincomalee offers specialized services for couples choosing coastal venues for their ceremonies. Trincomalee tailors understand the unique requirements of beach weddings, creating outfits that are elegant yet practical for seaside settings. From lightweight bridal gowns to comfortable groom's attire, these tailors combine wedding formality with coastal practicality for memorable beach ceremonies.</p>
+                <p>For the growing hospitality industry in Trincomalee, local tailors provide essential uniform creation and maintenance services. Hotels, resorts, restaurants, and tour operators rely on Trincomalee tailors for durable, professional uniforms that reflect their brand while being practical for coastal working conditions. These tailors understand hospitality industry requirements and can provide bulk orders with consistent quality and timely delivery.</p>
+                <p>Local expertise and coastal lifestyle understanding make Trincomalee an ideal choice for tailoring services in Eastern Sri Lanka. With Tailors.lk, customers can easily browse verified tailors, compare services and reviews, and connect with professionals who understand their specific coastal lifestyle needs. Whether you live in Trincomalee, are visiting the Eastern Province, or operate a hospitality business in the area, Tailors.lk provides access to the best tailoring services in this beautiful coastal region.</p>
             </div>
         </section>
 
-        <!-- SECTION 7 — CTA Conversion Strip -->
+        <!-- SECTION 7 — CTA CONVERSION STRIP -->
         <section class="cta-strip fade-in">
-            <div class="container">
-                <h2>Start Your Tailoring Experience in Trincomalee</h2>
-                <p>From resort wear and beach wedding outfits to suits and alterations, Tailors.lk connects you with trusted Trincomalee tailors who understand coastal lifestyle needs while delivering professional craftsmanship for every occasion.</p>
-                <div class="coastal-cta">
-                    <a href="/tailors?location=trincomalee" class="btn btn-primary" style="background: var(--gold); border-color: var(--gold);">
-                        <i class="fas fa-scissors"></i>
-                        Browse Trincomalee Tailors
-                    </a>
-                    <a href="/contact" class="btn btn-outline" style="background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.3);">
-                        <i class="fas fa-envelope"></i>
-                        Contact Us
-                    </a>
-                </div>
+            <h2>Start Your Tailoring Experience in Trincomalee</h2>
+            <p>From resort wear and beach wedding outfits to suits and alterations, Tailors.lk connects you with trusted Trincomalee tailors.</p>
+            <div class="cta-buttons">
+                <a href="/tailors?location=trincomalee" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Browse Trincomalee Tailors
+                </a>
+                <a href="/contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Contact Us
+                </a>
             </div>
         </section>
 
-        <!-- SECTION 8 — Internal Link Strip -->
-        <section class="link-strip">
-            <div class="container">
-                <div class="link-grid">
-                    <div class="link-item">
-                        <a href="/tailors">
-                            <i class="fas fa-search"></i>
-                            Find Tailors
-                        </a>
-                    </div>
-                    <div class="link-item">
-                        <a href="/tailors?location=trincomalee">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Trincomalee Tailors
-                        </a>
-                    </div>
-                    <div class="link-item">
-                        <a href="/services">
-                            <i class="fas fa-scissors"></i>
-                            Services
-                        </a>
-                    </div>
-                    <div class="link-item">
-                        <a href="/contact">
-                            <i class="fas fa-phone-alt"></i>
-                            Contact
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- SECTION 8 — INTERNAL LINK STRIP -->
+        <div class="links-strip fade-in">
+            <a href="/tailors" class="internal-link">
+                <i class="fas fa-search"></i>
+                Find Tailors
+            </a>
+            <a href="/tailors?location=trincomalee" class="internal-link">
+                <i class="fas fa-map-marker-alt"></i>
+                Trincomalee Tailors
+            </a>
+            <a href="/services" class="internal-link">
+                <i class="fas fa-scissors"></i>
+                Services
+            </a>
+            <a href="/contact" class="internal-link">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
+        </div>
     </main>
 
-    <!-- Footer - Preserved from Tailors.lk -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -756,7 +1238,7 @@
                         <li><a href="/kandy"><i class="fas fa-mountain"></i> Kandy</a></li>
                         <li><a href="/galle"><i class="fas fa-umbrella-beach"></i> Galle</a></li>
                         <li><a href="/jaffna"><i class="fas fa-landmark"></i> Jaffna</a></li>
-                        <li><a href="/trinco"><i class="fas fa-anchor"></i> Trincomalee</a></li>
+                        <li><a href="/trincomalee"><i class="fas fa-anchor"></i> Trincomalee</a></li>
                         <li><a href="/ella"><i class="fas fa-hiking"></i> Ella</a></li>
                     </ul>
                 </div>
@@ -791,7 +1273,7 @@
                         </div>
                         <div class="contact-info-item">
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:team@tailors.lk">team@tailors.lk</a>
+                            <a href=""mailto:team@tailors.lk>team@tailors.lk</a>
                         </div>
                         <div class="contact-info-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -806,12 +1288,12 @@
                 <h4>Stay Updated</h4>
                 <p>Get the latest on tailoring trends, special offers, and new tailors</p>
                 <div class="newsletter-form">
-                    <input type="email" placeholder="Your email address" class="newsletter-input" id="footer-email">
+                    <input type="email" placeholder="Your email address" class="newsletter-input" id="footer-email" required>
                     <button class="btn btn-primary btn-sm" id="footer-subscribe">
                         <i class="fas fa-paper-plane"></i> Subscribe
                     </button>
                 </div>
-                <div class="newsletter-message" id="footer-message"></div>
+                <div class="newsletter-message" id="newsletter-message"></div>
             </div>
             
             <div class="copyright">
@@ -826,211 +1308,236 @@
         "@context": "https://schema.org",
         "@graph": [
             {
-                "@type": "LocalBusiness",
-                "name": "Tailors.lk - Trincomalee Tailoring Services",
-                "description": "Find the best tailors in Trincomalee, Sri Lanka for custom suits, resort wear, beach wedding outfits, hotel uniforms and alterations.",
-                "url": "https://tailors.lk/trincomalee",
-                "telephone": "+94758244216",
-                "email": "team@tailors.lk",
-                "areaServed": {
-                    "@type": "City",
-                    "name": "Trincomalee",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Trincomalee",
-                        "addressRegion": "Eastern Province",
-                        "addressCountry": "LK"
-                    }
-                },
-                "serviceType": [
-                    "Custom Suits Tailoring",
-                    "Resort Wear Tailoring",
-                    "Beach Wedding Outfits",
-                    "Hotel Uniform Tailoring",
-                    "Alterations and Repairs"
-                ],
-                "openingHours": "Mo-Su 09:00-18:00"
-            },
-            {
-                "@type": "Place",
-                "name": "Trincomalee Tailoring Hub",
-                "description": "Tailoring services in Trincomalee, Sri Lanka for locals, tourists, and businesses.",
+                "@type": "Organization",
+                "@id": "https://tailors.lk/#organization",
+                "name": "Tailors.lk",
+                "url": "https://tailors.lk",
+                "logo": "https://data.tailors.lk/logo.png",
+                "description": "Sri Lanka's premier tailoring platform connecting customers with professional tailors nationwide.",
                 "address": {
                     "@type": "PostalAddress",
-                    "addressLocality": "Trincomalee",
-                    "addressRegion": "Eastern Province",
+                    "addressLocality": "Colombo",
                     "addressCountry": "LK"
                 }
             },
             {
-                "@type": "Service",
-                "serviceType": "Tailoring Services",
-                "provider": {
-                    "@type": "Organization",
-                    "name": "Tailors.lk"
+                "@type": "LocalBusiness",
+                "name": "Tailors.lk Trincomalee Hub",
+                "description": "Professional tailoring services in Trincomalee, Sri Lanka",
+                "url": "https://tailors.lk/trincomalee",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Trincomalee",
+                    "addressCountry": "LK",
+                    "addressRegion": "Eastern Province"
                 },
                 "areaServed": {
                     "@type": "City",
                     "name": "Trincomalee"
                 },
-                "hasOfferCatalog": {
-                    "@type": "OfferCatalog",
-                    "name": "Trincomalee Tailoring Services",
-                    "itemListElement": [
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Custom Suits Tailoring"
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Resort Wear Tailoring"
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Beach Wedding Outfits"
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Hotel Uniform Tailoring"
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Alterations and Repairs"
-                            }
-                        }
-                    ]
+                "serviceType": [
+                    "Custom Tailoring",
+                    "Suit Tailoring",
+                    "Resort Wear",
+                    "Beach Wedding Outfits",
+                    "Hotel Uniforms",
+                    "Traditional Sri Lankan Wear",
+                    "Alterations"
+                ],
+                "openingHours": "Mo-Su",
+                "telephone": "+94758244216"
+            },
+            {
+                "@type": "Service",
+                "name": "Trincomalee Tailoring Services",
+                "serviceType": "Tailoring",
+                "provider": {
+                    "@id": "https://tailors.lk/#organization"
+                },
+                "areaServed": {
+                    "@type": "City",
+                    "name": "Trincomalee"
+                },
+                "description": "Professional tailoring services in Trincomalee including custom suits, resort wear, beach wedding outfits, hotel uniforms, traditional clothing, and alterations."
+            },
+            {
+                "@type": "Place",
+                "name": "Trincomalee, Sri Lanka",
+                "description": "Coastal city in Eastern Sri Lanka known for beautiful beaches and growing tourism industry",
+                "url": "https://tailors.lk/trincomalee",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Trincomalee",
+                    "addressCountry": "LK",
+                    "addressRegion": "Eastern Province"
                 }
             }
         ]
     }
     </script>
 
-    <!-- JavaScript - Preserved from Tailors.lk with minimal additions -->
     <script>
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Mobile menu toggle (from existing Tailors.lk)
+        // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         
-        if (hamburger) {
+        if (hamburger && mobileMenu) {
             hamburger.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
                 hamburger.classList.toggle('active');
             });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
         }
         
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (hamburger && !hamburger.contains(e.target) && mobileMenu && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
+        // Newsletter submission (from original)
+        const footerSubscribe = document.getElementById('footer-subscribe');
+        const newsletterMessage = document.getElementById('newsletter-message');
+        const footerEmail = document.getElementById('footer-email');
         
-        // Newsletter submission (from existing Tailors.lk)
-        document.getElementById('footer-subscribe')?.addEventListener('click', subscribeFooterNewsletter);
-        document.getElementById('footer-email')?.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') subscribeFooterNewsletter();
-        });
-        
-        async function subscribeFooterNewsletter() {
-            const emailInput = document.getElementById('footer-email');
-            const email = emailInput.value.trim();
-            const messageEl = document.getElementById('footer-message');
-            
-            if (!validateEmail(email)) {
-                showMessage(messageEl, 'Please enter a valid email address', 'error');
-                return;
-            }
-            
-            // Simplified submission for static page
-            const button = document.getElementById('footer-subscribe');
-            const originalText = button.innerHTML;
-            
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
-            button.disabled = true;
-            
-            // Simulate submission
-            setTimeout(() => {
-                showMessage(messageEl, 'Thank you! You have been subscribed to our newsletter.', 'success');
-                emailInput.value = '';
-                button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+        if (footerSubscribe) {
+            footerSubscribe.addEventListener('click', async function() {
+                const email = footerEmail.value.trim();
                 
+                // Validate email
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    showMessage('Please enter a valid email address.', 'error');
+                    return;
+                }
+                
+                // Show loading state
+                const originalText = footerSubscribe.innerHTML;
+                footerSubscribe.classList.add('btn-loading');
+                footerSubscribe.disabled = true;
+                
+                try {
+                    // Submit to both endpoints simultaneously
+                    const [googleFormsResult, formSubmitResult] = await Promise.allSettled([
+                        submitToGoogleForms(email),
+                        submitToFormSubmit(email)
+                    ]);
+                    
+                    // Check results
+                    const googleSuccess = googleFormsResult.status === 'fulfilled' && googleFormsResult.value.success;
+                    const formSubmitSuccess = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.success;
+                    
+                    if (googleSuccess || formSubmitSuccess) {
+                        showMessage('Thank you! You have been subscribed to our newsletter.', 'success');
+                        footerEmail.value = '';
+                    } else {
+                        showMessage('Subscription failed. Please try again later or contact us directly.', 'error');
+                    }
+                    
+                } catch (error) {
+                    console.error('Newsletter subscription error:', error);
+                    showMessage('An error occurred. Please try again later.', 'error');
+                } finally {
+                    // Restore button state
+                    footerSubscribe.classList.remove('btn-loading');
+                    footerSubscribe.innerHTML = originalText;
+                    footerSubscribe.disabled = false;
+                }
+            });
+            
+            // Also allow Enter key submission
+            footerEmail.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    footerSubscribe.click();
+                }
+            });
+        }
+        
+        // Function to submit to Google Forms
+        async function submitToGoogleForms(email) {
+            try {
+                // Replace with your actual Google Forms endpoint
+                const googleFormsURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+                const formData = new FormData();
+                
+                // Add form fields - update these with your actual field names
+                formData.append('entry.YOUR_EMAIL_FIELD_ID', email);
+                formData.append('entry.YOUR_TIMESTAMP_FIELD_ID', new Date().toISOString());
+                
+                // Use fetch with no-cors mode for cross-origin
+                const response = await fetch(googleFormsURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+                
+                return { success: true };
+                
+            } catch (error) {
+                console.warn('Google Forms submission failed:', error);
+                return { success: false, error: error.message };
+            }
+        }
+        
+        // Function to submit to FormSubmit
+        async function submitToFormSubmit(email) {
+            try {
+                const formSubmitURL = 'https://formsubmit.co/ajax/newsletter@tailors.lk';
+                
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('_subject', 'Newsletter Subscription from Tailors.lk');
+                formData.append('_template', 'table');
+                formData.append('_captcha', 'false');
+                formData.append('source', 'trincomalee-page');
+                
+                const response = await fetch(formSubmitURL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success === 'true') {
+                    return { success: true, data };
+                } else {
+                    throw new Error(data.message || 'FormSubmit failed');
+                }
+                
+            } catch (error) {
+                console.warn('FormSubmit submission failed:', error);
+                return { success: false, error: error.message };
+            }
+        }
+        
+        // Function to show messages
+        function showMessage(message, type = 'success') {
+            if (!newsletterMessage) return;
+            
+            newsletterMessage.textContent = message;
+            newsletterMessage.className = `newsletter-message newsletter-${type}`;
+            newsletterMessage.style.display = 'block';
+            
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
                 setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                }, 3000);
-            }, 1000);
-        }
-        
-        function showMessage(element, message, type = 'success') {
-            if (!element) return;
+                    newsletterMessage.style.display = 'none';
+                }, 5000);
+            }
             
-            element.textContent = message;
-            element.className = `newsletter-message newsletter-${type}`;
-            element.style.display = 'block';
-            
-            setTimeout(() => {
-                element.style.display = 'none';
-            }, 5000);
+            // Auto-hide error messages after 8 seconds
+            if (type === 'error') {
+                setTimeout(() => {
+                    newsletterMessage.style.display = 'none';
+                }, 8000);
+            }
         }
-        
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Initialize animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-        
-        // Observe elements for animation
-        document.querySelectorAll('.content-block, .area-card, .service-card').forEach(el => {
-            observer.observe(el);
-        });
     </script>
 </body>
 </html>
