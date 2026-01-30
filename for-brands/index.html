@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For Brands | Bulk Tailoring & Corporate Uniforms in Sri Lanka – Tailors.lk</title>
+    <meta name="description" content="Tailors.lk provides bulk tailoring, corporate uniforms, brand outsourcing, and digital services for businesses across Sri Lanka. Work with verified tailors for scalable production." />
+    <meta name="keywords" content="bulk tailoring Sri Lanka, corporate uniforms Colombo, hotel staff uniforms, brand tailoring services, outsourced production Sri Lanka, business tailoring platform" />
+    <!-- Updated favicon -->
+    <link rel="icon" href="https://data.tailors.lk/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://data.tailors.lk/ajax/libs/fontawesome/6.0.0/css/all.min.css" />
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "B2B Tailoring & Brand Services",
+        "provider": {
+            "@type": "Organization",
+            "name": "Tailors.lk",
+            "description": "Sri Lanka's leading tailoring platform connecting brands with verified tailors",
+            "url": "https://tailors.lk",
+            "logo": "https://data.tailors.lk/logo.png",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Colombo",
+                "addressCountry": "LK"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "B2B Services",
+                "email": "team@tailors.lk",
+                "availableLanguage": ["English", "Sinhala", "Tamil"]
+            }
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Sri Lanka"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Brand Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Corporate Uniform Tailoring"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Bulk Tailoring Production"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Brand Production Outsourcing"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Digital Services for Clothing Brands"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --teal: #1f4e5f;
+            --teal-dark: #0d3645;
+            --teal-light: #2a6579;
+            --gold: #b9915f;
+            --gold-light: #d4b28c;
+            --bg: #f8fafb;
+            --card-bg: #ffffff;
+            --text: #1a2a33;
+            --text-light: #6b7b83;
+            --border: rgba(31, 78, 95, 0.12);
+            --shadow: 0 8px 30px rgba(31, 78, 95, 0.08);
+            --shadow-hover: 0 12px 40px rgba(31, 78, 95, 0.15);
+            --radius: 14px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --transition: all 0.3s ease;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 15px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: var(--radius-xs);
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(31, 78, 95, 0.06);
+            color: var(--teal);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-cta .btn {
+            margin-left: 0;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--teal);
+            transition: var(--transition);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 62px;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border-top: 1px solid var(--border);
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 10px 14px;
+            border-radius: var(--radius-xs);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(31, 78, 95, 0.06);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(185, 145, 95, 0.25);
+        }
+
+        .btn-secondary {
+            background: var(--teal);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--teal-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .btn-outline:hover {
+            background: rgba(31, 78, 95, 0.05);
+        }
+
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 0.85rem;
+        }
+
+        .btn-call {
+            background: var(--teal-light);
+            color: white;
+            border: none;
+        }
+
+        .btn-call:hover {
+            background: var(--teal);
+        }
+
+        /* Header CTA Buttons */
+        .header-cta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        /* For Brands Page Specific Styles */
+        #brands-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .brands-hero {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 60px 30px;
+            background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+            border-radius: var(--radius);
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brands-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+            background-size: 200px;
+            opacity: 0.3;
+        }
+
+        .brands-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: white;
+            font-weight: 700;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brands-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Who We Work With Section */
+        .work-with-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            color: var(--teal);
+            font-size: 2rem;
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .work-with-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .work-with-card {
+            padding: 35px 30px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .work-with-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--teal);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .work-with-card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+
+        .work-with-card h3 {
+            color: var(--teal);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .work-with-card p {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Brand Services Section */
+        .services-section {
+            margin-bottom: 80px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .service-card {
+            padding: 40px 35px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            border-color: var(--teal);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(31, 78, 95, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--teal);
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 {
+            color: var(--teal);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            margin-bottom: 80px;
+        }
+
+        .steps-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background: rgba(31, 78, 95, 0.1);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-card {
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--teal);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 auto 25px;
+        }
+
+        .step-card h3 {
+            color: var(--teal);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .step-card p {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-section {
+            margin-bottom: 80px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .why-card {
+            padding: 30px;
+            background: rgba(31, 78, 95, 0.03);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .why-card:hover {
+            background: rgba(31, 78, 95, 0.05);
+            border-color: var(--teal);
+        }
+
+        .why-card h3 {
+            color: var(--teal);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .why-card p {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        /* SEO Content Section */
+        .seo-content-section {
+            margin-bottom: 80px;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.03) 0%, rgba(185, 145, 95, 0.03) 100%);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .seo-content-section h2 {
+            color: var(--teal);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .seo-content {
+            margin-bottom: 30px;
+        }
+
+        .seo-content p {
+            margin-bottom: 25px;
+            line-height: 1.8;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .seo-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+            border-radius: var(--radius);
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            font-size: 1.2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 1.15rem;
+        }
+
+        /* Internal Links Section */
+        .internal-links-section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: rgba(31, 78, 95, 0.03);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .internal-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .internal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 28px;
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.05rem;
+        }
+
+        .internal-link:hover {
+            background: rgba(31, 78, 95, 0.05);
+            border-color: var(--teal);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--teal-dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 6px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 2px 0;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+            padding-left: 3px;
+        }
+
+        .footer-links i {
+            width: 14px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .newsletter h4 {
+            color: var(--gold-light);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter Messages */
+        .newsletter-message {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .newsletter-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .newsletter-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        /* Contact Info in Footer */
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .contact-info-item i {
+            width: 16px;
+            margin-top: 2px;
+            margin-right: 10px;
+            color: var(--gold-light);
+            flex-shrink: 0;
+        }
+
+        .contact-info-item a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--gold-light);
+        }
+
+        .contact-info-item span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Loading State */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+            
+            .work-with-grid,
+            .services-grid,
+            .steps-grid,
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .steps-container::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header-cta {
+                display: none;
+            }
+
+            #brands-page {
+                padding: 20px 15px;
+            }
+
+            .brands-hero {
+                padding: 40px 20px;
+                margin-bottom: 60px;
+            }
+
+            .brands-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .brands-hero p {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+
+            .work-with-section,
+            .services-section,
+            .how-it-works,
+            .why-choose-section,
+            .seo-content-section,
+            .cta-section {
+                margin-bottom: 60px;
+            }
+
+            .work-with-card,
+            .service-card,
+            .step-card,
+            .why-card {
+                padding: 25px 20px;
+            }
+
+            .work-with-grid,
+            .services-grid,
+            .steps-grid,
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .seo-content-section {
+                padding: 35px 25px;
+            }
+
+            .seo-content-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-section {
+                padding: 50px 25px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.9rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .internal-links-section {
+                padding: 30px 20px;
+            }
+
+            .internal-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .internal-link {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .btn-lg {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brands-hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .seo-content-section h2,
+            .cta-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .seo-content p,
+            .cta-section p {
+                font-size: 1.05rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="https://data.tailors.lk/logo.png" alt="Tailors.lk Logo" onerror="this.onerror=null; this.style.display='none';">
+                Tailors.lk
+            </a>
+
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/tailors">Find Tailors</a>
+                <a href="/services">Services</a>
+                <a href="/learn">Learn</a>
+                <a href="/about">About</a>
+                <a href="/for-businesses">For Businesses</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+            <div class="nav-cta">
+                <div class="header-cta">
+                    <a href="/tailors" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-search"></i>
+                        Find Tailor
+                    </a>
+                    <a href="tel:+94758244216" class="btn btn-call btn-sm">
+                        <i class="fas fa-phone"></i>
+                        Call Us
+                    </a>
+                </div>
+                <a href="https://tailors.lk/register" class="btn btn-primary btn-sm">Join as Tailor</a>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/">Home</a>
+            <a href="/tailors">Find Tailors</a>
+            <a href="/services">Services</a>
+            <a href="/learn">Learn</a>
+            <a href="/about">About</a>
+            <a href="/for-businesses">For Businesses</a>
+            <a href="/contact">Contact</a>
+            <a href="tel:+94758244216" class="btn btn-call" style="margin-top: 10px;">
+                <i class="fas fa-phone"></i>
+                Call Us
+            </a>
+            <a href="https://tailors.lk/register" class="btn btn-primary" style="margin-top: 10px;">
+                Join as Tailor
+            </a>
+        </div>
+    </header>
+
+    <!-- For Brands Page Content -->
+    <main id="brands-page">
+        <!-- Section 1: Hero -->
+        <section class="brands-hero fade-in">
+            <h1>Tailoring Solutions for Brands & Businesses in Sri Lanka</h1>
+            <p>
+                From corporate uniforms to bulk production and creative partnerships, 
+                Tailors.lk connects brands with verified tailoring expertise across Sri Lanka.
+            </p>
+            <div class="hero-buttons">
+                <a href="/contact" class="btn btn-primary btn-lg">Get a Brand Quote</a>
+                <a href="/partnerships" class="btn btn-secondary btn-lg">Explore Partnerships</a>
+            </div>
+        </section>
+
+        <!-- Section 2: Who We Work With -->
+        <section class="work-with-section fade-in">
+            <h2 class="section-title">Who We Work With</h2>
+            <div class="work-with-grid">
+                <div class="work-with-card">
+                    <i class="fas fa-hotel"></i>
+                    <h3>Hotels & Resorts</h3>
+                    <p>Professional staff uniforms and hospitality wear for Sri Lankan hotels and resorts.</p>
+                </div>
+                <div class="work-with-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Corporate Offices</h3>
+                    <p>Custom office wear and professional uniforms for corporate teams across industries.</p>
+                </div>
+                <div class="work-with-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Event Organizers</h3>
+                    <p>Bespoke outfits for exhibitions, conferences, and special events nationwide.</p>
+                </div>
+                <div class="work-with-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Fashion Brands</h3>
+                    <p>Production partnerships and manufacturing support for clothing brands.</p>
+                </div>
+                <div class="work-with-card">
+                    <i class="fas fa-store"></i>
+                    <h3>Boutiques & Retailers</h3>
+                    <p>Private label production and custom collections for retail businesses.</p>
+                </div>
+                <div class="work-with-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Startups & SMEs</h3>
+                    <p>Scalable production solutions and brand development for growing businesses.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Brand Services -->
+        <section class="services-section fade-in">
+            <h2 class="section-title">Services for Brands</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Bulk & Corporate Tailoring</h3>
+                    <p>
+                        Professional uniform production for corporate offices, hotels, and businesses 
+                        across Sri Lanka. We handle everything from design to delivery for bulk orders, 
+                        ensuring consistency and quality for your team's appearance.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Custom Uniform Design</h3>
+                    <p>
+                        Complete uniform design service including style development, branding integration, 
+                        fit consistency, and scalable production planning. We create professional looks 
+                        that reflect your brand identity across all team members.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Event & Campaign Outfits</h3>
+                    <p>
+                        Specialized outfits for product launches, promotional campaigns, corporate events, 
+                        and exhibitions. From themed costumes to branded attire, we ensure your events 
+                        make a lasting impression through professional clothing.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Production Outsourcing</h3>
+                    <p>
+                        Complete manufacturing and fulfillment solutions for brands needing production 
+                        capacity. We connect you with verified tailors across Sri Lanka for scalable, 
+                        quality-controlled production without capital investment in facilities.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Digital Services for Clothing Brands</h3>
+                    <p>
+                        Comprehensive digital support including website development, content strategy, 
+                        Google Business Profile optimization, social media management, and online 
+                        visibility enhancement for clothing brands and boutiques.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: How It Works -->
+        <section class="how-it-works fade-in">
+            <h2 class="section-title">How Brand Projects Work</h2>
+            <div class="steps-container">
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Inquiry Submission</h3>
+                        <p>Brands share their requirements, timelines, and budget through our dedicated channels.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Requirement Discussion</h3>
+                        <p>Our team discusses specifications, materials, branding, and quality expectations.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Tailor Matching & Planning</h3>
+                        <p>We match projects with verified tailors and create detailed production plans.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Production & Quality Checks</h3>
+                        <p>Manufacturing begins with regular quality inspections and progress updates.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <h3>Delivery & Support</h3>
+                        <p>Final delivery with professional packaging and ongoing support for adjustments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Why Brands Choose Us -->
+        <section class="why-choose-section fade-in">
+            <h2 class="section-title">Why Brands Choose Tailors.lk</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <h3>Verified Tailor Network</h3>
+                    <p>Access to Sri Lanka's most skilled tailors vetted for quality and reliability.</p>
+                </div>
+                <div class="why-card">
+                    <h3>Quality Standards</h3>
+                    <p>Consistent quality control across all production stages for brand consistency.</p>
+                </div>
+                <div class="why-card">
+                    <h3>Islandwide Coverage</h3>
+                    <p>Production capabilities across Colombo, Kandy, Galle and major Sri Lankan cities.</p>
+                </div>
+                <div class="why-card">
+                    <h3>Flexible Production</h3>
+                    <p>Scalable solutions from small batches to large-scale manufacturing runs.</p>
+                </div>
+                <div class="why-card">
+                    <h3>Digital Growth Support</h3>
+                    <p>Comprehensive online presence development for modern clothing brands.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: SEO Content Block -->
+        <section class="seo-content-section fade-in">
+            <h2>Bulk Tailoring and Corporate Uniform Services in Sri Lanka</h2>
+            <div class="seo-content">
+                <p>
+                    Tailors.lk has established itself as Sri Lanka's premier B2B tailoring platform, 
+                    connecting brands and businesses with verified tailoring expertise across the island. 
+                    Our platform specializes in providing comprehensive solutions for corporate uniforms 
+                    in Colombo, Kandy, Galle, and other major cities, offering businesses access to 
+                    professional uniform production without the complexities of traditional manufacturing.
+                </p>
+                <p>
+                    For hotels and corporate offices requiring consistent, high-quality staff uniforms, 
+                    Tailors.lk offers end-to-end production services. We handle everything from design 
+                    consultation and fabric selection to manufacturing and delivery, ensuring your team 
+                    presents a professional image that aligns with your brand standards. Our bulk tailoring 
+                    services in Sri Lanka are designed to accommodate businesses of all sizes, from 
+                    startups to established enterprises needing reliable production partners.
+                </p>
+                <p>
+                    Beyond corporate uniforms, we provide specialized outsourcing solutions for fashion 
+                    brands and boutiques looking to scale their production without capital investment in 
+                    manufacturing facilities. Our verified tailor network enables brands to access 
+                    professional production capacity for seasonal collections, special editions, and 
+                    regular inventory needs. This outsourcing model allows clothing brands to focus on 
+                    design and marketing while we manage the production complexities.
+                </p>
+                <p>
+                    For event organizers and marketing agencies, Tailors.lk offers customized solutions 
+                    for branded event outfits, promotional clothing, and campaign-specific attire. Whether 
+                    it's uniforms for exhibition staff, themed costumes for product launches, or 
+                    promotional giveaways, we ensure quality production that enhances your brand's 
+                    visibility and professional presentation. Our platform brings together Sri Lanka's 
+                    best tailoring talent with brands seeking quality, reliability, and professional 
+                    service in the garment production industry.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 7: CTA Conversion Block -->
+        <section class="cta-section fade-in">
+            <h2>Build Your Brand with Tailors.lk</h2>
+            <p>
+                Whether you need bulk production, uniforms, outsourced tailoring, or digital growth 
+                services, Tailors.lk helps brands scale with verified expertise across Sri Lanka.
+            </p>
+            <div class="cta-buttons">
+                <a href="/contact" class="btn btn-primary btn-lg">
+                    <i class="fas fa-envelope"></i>
+                    Contact Our Brand Team
+                </a>
+                <a href="/partnerships" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-handshake"></i>
+                    Partnership Options
+                </a>
+                <a href="https://wa.me/94758244216" target="_blank" class="btn btn-outline btn-lg" style="background: white; color: var(--teal);">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp Chat
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 8: Internal Linking Strip -->
+        <section class="internal-links-section fade-in">
+            <div class="internal-links">
+                <a href="/tailors" class="internal-link">
+                    <i class="fas fa-list"></i>
+                    Find Verified Tailors
+                </a>
+                <a href="/services" class="internal-link">
+                    <i class="fas fa-scissors"></i>
+                    Explore All Services
+                </a>
+                <a href="/partnerships" class="internal-link">
+                    <i class="fas fa-handshake"></i>
+                    Partnership Opportunities
+                </a>
+                <a href="/contact" class="internal-link">
+                    <i class="fas fa-envelope"></i>
+                    Contact Our Team
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Platform Section -->
+                <div>
+                    <h4>Tailors.lk</h4>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px; font-size: 0.85rem;">
+                        Connecting Sri Lanka's tailoring community since 2024.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/Tailors.lk.find" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/Tailors.lk" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/Tailorslk" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@tailorslk" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://linkedin.com/company/tailors-lk" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- For Users Section -->
+                <div>
+                    <h4>For Users</h4>
+                    <ul class="footer-links">
+                        <li><a href="/services"><i class="fas fa-scissors"></i> Services</a></li>
+                        <li><a href="/tailors"><i class="fas fa-list"></i> All Tailors</a></li>
+                        <li><a href="/fabrics"><i class="fas fa-tshirt"></i> Fabrics</a></li>
+                        <li><a href="/reviews"><i class="fas fa-star"></i> Reviews</a></li>
+                        <li><a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a></li>
+                        <li><a href="/specials"><i class="fas fa-percentage"></i> Specials</a></li>
+                    </ul>
+                </div>
+                
+                <!-- For Partners Section -->
+                <div>
+                    <h4>For Partners</h4>
+                    <ul class="footer-links">
+                        <li><a href="/for-tailors"><i class="fas fa-user-tie"></i> For Tailors</a></li>
+                        <li><a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a></li>
+                        <li><a href="/for-brands"><i class="fas fa-tag"></i> For Brands</a></li>
+                        <li><a href="/partnerships"><i class="fas fa-handshake"></i> Partnerships</a></li>
+                        <li><a href="/careers"><i class="fas fa-users"></i> Careers</a></li>
+                        <li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Cities Section -->
+                <div>
+                    <h4>Find by City</h4>
+                    <ul class="footer-links">
+                        <li><a href="/colombo"><i class="fas fa-city"></i> Colombo</a></li>
+                        <li><a href="/kandy"><i class="fas fa-mountain"></i> Kandy</a></li>
+                        <li><a href="/galle"><i class="fas fa-umbrella-beach"></i> Galle</a></li>
+                        <li><a href="/jaffna"><i class="fas fa-landmark"></i> Jaffna</a></li>
+                        <li><a href="/trinco"><i class="fas fa-anchor"></i> Trincomalee</a></li>
+                        <li><a href="/ella"><i class="fas fa-hiking"></i> Ella</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company Section -->
+                <div>
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="/our-story"><i class="fas fa-book"></i> Our Story</a></li>
+                        <li><a href="/our-team"><i class="fas fa-users"></i> Our Team</a></li>
+                        <li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                        <li><a href="/faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal Section -->
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="/terms"><i class="fas fa-file-contract"></i> Terms</a></li>
+                        <li><a href="/privacy"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+                        <li><a href="/cookies"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
+                    </ul>
+                    
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <h4>Contact Info</h4>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+94758244216">+94 75 824 4216</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:team@tailors.lk">team@tailors.lk</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Colombo, Sri Lanka</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="newsletter">
+                <h4>Stay Updated</h4>
+                <p>Get the latest on tailoring trends, special offers, and new tailors</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email address" class="newsletter-input" id="footer-email" required>
+                    <button class="btn btn-primary btn-sm" id="footer-subscribe">
+                        <i class="fas fa-paper-plane"></i> Subscribe
+                    </button>
+                </div>
+                <div class="newsletter-message" id="newsletter-message"></div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> Tailors.lk. All rights reserved. | Uplifting Sri Lanka's tailoring tradition</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        }
+        
+        // Newsletter submission
+        const footerSubscribe = document.getElementById('footer-subscribe');
+        const newsletterMessage = document.getElementById('newsletter-message');
+        const footerEmail = document.getElementById('footer-email');
+        
+        if (footerSubscribe) {
+            footerSubscribe.addEventListener('click', async function() {
+                const email = footerEmail.value.trim();
+                
+                // Validate email
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    showMessage('Please enter a valid email address.', 'error');
+                    return;
+                }
+                
+                // Show loading state
+                const originalText = footerSubscribe.innerHTML;
+                footerSubscribe.classList.add('btn-loading');
+                footerSubscribe.disabled = true;
+                
+                try {
+                    // Submit to both endpoints simultaneously
+                    const [googleFormsResult, formSubmitResult] = await Promise.allSettled([
+                        submitToGoogleForms(email),
+                        submitToFormSubmit(email)
+                    ]);
+                    
+                    // Check results
+                    const googleSuccess = googleFormsResult.status === 'fulfilled' && googleFormsResult.value.success;
+                    const formSubmitSuccess = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.success;
+                    
+                    if (googleSuccess || formSubmitSuccess) {
+                        showMessage('Thank you! You have been subscribed to our newsletter.', 'success');
+                        footerEmail.value = '';
+                    } else {
+                        showMessage('Subscription failed. Please try again later or contact us directly.', 'error');
+                    }
+                    
+                } catch (error) {
+                    console.error('Newsletter subscription error:', error);
+                    showMessage('An error occurred. Please try again later.', 'error');
+                } finally {
+                    // Restore button state
+                    footerSubscribe.classList.remove('btn-loading');
+                    footerSubscribe.innerHTML = originalText;
+                    footerSubscribe.disabled = false;
+                }
+            });
+            
+            // Also allow Enter key submission
+            footerEmail.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    footerSubscribe.click();
+                }
+            });
+        }
+        
+        // Function to submit to Google Forms
+        async function submitToGoogleForms(email) {
+            try {
+                // Replace with your actual Google Forms endpoint
+                const googleFormsURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+                const formData = new FormData();
+                
+                // Add form fields - update these with your actual field names
+                formData.append('entry.YOUR_EMAIL_FIELD_ID', email);
+                formData.append('entry.YOUR_TIMESTAMP_FIELD_ID', new Date().toISOString());
+                
+                // Use fetch with no-cors mode for cross-origin
+                const response = await fetch(googleFormsURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+                
+                return { success: true };
+                
+            } catch (error) {
+                console.warn('Google Forms submission failed:', error);
+                return { success: false, error: error.message };
+            }
+        }
+        
+        // Function to submit to FormSubmit
+        async function submitToFormSubmit(email) {
+            try {
+                const formSubmitURL = 'https://formsubmit.co/ajax/newsletter@tailors.lk';
+                
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('_subject', 'Newsletter Subscription from Tailors.lk');
+                formData.append('_template', 'table');
+                formData.append('_captcha', 'false');
+                formData.append('source', 'for-brands-page');
+                
+                const response = await fetch(formSubmitURL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success === 'true') {
+                    return { success: true, data };
+                } else {
+                    throw new Error(data.message || 'FormSubmit failed');
+                }
+                
+            } catch (error) {
+                console.warn('FormSubmit submission failed:', error);
+                return { success: false, error: error.message };
+            }
+        }
+        
+        // Function to show messages
+        function showMessage(message, type = 'success') {
+            if (!newsletterMessage) return;
+            
+            newsletterMessage.textContent = message;
+            newsletterMessage.className = `newsletter-message newsletter-${type}`;
+            newsletterMessage.style.display = 'block';
+            
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    newsletterMessage.style.display = 'none';
+                }, 5000);
+            }
+            
+            // Auto-hide error messages after 8 seconds
+            if (type === 'error') {
+                setTimeout(() => {
+                    newsletterMessage.style.display = 'none';
+                }, 8000);
+            }
+        }
+    </script>
+</body>
+</html>
