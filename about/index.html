@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About Tailors.lk | Sri Lanka's National Tailoring Platform</title>
-    <meta name="description" content="Learn about Tailors.lk - Sri Lanka's leading tailoring platform connecting customers with professional tailors. Our story, mission, vision, and ecosystem for custom clothing nationwide." />
-    <meta name="keywords" content="about tailors.lk, sri lanka tailoring platform, custom tailoring network, tailors in colombo, clothing services sri lanka" />
+    <title>Careers at Tailors.lk | Jobs in Tailoring Platform Sri Lanka</title>
+    <meta name="description" content="Join Tailors.lk - Sri Lanka's national tailoring platform. Explore career opportunities in tailoring, technology, sales, operations, and content. Apply now for positions across Colombo and nationwide." />
+    <meta name="keywords" content="tailoring jobs Sri Lanka, fashion careers Colombo, tailoring platform careers, digital jobs Sri Lanka, sales jobs tailoring, operations careers, technology jobs fashion" />
     <!-- Updated favicon -->
     <link rel="icon" href="https://data.tailors.lk/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -246,37 +246,55 @@
             align-items: center;
         }
 
-        /* About Page Specific Styles */
-        .about-container {
-            max-width: 1000px;
+        /* Careers Page Specific Styles */
+        .careers-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
-        
-        .about-hero {
+
+        /* Hero Section */
+        .careers-hero {
             text-align: center;
             margin-bottom: 60px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--border);
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+            border-radius: var(--radius);
+            color: white;
+            box-shadow: var(--shadow);
         }
-        
-        .about-hero h1 {
+
+        .careers-hero h1 {
             font-size: 2.5rem;
-            color: var(--teal);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            color: white;
             font-weight: 700;
-            line-height: 1.2;
         }
-        
-        .about-hero p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            line-height: 1.6;
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--gold-light);
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 35px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
         }
-        
-        .about-section {
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Section Styles */
+        .careers-section {
             margin-bottom: 60px;
             padding: 40px;
             background: var(--card-bg);
@@ -285,12 +303,12 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-        
-        .about-section:hover {
+
+        .careers-section:hover {
             box-shadow: var(--shadow-hover);
         }
-        
-        .about-section h2 {
+
+        .careers-section h2 {
             color: var(--teal);
             font-size: 1.8rem;
             margin-bottom: 25px;
@@ -298,233 +316,485 @@
             border-bottom: 2px solid rgba(31, 78, 95, 0.1);
             font-weight: 600;
         }
-        
-        .about-section h3 {
-            color: var(--teal-light);
-            font-size: 1.3rem;
-            margin: 25px 0 15px 0;
-            font-weight: 600;
-        }
-        
-        .about-section p {
-            color: var(--text);
-            line-height: 1.7;
-            margin-bottom: 18px;
-            font-size: 1.05rem;
-        }
-        
-        .about-section ul, .about-section ol {
-            margin: 20px 0 20px 25px;
-            color: var(--text);
-        }
-        
-        .about-section li {
-            margin-bottom: 12px;
+
+        .section-intro,
+        .form-intro {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
             line-height: 1.6;
-            padding-left: 5px;
         }
-        
-        .about-note {
-            background: rgba(31, 78, 95, 0.05);
-            border-left: 4px solid var(--gold);
-            padding: 22px;
-            border-radius: var(--radius-sm);
-            margin: 30px 0;
-        }
-        
-        .about-note p {
-            margin-bottom: 0;
-            color: var(--text);
-            font-weight: 500;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .about-note i {
-            color: var(--gold);
-            margin-top: 4px;
-            flex-shrink: 0;
-        }
-        
-        .about-grid {
+
+        /* Benefits Grid */
+        .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
-        
-        .about-card {
-            background: var(--card-bg);
+
+        .benefit-card {
             padding: 25px;
-            border-radius: var(--radius);
+            background: rgba(31, 78, 95, 0.03);
+            border-radius: var(--radius-sm);
             border: 1px solid var(--border);
             transition: var(--transition);
         }
-        
-        .about-card:hover {
+
+        .benefit-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .about-card h3 {
-            color: var(--teal-light);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .about-card p {
-            color: var(--text);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        .mission-section {
-            background: rgba(185, 145, 95, 0.08);
-            padding: 35px;
-            border-radius: var(--radius);
-            border: 1px solid rgba(185, 145, 95, 0.2);
-        }
-        
-        .mission-statement {
-            font-size: 1.3rem;
-            color: var(--teal-dark);
-            font-weight: 600;
-            text-align: center;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        
-        .vision-section {
-            padding: 40px;
-            background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
-            border-radius: var(--radius);
-            color: white;
-        }
-        
-        .vision-section h2 {
-            color: white;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .vision-section p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .vision-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .vision-item {
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-sm);
-        }
-        
-        .vision-item i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--gold-light);
-        }
-        
-        .vision-item div {
-            font-weight: 600;
-        }
-        
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        
-        .partner-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: var(--radius);
-            border-top: 4px solid var(--teal);
             box-shadow: var(--shadow);
         }
-        
-        .partner-card:nth-child(2) {
-            border-top-color: var(--gold);
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.5rem;
         }
-        
-        .partner-card:nth-child(3) {
-            border-top-color: var(--teal-light);
+
+        .benefit-card h3 {
+            color: var(--teal);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
-        
-        .partner-card:nth-child(4) {
-            border-top-color: var(--teal-dark);
+
+        /* Category Cards */
+        .category-card {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            transition: var(--transition);
         }
-        
-        .partner-card:nth-child(5) {
-            border-top-color: var(--gold-light);
+
+        .category-card:hover {
+            border-color: var(--teal);
+            box-shadow: var(--shadow);
         }
-        
-        .partner-card h3 {
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .category-header i {
+            color: var(--teal);
+            font-size: 1.5rem;
+        }
+
+        .category-header h3 {
             color: var(--teal);
             font-size: 1.3rem;
-            margin-bottom: 15px;
+            margin: 0;
+        }
+
+        .role-list {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .role-list li {
+            background: rgba(31, 78, 95, 0.08);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--teal);
+            border: 1px solid rgba(31, 78, 95, 0.1);
+        }
+
+        .category-cta {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 25px 15px;
+            background: rgba(31, 78, 95, 0.03);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--teal);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            color: var(--teal);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Application Form - Compact Design */
+        .careers-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--teal);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background: var(--card-bg);
+            color: var(--text);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(31, 78, 95, 0.1);
+        }
+
+        /* File Upload */
+        .file-upload {
+            position: relative;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
-        .partner-card p {
-            color: var(--text);
-            font-size: 0.95rem;
-            line-height: 1.6;
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
         }
-        
+
+        .file-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--teal);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .file-label:hover {
+            background: rgba(31, 78, 95, 0.05);
+        }
+
+        .file-name {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-hint {
+            display: block;
+            margin-top: 5px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Consent Checkbox */
+        .consent-group {
+            margin-top: 20px;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            margin-top: 4px;
+            accent-color: var(--teal);
+        }
+
+        .checkbox-wrapper label {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.1rem;
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .form-note a {
+            color: var(--teal);
+            text-decoration: underline;
+        }
+
+        /* CTA Section */
         .cta-section {
             text-align: center;
-            margin-bottom: 60px;
-            padding: 50px;
-            background: var(--teal);
-            border-radius: var(--radius);
-            color: white;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.05) 0%, rgba(185, 145, 95, 0.05) 100%);
+            border: 1px solid rgba(31, 78, 95, 0.1);
         }
-        
-        .cta-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: white;
+
+        .cta-content h2 {
+            border: none;
+            margin-bottom: 15px;
         }
-        
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 35px;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
+
         .cta-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
+            margin: 30px 0;
             flex-wrap: wrap;
         }
-        
-        .cta-buttons a {
-            padding: 12px 30px;
+
+        .btn-lg {
+            padding: 14px 30px;
+            font-size: 1.1rem;
         }
-        
+
+        .cta-note {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* SEO Section */
         .seo-section {
-            padding: 40px;
-            background: var(--card-bg);
-            border-radius: var(--radius);
+            background: rgba(31, 78, 95, 0.03);
             border: 1px solid var(--border);
         }
-        
+
+        .seo-content {
+            margin-bottom: 30px;
+        }
+
+        .seo-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .internal-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .internal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .internal-link:hover {
+            background: rgba(31, 78, 95, 0.05);
+            border-color: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        /* Success Popup Modal */
+        .success-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-popup.active {
+            display: flex;
+        }
+
+        .success-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-hover);
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .success-content h3 {
+            color: var(--teal);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .success-content p {
+            color: var(--text);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .close-popup:hover {
+            background: rgba(31, 78, 95, 0.05);
+            color: var(--teal);
+        }
+
+        /* Loading State */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
         /* Footer */
         footer {
             background: var(--teal-dark);
@@ -655,56 +925,6 @@
             font-size: 0.9rem;
         }
 
-        /* Newsletter Messages */
-        .newsletter-message {
-            margin-top: 12px;
-            padding: 10px 14px;
-            border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            text-align: center;
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .newsletter-success {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .newsletter-error {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--error);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .newsletter-warning {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--warning);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
-        /* Loading State */
-        .btn-loading {
-            position: relative;
-            color: transparent !important;
-        }
-
-        .btn-loading::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
         /* Contact Info in Footer */
         .contact-info {
             margin-top: 20px;
@@ -747,122 +967,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 25px;
-            }
-            
-            .about-grid, .partners-grid, .vision-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links, .nav-cta {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .header-cta {
-                display: none;
-            }
-            
-            .about-container {
-                padding: 40px 15px;
-            }
-            
-            .about-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .about-hero p {
-                font-size: 1.1rem;
-            }
-            
-            .about-section {
-                padding: 30px;
-            }
-            
-            .about-section h2 {
-                font-size: 1.6rem;
-            }
-            
-            .about-section h3 {
-                font-size: 1.2rem;
-            }
-            
-            .about-grid, .partners-grid, .vision-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-section {
-                padding: 40px 20px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .cta-buttons a {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .about-hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .about-section {
-                padding: 25px;
-            }
-            
-            .about-section h2 {
-                font-size: 1.4rem;
-            }
-            
-            .about-section h3 {
-                font-size: 1.1rem;
-            }
-            
-            .mission-section {
-                padding: 25px;
-            }
-            
-            .mission-statement {
-                font-size: 1.1rem;
-            }
-            
-            .vision-section {
-                padding: 30px 20px;
-            }
-            
-            .cta-section {
-                padding: 30px 15px;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-        }
-
         /* Animations */
         .fade-in {
             animation: fadeIn 0.5s ease;
@@ -878,6 +982,138 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header-cta {
+                display: none;
+            }
+
+            .careers-container {
+                padding: 20px 15px;
+            }
+
+            .careers-hero {
+                padding: 30px 15px;
+            }
+
+            .careers-hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .careers-section {
+                padding: 25px;
+            }
+
+            .benefits-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn-lg {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .internal-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .internal-link {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .success-content {
+                padding: 40px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .careers-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .careers-section {
+                padding: 20px;
+            }
+
+            .role-list {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .role-list li {
+                width: 100%;
+            }
+
+            .success-content {
+                padding: 30px 20px;
+            }
+
+            .success-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+
+            .success-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .success-actions {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -891,6 +1127,7 @@
 
             <nav class="nav-links">
                 <a href="/">Home</a>
+                <a href="#directory">Find Tailors</a>
                 <a href="/services">Services</a>
                 <a href="/learn">Learn</a>
                 <a href="/about">About</a>
@@ -900,7 +1137,7 @@
 
             <div class="nav-cta">
                 <div class="header-cta">
-                    <a href="/tailors" class="btn btn-secondary btn-sm">
+                    <a href="#directory" class="btn btn-secondary btn-sm">
                         <i class="fas fa-search"></i>
                         Find Tailor
                     </a>
@@ -921,7 +1158,7 @@
 
         <div class="mobile-menu" id="mobileMenu">
             <a href="/">Home</a>
-            <a href="/tailors">Find Tailors</a>
+            <a href="#directory">Find Tailors</a>
             <a href="/services">Services</a>
             <a href="/learn">Learn</a>
             <a href="/about">About</a>
@@ -937,237 +1174,412 @@
         </div>
     </header>
 
-    <!-- About Page Content -->
-    <main class="about-container">
+    <!-- Careers Page Content -->
+    <main class="careers-container">
         <!-- 1) HERO TITLE BLOCK -->
-        <section class="about-hero fade-in">
-            <h1>About Tailors.lk</h1>
-            <p>
-                Tailors.lk connects customers with professional tailors across Sri Lanka for custom suits, alterations, 
-                bridal wear, corporate uniforms, and casual or luxury tailoring. We are building Sri Lanka's national 
-                tailoring network—a complete ecosystem where quality meets accessibility.
-            </p>
-        </section>
-
-        <!-- 2) THE STORY BEHIND TAILORS.LK -->
-        <section class="about-section fade-in">
-            <h2>The Story Behind Tailors.lk</h2>
-            <p>
-                Several years ago, I operated a small tailoring setup in Colombo. Walk‑in clients were steady, 
-                but growth was limited to the neighbourhood. I paused that business when I realised offline‑only 
-                tailoring could not scale to meet Sri Lanka's potential.
-            </p>
-            <p>
-                Later, I needed a custom suit for an important event. Despite Colombo having hundreds of tailors, 
-                I struggled to find one who was responsive, transparent about timelines, and could deliver quality 
-                on short notice. That missed opportunity exposed a clear problem: <strong>great tailors exist, but 
-                visibility and trust are broken</strong>.
-            </p>
-            <p>
-                The real turning point came during a conversation with an ambitious tailor in Kandy. He was skilled, 
-                motivated, and had a growing local reputation—but he had no budget for a website, no digital presence, 
-                and no way to reach customers outside his area. He told me, "If I could just be found online, I could 
-                double my business."
-            </p>
-            <p>
-                That became the trigger for Tailors.lk. We decided to build <strong>infrastructure for tailors</strong>, 
-                not just another directory. Our goal is to give every tailor in Sri Lanka the tools to grow, and every 
-                customer the confidence to order custom clothing.
-            </p>
-        </section>
-
-        <!-- 3) THE PROBLEM WE SOLVE -->
-        <section class="about-section fade-in">
-            <h2>The Problem We Solve</h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3><i class="fas fa-user-circle"></i> For Customers</h3>
-                    <p>
-                        Finding a verified, reliable tailor in Sri Lanka is often a matter of word‑of‑mouth or luck. 
-                        Customers struggle with unclear pricing, uncertain timelines, and no easy way to compare quality 
-                        or reviews.
-                    </p>
-                </div>
-                <div class="about-card">
-                    <h3><i class="fas fa-user-tie"></i> For Tailors</h3>
-                    <p>
-                        Skilled tailors lack the digital tools to reach a wider audience. Marketing, online booking, 
-                        and building trust with new customers are constant hurdles—especially for small workshops and 
-                        independent artisans.
-                    </p>
-                </div>
-            </div>
-            <div class="about-note">
-                <p><i class="fas fa-bridge"></i>Tailors.lk bridges both sides with technology and operations—creating a trusted, efficient platform for Sri Lanka's tailoring community.</p>
-            </div>
-        </section>
-
-        <!-- 4) WHAT TAILORS.LK IS TODAY -->
-        <section class="about-section fade-in">
-            <h2>What Tailors.lk Is Today</h2>
-            <p>
-                We have grown from a simple directory into a complete tailoring ecosystem. Our platform now includes:
-            </p>
-            <div class="about-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div class="about-card">
-                    <h3><i class="fas fa-store"></i> Tailor Marketplace</h3>
-                    <p>Verified profiles, reviews, and direct booking for tailors across Sri Lanka.</p>
-                </div>
-                <div class="about-card">
-                    <h3><i class="fas fa-shield-check"></i> Verification System</h3>
-                    <p>Every tailor is checked for quality, responsiveness, and reliability before joining.</p>
-                </div>
-                <div class="about-card">
-                    <h3><i class="fas fa-route"></i> Order Routing</h3>
-                    <p>Intelligent matching of customer requests with the most suitable tailors.</p>
-                </div>
-                <div class="about-card">
-                    <h3><i class="fas fa-graduation-cap"></i> Education & Learning</h3>
-                    <p>Free resources and guides via <a href="/learn" style="color: var(--teal); font-weight: 500;">/learn</a> for tailors and customers.</p>
-                </div>
-                <div class="about-card">
-                    <h3><i class="fas fa-network-wired"></i> Franchise Network</h3>
-                    <p>Partner locations and franchise opportunities to expand reach nationwide.</p>
-                </div>
-                <div class="about-card">
-                    <h3><i class="fas fa-subscript"></i> Digital Tools</h3>
-                    <p>Subdomains, booking systems, and digital showcases for every registered tailor.</p>
-                </div>
-            </div>
-            <p style="margin-top: 30px;">
-                <strong>Tailors.lk is infrastructure, not just a listing site.</strong> We provide the technology, 
-                operations, and trust layer that enables Sri Lanka's tailoring industry to thrive in the digital age.
-            </p>
-        </section>
-
-        <!-- 5) OUR MISSION -->
-        <section class="about-section fade-in">
-            <h2>Our Mission</h2>
-            <div class="mission-section">
-                <p class="mission-statement">
-                    To raise quality standards, make tailoring accessible across Sri Lanka, help tailors grow sustainable 
-                    businesses, and give customers confidence in custom clothing.
+        <section class="careers-hero fade-in">
+            <div class="careers-hero-content">
+                <h1>Careers at Tailors.lk</h1>
+                <p class="hero-subtitle">Join Sri Lanka's National Tailoring Platform & Marketplace</p>
+                <p class="hero-description">
+                    Tailors.lk is expanding Sri Lanka's tailoring ecosystem across digital platforms, 
+                    physical operations, and nationwide service networks. We welcome professionals, 
+                    freelancers, contractors, and partners across tailoring, technology, sales, 
+                    operations, and content creation.
                 </p>
-                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 25px;">
-                    <div style="text-align: center; padding: 15px; min-width: 150px;">
-                        <div style="font-size: 2rem; color: var(--gold); margin-bottom: 10px;">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <div style="font-weight: 600; color: var(--teal);">Raise Standards</div>
+                <div class="hero-cta">
+                    <a href="#application-form" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Apply Now
+                    </a>
+                    <a href="https://wa.me/94758244216?text=Hello%20Tailors.lk%2C%20I%20am%20interested%20in%20career%20opportunities." 
+                       target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-whatsapp"></i>
+                        Quick Inquiry via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2) WHY WORK WITH TAILORS.LK -->
+        <section class="careers-section fade-in">
+            <h2>Why Work with Tailors.lk</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <div style="text-align: center; padding: 15px; min-width: 150px;">
-                        <div style="font-size: 2rem; color: var(--gold); margin-bottom: 10px;">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div style="font-weight: 600; color: var(--teal);">Build Trust</div>
+                    <h3>National Platform</h3>
+                    <p>Work with Sri Lanka's premier tailoring marketplace serving customers and professionals nationwide.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
                     </div>
-                    <div style="text-align: center; padding: 15px; min-width: 150px;">
-                        <div style="font-size: 2rem; color: var(--gold); margin-bottom: 10px;">
-                            <i class="fas fa-expand-alt"></i>
+                    <h3>Flexible Collaboration</h3>
+                    <p>Multiple engagement models including full-time, part-time, freelance, and project-based work.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Skill Development</h3>
+                    <p>Grow professionally while working with fashion, digital systems, and operational excellence.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Network Exposure</h3>
+                    <p>Connect with tailors, designers, and professionals across Sri Lanka's fashion ecosystem.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3) AVAILABLE OPPORTUNITY CATEGORIES -->
+        <section class="careers-section fade-in">
+            <h2>Available Opportunity Categories</h2>
+            <p class="section-intro">Explore roles across our expanding platform operations</p>
+
+            <!-- Tailoring & Production -->
+            <div class="category-card">
+                <div class="category-header">
+                    <i class="fas fa-cut"></i>
+                    <h3>Tailoring & Production</h3>
+                </div>
+                <p>Master craftsmen and production specialists for our nationwide tailoring network.</p>
+                <ul class="role-list">
+                    <li>Master Tailors</li>
+                    <li>Alteration Specialists</li>
+                    <li>Pattern Makers</li>
+                    <li>Bridal Specialists</li>
+                    <li>Quality Control Experts</li>
+                </ul>
+            </div>
+
+            <!-- Sales & Field Operations -->
+            <div class="category-card">
+                <div class="category-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Sales & Field Operations</h3>
+                </div>
+                <p>Drive platform growth through customer acquisition, partnerships, and field coordination.</p>
+                <ul class="role-list">
+                    <li>Field Assistants</li>
+                    <li>Business Development Agents</li>
+                    <li>Onboarding Coordinators</li>
+                    <li>Relationship Managers</li>
+                    <li>Area Coordinators</li>
+                </ul>
+                <div class="category-cta">
+                    <a href="https://wa.me/94758244216?text=Hello%20Tailors.lk%2C%20I%20am%20interested%20in%20Sales%20%26%20Field%20Operations%20opportunities." 
+                       target="_blank" class="btn btn-outline btn-sm">
+                        <i class="fab fa-whatsapp"></i>
+                        Inquire about Sales Roles
+                    </a>
+                </div>
+            </div>
+
+            <!-- Technology -->
+            <div class="category-card">
+                <div class="category-header">
+                    <i class="fas fa-code"></i>
+                    <h3>Technology</h3>
+                </div>
+                <p>Build and maintain Sri Lanka's leading tailoring platform infrastructure.</p>
+                <ul class="role-list">
+                    <li>Software Developers</li>
+                    <li>Web Engineers</li>
+                    <li>Automation Specialists</li>
+                    <li>Data & Search Engineers</li>
+                    <li>QA Specialists</li>
+                </ul>
+            </div>
+
+            <!-- Marketing & Content -->
+            <div class="category-card">
+                <div class="category-header">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Marketing & Content</h3>
+                </div>
+                <p>Create engaging content and drive platform awareness across Sri Lanka.</p>
+                <ul class="role-list">
+                    <li>Social Media Managers</li>
+                    <li>Content Creators</li>
+                    <li>Video Editors</li>
+                    <li>Presenters</li>
+                    <li>Brand Ambassadors</li>
+                </ul>
+            </div>
+
+            <!-- Operations & Support -->
+            <div class="category-card">
+                <div class="category-header">
+                    <i class="fas fa-headset"></i>
+                    <h3>Operations & Support</h3>
+                </div>
+                <p>Ensure smooth platform operations and exceptional customer experiences.</p>
+                <ul class="role-list">
+                    <li>Customer Support Officers</li>
+                    <li>Coordinators</li>
+                    <li>Admin Assistants</li>
+                    <li>Platform Moderators</li>
+                </ul>
+            </div>
+
+            <!-- Logistics & Mobility -->
+            <div class="category-card">
+                <div class="category-header">
+                    <i class="fas fa-truck"></i>
+                    <h3>Logistics & Mobility</h3>
+                </div>
+                <p>Support our physical operations and measurement assistance services.</p>
+                <ul class="role-list">
+                    <li>Drivers</li>
+                    <li>Measurement Assistants</li>
+                    <li>Field Coordinators</li>
+                    <li>Inventory Managers</li>
+                </ul>
+            </div>
+
+            <!-- Internships & Training -->
+            <div class="category-card">
+                <div class="category-header">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Internships & Training</h3>
+                </div>
+                <p>Gain hands-on experience in Sri Lanka's tailoring and digital platform industry.</p>
+                <ul class="role-list">
+                    <li>Interns (All Departments)</li>
+                    <li>Trainee Coordinators</li>
+                    <li>Learning Program Assistants</li>
+                    <li>Apprenticeships</li>
+                </ul>
+                <div class="category-cta">
+                    <a href="https://wa.me/94758244216?text=Hello%20Tailors.lk%2C%20I%20am%20interested%20in%20Internship%20%26%20Training%20opportunities." 
+                       target="_blank" class="btn btn-outline btn-sm">
+                        <i class="fab fa-whatsapp"></i>
+                        Inquire about Internships
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) HOW THE CAREER PROCESS WORKS -->
+        <section class="careers-section fade-in">
+            <h2>How Our Career Process Works</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Submit Application</h3>
+                    <p>Complete our application form with your details and area of interest.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Screening Review</h3>
+                    <p>Our team reviews your application against current opportunities.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Interview or Call</h3>
+                    <p>Shortlisted candidates are invited for an interview or exploratory call.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Role Matching</h3>
+                    <p>We match your skills and interests with suitable platform roles.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Onboarding</h3>
+                    <p>Selected candidates join our platform with proper onboarding.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) APPLICATION FORM -->
+        <section class="careers-section fade-in" id="application-form">
+            <h2>Application Form</h2>
+            <p class="form-intro">Submit your application for opportunities at Tailors.lk</p>
+
+            <form class="careers-form" id="careersForm" action="https://formsubmit.co/careers@tailors.lk" method="POST" enctype="multipart/form-data">
+                <!-- Hidden Fields -->
+                <input type="hidden" name="_subject" value="New Careers Application – Tailors.lk">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="form-grid">
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                        <label for="full-name">Full Name *</label>
+                        <input type="text" id="full-name" name="full_name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+94 XX XXX XXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <input type="text" id="location" name="location" required placeholder="City, District">
+                    </div>
+
+                    <!-- Area of Interest -->
+                    <div class="form-group full-width">
+                        <label for="interest">Area of Interest *</label>
+                        <select id="interest" name="area_of_interest" required>
+                            <option value="" disabled selected>Select your area of interest</option>
+                            <option value="Tailoring & Production">Tailoring & Production</option>
+                            <option value="Sales & Field Operations">Sales & Field Operations</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Marketing & Content">Marketing & Content</option>
+                            <option value="Operations & Support">Operations & Support</option>
+                            <option value="Logistics & Mobility">Logistics & Mobility</option>
+                            <option value="Internships & Training">Internships & Training</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Bio/Experience -->
+                    <div class="form-group full-width">
+                        <label for="bio">Short Bio / Experience *</label>
+                        <textarea id="bio" name="bio" required rows="4" placeholder="Briefly describe your background, skills, and experience..."></textarea>
+                    </div>
+
+                    <!-- CV Upload -->
+                    <div class="form-group">
+                        <label for="cv">CV / Resume *</label>
+                        <div class="file-upload">
+                            <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+                            <label for="cv" class="file-label">
+                                <i class="fas fa-upload"></i>
+                                Choose File
+                            </label>
+                            <span class="file-name" id="fileName">No file chosen</span>
                         </div>
-                        <div style="font-weight: 600; color: var(--teal);">Enable Growth</div>
+                        <small class="file-hint">PDF, DOC, DOCX (Max 5MB)</small>
+                    </div>
+
+                    <!-- Portfolio Links -->
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio / Links</label>
+                        <input type="text" id="portfolio" name="portfolio" placeholder="Website, LinkedIn, GitHub, etc.">
+                    </div>
+
+                    <!-- Consent -->
+                    <div class="form-group full-width consent-group">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">
+                                I consent to Tailors.lk processing my personal data for recruitment purposes. *
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Application
+                        </button>
+                        <p class="form-note">
+                            By submitting, you agree to our 
+                            <a href="/privacy">Privacy Policy</a> and 
+                            <a href="/terms">Terms of Service</a>.
+                        </p>
                     </div>
                 </div>
-            </div>
+            </form>
         </section>
 
-        <!-- 6) OUR VISION -->
-        <section class="vision-section fade-in">
-            <h2>Our Vision</h2>
-            <p>
-                To become Sri Lanka's largest and most trusted tailoring ecosystem—supporting menswear, womenswear, 
-                bridal wear, corporate uniforms, and alterations through a national network of verified professionals.
-            </p>
-            <div class="vision-grid">
-                <div class="vision-item">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <div>National Network</div>
+        <!-- 6) CALL TO ACTION ZONE -->
+        <section class="careers-section cta-section fade-in">
+            <div class="cta-content">
+                <h2>Have Questions?</h2>
+                <p>Connect with our team directly for immediate inquiries about career opportunities.</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://wa.me/94758244216?text=Hello%20Tailors.lk%2C%20I%20am%20interested%20in%20career%20opportunities." 
+                       target="_blank" class="btn btn-primary btn-lg">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp Quick Inquiry
+                    </a>
+                    
+                    <a href="/contact" class="btn btn-outline btn-lg">
+                        <i class="fas fa-envelope"></i>
+                        Contact via Email
+                    </a>
                 </div>
-                <div class="vision-item">
-                    <i class="fas fa-tshirt"></i>
-                    <div>All Clothing Categories</div>
-                </div>
-                <div class="vision-item">
-                    <i class="fas fa-award"></i>
-                    <div>Trusted Quality</div>
-                </div>
-                <div class="vision-item">
-                    <i class="fas fa-users"></i>
-                    <div>Community‑Driven</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7) WHO WE WORK WITH -->
-        <section class="about-section fade-in">
-            <h2>Who We Work With</h2>
-            <div class="partners-grid">
-                <div class="partner-card">
-                    <h3><i class="fas fa-user-circle"></i> Customers</h3>
-                    <p>Anyone seeking quality tailoring—from custom suits in Colombo to bridal wear alterations.</p>
-                </div>
-                <div class="partner-card">
-                    <h3><i class="fas fa-user-tie"></i> Tailors</h3>
-                    <p>Independent tailors, workshops, and tailoring businesses across Sri Lanka.</p>
-                </div>
-                <div class="partner-card">
-                    <h3><i class="fas fa-handshake"></i> Partners</h3>
-                    <p>Fabric suppliers, clothing brands, and service providers in the fashion ecosystem.</p>
-                </div>
-                <div class="partner-card">
-                    <h3><i class="fas fa-store-alt"></i> Franchisees</h3>
-                    <p>Entrepreneurs who want to operate a Tailors.lk‑branded tailoring service point.</p>
-                </div>
-                <div class="partner-card">
-                    <h3><i class="fas fa-graduation-cap"></i> Learners</h3>
-                    <p>Students, apprentices, and tailoring enthusiasts seeking skills and knowledge.</p>
+                
+                <div class="cta-note">
+                    <p><i class="fas fa-clock"></i> Response time: Usually within 24 hours</p>
                 </div>
             </div>
         </section>
 
-        <!-- 8) CALL TO ACTION – JOIN THE ECOSYSTEM -->
-        <section class="cta-section fade-in">
-            <h2>Join the Tailors.lk Ecosystem</h2>
-            <p>
-                Whether you're a tailor looking to grow, a professional seeking new opportunities, or a partner 
-                interested in collaboration—we're building Sri Lanka's tailoring future together.
-            </p>
-            <div class="cta-buttons">
-                <a href="/careers" class="btn btn-primary" style="background: white; color: var(--teal); font-weight: 600;">
-                    <i class="fas fa-briefcase"></i> Work With Us
+        <!-- 7) SEO SUPPORT BLOCK -->
+        <section class="careers-section seo-section fade-in">
+            <h2>Careers in Sri Lanka's Tailoring Industry</h2>
+            <div class="seo-content">
+                <p>
+                    Tailors.lk offers diverse career paths within Sri Lanka's growing fashion and tailoring sector. 
+                    As Colombo's leading digital tailoring platform, we connect professionals with opportunities 
+                    across the national tailoring network. Our platform supports traditional tailoring skills while 
+                    integrating modern technology, operations, and customer service excellence.
+                </p>
+                <p>
+                    Whether you're a master tailor, technology professional, sales expert, or operations specialist, 
+                    Tailors.lk provides a platform to grow your career within Sri Lanka's fashion industry. 
+                    Join us in revolutionizing how tailoring services are delivered across the island.
+                </p>
+            </div>
+            
+            <div class="internal-links">
+                <a href="/for-tailors" class="internal-link">
+                    <i class="fas fa-user-tie"></i>
+                    For Tailors
                 </a>
-                <a href="/contact" class="btn btn-outline" style="border-color: white; color: white;">
-                    <i class="fas fa-envelope"></i> Contact Tailors.lk
+                <a href="/tailors" class="internal-link">
+                    <i class="fas fa-list"></i>
+                    Browse Tailors
                 </a>
-                <a href="/tailors" class="btn" style="background: var(--gold-light); color: white;">
-                    <i class="fas fa-search"></i> Find Tailors
+                <a href="/services" class="internal-link">
+                    <i class="fas fa-scissors"></i>
+                    Our Services
                 </a>
             </div>
-            <p style="margin-top: 30px; font-size: 0.95rem; opacity: 0.8;">
-                Explore <a href="/for-tailors" style="color: white; font-weight: 500; text-decoration: underline;">tailor registration</a>, 
-                <a href="/partnerships" style="color: white; font-weight: 500; text-decoration: underline;">partnership opportunities</a>, 
-                or <a href="/learn" style="color: white; font-weight: 500; text-decoration: underline;">learning resources</a>.
-            </p>
-        </section>
-
-        <!-- 9) SEO SUPPORT BLOCK -->
-        <section class="seo-section fade-in">
-            <h2>Tailoring Services Across Sri Lanka</h2>
-            <p>
-                Tailors.lk serves as Sri Lanka's national tailoring platform, connecting customers with skilled professionals 
-                in every major city and region. Whether you need <strong>custom suits in Colombo</strong>, 
-                <strong>bridal tailoring in Kandy</strong>, <strong>alterations in Galle</strong>, or 
-                <strong>corporate uniforms in Jaffna</strong>, our verified network ensures quality, reliability, and 
-                transparent pricing.
-            </p>
-            <p>
-                We support all aspects of clothing creation and repair—from traditional Sri Lankan garments to modern 
-                formalwear, casual tailoring, and specialty clothing. Our platform makes it easy to find, compare, and 
-                book trusted tailors, bringing the entire tailoring industry of Sri Lanka into one accessible, 
-                digital ecosystem.
-            </p>
         </section>
     </main>
+
+    <!-- Success Popup Modal -->
+    <div class="success-popup" id="successPopup">
+        <div class="success-content">
+            <button class="close-popup" id="closePopup">&times;</button>
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>Application Submitted Successfully!</h3>
+            <p>Thank you for applying to Tailors.lk. Our team will review your application and contact you within 3-5 business days.</p>
+            <p>For immediate inquiries, please WhatsApp us or call <a href="tel:+94758244216" style="color: var(--teal); font-weight: 500;">+94 75 824 4216</a>.</p>
+            <div class="success-actions">
+                <a href="https://wa.me/94758244216?text=Hello%20Tailors.lk%2C%20I%20just%20submitted%20my%20career%20application." 
+                   target="_blank" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i>
+                    Follow up on WhatsApp
+                </a>
+                <button class="btn btn-outline" id="closePopupBtn">
+                    <i class="fas fa-times"></i>
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1286,7 +1698,8 @@
         </div>
     </footer>
 
-  
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
@@ -1309,7 +1722,153 @@
             });
         }
         
-        // Newsletter submission to both Google Forms and FormSubmit
+        // File upload display
+        const fileInput = document.getElementById('cv');
+        const fileName = document.getElementById('fileName');
+        
+        if (fileInput && fileName) {
+            fileInput.addEventListener('change', function(e) {
+                if (this.files.length > 0) {
+                    fileName.textContent = this.files[0].name;
+                    fileName.style.color = 'var(--teal)';
+                } else {
+                    fileName.textContent = 'No file chosen';
+                    fileName.style.color = 'var(--text-light)';
+                }
+            });
+        }
+        
+        // Careers Form Submission with AJAX and Success Popup
+        const careersForm = document.getElementById('careersForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successPopup = document.getElementById('successPopup');
+        const closePopup = document.getElementById('closePopup');
+        const closePopupBtn = document.getElementById('closePopupBtn');
+        
+        if (careersForm) {
+            careersForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (!validateForm()) {
+                    return;
+                }
+                
+                // Show loading state
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                submitBtn.classList.add('btn-loading');
+                submitBtn.disabled = true;
+                
+                try {
+                    // Create FormData object
+                    const formData = new FormData(this);
+                    
+                    // Submit to FormSubmit
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors' // FormSubmit requires no-cors
+                    });
+                    
+                    // Since we're using no-cors, we can't check response status
+                    // Assume success and show popup
+                    
+                    // Reset form
+                    careersForm.reset();
+                    fileName.textContent = 'No file chosen';
+                    fileName.style.color = 'var(--text-light)';
+                    
+                    // Show success popup
+                    setTimeout(() => {
+                        successPopup.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling
+                        
+                        // Scroll to top of popup
+                        successPopup.scrollIntoView({ behavior: 'smooth' });
+                    }, 500);
+                    
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    alert('There was an error submitting your application. Please try again or contact us directly.');
+                } finally {
+                    // Restore button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+        
+        // Form validation
+        function validateForm() {
+            const requiredFields = careersForm.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = 'var(--error)';
+                    
+                    // Remove error style on input
+                    field.addEventListener('input', function() {
+                        this.style.borderColor = 'var(--border)';
+                    }, { once: true });
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('email');
+            if (emailField.value && !isValidEmail(emailField.value)) {
+                isValid = false;
+                emailField.style.borderColor = 'var(--error)';
+                alert('Please enter a valid email address.');
+            }
+            
+            // Validate file size (5MB max)
+            const cvFile = document.getElementById('cv').files[0];
+            if (cvFile && cvFile.size > 5 * 1024 * 1024) {
+                isValid = false;
+                alert('File size must be less than 5MB.');
+            }
+            
+            return isValid;
+        }
+        
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        // Close popup functionality
+        if (closePopup) {
+            closePopup.addEventListener('click', closeSuccessPopup);
+        }
+        
+        if (closePopupBtn) {
+            closePopupBtn.addEventListener('click', closeSuccessPopup);
+        }
+        
+        // Close popup when clicking outside
+        successPopup.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSuccessPopup();
+            }
+        });
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && successPopup.classList.contains('active')) {
+                closeSuccessPopup();
+            }
+        });
+        
+        function closeSuccessPopup() {
+            successPopup.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Newsletter submission (from original)
         const footerSubscribe = document.getElementById('footer-subscribe');
         const newsletterMessage = document.getElementById('newsletter-message');
         const footerEmail = document.getElementById('footer-email');
@@ -1343,11 +1902,6 @@
                     if (googleSuccess || formSubmitSuccess) {
                         showMessage('Thank you! You have been subscribed to our newsletter.', 'success');
                         footerEmail.value = '';
-                        
-                        // Track successful submission
-                        console.log(`Newsletter subscription successful for: ${email}`);
-                        console.log(`Google Forms: ${googleSuccess ? 'Success' : 'Failed'}`);
-                        console.log(`FormSubmit: ${formSubmitSuccess ? 'Success' : 'Failed'}`);
                     } else {
                         showMessage('Subscription failed. Please try again later or contact us directly.', 'error');
                     }
@@ -1375,22 +1929,20 @@
         async function submitToGoogleForms(email) {
             try {
                 // Replace with your actual Google Forms endpoint
-                // This is a sample structure - you need to get the actual form URL and field names
                 const googleFormsURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
                 const formData = new FormData();
                 
-                // Add form fields - you need to update these with your actual field names
+                // Add form fields - update these with your actual field names
                 formData.append('entry.YOUR_EMAIL_FIELD_ID', email);
                 formData.append('entry.YOUR_TIMESTAMP_FIELD_ID', new Date().toISOString());
                 
                 // Use fetch with no-cors mode for cross-origin
                 const response = await fetch(googleFormsURL, {
                     method: 'POST',
-                    mode: 'no-cors', // Important for Google Forms
+                    mode: 'no-cors',
                     body: formData
                 });
                 
-                // With no-cors mode, we can't read the response, so assume success
                 return { success: true };
                 
             } catch (error) {
@@ -1409,7 +1961,7 @@
                 formData.append('_subject', 'Newsletter Subscription from Tailors.lk');
                 formData.append('_template', 'table');
                 formData.append('_captcha', 'false');
-                formData.append('source', 'about-page');
+                formData.append('source', 'careers-page');
                 
                 const response = await fetch(formSubmitURL, {
                     method: 'POST',
