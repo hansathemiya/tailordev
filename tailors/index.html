@@ -1804,7 +1804,7 @@
                         </div>
                         <div class="contact-info-item">
                             <i class="fas fa-envelope"></i>
-                            <a href="/cdn-cgi/l/email-protection#a6d2c3c7cbe6d2c7cfcac9d4d588cacd"><span class="__cf_email__" data-cfemail="532736323e1327323a3f3c21207d3f38">[email&#160;protected]</span></a>
+                            <a href="mailto:team@tailors.lk">team@tailors.lk</a>
                         </div>
                         <div class="contact-info-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1888,12 +1888,105 @@
             // Set current year
             document.getElementById('current-year').textContent = new Date().getFullYear();
             
+            // Parse URL parameters
+            parseURLParameters();
+            
             // Load tailors from JSON
             await loadTailorsFromJSON();
             
             // Setup event listeners
             setupEventListeners();
         });
+
+        // Parse URL parameters for search
+        function parseURLParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Get search parameters from URL
+            const locationParam = urlParams.get('location') || urlParams.get('city') || '';
+            const serviceParam = urlParams.get('service') || urlParams.get('services') || '';
+            const tailorParam = urlParams.get('tailor') || urlParams.get('name') || '';
+            
+            // Update search inputs with URL parameters
+            if (locationParam) {
+                locationSearch.value = decodeURIComponent(locationParam);
+                currentSearch.location = locationParam.toLowerCase();
+            }
+            
+            if (serviceParam) {
+                serviceSearch.value = decodeURIComponent(serviceParam);
+                currentSearch.service = serviceParam.toLowerCase();
+            }
+            
+            if (tailorParam) {
+                tailorSearch.value = decodeURIComponent(tailorParam);
+                currentSearch.tailor = tailorParam.toLowerCase();
+            }
+            
+            // Also check for other parameters
+            const experienceParam = urlParams.get('experience') || '';
+            const priceParam = urlParams.get('price') || urlParams.get('price_range') || '';
+            const ratingParam = urlParams.get('rating') || '';
+            const availabilityParam = urlParams.get('availability') || '';
+            
+            if (experienceParam) {
+                experienceFilter.value = experienceParam;
+                currentSearch.experience = experienceParam;
+            }
+            
+            if (priceParam) {
+                priceFilter.value = priceParam;
+                currentSearch.price = priceParam;
+            }
+            
+            if (ratingParam) {
+                ratingFilter.value = ratingParam;
+                currentSearch.rating = ratingParam;
+            }
+            
+            if (availabilityParam) {
+                availabilityFilter.value = availabilityParam;
+                currentSearch.availability = availabilityParam;
+            }
+        }
+
+        // Update URL with search parameters
+        function updateURL() {
+            const params = new URLSearchParams();
+            
+            if (currentSearch.location) {
+                params.set('location', currentSearch.location);
+            }
+            
+            if (currentSearch.service) {
+                params.set('service', currentSearch.service);
+            }
+            
+            if (currentSearch.tailor) {
+                params.set('tailor', currentSearch.tailor);
+            }
+            
+            if (currentSearch.experience) {
+                params.set('experience', currentSearch.experience);
+            }
+            
+            if (currentSearch.price) {
+                params.set('price', currentSearch.price);
+            }
+            
+            if (currentSearch.rating) {
+                params.set('rating', currentSearch.rating);
+            }
+            
+            if (currentSearch.availability) {
+                params.set('availability', currentSearch.availability);
+            }
+            
+            const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+            
+            // Update URL without reloading page
+            history.replaceState({}, '', newUrl);
+        }
 
         // Load tailors from JSON file - try multiple sources
         async function loadTailorsFromJSON() {
@@ -1933,8 +2026,15 @@
                 return;
             }
             
-            // Render all tailors on homepage with pagination
-            renderTailorsWithPagination(allTailors, currentPage);
+            // If we have URL parameters, perform search immediately
+            if (currentSearch.location || currentSearch.service || currentSearch.tailor || 
+                currentSearch.experience || currentSearch.price || currentSearch.rating || currentSearch.availability) {
+                performSearch();
+            } else {
+                // Otherwise render all tailors
+                renderTailorsWithPagination(allTailors, currentPage);
+            }
+            
             loadingEl.style.display = 'none';
         }
 
@@ -1971,7 +2071,14 @@
             }
             
             if (allTailors.length > 0) {
-                renderTailorsWithPagination(allTailors, currentPage);
+                // If we have URL parameters, perform search immediately
+                if (currentSearch.location || currentSearch.service || currentSearch.tailor || 
+                    currentSearch.experience || currentSearch.price || currentSearch.rating || currentSearch.availability) {
+                    performSearch();
+                } else {
+                    // Otherwise render all tailors
+                    renderTailorsWithPagination(allTailors, currentPage);
+                }
                 loadingEl.style.display = 'none';
             }
         }
@@ -2127,8 +2234,25 @@
             // Render with new page
             renderTailorsWithPagination(filtered, currentPage);
             
+            // Update URL with page parameter
+            updateURLWithPage(page);
+            
             // Scroll to top of results
             tailorsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Update URL with page parameter
+        function updateURLWithPage(page) {
+            const params = new URLSearchParams(window.location.search);
+            
+            if (page > 1) {
+                params.set('page', page);
+            } else {
+                params.delete('page');
+            }
+            
+            const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+            history.replaceState({}, '', newUrl);
         }
 
         // Get filtered tailors based on current search
@@ -2280,6 +2404,20 @@
         }
 
         // Subscribe to footer newsletter - DUAL SUBMISSION
+        async function subscribeFooterNewsletter() {
+            const emailInput = document.getElementById('footer-email');
+            const email = emailInput.value.trim();
+            const messageEl = document.getElementById('footer-message');
+            
+            if (!validateEmail(email)) {
+                showMessage(messageEl, 'Please enter a valid email address', 'error');
+                return;
+            }
+            
+            await submitToBoth(email, 'newsletter', messageEl, emailInput);
+        }
+
+        // Submit to both endpoints
         async function submitToBoth(email, source, messageEl, emailInput) {
             const button = source === 'learning' ? document.getElementById('notify-me') : document.getElementById('footer-subscribe');
             const originalText = button.innerHTML;
@@ -2349,20 +2487,6 @@
                     button.disabled = false;
                 }
             }
-        }
-
-        // Subscribe to footer newsletter - DUAL SUBMISSION
-        async function subscribeFooterNewsletter() {
-            const emailInput = document.getElementById('footer-email');
-            const email = emailInput.value.trim();
-            const messageEl = document.getElementById('footer-message');
-            
-            if (!validateEmail(email)) {
-                showMessage(messageEl, 'Please enter a valid email address', 'error');
-                return;
-            }
-            
-            await submitToBoth(email, 'newsletter', messageEl, emailInput);
         }
 
         // Submit email to Google Forms
@@ -2560,6 +2684,9 @@
                 availability: availabilityFilter.value
             };
 
+            // Update URL with search parameters
+            updateURL();
+            
             // Get filtered tailors
             const filtered = getFilteredTailors();
             
@@ -2652,6 +2779,9 @@
             
             // Reset to page 1
             currentPage = 1;
+            
+            // Clear URL parameters
+            history.replaceState({}, '', window.location.pathname);
             
             // Show all tailors sorted by priority with pagination
             renderTailorsWithPagination(allTailors, currentPage);
