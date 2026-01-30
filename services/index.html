@@ -30,6 +30,8 @@
             --radius-sm: 10px;
             --radius-xs: 6px;
             --transition: all 0.3s ease;
+            --success: #10b981;
+            --error: #ef4444;
         }
 
         * {
@@ -300,6 +302,50 @@
         .btn-sm {
             padding: 8px 16px;
             font-size: 0.85rem;
+        }
+
+        /* Loading State for Forms */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Newsletter Messages */
+        .newsletter-message {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .newsletter-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .newsletter-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.2);
         }
 
         /* Services Content Sections */
@@ -1527,6 +1573,7 @@
                         <i class="fas fa-paper-plane"></i> Subscribe
                     </button>
                 </div>
+                <div class="newsletter-message" id="footer-message"></div>
             </div>
             
             <div class="copyright">
@@ -1536,7 +1583,7 @@
     </footer>
 
     <!-- Schema Markup -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/ld+json">
+    <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Service",
@@ -1596,6 +1643,11 @@
     </script>
 
     <script>
+        // DUAL SUBMISSION ENDPOINTS
+        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScsDYDEBFGPc4AKH06adAgA2pcWviLKGsQHY68_92JvO2ccDQ/formResponse';
+        const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/newsletter@tailors.lk';
+        const GOOGLE_FORM_EMAIL_ID = 'entry.270227624';
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year
@@ -1630,10 +1682,10 @@
                 }
             });
 
-            // Footer newsletter subscription
-            document.getElementById('footer-subscribe').addEventListener('click', handleNewsletterSubmit);
+            // Footer newsletter subscription - DUAL SUBMISSION
+            document.getElementById('footer-subscribe').addEventListener('click', subscribeFooterNewsletter);
             document.getElementById('footer-email').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') handleNewsletterSubmit();
+                if (e.key === 'Enter') subscribeFooterNewsletter();
             });
         }
 
@@ -1714,121 +1766,156 @@
             }
         }
 
-        // Handle newsletter subscription
-        async function handleNewsletterSubmit() {
+        // Subscribe to footer newsletter - DUAL SUBMISSION
+        async function subscribeFooterNewsletter() {
             const emailInput = document.getElementById('footer-email');
             const email = emailInput.value.trim();
-            const button = document.getElementById('footer-subscribe');
-            const originalButtonText = button.innerHTML;
+            const messageEl = document.getElementById('footer-message');
             
             if (!validateEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
+                showMessage(messageEl, 'Please enter a valid email address', 'error');
                 return;
             }
             
+            await submitToBoth(email, 'newsletter', messageEl, emailInput);
+        }
+
+        // Submit email to both Google Forms and FormSubmit simultaneously
+        async function submitToBoth(email, source, messageEl, emailInput) {
+            const button = document.getElementById('footer-subscribe');
+            const originalText = button.innerHTML;
+            
             // Show loading state
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+            button.classList.add('btn-loading');
             button.disabled = true;
             
             try {
-                // Prepare data for Google Form
-                const submissionData = new FormData();
-                submissionData.append('entry.270227624', email); // Replace with your actual field ID
+                // Submit to both endpoints simultaneously
+                const [googleFormsResult, formSubmitResult] = await Promise.allSettled([
+                    submitToGoogleForms(email, source),
+                    submitToFormSubmit(email, source)
+                ]);
                 
-                // Submit to Google Form (blocks redirect)
-                const NEWSLETTER_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScsDYDEBFGPc4AKH06adAgA2pcWviLKGsQHY68_92JvO2ccDQ/formResponse';
-                await fetch(NEWSLETTER_FORM_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: submissionData
-                });
+                // Check results
+                const googleSuccess = googleFormsResult.status === 'fulfilled' && googleFormsResult.value.success;
+                const formSubmitSuccess = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.success;
                 
-                // Show success message
-                showNotification('Thank you! You\'ve been subscribed to our newsletter.', 'success');
-                
-                // Clear input
-                emailInput.value = '';
+                if (googleSuccess || formSubmitSuccess) {
+                    // Show success message
+                    showMessage(messageEl, 'Thank you! You have been subscribed to our newsletter.', 'success');
+                    
+                    // Clear input
+                    emailInput.value = '';
+                    
+                    // Update button to show success
+                    button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+                    
+                    // Log submission status for debugging
+                    console.log(`${source} submission results:`, {
+                        googleForms: googleSuccess ? 'Success' : 'Failed',
+                        formSubmit: formSubmitSuccess ? 'Success' : 'Failed',
+                        email: email
+                    });
+                    
+                } else {
+                    // Both failed
+                    showMessage(messageEl, 'Subscription failed. Please try again later.', 'error');
+                    console.error(`${source} submission failed:`, {
+                        googleForms: googleFormsResult.reason,
+                        formSubmit: formSubmitResult.reason
+                    });
+                }
                 
             } catch (error) {
-                console.error('Newsletter submission error:', error);
-                showNotification('Subscription failed. Please try again.', 'error');
+                console.error(`${source} submission error:`, error);
+                showMessage(messageEl, 'An error occurred. Please try again later.', 'error');
             } finally {
-                button.innerHTML = originalButtonText;
-                button.disabled = false;
+                // Restore button state
+                button.classList.remove('btn-loading');
+                
+                // Reset button after 3 seconds (if not already changed to success)
+                if (button.innerHTML.includes('check')) {
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }, 3000);
+                } else {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }
             }
         }
 
-        // Show notification
-        function showNotification(message, type = 'success') {
-            // Remove existing notification
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
+        // Submit email to Google Forms
+        async function submitToGoogleForms(email, source) {
+            try {
+                const formData = new FormData();
+                formData.append(GOOGLE_FORM_EMAIL_ID, email);
+                
+                // Add source information
+                formData.append('entry.123456789', source === 'newsletter' ? 'Newsletter Subscription' : 'General Subscription');
+                
+                // Submit to Google Forms with no-cors mode
+                const response = await fetch(GOOGLE_FORM_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important: prevents CORS issues
+                    body: formData
+                });
+                
+                // With no-cors mode, we can't read the response, so assume success
+                return { success: true };
+                
+            } catch (error) {
+                console.warn(`Google Forms submission for ${source} failed:`, error);
+                return { success: false, error: error.message };
             }
-            
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: ${type === 'success' ? 'var(--teal)' : '#e74c3c'};
-                    color: white;
-                    padding: 12px 20px;
-                    border-radius: var(--radius-sm);
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                    z-index: 9999;
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    animation: slideIn 0.3s ease;
-                ">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            // Add animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from {
-                        transform: translateX(100%);
-                        opacity: 0;
+        }
+
+        // Submit email to FormSubmit
+        async function submitToFormSubmit(email, source) {
+            try {
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('_subject', `Tailors.lk ${source} Subscription`);
+                formData.append('_template', 'table');
+                formData.append('_captcha', 'false');
+                formData.append('source', source);
+                
+                const response = await fetch(FORMSUBMIT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
                     }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success === 'true') {
+                    return { success: true, data };
+                } else {
+                    throw new Error(data.message || 'FormSubmit failed');
                 }
                 
-                @keyframes slideOut {
-                    from {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                    to {
-                        transform: translateX(100%);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
+            } catch (error) {
+                console.warn(`FormSubmit submission for ${source} failed:`, error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Show message in newsletter section
+        function showMessage(element, message, type = 'success') {
+            if (!element) return;
             
-            // Add to page
-            document.body.appendChild(notification);
+            element.textContent = message;
+            element.className = `newsletter-message newsletter-${type}`;
+            element.style.display = 'block';
             
-            // Remove after 4 seconds
+            // Auto-hide messages
+            const hideTime = type === 'success' ? 5000 : 8000;
             setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
-                }, 300);
-            }, 4000);
+                element.style.display = 'none';
+            }, hideTime);
         }
 
         // Email validation
@@ -1840,7 +1927,5 @@
         // Expose functions to global scope
         window.toggleFAQ = toggleFAQ;
     </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"25f397de012e437fb9ef72bda1af4805","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"25f397de012e437fb9ef72bda1af4805","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
