@@ -250,6 +250,9 @@ border: 1px solid var(--border);
 box-shadow: var(--shadow);
 transition: var(--transition);
 }
+.privacy-section:hover {
+box-shadow: var(--shadow-hover);
+}
 .privacy-section h2 {
 color: var(--teal);
 font-size: 1.6rem;
@@ -557,6 +560,20 @@ color: var(--gold-light);
 .contact-info-item span {
 color: rgba(255, 255, 255, 0.7);
 }
+/* Animations */
+.fade-in {
+animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
 /* Responsive */
 @media (max-width: 1024px) {
 .footer-grid {
@@ -639,20 +656,6 @@ gap: 15px;
 .privacy-links a {
 font-size: 0.9rem;
 padding: 12px 16px;
-}
-}
-/* Animations */
-.fade-in {
-animation: fadeIn 0.5s ease;
-}
-@keyframes fadeIn {
-from {
-opacity: 0;
-transform: translateY(20px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
 }
 }
 </style>
@@ -978,13 +981,16 @@ Connecting Sri Lanka's tailoring community since 2024.
 <li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
 <li><a href="/faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
 </ul>
-  <!-- Legal Section -->
+</div>
+<!-- Legal Section -->
 <div>
 <h4>Legal</h4>
 <ul class="footer-links">
-<li><a href="/terms"><i class="fas fa-file-contract"></i> Terms</a></li>
-<li><a href="/privacy"><i class="fas fa-shield-alt"></i> Privacy</a></li>
-<li><a href="/cookies"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
+<li><a href="/terms"><i class="fas fa-file-contract"></i> Terms & Conditions</a></li>
+<li><a href="/privacy"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+<li><a href="/cookies"><i class="fas fa-cookie-bite"></i> Cookies Policy</a></li>
+<li><a href="/legal"><i class="fas fa-balance-scale"></i> Legal</a></li>
+<li><a href="/policies"><i class="fas fa-file-alt"></i> All Policies</a></li>
 </ul>
 <!-- Contact Info -->
 <div class="contact-info">
