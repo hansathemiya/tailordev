@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tailoring Fabrics in Sri Lanka | Suit, Shirt & Wedding Fabrics | Tailors.lk</title>
+    <meta name="description" content="Explore suit fabrics, shirt fabrics, saree blouse materials and wedding textiles in Sri Lanka. Tailors.lk fabric marketplace coming soon." />
+    <meta name="keywords" content="tailoring fabrics Sri Lanka, suit fabric Sri Lanka, shirt fabric Colombo, wedding fabrics Sri Lanka, textile marketplace Sri Lanka" />
+    <!-- Updated favicon -->
+    <link rel="icon" href="https://data.tailors.lk/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://data.tailors.lk/ajax/libs/fontawesome/6.0.0/css/all.min.css" />
+    <style>
+        :root {
+            --teal: #1f4e5f;
+            --teal-dark: #0d3645;
+            --teal-light: #2a6579;
+            --gold: #b9915f;
+            --gold-light: #d4b28c;
+            --bg: #f8fafb;
+            --card-bg: #ffffff;
+            --text: #1a2a33;
+            --text-light: #6b7b83;
+            --border: rgba(31, 78, 95, 0.12);
+            --shadow: 0 8px 30px rgba(31, 78, 95, 0.08);
+            --shadow-hover: 0 12px 40px rgba(31, 78, 95, 0.15);
+            --radius: 14px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --transition: all 0.3s ease;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 15px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: var(--radius-xs);
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(31, 78, 95, 0.06);
+            color: var(--teal);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-cta .btn {
+            margin-left: 0;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--teal);
+            transition: var(--transition);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 62px;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border-top: 1px solid var(--border);
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 10px 14px;
+            border-radius: var(--radius-xs);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(31, 78, 95, 0.06);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(185, 145, 95, 0.25);
+        }
+
+        .btn-secondary {
+            background: var(--teal);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--teal-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .btn-outline:hover {
+            background: rgba(31, 78, 95, 0.05);
+        }
+
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 0.85rem;
+        }
+
+        .btn-call {
+            background: var(--teal-light);
+            color: white;
+            border: none;
+        }
+
+        .btn-call:hover {
+            background: var(--teal);
+        }
+
+        /* Header CTA Buttons */
+        .header-cta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        /* Fabrics Page Specific Styles */
+        .fabrics-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .fabrics-hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, rgba(185, 145, 95, 0.05) 0%, rgba(31, 78, 95, 0.05) 100%);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fabrics-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(185, 145, 95, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(31, 78, 95, 0.08) 0%, transparent 50%);
+        }
+
+        .fabrics-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .fabrics-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--text-light);
+            font-weight: 500;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 35px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Section Styles */
+        .fabrics-section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .fabrics-section:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .fabrics-section h2 {
+            color: var(--teal);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(31, 78, 95, 0.1);
+            font-weight: 600;
+        }
+
+        .fabrics-section h3 {
+            color: var(--teal-light);
+            font-size: 1.4rem;
+            margin: 30px 0 20px;
+            font-weight: 600;
+        }
+
+        .section-intro {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .fabrics-section p {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            padding: 30px;
+            background: rgba(31, 78, 95, 0.02);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--gold);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--teal));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .category-card h3 {
+            color: var(--teal);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .category-cta {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Learn About Fabrics */
+        .learn-section {
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.02) 0%, rgba(185, 145, 95, 0.02) 100%);
+            border: 1px solid rgba(31, 78, 95, 0.08);
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            background: linear-gradient(135deg, rgba(185, 145, 95, 0.05) 0%, rgba(31, 78, 95, 0.05) 100%);
+            border: 1px solid rgba(185, 145, 95, 0.1);
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--gold);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Waitlist Form */
+        .waitlist-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--teal);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background: var(--card-bg);
+            color: var(--text);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(31, 78, 95, 0.1);
+        }
+
+        /* Loading State */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success Popup Modal */
+        .success-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-popup.active {
+            display: flex;
+        }
+
+        .success-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-hover);
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .success-content h3 {
+            color: var(--teal);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .success-content p {
+            color: var(--text);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .close-popup:hover {
+            background: rgba(31, 78, 95, 0.05);
+            color: var(--teal);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.05) 0%, rgba(185, 145, 95, 0.05) 100%);
+            border: 1px solid rgba(31, 78, 95, 0.1);
+        }
+
+        .cta-content h2 {
+            border: none;
+            margin-bottom: 15px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        /* SEO Content */
+        .seo-content {
+            margin-bottom: 30px;
+        }
+
+        .seo-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--teal-dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 6px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 2px 0;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+            padding-left: 3px;
+        }
+
+        .footer-links i {
+            width: 14px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .newsletter h4 {
+            color: var(--gold-light);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Info in Footer */
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .contact-info-item i {
+            width: 16px;
+            margin-top: 2px;
+            margin-right: 10px;
+            color: var(--gold-light);
+            flex-shrink: 0;
+        }
+
+        .contact-info-item a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--gold-light);
+        }
+
+        .contact-info-item span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header-cta {
+                display: none;
+            }
+
+            .fabrics-container {
+                padding: 20px 15px;
+            }
+
+            .fabrics-hero {
+                padding: 30px 15px;
+            }
+
+            .fabrics-hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .fabrics-section {
+                padding: 25px;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .success-content {
+                padding: 40px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fabrics-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .fabrics-section {
+                padding: 20px;
+            }
+
+            .fabrics-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .fabrics-section h3 {
+                font-size: 1.2rem;
+            }
+
+            .category-card {
+                padding: 20px;
+            }
+
+            .category-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .success-content {
+                padding: 30px 20px;
+            }
+
+            .success-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+
+            .success-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .success-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="https://data.tailors.lk/logo.png" alt="Tailors.lk Logo" onerror="this.onerror=null; this.style.display='none';">
+                Tailors.lk
+            </a>
+
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="#directory">Find Tailors</a>
+                <a href="/services">Services</a>
+                <a href="/learn">Learn</a>
+                <a href="/about">About</a>
+                <a href="/for-businesses">For Businesses</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+            <div class="nav-cta">
+                <div class="header-cta">
+                    <a href="#directory" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-search"></i>
+                        Find Tailor
+                    </a>
+                    <a href="tel:+94758244216" class="btn btn-call btn-sm">
+                        <i class="fas fa-phone"></i>
+                        Call Us
+                    </a>
+                </div>
+                <a href="https://tailors.lk/register" class="btn btn-primary btn-sm">Join as Tailor</a>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/">Home</a>
+            <a href="#directory">Find Tailors</a>
+            <a href="/services">Services</a>
+            <a href="/learn">Learn</a>
+            <a href="/about">About</a>
+            <a href="/for-businesses">For Businesses</a>
+            <a href="/contact">Contact</a>
+            <a href="tel:+94758244216" class="btn btn-call" style="margin-top: 10px;">
+                <i class="fas fa-phone"></i>
+                Call Us
+            </a>
+            <a href="https://tailors.lk/register" class="btn btn-primary" style="margin-top: 10px;">
+                Join as Tailor
+            </a>
+        </div>
+    </header>
+
+    <!-- Fabrics Page Content -->
+    <main class="fabrics-container">
+        <!-- HERO SECTION -->
+        <section class="fabrics-hero fade-in">
+            <div class="fabrics-hero-content">
+                <h1>Premium Tailoring Fabrics in Sri Lanka</h1>
+                <p class="hero-subtitle">Discover suit fabrics, saree blouse materials, wedding textiles and custom cloth sourcing through Tailors.lk's upcoming fabric marketplace.</p>
+                <div class="hero-cta">
+                    <a href="#waitlist" class="btn btn-primary">
+                        <i class="fas fa-list"></i>
+                        Join Fabric Waitlist
+                    </a>
+                    <a href="/tailors" class="btn btn-secondary">
+                        <i class="fas fa-search"></i>
+                        Explore Tailors
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Fabric Categories -->
+        <section class="fabrics-section fade-in">
+            <h2>Fabric Categories for Tailoring in Sri Lanka</h2>
+            <p class="section-intro">Explore different fabric types suitable for various tailoring needs across Sri Lanka's diverse climate and fashion requirements.</p>
+            
+            <div class="categories-grid">
+                <article class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Suit Fabrics</h3>
+                    <p>Wool, wool blends, lightweight suiting materials, and tropical weight fabrics specially selected for Sri Lanka's warm climate. Perfect for business suits, formal wear, and professional attire.</p>
+                    <div class="category-cta">
+                        <a href="/tailors" class="btn btn-outline btn-sm">
+                            <i class="fas fa-scissors"></i>
+                            Find Tailors
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Shirt Fabrics</h3>
+                    <p>Cotton, linen, cotton-linen blends, and breathable fabrics ideal for office wear, casual shirts, and everyday fashion in Sri Lanka's tropical weather conditions.</p>
+                    <div class="category-cta">
+                        <a href="/tailors" class="btn btn-outline btn-sm">
+                            <i class="fas fa-scissors"></i>
+                            Find Tailors
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Saree Blouse Fabrics</h3>
+                    <p>Silks, cotton blends, satin, georgette, and premium materials for traditional saree blouses, including special fabrics for bridal and ceremonial wear.</p>
+                    <div class="category-cta">
+                        <a href="/tailors" class="btn btn-outline btn-sm">
+                            <i class="fas fa-scissors"></i>
+                            Find Tailors
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3>Wedding Fabrics</h3>
+                    <p>Luxury textiles for bridal gowns, groom suits, bridesmaid dresses, and ceremonial outfits including silks, satins, laces, and specialty wedding materials.</p>
+                    <div class="category-cta">
+                        <a href="/tailors" class="btn btn-outline btn-sm">
+                            <i class="fas fa-scissors"></i>
+                            Find Tailors
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Corporate Uniform Fabrics</h3>
+                    <p>Durable, professional fabrics suitable for hotel uniforms, office attire, event staff clothing, and corporate wear that maintains appearance through daily use.</p>
+                    <div class="category-cta">
+                        <a href="/tailors" class="btn btn-outline btn-sm">
+                            <i class="fas fa-scissors"></i>
+                            Find Tailors
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Casual Wear Fabrics</h3>
+                    <p>Lightweight, comfortable materials perfect for daily fashion, resort wear, vacation clothing, and casual outfits suitable for Sri Lanka's lifestyle.</p>
+                    <div class="category-cta">
+                        <a href="/tailors" class="btn btn-outline btn-sm">
+                            <i class="fas fa-scissors"></i>
+                            Find Tailors
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION: Learn About Fabrics -->
+        <section class="fabrics-section learn-section fade-in">
+            <h2>Learn About Fabrics for Sri Lankan Tailoring</h2>
+            
+            <h3>Understanding Fabric Types</h3>
+            <p>Different fabrics serve different purposes in tailoring. Wool provides structure and drape for suits, while cotton offers breathability for shirts. Linen is perfect for hot weather but wrinkles easily, and blends combine the best properties of multiple materials for optimal performance in Sri Lanka's climate.</p>
+            
+            <h3>Fabric Weight for Tropical Climate</h3>
+            <p>In Sri Lanka's warm weather, fabric weight matters significantly. Lightweight fabrics (180-240 GSM) work well for shirts and casual wear, while medium weight (240-280 GSM) suits are ideal for business attire. Tropical weight wools and breathable blends help maintain comfort without compromising on appearance.</p>
+            
+            <h3>Breathability and Durability</h3>
+            <p>Natural fibers like cotton and linen offer excellent breathability but may require more care. Synthetic blends provide durability and wrinkle resistance. For professional wear in Sri Lanka, consider cotton-linen blends that offer both comfort and maintenance ease.</p>
+            
+            <h3>Choosing Fabrics for Different Garments</h3>
+            <p>For suits, look for wool or wool blends with good drape. Shirts benefit from cotton or cotton-linen mixtures. Saree blouses require fabrics with some structure like silks or cotton blends. Understanding these distinctions helps ensure your tailored garments perform well and last longer.</p>
+        </section>
+
+        <!-- SECTION: Tailors.lk Fabric Marketplace -->
+        <section class="fabrics-section coming-soon fade-in">
+            <div class="badge">Coming Soon</div>
+            <h2>Tailors.lk Fabric Marketplace</h2>
+            <p>We're expanding our platform to include a comprehensive fabric marketplace at fabrics.tailors.lk. This planned development will connect textile suppliers, tailors, and customers across Sri Lanka.</p>
+            
+            <h3>Planned Features</h3>
+            <p>Our upcoming expansion includes verified fabric suppliers, quality-controlled materials, and a transparent marketplace for buyers, tailors, and designers. This future development aims to simplify fabric sourcing for all tailoring needs in Sri Lanka.</p>
+            
+            <h3>Supplier Network</h3>
+            <p>The planned marketplace will feature tenders from established textile sellers, importers, and mills, ensuring quality materials for every tailoring project. Verified suppliers will undergo our quality assurance process.</p>
+            
+            <h3>Rental and Sourcing Services</h3>
+            <p>Future expansion plans include fabric rental options for special occasions and comprehensive sourcing services for bulk requirements. This will serve both individual customers and business clients.</p>
+        </section>
+
+        <!-- SECTION: For Fabric Suppliers -->
+        <section class="fabrics-section fade-in">
+            <h2>For Fabric Suppliers & Textile Partners</h2>
+            <p>We invite textile sellers, importers, mills, and fabric distributors to join our upcoming marketplace. Partner with Tailors.lk to reach tailors, designers, and customers across Sri Lanka.</p>
+            
+            <div class="cta-buttons">
+                <a href="/partnerships" class="btn btn-primary">
+                    <i class="fas fa-handshake"></i>
+                    Partner With Us
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION: For Buyers & Designers -->
+        <section class="fabrics-section fade-in">
+            <h2>For Buyers & Designers</h2>
+            <p>Whether you're a customer looking for specific fabrics or a tailor sourcing materials for clients, our upcoming marketplace will streamline the fabric procurement process. Connect with verified suppliers and access quality materials for all your tailoring projects.</p>
+            
+            <div class="cta-buttons">
+                <a href="/tailors" class="btn btn-secondary">
+                    <i class="fas fa-search"></i>
+                    Find Tailors
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION: Fabric Launch Waitlist Form -->
+        <section class="fabrics-section fade-in" id="waitlist">
+            <h2>Join Our Fabric Marketplace Waitlist</h2>
+            <p class="section-intro">Be the first to know when our fabric marketplace launches. Get early access, special offers, and updates about textile availability.</p>
+            
+            <form class="waitlist-form" id="fabricWaitlistForm" action="https://formsubmit.co/fmlisting@tailors.lk" method="POST">
+                <!-- Hidden Fields for FormSubmit -->
+                <input type="hidden" name="_subject" value="New Fabric Marketplace Waitlist Submission - Tailors.lk">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="#">
+                <input type="hidden" name="source" value="fabrics-page-waitlist">
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+94 XX XXX XXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest">Primary Interest</label>
+                        <select id="interest" name="interest" class="form-control">
+                            <option value="" selected>Select your interest</option>
+                            <option value="customer">Customer looking for fabrics</option>
+                            <option value="tailor">Tailor sourcing fabrics</option>
+                            <option value="designer">Fashion designer</option>
+                            <option value="supplier">Fabric supplier</option>
+                            <option value="business">Business/Corporate</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="message">Additional Notes (Optional)</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Tell us about your fabric needs or any specific requirements..."></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn btn-primary btn-submit" style="width: 100%;" id="submitWaitlistBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Join Fabric Marketplace Waitlist
+                        </button>
+                        <p class="form-note" style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">
+                            We'll notify you when our fabric marketplace launches. No spam, guaranteed.
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- SECTION: SEO CONTENT BLOCK -->
+        <section class="fabrics-section fade-in">
+            <h2>Tailoring Fabrics in Sri Lanka</h2>
+            <div class="seo-content">
+                <p>Sri Lanka has a rich tradition of textile craftsmanship, and finding the right tailoring fabrics is essential for quality garment construction. Whether you need suit fabric in Colombo for business attire, shirt fabric for office wear, or wedding fabrics for special occasions, understanding material selection is crucial for successful tailoring projects.</p>
+                
+                <p>The local textile market offers diverse options, from traditional materials to modern blends suitable for Sri Lanka's tropical climate. Our upcoming fabric marketplace aims to simplify the sourcing process, connecting customers and tailors with verified suppliers of quality materials for all tailoring needs.</p>
+                
+                <p>For professional tailoring services across Sri Lanka, proper fabric selection forms the foundation of garment quality. Different projects require different materials – business suits benefit from wool blends, casual shirts work well with cotton or linen, and traditional wear often uses specific silks or satins. Understanding these distinctions helps ensure your tailored garments meet both aesthetic and functional requirements.</p>
+                
+                <p>As we develop our textile marketplace, we're focused on creating a reliable platform for fabric sourcing in Sri Lanka. This expansion will support the tailoring industry by providing access to quality materials, verified suppliers, and transparent procurement processes for tailors, designers, and customers nationwide.</p>
+            </div>
+        </section>
+
+        <!-- FINAL CTA SECTION -->
+        <section class="fabrics-section cta-section fade-in">
+            <div class="cta-content">
+                <h2>Ready for Better Fabrics and Better Tailoring?</h2>
+                <p>Connect with verified tailors who understand fabric selection and garment construction for all your clothing needs.</p>
+                
+                <div class="cta-buttons">
+                    <a href="/tailors" class="btn btn-primary btn-lg">
+                        <i class="fas fa-search"></i>
+                        Explore Tailors
+                    </a>
+                    <a href="/contact" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Success Popup Modal -->
+    <div class="success-popup" id="successPopup">
+        <div class="success-content">
+            <button class="close-popup" id="closePopup">&times;</button>
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>You're on the Waitlist!</h3>
+            <p>Thank you for joining the Tailors.lk Fabric Marketplace waitlist. We'll notify you as soon as we launch, with early access and special offers for our first members.</p>
+            <p>In the meantime, you can explore our verified tailors or learn more about fabric types for your projects.</p>
+            <div class="success-actions">
+                <a href="/tailors" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Explore Tailors
+                </a>
+                <button class="btn btn-outline" id="closePopupBtn">
+                    <i class="fas fa-times"></i>
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Platform Section -->
+                <div>
+                    <h4>Tailors.lk</h4>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px; font-size: 0.85rem;">
+                        Connecting Sri Lanka's tailoring community since 2024.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/Tailors.lk.find" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/Tailors.lk" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/Tailorslk" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@tailorslk" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://linkedin.com/company/tailors-lk" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- For Users Section -->
+                <div>
+                    <h4>For Users</h4>
+                    <ul class="footer-links">
+                        <li><a href="/services"><i class="fas fa-scissors"></i> Services</a></li>
+                        <li><a href="/tailors"><i class="fas fa-list"></i> All Tailors</a></li>
+                        <li><a href="/fabrics"><i class="fas fa-tshirt"></i> Fabrics</a></li>
+                        <li><a href="/reviews"><i class="fas fa-star"></i> Reviews</a></li>
+                        <li><a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a></li>
+                        <li><a href="/specials"><i class="fas fa-percentage"></i> Specials</a></li>
+                    </ul>
+                </div>
+                
+                <!-- For Partners Section -->
+                <div>
+                    <h4>For Partners</h4>
+                    <ul class="footer-links">
+                        <li><a href="/for-tailors"><i class="fas fa-user-tie"></i> For Tailors</a></li>
+                        <li><a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a></li>
+                        <li><a href="/for-brands"><i class="fas fa-tag"></i> For Brands</a></li>
+                        <li><a href="/partnerships"><i class="fas fa-handshake"></i> Partnerships</a></li>
+                        <li><a href="/careers"><i class="fas fa-users"></i> Careers</a></li>
+                        <li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Cities Section -->
+                <div>
+                    <h4>Find by City</h4>
+                    <ul class="footer-links">
+                        <li><a href="/colombo"><i class="fas fa-city"></i> Colombo</a></li>
+                        <li><a href="/kandy"><i class="fas fa-mountain"></i> Kandy</a></li>
+                        <li><a href="/galle"><i class="fas fa-umbrella-beach"></i> Galle</a></li>
+                        <li><a href="/jaffna"><i class="fas fa-landmark"></i> Jaffna</a></li>
+                        <li><a href="/trinco"><i class="fas fa-anchor"></i> Trincomalee</a></li>
+                        <li><a href="/ella"><i class="fas fa-hiking"></i> Ella</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company Section -->
+                <div>
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="/our-story"><i class="fas fa-book"></i> Our Story</a></li>
+                        <li><a href="/our-team"><i class="fas fa-users"></i> Our Team</a></li>
+                        <li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                        <li><a href="/faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal Section -->
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="/terms"><i class="fas fa-file-contract"></i> Terms</a></li>
+                        <li><a href="/privacy"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+                        <li><a href="/cookies"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
+                    </ul>
+                    
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <h4>Contact Info</h4>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+94758244216">+94 75 824 4216</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="/cdn-cgi/l/email-protection#0f7b6a6e627f7b6e66636479782d6f68"><span class="__cf_email__" data-cfemail="720617131f3206171f1a1904055c1e19">[email&#160;protected]</span></a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Colombo, Sri Lanka</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="newsletter">
+                <h4>Stay Updated</h4>
+                <p>Get the latest on tailoring trends, special offers, and new tailors</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email address" class="newsletter-input" id="footer-email" required>
+                    <button class="btn btn-primary btn-sm" id="footer-subscribe">
+                        <i class="fas fa-paper-plane"></i> Subscribe
+                    </button>
+                </div>
+                <div class="newsletter-message" id="newsletter-message"></div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> Tailors.lk. All rights reserved. | Uplifting Sri Lanka's tailoring tradition</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Tailoring Fabrics in Sri Lanka | Tailors.lk",
+        "description": "Explore suit fabrics, shirt fabrics, saree blouse materials and wedding textiles in Sri Lanka. Tailors.lk fabric marketplace coming soon.",
+        "url": "https://tailors.lk/fabrics",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Tailors.lk",
+            "description": "Sri Lanka's premier tailoring platform connecting customers with verified tailors",
+            "url": "https://tailors.lk",
+            "logo": "https://data.tailors.lk/logo.png",
+            "sameAs": [
+                "https://facebook.com/Tailors.lk.find",
+                "https://instagram.com/Tailors.lk",
+                "https://x.com/Tailorslk",
+                "https://linkedin.com/company/tailors-lk"
+            ],
+            "serviceType": [
+                "Tailoring Services",
+                "Fabric Sourcing",
+                "Textile Marketplace"
+            ]
+        }
+    }
+    </script>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        }
+        
+        // Waitlist Form Submission with AJAX and Success Popup
+        const waitlistForm = document.getElementById('fabricWaitlistForm');
+        const submitBtn = document.getElementById('submitWaitlistBtn');
+        const successPopup = document.getElementById('successPopup');
+        const closePopup = document.getElementById('closePopup');
+        const closePopupBtn = document.getElementById('closePopupBtn');
+        
+        if (waitlistForm) {
+            waitlistForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (!validateWaitlistForm()) {
+                    return;
+                }
+                
+                // Show loading state
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                submitBtn.classList.add('btn-loading');
+                submitBtn.disabled = true;
+                
+                try {
+                    // Create FormData object
+                    const formData = new FormData(this);
+                    
+                    // Submit to FormSubmit
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors' // FormSubmit requires no-cors
+                    });
+                    
+                    // Since we're using no-cors, we can't check response status
+                    // Assume success and show popup
+                    
+                    // Reset form
+                    waitlistForm.reset();
+                    
+                    // Show success popup
+                    setTimeout(() => {
+                        successPopup.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling
+                        
+                        // Scroll to top of popup
+                        successPopup.scrollIntoView({ behavior: 'smooth' });
+                    }, 500);
+                    
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    alert('There was an error submitting your form. Please try again or contact us directly.');
+                } finally {
+                    // Restore button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+        
+        // Waitlist form validation
+        function validateWaitlistForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            let isValid = true;
+            
+            // Validate name
+            if (!name) {
+                isValid = false;
+                document.getElementById('name').style.borderColor = 'var(--error)';
+            }
+            
+            // Validate email
+            if (!email || !isValidEmail(email)) {
+                isValid = false;
+                document.getElementById('email').style.borderColor = 'var(--error)';
+                if (!isValid) alert('Please enter a valid email address.');
+            }
+            
+            // Validate phone
+            if (!phone) {
+                isValid = false;
+                document.getElementById('phone').style.borderColor = 'var(--error)';
+            }
+            
+            // Remove error styles on input
+            const inputs = waitlistForm.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.style.borderColor = 'var(--border)';
+                }, { once: true });
+            });
+            
+            return isValid;
+        }
+        
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        // Close popup functionality
+        if (closePopup) {
+            closePopup.addEventListener('click', closeSuccessPopup);
+        }
+        
+        if (closePopupBtn) {
+            closePopupBtn.addEventListener('click', closeSuccessPopup);
+        }
+        
+        // Close popup when clicking outside
+        successPopup.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSuccessPopup();
+            }
+        });
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && successPopup.classList.contains('active')) {
+                closeSuccessPopup();
+            }
+        });
+        
+        function closeSuccessPopup() {
+            successPopup.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Add textarea styling
+        const textarea = document.querySelector('textarea');
+        if (textarea) {
+            textarea.style.cssText = `
+                width: 100%;
+                padding: 12px 16px;
+                border: 1px solid var(--border);
+                border-radius: var(--radius-sm);
+                font-family: inherit;
+                font-size: 0.95rem;
+                transition: var(--transition);
+                background: var(--card-bg);
+                color: var(--text);
+                resize: vertical;
+                min-height: 80px;
+            `;
+            
+            textarea.addEventListener('focus', function() {
+                this.style.outline = 'none';
+                this.style.borderColor = 'var(--teal)';
+                this.style.boxShadow = '0 0 0 3px rgba(31, 78, 95, 0.1)';
+            });
+            
+            textarea.addEventListener('blur', function() {
+                this.style.boxShadow = 'none';
+            });
+        }
+        
+        // Add select styling
+        const select = document.querySelector('select');
+        if (select) {
+            select.style.cssText = `
+                width: 100%;
+                padding: 12px 16px;
+                border: 1px solid var(--border);
+                border-radius: var(--radius-sm);
+                font-family: inherit;
+                font-size: 0.95rem;
+                transition: var(--transition);
+                background: var(--card-bg);
+                color: var(--text);
+                cursor: pointer;
+            `;
+            
+            select.addEventListener('focus', function() {
+                this.style.outline = 'none';
+                this.style.borderColor = 'var(--teal)';
+                this.style.boxShadow = '0 0 0 3px rgba(31, 78, 95, 0.1)';
+            });
+            
+            select.addEventListener('blur', function() {
+                this.style.boxShadow = 'none';
+            });
+        }
+        
+        // Newsletter submission
+        const footerSubscribe = document.getElementById('footer-subscribe');
+        const newsletterMessage = document.getElementById('newsletter-message');
+        const footerEmail = document.getElementById('footer-email');
+        
+        if (footerSubscribe) {
+            footerSubscribe.addEventListener('click', async function() {
+                const email = footerEmail.value.trim();
+                
+                // Validate email
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    showMessage('Please enter a valid email address.', 'error');
+                    return;
+                }
+                
+                // Show loading state
+                const originalText = footerSubscribe.innerHTML;
+                footerSubscribe.classList.add('btn-loading');
+                footerSubscribe.disabled = true;
+                
+                try {
+                    // Submit to both endpoints simultaneously
+                    const [googleFormsResult, formSubmitResult] = await Promise.allSettled([
+                        submitToGoogleForms(email),
+                        submitToFormSubmit(email)
+                    ]);
+                    
+                    // Check results
+                    const googleSuccess = googleFormsResult.status === 'fulfilled' && googleFormsResult.value.success;
+                    const formSubmitSuccess = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.success;
+                    
+                    if (googleSuccess || formSubmitSuccess) {
+                        showMessage('Thank you! You have been subscribed to our newsletter.', 'success');
+                        footerEmail.value = '';
+                    } else {
+                        showMessage('Subscription failed. Please try again later or contact us directly.', 'error');
+                    }
+                    
+                } catch (error) {
+                    console.error('Newsletter subscription error:', error);
+                    showMessage('An error occurred. Please try again later.', 'error');
+                } finally {
+                    // Restore button state
+                    footerSubscribe.classList.remove('btn-loading');
+                    footerSubscribe.innerHTML = originalText;
+                    footerSubscribe.disabled = false;
+                }
+            });
+            
+            // Also allow Enter key submission
+            footerEmail.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    footerSubscribe.click();
+                }
+            });
+        }
+        
+        // Function to submit to Google Forms
+        async function submitToGoogleForms(email) {
+            try {
+                const googleFormsURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+                const formData = new FormData();
+                
+                formData.append('entry.YOUR_EMAIL_FIELD_ID', email);
+                formData.append('entry.YOUR_TIMESTAMP_FIELD_ID', new Date().toISOString());
+                
+                const response = await fetch(googleFormsURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+                
+                return { success: true };
+                
+            } catch (error) {
+                console.warn('Google Forms submission failed:', error);
+                return { success: false, error: error.message };
+            }
+        }
+        
+        // Function to submit to FormSubmit
+        async function submitToFormSubmit(email) {
+            try {
+                const formSubmitURL = 'https://formsubmit.co/ajax/newsletter@tailors.lk';
+                
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('_subject', 'Newsletter Subscription from Tailors.lk Fabrics Page');
+                formData.append('_template', 'table');
+                formData.append('_captcha', 'false');
+                formData.append('source', 'fabrics-page');
+                
+                const response = await fetch(formSubmitURL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success === 'true') {
+                    return { success: true, data };
+                } else {
+                    throw new Error(data.message || 'FormSubmit failed');
+                }
+                
+            } catch (error) {
+                console.warn('FormSubmit submission failed:', error);
+                return { success: false, error: error.message };
+            }
+        }
+        
+        // Function to show messages
+        function showMessage(message, type = 'success') {
+            if (!newsletterMessage) return;
+            
+            newsletterMessage.textContent = message;
+            newsletterMessage.className = `newsletter-message newsletter-${type}`;
+            newsletterMessage.style.display = 'block';
+            
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    newsletterMessage.style.display = 'none';
+                }, 5000);
+            }
+            
+            // Auto-hide error messages after 8 seconds
+            if (type === 'error') {
+                setTimeout(() => {
+                    newsletterMessage.style.display = 'none';
+                }, 8000);
+            }
+        }
+    </script>
+</body>
+</html>
