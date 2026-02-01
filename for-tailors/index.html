@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +31,8 @@
             --radius-sm: 10px;
             --radius-xs: 6px;
             --transition: all 0.3s ease;
+            --success: #10b981;
+            --error: #ef4444;
         }
 
         * {
@@ -291,7 +292,899 @@
             font-weight: 600;
         }
 
-        /* Footer - UPDATED Contact Info Section */
+        /* NEW STYLES FOR UPDATED SECTIONS */
+
+        /* 1. HERO SECTION */
+        .upgraded-hero {
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upgraded-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23000" opacity="0.03" d="M0,0 L100,0 L100,100 Z"/></svg>');
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .upgraded-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .upgraded-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .micro-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .hero-cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* 2. ROADMAP INFOGRAPHIC */
+        .roadmap-section {
+            padding: 80px 0;
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+        }
+
+        /* Roadmap Container */
+        .roadmap-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Curved Path Line */
+        .roadmap-path {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal) 0%, var(--gold) 100%);
+            transform: translateY(-50%);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .roadmap-path::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(90deg, 
+                rgba(31, 78, 95, 0.1) 0%, 
+                rgba(185, 145, 95, 0.1) 100%);
+            transform: translateY(-50%);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        /* Roadmap Steps */
+        .roadmap-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .roadmap-step {
+            position: relative;
+            width: 180px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 3;
+            box-shadow: 0 8px 20px rgba(31, 78, 95, 0.2);
+            transition: var(--transition);
+        }
+
+        .roadmap-step:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(31, 78, 95, 0.3);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+        }
+
+        .step-content {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 25px 20px;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .roadmap-step:hover .step-content {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--teal);
+        }
+
+        .step-content h3 {
+            font-size: 1.2rem;
+            color: var(--teal);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .step-content p {
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Connection lines */
+        .step-connector {
+            position: absolute;
+            top: 30px;
+            right: -60px;
+            width: 60px;
+            height: 4px;
+            background: var(--teal-light);
+            z-index: 2;
+        }
+
+        .step-connector::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--teal);
+            border-radius: 50%;
+        }
+
+        /* Mobile version of roadmap */
+        @media (max-width: 1024px) {
+            .roadmap-path {
+                display: none;
+            }
+            
+            .roadmap-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .roadmap-step {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .step-connector {
+                display: none;
+            }
+        }
+
+        /* 3. HOLOGRAPHIC BENEFITS GRID */
+        .benefits-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.03) 0%, rgba(13, 54, 69, 0.03) 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        /* Holographic Card Effect */
+        .holographic-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.5s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .holographic-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                0deg, 
+                transparent, 
+                transparent 30%, 
+                rgba(0, 255, 255, 0.1)
+            );
+            transform: rotate(-45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .holographic-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .holographic-card:hover::before {
+            opacity: 1;
+            transform: rotate(-45deg) translateY(100%);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .holographic-card:hover .benefit-icon {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .holographic-card h3 {
+            font-size: 1.3rem;
+            color: var(--teal);
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .holographic-card p {
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 4. UPDATED MEMBERSHIP PLANS (Signature in Middle) */
+        .plans-section {
+            padding: 60px 0;
+            background: var(--bg);
+            transform: scale(0.95);
+            transform-origin: top;
+        }
+
+        .plans-container {
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        .plan-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 35px 25px;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Updated Glow Effects */
+        .plan-card.glow-green {
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        .plan-card.glow-green:hover {
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.15);
+            border-color: #10b981;
+        }
+
+        .plan-card.glow-blue {
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .plan-card.glow-blue:hover {
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);
+            border-color: #3b82f6;
+        }
+
+        /* Signature Plan - Green to Gold Gradient Glow */
+        .plan-card.glow-signature {
+            border: 2px solid transparent;
+            background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                      linear-gradient(135deg, #10b981, var(--gold)) border-box;
+            position: relative;
+        }
+
+        .plan-card.glow-signature::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #10b981, var(--gold), #10b981);
+            border-radius: var(--radius);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: borderGlow 3s linear infinite;
+        }
+
+        .plan-card.glow-signature:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% {
+                filter: blur(5px) brightness(1);
+            }
+            50% {
+                filter: blur(8px) brightness(1.2);
+            }
+        }
+
+        .plan-card.glow-signature:hover {
+            box-shadow: 0 15px 50px rgba(16, 185, 129, 0.25);
+            transform: translateY(-8px);
+        }
+
+        /* Plan Header */
+        .plan-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .plan-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .plan-badge.green {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .plan-badge.blue {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .plan-badge.signature {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(185, 145, 95, 0.1));
+            color: var(--gold);
+            border: 1px solid rgba(185, 145, 95, 0.3);
+        }
+
+        .plan-title {
+            font-size: 1.7rem;
+            color: var(--teal);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .plan-description {
+            color: var(--text-light);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 20px 0;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .plan-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        /* Plan CTA Buttons with Enhanced Hover Effects */
+        .plan-cta {
+            margin-top: auto;
+        }
+
+        .plan-cta .btn {
+            width: 100%;
+            padding: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Launch Plan Button */
+        .plan-card.glow-green .btn {
+            background: #10b981;
+            border-color: #10b981;
+        }
+
+        .plan-card.glow-green .btn:hover {
+            background: #0ea271;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Pro Plan Button */
+        .plan-card.glow-blue .btn {
+            background: #3b82f6;
+            border-color: #3b82f6;
+        }
+
+        .plan-card.glow-blue .btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Signature Plan Button - Blue Green Gradient */
+        .plan-card.glow-signature .btn {
+            background: linear-gradient(135deg, var(--teal), #10b981);
+            border: none;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .plan-card.glow-signature .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #10b981, var(--teal));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .plan-card.glow-signature .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .plan-card.glow-signature .btn:hover::before {
+            opacity: 1;
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* 5. ORDER HANDLING */
+        .orders-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.03) 0%, rgba(13, 54, 69, 0.03) 100%);
+        }
+
+        .orders-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .orders-content p {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* 6. DIGITAL SERVICES */
+        .digital-services-section {
+            padding: 60px 0;
+            background: var(--bg);
+        }
+
+        .services-list {
+            max-width: 800px;
+            margin: 30px auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: var(--card-bg);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .service-item:hover {
+            background: rgba(31, 78, 95, 0.03);
+            transform: translateX(5px);
+        }
+
+        .service-item i {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        /* 7. SUBDOMAIN SEARCH */
+        .subdomain-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.03) 0%, rgba(13, 54, 69, 0.03) 100%);
+        }
+
+        .subdomain-search {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            max-width: 600px;
+            margin: 30px auto 0;
+            text-align: center;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(185, 145, 95, 0.1);
+        }
+
+        .search-input.loading {
+            background: var(--bg);
+            border-color: var(--gold);
+        }
+
+        .availability-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            display: none;
+            text-align: left;
+        }
+
+        .availability-result.available {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            color: #166534;
+        }
+
+        .availability-result.unavailable {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #991b1b;
+        }
+
+        .availability-result.reserved {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            color: #92400e;
+        }
+
+        .subdomain-suggestions {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(31, 78, 95, 0.05);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            display: none;
+        }
+
+        .subdomain-suggestions h4 {
+            font-size: 0.9rem;
+            color: var(--teal);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .suggestions-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .suggestion-item {
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xs);
+            font-size: 0.85rem;
+            color: var(--teal);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .suggestion-item:hover {
+            background: var(--teal);
+            color: white;
+            border-color: var(--teal);
+        }
+
+        /* 8. PARTNERSHIPS */
+        .partnerships-section {
+            padding: 60px 0;
+            background: var(--bg);
+        }
+
+        .partnerships-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 9. COMPACT LEAD FORM SECTION */
+        .lead-form-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(31, 78, 95, 0.05) 0%, rgba(13, 54, 69, 0.05) 100%);
+        }
+
+        .lead-form {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Updated form layout - Email and Experience side by side */
+        .form-row.compact {
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--teal);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: var(--card-bg);
+            color: var(--text);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(31, 78, 95, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+            font-size: 0.9rem;
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            padding: 35px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .success-message h3 {
+            color: var(--teal);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .success-message p {
+            color: var(--text);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
         footer {
             background: var(--teal-dark);
             color: white;
@@ -407,442 +1300,6 @@
             font-size: 0.8rem;
         }
 
-        /* NEW STYLES FOR FOR-TAILORS PAGE ONLY */
-        
-        /* Hero Section */
-        .tailor-hero {
-            padding: 60px 0 40px;
-            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tailor-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23000" opacity="0.03" d="M0,0 L100,0 L100,100 Z"/></svg>');
-            background-size: cover;
-            opacity: 0.1;
-        }
-
-        .tailor-hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .tailor-hero h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .tailor-hero-subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-            font-weight: 300;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.5;
-        }
-
-        .hero-cta-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .trust-bullets {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .trust-bullet {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            text-align: center;
-            max-width: 180px;
-        }
-
-        .trust-bullet i {
-            font-size: 1.5rem;
-            color: var(--gold-light);
-        }
-
-        .trust-bullet span {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Content Sections */
-        .section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--teal);
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        /* Cards Grid */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .benefit-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .benefit-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .benefit-card h3 {
-            font-size: 1.3rem;
-            color: var(--teal);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .benefit-card p {
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* Steps Flow */
-        .steps-flow {
-            max-width: 800px;
-            margin: 40px auto 0;
-            position: relative;
-        }
-
-        .step {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--gold);
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--teal);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .step-content h3 {
-            font-size: 1.2rem;
-            color: var(--teal);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .step-content p {
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* Verification Section */
-        .verification-section {
-            background: linear-gradient(135deg, rgba(31, 78, 95, 0.05) 0%, rgba(13, 54, 69, 0.05) 100%);
-            border-radius: var(--radius);
-            padding: 40px;
-            margin-top: 30px;
-        }
-
-        .criteria-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .criteria-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .criteria-item i {
-            color: var(--gold);
-            font-size: 1rem;
-        }
-
-        /* Order Cards */
-        .order-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .order-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .order-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .order-card h3 {
-            font-size: 1.3rem;
-            color: var(--teal);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .order-card ul {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .order-card li {
-            padding: 8px 0;
-            padding-left: 24px;
-            position: relative;
-            color: var(--text);
-        }
-
-        .order-card li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Subdomain Search - UPDATED */
-        .subdomain-search {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 40px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            max-width: 600px;
-            margin: 30px auto 0;
-            text-align: center;
-        }
-
-        .search-container {
-            display: flex;
-            gap: 10px;
-            margin: 25px 0;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(185, 145, 95, 0.1);
-        }
-
-        .search-input.loading {
-            background: var(--bg);
-            border-color: var(--gold);
-        }
-
-        .availability-result {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: var(--radius-sm);
-            display: none;
-            text-align: left;
-        }
-
-        .availability-result.available {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            color: #166534;
-        }
-
-        .availability-result.unavailable {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            color: #991b1b;
-        }
-
-        .availability-result.reserved {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            color: #92400e;
-        }
-
-        .subdomain-suggestions {
-            margin-top: 15px;
-            padding: 12px;
-            background: rgba(31, 78, 95, 0.05);
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            display: none;
-        }
-
-        .subdomain-suggestions h4 {
-            font-size: 0.9rem;
-            color: var(--teal);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .suggestions-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .suggestion-item {
-            padding: 6px 12px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-xs);
-            font-size: 0.85rem;
-            color: var(--teal);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .suggestion-item:hover {
-            background: var(--teal);
-            color: white;
-            border-color: var(--teal);
-        }
-
-        /* Benefits Grid */
-        .gains-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .gain-item {
-            background: var(--card-bg);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .gain-item i {
-            font-size: 1.8rem;
-            color: var(--teal);
-            margin-bottom: 10px;
-        }
-
-        .gain-item span {
-            font-weight: 600;
-            color: var(--teal);
-        }
-
-        /* Final CTA Banner */
-        .final-cta {
-            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
-            border-radius: var(--radius);
-            padding: 50px 40px;
-            text-align: center;
-            color: white;
-            margin-top: 40px;
-        }
-
-        .final-cta h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .final-cta p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         /* Mobile Menu CTA Buttons */
         .mobile-cta-buttons {
             display: flex;
@@ -856,140 +1313,25 @@
             justify-content: center;
         }
 
-        /* Responsive - PRESERVED */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 25px;
-            }
-            
-            .tailor-hero h1 {
-                font-size: 2rem;
-            }
+        /* Loading State */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
         }
 
-        @media (max-width: 768px) {
-            .nav-links, .nav-cta {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .tailor-hero {
-                padding: 40px 0 30px;
-            }
-
-            .tailor-hero h1 {
-                font-size: 1.7rem;
-            }
-
-            .tailor-hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .hero-cta-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-
-            .hero-cta-buttons .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-
-            .trust-bullets {
-                gap: 20px;
-            }
-
-            .section {
-                padding: 40px 0;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .step {
-                padding: 20px;
-            }
-
-            .verification-section {
-                padding: 25px;
-            }
-
-            .order-cards {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .subdomain-search {
-                padding: 25px;
-                margin: 0 10px;
-            }
-
-            .search-container {
-                flex-direction: column;
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
-            .final-cta {
-                padding: 30px 20px;
-                margin: 0 10px;
-            }
-
-            .final-cta h2 {
-                font-size: 1.6rem;
-            }
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
         }
 
-        @media (max-width: 480px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .tailor-hero h1 {
-                font-size: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-            }
-
-            .trust-bullet {
-                max-width: 140px;
-            }
-
-            .step {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-
-            .step-number {
-                margin: 0 auto;
-            }
-
-            .gains-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .benefit-card, .order-card {
-                padding: 20px;
-            }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Animations */
@@ -1008,20 +1350,202 @@
             }
         }
 
-        /* Loading Spinner */
-        .spinner {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(31, 78, 95, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--teal);
-            animation: spin 0.8s linear infinite;
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .plans-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 25px;
+            }
+            
+            .roadmap-steps {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 40px;
+            }
+            
+            .roadmap-step {
+                width: 200px;
+            }
+            
+            .roadmap-path {
+                display: none;
+            }
+            
+            .step-connector {
+                display: none;
+            }
         }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+            
+            .upgraded-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .plans-section {
+                transform: scale(0.9);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .upgraded-hero {
+                padding: 60px 0 40px;
+            }
+
+            .upgraded-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .hero-cta-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .roadmap-section {
+                padding: 40px 0;
+            }
+
+            .roadmap-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .roadmap-step {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .step-content {
+                padding: 20px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .holographic-card {
+                padding: 25px;
+            }
+
+            .orders-content {
+                padding: 25px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .subdomain-search {
+                padding: 25px;
+                margin: 0 10px;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .lead-form {
+                padding: 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .form-row.compact {
+                grid-template-columns: 1fr;
+            }
+
+            .success-message {
+                padding: 25px 20px;
+                margin: 0 10px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .success-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .upgraded-hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .plan-card, .partnerships-card {
+                padding: 25px 20px;
+            }
+
+            .plan-title {
+                font-size: 1.5rem;
+            }
+
+            .benefit-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .plans-section {
+                transform: scale(0.85);
+            }
+        }
+
+        @media (max-width: 360px) {
+            .plans-section {
+                transform: scale(0.8);
             }
         }
     </style>
@@ -1097,342 +1621,379 @@
 
     <!-- MAIN CONTENT STARTS HERE -->
     
-    <!-- 1) HERO SECTION -->
-    <section class="tailor-hero">
-        <div class="container tailor-hero-content">
-            <h1>Grow Your Tailoring Business with Tailors.lk</h1>
-            <p class="tailor-hero-subtitle">
-                Join Sri Lanka's tailoring marketplace to get visibility, enquiries, digital support, and premium opportunities for your tailoring business.
+    <!-- 1. UPDATED HERO SECTION -->
+    <section class="upgraded-hero fade-in">
+        <div class="container upgraded-hero-content">
+            <h1>Grow Your Tailoring Business With Tailors.lk</h1>
+            <p class="hero-subtitle">
+                Get discovered, receive customer inquiries, build your brand, and manage orders professionally with Tailors.lk.
             </p>
             
             <div class="hero-cta-buttons">
-                <a href="https://register.tailors.lk" class="btn btn-primary btn-lg">
+                <a href="#lead-form" class="btn btn-primary btn-lg">
                     <i class="fas fa-user-plus"></i>
-                    Register as a Tailor
+                    Join Tailors.lk
                 </a>
-                <a href="https://wa.me/94758244216?text=Hi%20Tailors.lk,%20I'm%20interested%20in%20joining%20as%20a%20tailor" 
-                   class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.1);">
+                <a href="https://wa.me/94758244216?text=Hi%2C%20I%20want%20to%20list%20my%20tailoring%20business%20on%20Tailors.lk" 
+                   class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.1);" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    Chat on WhatsApp
+                    Talk on WhatsApp
                 </a>
             </div>
             
-            <div class="trust-bullets">
-                <div class="trust-bullet">
-                    <i class="fas fa-search"></i>
-                    <span>Get discovered by customers</span>
-                </div>
-                <div class="trust-bullet">
-                    <i class="fas fa-envelope"></i>
-                    <span>Receive quality enquiries</span>
-                </div>
-                <div class="trust-bullet">
-                    <i class="fas fa-globe"></i>
-                    <span>Build your online presence</span>
-                </div>
-            </div>
+            <p class="micro-text">Serving tailors across Sri Lanka with modern digital tools.</p>
         </div>
     </section>
 
-    <!-- 2) WHY JOIN TAILORS.LK -->
-    <section class="section">
+    <!-- 2. ROADMAP INFOGRAPHIC (HOW LISTING WORKS) -->
+    <section class="roadmap-section fade-in">
         <div class="container">
-            <h2 class="section-title">Why Tailors Across Sri Lanka Join Tailors.lk</h2>
+            <h2 class="section-title">How Listing Works on Tailors.lk</h2>
             <p class="section-subtitle">
-                Join hundreds of tailoring businesses in Colombo, Kandy, Galle and across Sri Lanka who are growing their business with our platform.
+                Journey from registration to becoming a successful verified tailor on our platform
             </p>
             
-            <div class="benefits-grid fade-in">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Online Visibility</h3>
-                    <p>Get listed and found by customers searching for tailors in Colombo and across Sri Lanka. Increase your reach beyond your local area.</p>
-                </div>
+            <div class="roadmap-container">
+                <!-- Curved Path Line -->
+                <div class="roadmap-path"></div>
                 
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-bullseye"></i>
+                <div class="roadmap-steps">
+                    <!-- Step 1 -->
+                    <div class="roadmap-step">
+                        <div class="step-number">1</div>
+                        <div class="step-connector"></div>
+                        <div class="step-content">
+                            <h3>Register</h3>
+                            <p>Fill the quick registration form with your basic business details. Takes less than 5 minutes to complete.</p>
+                        </div>
                     </div>
-                    <h3>Quality Enquiries</h3>
-                    <p>Receive relevant tailoring requests for menswear, womenswear, bridal, alterations, and corporate wear. Connect with serious customers.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
+                    
+                    <!-- Step 2 -->
+                    <div class="roadmap-step">
+                        <div class="step-number">2</div>
+                        <div class="step-connector"></div>
+                        <div class="step-content">
+                            <h3>Verification Call</h3>
+                            <p>Our team contacts you via WhatsApp or phone to confirm details and understand your specialization.</p>
+                        </div>
                     </div>
-                    <h3>Brand Building</h3>
-                    <p>We help tailors build professional digital presence beyond just a listing. Showcase your work and build customer trust online.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-hands-helping"></i>
+                    
+                    <!-- Step 3 -->
+                    <div class="roadmap-step">
+                        <div class="step-number">3</div>
+                        <div class="step-connector"></div>
+                        <div class="step-content">
+                            <h3>Profile Setup</h3>
+                            <p>Complete your detailed profile with services, pricing, portfolio images, and working hours.</p>
+                        </div>
                     </div>
-                    <h3>Growth Support</h3>
-                    <p>From SEO to social media, Tailors.lk works as your digital growth partner. Get support to grow your tailoring business in Sri Lanka.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3) HOW REGISTRATION WORKS -->
-    <section class="section" style="background: linear-gradient(135deg, rgba(31, 78, 95, 0.03) 0%, rgba(13, 54, 69, 0.03) 100%);">
-        <div class="container">
-            <h2 class="section-title">How to Join as a Tailor</h2>
-            <p class="section-subtitle">
-                Simple registration process designed for Sri Lankan tailors. Start growing your business in just a few steps.
-            </p>
-            
-            <div class="steps-flow fade-in">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Register Your Business</h3>
-                        <p>Visit <a href="https://register.tailors.lk" style="color: var(--teal); font-weight: 600;">register.tailors.lk</a> and submit your basic business information. The process takes less than 5 minutes.</p>
+                    
+                    <!-- Step 4 -->
+                    <div class="roadmap-step">
+                        <div class="step-number">4</div>
+                        <div class="step-connector"></div>
+                        <div class="step-content">
+                            <h3>Go Live</h3>
+                            <p>Your profile becomes visible to customers searching for tailors in your area and service category.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Verification & Contact</h3>
-                        <p>Our team reviews your submission and contacts you via WhatsApp or phone to confirm details and understand your specialization.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Complete Your Profile</h3>
-                        <p>You receive an advanced profile form to collect services, pricing ranges, portfolio images, and detailed business information.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Profile Publication</h3>
-                        <p>Your tailor profile is created and published on Tailors.lk, making you visible to customers searching for your services.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">5</div>
-                    <div class="step-content">
-                        <h3>Become Verified</h3>
-                        <p>After meeting quality and service standards, you are promoted to <strong>Verified Tailor</strong> status for increased trust and visibility.</p>
+                    
+                    <!-- Step 5 -->
+                    <div class="roadmap-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Upgrade & Grow</h3>
+                            <p>Access advanced tools and features with membership plans as your business expands online.</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="https://register.tailors.lk" class="btn btn-primary btn-lg">
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#lead-form" class="btn btn-primary btn-lg">
                     <i class="fas fa-rocket"></i>
-                    Start Registration
+                    Start Your Journey
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 4) VERIFICATION SYSTEM -->
-    <section class="section">
+    <!-- 3. HOLOGRAPHIC BENEFITS GRID -->
+    <section class="benefits-section fade-in">
         <div class="container">
-            <h2 class="section-title">Verified Tailor Program</h2>
+            <h2 class="section-title">Why Join Tailors.lk</h2>
             <p class="section-subtitle">
-                Build trust and credibility with customers through our verification system. Verified Tailors gain more visibility and customer confidence.
+                Transform your tailoring business with our comprehensive digital platform features
             </p>
             
-            <div class="verification-section fade-in">
-                <h3 style="color: var(--teal); margin-bottom: 20px; font-size: 1.3rem;">What Makes a Verified Tailor?</h3>
-                <p style="color: var(--text); margin-bottom: 20px; line-height: 1.6;">
-                    Our verification system assesses tailors based on several quality indicators to ensure customers receive professional service.
-                </p>
-                
-                <div class="criteria-list">
-                    <div class="criteria-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Profile completeness</span>
-                    </div>
-                    <div class="criteria-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Quality of work</span>
-                    </div>
-                    <div class="criteria-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Customer handling</span>
-                    </div>
-                    <div class="criteria-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Response time</span>
-                    </div>
-                    <div class="criteria-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Reliability</span>
-                    </div>
-                </div>
-                
-                <p style="color: var(--text); margin-top: 25px; line-height: 1.6; font-weight: 600; color: var(--teal);">
-                    Verified tailors receive higher exposure in search results and earn customer confidence with a trusted verification badge.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5) FEATURED TAILOR PROGRAM -->
-    <section class="section" style="background: linear-gradient(135deg, rgba(185, 145, 95, 0.05) 0%, rgba(212, 178, 140, 0.05) 100%);">
-        <div class="container">
-            <h2 class="section-title">Featured Tailor Subscription</h2>
-            <p class="section-subtitle">
-                Upgrade to premium visibility and access exclusive opportunities with our Featured Tailor program.
-            </p>
-            
-            <div class="benefits-grid fade-in">
-                <div class="benefit-card">
+            <div class="benefits-grid">
+                <div class="holographic-card">
                     <div class="benefit-icon">
-                        <i class="fas fa-crown"></i>
+                        <i class="fas fa-globe"></i>
                     </div>
-                    <h3>Priority Placement</h3>
-                    <p>Get priority placement in search results and featured sections. Stand out from other tailors in your area.</p>
+                    <h3>Online Presence</h3>
+                    <p>Professional online profile without needing to build and maintain a separate website.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="holographic-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3>Local Discovery</h3>
+                    <p>Get found by customers searching for tailors in your city or neighborhood across Sri Lanka.</p>
+                </div>
+                
+                <div class="holographic-card">
+                    <div class="benefit-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp Integration</h3>
+                    <p>Direct WhatsApp button on your profile for instant customer communication and inquiries.</p>
+                </div>
+                
+                <div class="holographic-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>Professional Profile</h3>
+                    <p>Beautiful, customizable profile pages to showcase your work portfolio and build customer trust.</p>
+                </div>
+                
+                <div class="holographic-card">
                     <div class="benefit-icon">
                         <i class="fas fa-star"></i>
                     </div>
-                    <h3>Premium Visibility</h3>
-                    <p>Enhanced profile visibility with special styling and prominent display across the Tailors.lk platform.</p>
+                    <h3>Review System</h3>
+                    <p>Build credibility with authentic customer reviews and ratings displayed on your profile.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="holographic-card">
                     <div class="benefit-icon">
-                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-calendar-check"></i>
                     </div>
-                    <h3>Private Enquiries</h3>
-                    <p>Access to private enquiries handled directly by Tailors.lk for premium customers and special projects.</p>
+                    <h3>Booking Tools</h3>
+                    <p>Built-in booking and inquiry forms to manage customer requests efficiently and professionally.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="holographic-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Payment Support</h3>
+                    <p>Accept secure online payments through Tailors.lk with reliable transaction handling.</p>
+                </div>
+                
+                <div class="holographic-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Brand Visibility</h3>
+                    <p>Increase your brand recognition with featured placements and targeted marketing support.</p>
+                </div>
+                
+                <div class="holographic-card">
                     <div class="benefit-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Higher Conversion</h3>
-                    <p>Increased conversion potential with featured status and premium positioning on the marketplace.</p>
+                    <h3>Growth Tools</h3>
+                    <p>Access digital tools, insights, and analytics to strategically grow your tailoring business.</p>
                 </div>
-            </div>
-            
-            <p style="text-align: center; color: var(--text); margin-top: 30px; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <strong>Featured Tailors</strong> are automatically upgraded to Verified status and receive priority exposure across all customer searches in Sri Lanka.
-            </p>
-            
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="https://wa.me/94758244216?text=Hi%20Tailors.lk,%20I'm%20interested%20in%20becoming%20a%20Featured%20Tailor" 
-                   class="btn btn-primary btn-lg">
-                    <i class="fas fa-crown"></i>
-                    Become a Featured Tailor
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- 6) ORDER FULFILMENT OPTIONS -->
-    <section class="section">
+    <!-- 4. UPDATED MEMBERSHIP PLANS (Signature in Middle) -->
+    <section class="plans-section fade-in" id="plans">
         <div class="container">
-            <h2 class="section-title">How Orders Work on Tailors.lk</h2>
+            <h2 class="section-title">Tailors.lk Membership Plans</h2>
             <p class="section-subtitle">
-                Choose the order fulfilment model that works best for your tailoring business in Sri Lanka.
+                Choose the perfect plan for your business growth. Upgrade anytime as your needs evolve.
             </p>
             
-            <div class="order-cards fade-in">
-                <div class="order-card">
-                    <h3><i class="fas fa-handshake" style="color: var(--teal); margin-right: 10px;"></i> Commission Model</h3>
-                    <p>Perfect for tailors looking to grow their business with quality customer leads.</p>
-                    <ul>
-                        <li>Receive orders directly through Tailors.lk</li>
-                        <li>Pay commission only on successfully completed jobs</li>
-                        <li>Transparent pricing and customer expectations</li>
-                        <li>Suitable for growing tailors and small businesses</li>
-                        <li>Flexible acceptance of orders based on capacity</li>
-                    </ul>
+            <div class="plans-container">
+                <div class="plans-grid">
+                    <!-- Plan 1: Launch -->
+                    <div class="plan-card glow-green">
+                        <div class="plan-header">
+                            <span class="plan-badge green">Great for Starters</span>
+                            <h3 class="plan-title">Launch</h3>
+                            <p class="plan-description">For tailors starting their online presence journey</p>
+                        </div>
+                        
+                        <ul class="plan-features">
+                            <li>Tailors.lk branded profile</li>
+                            <li>URL: tailors.lk/t/yourname</li>
+                            <li>Multiple contact actions (Call, WhatsApp, Message)</li>
+                            <li>Improved discovery on Tailors.lk</li>
+                            <li>Accept online payments through Tailors.lk within limits</li>
+                            <li>Email inbox: yourname@mail.tailors.lk (receive only)</li>
+                        </ul>
+                        
+                        <div class="plan-cta">
+                            <a href="https://wa.me/94758244216?text=Hi%20Tailors.lk%2C%20I'm%20interested%20in%20the%20Launch%20plan" 
+                               class="btn btn-primary" style="width: 100%;" target="_blank">
+                                <i class="fas fa-rocket"></i>
+                                Start with Launch
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Plan 2: Signature (Now in Middle) -->
+                    <div class="plan-card glow-signature">
+                        <div class="plan-header">
+                            <span class="plan-badge signature">Premium Choice</span>
+                            <h3 class="plan-title">Signature</h3>
+                            <p class="plan-description">For professional ateliers and premium shops</p>
+                        </div>
+                        
+                        <ul class="plan-features">
+                            <li>Full branded subdomain: name.tailors.lk</li>
+                            <li>AI chatbot on your profile</li>
+                            <li>Smart auto replies for inquiries</li>
+                            <li>Lead qualification assistant</li>
+                            <li>Booking automation</li>
+                            <li>SEO content tools</li>
+                            <li>Advanced analytics dashboard</li>
+                            <li>Accept large volume online payments</li>
+                            <li>GMB review funnel integration</li>
+                        </ul>
+                        
+                        <div class="plan-cta">
+                            <a href="https://wa.me/94758244216?text=Hi%20Tailors.lk%2C%20I'm%20interested%20in%20the%20Signature%20plan" 
+                               class="btn btn-primary" style="width: 100%;" target="_blank">
+                                <i class="fas fa-gem"></i>
+                                Join Signature
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Plan 3: Pro -->
+                    <div class="plan-card glow-blue">
+                        <div class="plan-header">
+                            <span class="plan-badge blue">Popular Choice</span>
+                            <h3 class="plan-title">Pro</h3>
+                            <p class="plan-description">For established and growing tailoring businesses</p>
+                        </div>
+                        
+                        <ul class="plan-features">
+                            <li>Customizable profile layout</li>
+                            <li>URL options: tailors.lk/t/yourname or name.t.tailors.lk</li>
+                            <li>Two-way business email options</li>
+                            <li>Booking and inquiry forms</li>
+                            <li>Stronger branding and visibility</li>
+                            <li>Accept higher volume online payments</li>
+                            <li>Access to experimental features</li>
+                            <li>Priority customer support</li>
+                        </ul>
+                        
+                        <div class="plan-cta">
+                            <a href="https://wa.me/94758244216?text=Hi%20Tailors.lk%2C%20I'm%20interested%20in%20the%20Pro%20plan" 
+                               class="btn btn-primary" style="width: 100%;" target="_blank">
+                                <i class="fas fa-crown"></i>
+                                Upgrade to Pro
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="order-card">
-                    <h3><i class="fas fa-users" style="color: var(--teal); margin-right: 10px;"></i> Partnership Model</h3>
-                    <p>Ideal for established tailors seeking consistent premium opportunities.</p>
-                    <ul>
-                        <li>Exclusive access to selected order categories</li>
-                        <li>Monthly partnership structure with defined terms</li>
-                        <li>Direct routing of relevant customer orders</li>
-                        <li>Priority handling of high-value projects</li>
-                        <li>Long-term business relationship benefits</li>
-                    </ul>
+                <p class="pricing-note">Pricing is discussed personally to match your business size and growth goals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ORDER HANDLING EXPLANATION -->
+    <section class="orders-section fade-in">
+        <div class="container">
+            <h2 class="section-title">Customer Requests & Orders</h2>
+            <p class="section-subtitle">
+                How customer inquiries reach you through Tailors.lk
+            </p>
+            
+            <div class="orders-content">
+                <p>
+                    Tailors.lk receives inquiries from customers looking for tailoring services across Sri Lanka. 
+                    We match customer needs with suitable tailors based on services offered, location, and availability.
+                </p>
+                <p>
+                    Customer requests are routed to tailors who have indicated they provide the specific service needed. 
+                    Higher membership plans receive more suitable customer opportunities and priority routing.
+                </p>
+                <p>
+                    You maintain full control over which jobs to accept based on your capacity and expertise. 
+                    Each inquiry includes customer details and project requirements for your consideration.
+                </p>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#lead-form" class="btn btn-primary btn-lg">
+                        <i class="fas fa-handshake"></i>
+                        Start Receiving Orders
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 7) DIGITAL GROWTH SERVICES -->
-    <section class="section" style="background: linear-gradient(135deg, rgba(31, 78, 95, 0.05) 0%, rgba(13, 54, 69, 0.05) 100%);">
+    <!-- 6. DIGITAL SERVICES FOR TAILORS -->
+    <section class="digital-services-section fade-in">
         <div class="container">
-            <h2 class="section-title">Digital Services for Tailors</h2>
+            <h2 class="section-title">Digital Growth Services</h2>
             <p class="section-subtitle">
-                Tailors.lk also operates as a digital growth partner for tailoring and clothing businesses in Sri Lanka.
+                Additional digital services to help your tailoring business grow online
             </p>
             
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div class="fade-in" style="background: var(--card-bg); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); border: 1px solid var(--border);">
-                    <p style="color: var(--text); margin-bottom: 25px; line-height: 1.6; font-size: 1.05rem;">
-                        Beyond the marketplace, we help Sri Lankan tailors build their digital presence and grow their businesses online. Our digital services include:
-                    </p>
-                    
-                    <div class="criteria-list" style="margin: 25px 0;">
-                        <div class="criteria-item">
-                            <i class="fas fa-laptop-code" style="color: var(--gold);"></i>
-                            <span>Website development for tailors</span>
-                        </div>
-                        <div class="criteria-item">
-                            <i class="fas fa-palette" style="color: var(--gold);"></i>
-                            <span>Content strategy and branding</span>
-                        </div>
-                        <div class="criteria-item">
-                            <i class="fas fa-hashtag" style="color: var(--gold);"></i>
-                            <span>Social media management (Facebook, Instagram, TikTok)</span>
-                        </div>
-                        <div class="criteria-item">
-                            <i class="fas fa-store" style="color: var(--gold);"></i>
-                            <span>Google Business Profile setup and optimization</span>
-                        </div>
-                        <div class="criteria-item">
-                            <i class="fab fa-whatsapp" style="color: var(--gold);"></i>
-                            <span>WhatsApp funnel building for customer enquiries</span>
-                        </div>
+            <div class="services-list">
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>Website development</span>
                     </div>
-                    
-                    <div style="text-align: center; margin-top: 30px;">
-                        <a href="https://wa.me/94758244216?text=Hi%20Tailors.lk,%20I'm%20interested%20in%20digital%20growth%20services%20for%20my%20tailoring%20business" 
-                           class="btn btn-primary btn-lg">
-                            <i class="fas fa-chart-line"></i>
-                            Grow Your Brand with Us
-                        </a>
+                    <div class="service-item">
+                        <i class="fas fa-hashtag"></i>
+                        <span>Social media management</span>
                     </div>
+                    <div class="service-item">
+                        <i class="fab fa-google"></i>
+                        <span>Google Business Profile optimization</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-palette"></i>
+                        <span>Content strategy</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>Branding assistance</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-camera"></i>
+                        <span>Photography and profile enhancement</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-star"></i>
+                        <span>Review growth systems</span>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://wa.me/94758244216?text=Hi%20Tailors.lk%2C%20I'm%20interested%20in%20digital%20growth%20services%20for%20my%20tailoring%20business" 
+                       class="btn btn-primary btn-lg" target="_blank">
+                        <i class="fas fa-chart-line"></i>
+                        Talk to us about digital services
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 8) SUBDOMAIN FUNNEL - UPDATED WITH JSON DATASET -->
-    <section class="section">
+    <!-- 7. SUBDOMAIN SEARCH TOOL (FUNNEL) -->
+    <section class="subdomain-section fade-in">
         <div class="container">
-            <h2 class="section-title">Get Your Own Subdomain on Tailors.lk</h2>
+            <h2 class="section-title">Get Your Tailors.lk Name</h2>
             <p class="section-subtitle">
-                Establish your professional online presence with a custom subdomain, perfect for Sri Lankan tailors looking to build their brand.
+                Claim your professional subdomain to build your online brand presence
             </p>
             
-            <div class="subdomain-search fade-in">
+            <div class="subdomain-search">
                 <p style="color: var(--text); margin-bottom: 20px; line-height: 1.6;">
-                    Due to the high cost of domains and hosting, Tailors.lk offers professional subdomains for verified tailors:
+                    Search for your preferred subdomain name to check availability:
                 </p>
                 
                 <div style="background: rgba(31, 78, 95, 0.1); padding: 15px; border-radius: var(--radius-sm); margin: 20px 0;">
@@ -1460,9 +2021,9 @@
                 <div id="availability-result" class="availability-result">
                     <p id="result-message"></p>
                     <div id="available-actions" style="margin-top: 10px; display: none;">
-                        <a href="#" id="claim-subdomain" class="btn btn-sm btn-primary">
-                            <i class="fas fa-external-link-alt"></i>
-                            Claim Your Subdomain
+                        <a href="#" id="claim-subdomain" class="btn btn-sm btn-primary" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            Claim This Name on WhatsApp
                         </a>
                     </div>
                 </div>
@@ -1473,96 +2034,135 @@
                         <!-- Suggestions will be dynamically added here -->
                     </div>
                 </div>
-                
-                <p style="color: var(--text-light); margin-top: 25px; font-size: 0.9rem; font-style: italic;">
-                    Note: Subdomain availability is checked against our database of registered and reserved subdomains.
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- 9) SUCCESS BENEFITS -->
-    <section class="section" style="background: linear-gradient(135deg, rgba(31, 78, 95, 0.03) 0%, rgba(13, 54, 69, 0.03) 100%);">
+    <!-- 8. PARTNERSHIPS CTA -->
+    <section class="partnerships-section fade-in">
         <div class="container">
-            <h2 class="section-title">What You Gain with Tailors.lk</h2>
-            <p class="section-subtitle">
-                Join Sri Lanka's premier tailoring marketplace and transform your business growth.
-            </p>
-            
-            <div class="gains-grid fade-in">
-                <div class="gain-item">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <span>More enquiries</span>
-                </div>
-                <div class="gain-item">
-                    <i class="fas fa-medal"></i>
-                    <span>Professional brand presence</span>
-                </div>
-                <div class="gain-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Verified trust badge</span>
-                </div>
-                <div class="gain-item">
-                    <i class="fas fa-bullhorn"></i>
-                    <span>Digital marketing support</span>
-                </div>
-                <div class="gain-item">
-                    <i class="fas fa-handshake"></i>
-                    <span>Growth-focused partnership</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 10) PARTNERSHIPS -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Looking for Business Partnerships?</h2>
-            <p class="section-subtitle">
-                We welcome collaborations and integrations with tailoring and clothing-related businesses across Sri Lanka.
-            </p>
-            
-            <div class="fade-in" style="background: var(--card-bg); border-radius: var(--radius); padding: 40px; text-align: center; box-shadow: var(--shadow); border: 1px solid var(--border); max-width: 800px; margin: 0 auto;">
+            <div class="partnerships-card">
                 <i class="fas fa-handshake" style="font-size: 3rem; color: var(--teal); margin-bottom: 20px;"></i>
-                <h3 style="color: var(--teal); margin-bottom: 15px; font-size: 1.5rem;">Business Partnerships & Collaborations</h3>
-                <p style="color: var(--text); margin-bottom: 25px; line-height: 1.6;">
-                    Whether you're a fabric supplier, clothing manufacturer, fashion school, or related business, 
-                    we're interested in exploring partnership opportunities that benefit Sri Lanka's tailoring industry.
+                <h3 style="color: var(--teal); margin-bottom: 15px; font-size: 1.8rem;">Looking for Business Partnerships?</h3>
+                <p style="color: var(--text); margin-bottom: 25px; line-height: 1.6; font-size: 1.1rem;">
+                    We collaborate with fabric suppliers, clothing manufacturers, fashion schools, and related businesses. 
+                    If you want to work with Tailors.lk to serve Sri Lanka's tailoring community, explore our partnership opportunities.
                 </p>
                 <a href="/partnerships" class="btn btn-primary btn-lg">
                     <i class="fas fa-external-link-alt"></i>
-                    Visit Partnerships Page
+                    View Partnerships
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 11) FINAL CTA -->
-    <section class="section" style="padding-top: 0;">
+    <!-- 9. COMPACT LEAD FORM SECTION -->
+    <section class="lead-form-section fade-in" id="lead-form">
         <div class="container">
-            <div class="final-cta fade-in">
-                <h2>Start Growing Your Tailoring Business Today</h2>
-                <p>
-                    Join hundreds of successful tailors across Sri Lanka who are expanding their reach, 
-                    increasing their revenue, and building stronger brands with Tailors.lk.
-                </p>
+            <h2 class="section-title">Apply to Join Tailors.lk</h2>
+            <p class="section-subtitle">
+                Fill this compact form and our team will contact you to discuss how Tailors.lk can help grow your business.
+            </p>
+            
+            <div class="lead-form">
+                <form id="tailorApplicationForm" method="POST" action="https://formsubmit.co/for-tailors@tailors.lk">
+                    <!-- Hidden Fields -->
+                    <input type="hidden" name="_subject" value="New Tailor Application - Tailors.lk">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="#">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">Full Name *</label>
+                            <input type="text" id="full-name" name="full_name" required placeholder="Your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="shop-name">Shop/Business Name *</label>
+                            <input type="text" id="shop-name" name="shop_name" required placeholder="Your tailoring business name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City/Location *</label>
+                            <input type="text" id="city" name="city" required placeholder="e.g., Colombo, Kandy, Galle">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+94 XX XXX XXXX">
+                        </div>
+                    </div>
+                    
+                    <!-- Email and Experience side by side -->
+                    <div class="form-row compact">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="you@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience">Years of Experience</label>
+                            <input type="text" id="experience" name="experience" placeholder="e.g., 5 years">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="services">Services Offered *</label>
+                        <select id="services" name="services" required>
+                            <option value="" disabled selected>Select your main services</option>
+                            <option value="menswear">Menswear & Suits</option>
+                            <option value="womenswear">Womenswear & Dresses</option>
+                            <option value="bridal">Bridal & Wedding Wear</option>
+                            <option value="alterations">Alterations & Repairs</option>
+                            <option value="casual">Casual Wear</option>
+                            <option value="uniforms">Uniforms & Corporate</option>
+                            <option value="custom">Custom Design</option>
+                            <option value="multiple">Multiple Services</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Information (Optional)</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your business, specializations, or questions..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" id="submitApplicationBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        Apply to Join Tailors.lk
+                    </button>
+                    
+                    <p class="form-note">Our team will contact you shortly to discuss next steps.</p>
+                </form>
                 
-                <div class="hero-cta-buttons">
-                    <a href="https://register.tailors.lk" class="btn btn-primary btn-lg" style="background: white; color: var(--teal); border: none;">
-                        <i class="fas fa-user-plus"></i>
-                        Register Now
-                    </a>
-                    <a href="https://wa.me/94758244216?text=Hi%20Tailors.lk,%20I'm%20a%20tailor%20interested%20in%20growing%20my%20business" 
-                       class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.4);">
-                        <i class="fas fa-comments"></i>
-                        Talk to Us
-                    </a>
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3>Application Submitted Successfully!</h3>
+                    <p>Thank you for applying to Tailors.lk. Our team will review your application and contact you within 1-2 business days.</p>
+                    <p><strong>For faster response, message us on WhatsApp:</strong></p>
+                    
+                    <div class="success-actions">
+                        <a href="https://wa.me/94758244216?text=Hi%20Tailors.lk%2C%20I%20just%20submitted%20my%20tailor%20application" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            Contact on WhatsApp
+                        </a>
+                        <button class="btn btn-outline" id="closeSuccess">
+                            <i class="fas fa-times"></i>
+                            Close
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER - UPDATED Contact Info Section -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1672,6 +2272,28 @@
         </div>
     </footer>
 
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Tailors.lk",
+        "description": "Sri Lanka's premier tailoring marketplace connecting customers with professional tailors",
+        "url": "https://tailors.lk",
+        "logo": "https://data.tailors.lk/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+94758244216",
+            "contactType": "Customer Service"
+        },
+        "sameAs": [
+            "https://facebook.com/Tailors.lk.find",
+            "https://instagram.com/Tailors.lk",
+            "https://x.com/Tailorslk"
+        ]
+    }
+    </script>
+
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Initialize
@@ -1705,7 +2327,7 @@
                 });
             });
 
-            // Subdomain search functionality with JSON dataset
+            // Subdomain search functionality
             window.updateSubdomainPreview = function() {
                 const input = document.getElementById('subdomain-input');
                 const preview = document.getElementById('subdomain-preview');
@@ -1840,19 +2462,16 @@
                         availableActions.style.display = 'none';
                     } else if (isPremium) {
                         resultDiv.className = 'availability-result reserved';
-                        resultMessage.innerHTML = `<i class="fas fa-crown"></i> <strong>${subdomain}.tailors.lk</strong> is available for premium members only. <a href="/for-tailors#featured" style="color: inherit; text-decoration: underline;">Learn more</a>`;
+                        resultMessage.innerHTML = `<i class="fas fa-crown"></i> <strong>${subdomain}.tailors.lk</strong> is available for premium members only. <a href="#plans" style="color: inherit; text-decoration: underline;">Learn more</a>`;
                         availableActions.style.display = 'none';
                     } else {
                         resultDiv.className = 'availability-result available';
                         resultMessage.innerHTML = `<i class="fas fa-check-circle"></i> <strong>${subdomain}.tailors.lk</strong> is available!`;
                         availableActions.style.display = 'block';
                         
-                        // Update claim button
-                        claimButton.href = `https://wa.me/94758244216?text=Hi%20Tailors.lk,%20I%20want%20to%20claim%20the%20subdomain%3A%20${subdomain}.tailors.lk`;
-                        claimButton.onclick = (e) => {
-                            e.preventDefault();
-                            window.open(`https://wa.me/94758244216?text=Hi%20Tailors.lk,%20I%20want%20to%20claim%20the%20subdomain%3A%20${subdomain}.tailors.lk%20for%20my%20tailoring%20business`, '_blank');
-                        };
+                        // Update claim button with WhatsApp prefilled message
+                        const whatsappMessage = `Hi Tailors.lk, I want to claim the subdomain: ${subdomain}.tailors.lk for my tailoring business`;
+                        claimButton.href = `https://wa.me/94758244216?text=${encodeURIComponent(whatsappMessage)}`;
                     }
                     
                     resultDiv.style.display = 'block';
@@ -1878,8 +2497,9 @@
                         resultMessage.innerHTML = `<i class="fas fa-check-circle"></i> <strong>${subdomain}.tailors.lk</strong> appears to be available!`;
                         availableActions.style.display = 'block';
                         
-                        // Update claim button
-                        claimButton.href = `https://wa.me/94758244216?text=Hi%20Tailors.lk,%20I%20want%20to%20claim%20the%20subdomain%3A%20${subdomain}.tailors.lk`;
+                        // Update claim button with WhatsApp prefilled message
+                        const whatsappMessage = `Hi Tailors.lk, I want to claim the subdomain: ${subdomain}.tailors.lk for my tailoring business`;
+                        claimButton.href = `https://wa.me/94758244216?text=${encodeURIComponent(whatsappMessage)}`;
                     } else {
                         resultDiv.className = 'availability-result unavailable';
                         resultMessage.innerHTML = `<i class="fas fa-times-circle"></i> <strong>${subdomain}.tailors.lk</strong> may already be in use.`;
@@ -1890,7 +2510,110 @@
                 }
             };
 
-            // Form submission handling for subdomain search
+            // Form submission handling for application form
+            const applicationForm = document.getElementById('tailorApplicationForm');
+            const submitBtn = document.getElementById('submitApplicationBtn');
+            const successMessage = document.getElementById('successMessage');
+            const closeSuccessBtn = document.getElementById('closeSuccess');
+
+            if (applicationForm) {
+                applicationForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Validate form
+                    if (!validateApplicationForm()) {
+                        return;
+                    }
+                    
+                    // Show loading state
+                    const originalBtnContent = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+                    submitBtn.classList.add('btn-loading');
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        // Create FormData object
+                        const formData = new FormData(this);
+                        
+                        // Submit to FormSubmit
+                        const response = await fetch(this.action, {
+                            method: 'POST',
+                            body: formData,
+                            mode: 'no-cors' // FormSubmit requires no-cors
+                        });
+                        
+                        // Since we're using no-cors, we can't check response status
+                        // Assume success and show custom message
+                        
+                        // Reset form
+                        applicationForm.reset();
+                        
+                        // Show success message
+                        successMessage.classList.add('active');
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                    } catch (error) {
+                        console.error('Form submission error:', error);
+                        alert('There was an error submitting your application. Please try again or contact us directly via WhatsApp.');
+                    } finally {
+                        // Restore button state
+                        submitBtn.innerHTML = originalBtnContent;
+                        submitBtn.classList.remove('btn-loading');
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
+
+            // Form validation
+            function validateApplicationForm() {
+                const requiredFields = applicationForm.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = 'var(--error)';
+                        
+                        // Remove error style on input
+                        field.addEventListener('input', function() {
+                            this.style.borderColor = 'var(--border)';
+                        }, { once: true });
+                    }
+                });
+                
+                // Validate email format
+                const emailField = document.getElementById('email');
+                if (emailField.value && !isValidEmail(emailField.value)) {
+                    isValid = false;
+                    emailField.style.borderColor = 'var(--error)';
+                    alert('Please enter a valid email address.');
+                }
+                
+                // Validate phone number (basic validation)
+                const phoneField = document.getElementById('phone');
+                const phoneRegex = /^[+0-9\s\-\(\)]{10,}$/;
+                if (phoneField.value && !phoneRegex.test(phoneField.value.replace(/\s/g, ''))) {
+                    isValid = false;
+                    phoneField.style.borderColor = 'var(--error)';
+                    alert('Please enter a valid phone number.');
+                }
+                
+                return isValid;
+            }
+
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            // Close success message
+            if (closeSuccessBtn) {
+                closeSuccessBtn.addEventListener('click', function() {
+                    successMessage.classList.remove('active');
+                });
+            }
+
+            // Form submission for subdomain search
             document.getElementById('subdomain-input').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     checkSubdomainAvailability();
