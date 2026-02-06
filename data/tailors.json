@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Elite Hambantota Stitching",
       "area": "Hambantota Main Street",
-      "city": ["Hambantota", "Galle"],
+      "city": "Hambantota",
       "services": [
         "Saree Fitting",
         "Custom Suits",
