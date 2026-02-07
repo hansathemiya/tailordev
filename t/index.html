@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search Tailors | Tailors.lk</title>
+    <meta name="description" content="Quick search for tailors in Sri Lanka. Find professional tailors by location, service, or name." />
+    
+    <!-- Same favicon and fonts as main site -->
+    <link rel="icon" href="https://data.tailors.lk/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://data.tailors.lk/ajax/libs/fontawesome/6.0.0/css/all.min.css" />
+    
+    <style>
+        :root {
+            --teal: #1f4e5f;
+            --teal-dark: #0d3645;
+            --teal-light: #2a6579;
+            --gold: #b9915f;
+            --gold-light: #d4b28c;
+            --bg: #f8fafb;
+            --card-bg: #ffffff;
+            --text: #1a2a33;
+            --text-light: #6b7b83;
+            --border: rgba(31, 78, 95, 0.12);
+            --shadow: 0 8px 30px rgba(31, 78, 95, 0.08);
+            --radius: 14px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Same as main site */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: var(--radius-xs);
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(31, 78, 95, 0.06);
+            color: var(--teal);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--teal);
+            transition: var(--transition);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 62px;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border-top: 1px solid var(--border);
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 10px 14px;
+            border-radius: var(--radius-xs);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(31, 78, 95, 0.06);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Search Container */
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(185, 145, 95, 0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 14px 28px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-decoration: none;
+            background: var(--gold);
+            color: white;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(185, 145, 95, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .btn-outline:hover {
+            background: rgba(31, 78, 95, 0.05);
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+
+        /* Search Keywords Display */
+        .search-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .keyword-tag {
+            background: rgba(31, 78, 95, 0.1);
+            color: var(--teal);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .keyword-tag i {
+            font-size: 0.8rem;
+            color: var(--teal-light);
+        }
+
+        /* Current Search */
+        .current-search {
+            background: rgba(31, 78, 95, 0.08);
+            padding: 15px 20px;
+            border-radius: var(--radius-sm);
+            margin: 25px 0;
+            font-size: 0.95rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .current-search strong {
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        /* Results Header */
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0 25px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .results-count {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Tailor Cards Grid */
+        .tailors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .tailor-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tailor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(31, 78, 95, 0.15);
+        }
+
+        .tailor-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tailor-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .verified-badge {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .featured-badge {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .top-rated-badge {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(234, 179, 8, 0.1));
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .tailor-location {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .tailor-body {
+            padding: 16px;
+        }
+
+        .tailor-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .service-tag {
+            background: rgba(31, 78, 95, 0.08);
+            color: var(--teal);
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tailor-contact {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            color: var(--border);
+            margin-bottom: 16px;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--teal);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 40px 0;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-xs);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            padding: 0 8px;
+        }
+
+        .page-btn:hover:not(.active):not(.disabled) {
+            background: rgba(31, 78, 95, 0.05);
+            border-color: var(--teal-light);
+        }
+
+        .page-btn.active {
+            background: var(--teal);
+            color: white;
+            border-color: var(--teal);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .page-ellipsis {
+            padding: 0 8px;
+            color: var(--text-light);
+        }
+
+        .page-info {
+            margin-left: 16px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Quick Links */
+        .quick-links {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(31, 78, 95, 0.03);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .quick-links h3 {
+            font-size: 1.2rem;
+            color: var(--teal);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .link-item {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xs);
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .link-item:hover {
+            background: rgba(31, 78, 95, 0.05);
+            border-color: var(--teal);
+            color: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        /* Footer - EXACTLY MATCHING THE PROVIDED FOOTER */
+        footer {
+            background: var(--teal-dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 6px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 2px 0;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+            padding-left: 3px;
+        }
+
+        .footer-links i {
+            width: 14px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .contact-info-item i {
+            width: 16px;
+            margin-top: 2px;
+            margin-right: 10px;
+            color: var(--gold-light);
+            flex-shrink: 0;
+        }
+
+        .contact-info-item a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--gold-light);
+        }
+
+        .contact-info-item span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tailors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .links-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .link-item {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .search-container {
+                padding: 20px;
+            }
+
+            .pagination {
+                gap: 4px;
+            }
+
+            .page-btn {
+                min-width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="https://data.tailors.lk/logo.png" alt="Tailors.lk Logo" onerror="this.onerror=null; this.style.display='none';">
+                Tailors.lk
+            </a>
+
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/t">Quick Search</a>
+                <a href="/services">Services</a>
+                <a href="/learn">Learn</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+            <div class="nav-cta">
+                <a href="/register" class="btn btn-primary btn-sm">Join as Tailor</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/">Home</a>
+            <a href="/t">Quick Search</a>
+            <a href="/services">Services</a>
+            <a href="/learn">Learn</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/register" class="btn btn-primary" style="margin-top: 10px;">
+                Join as Tailor
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Quick Search for Tailors</h1>
+            <p>Find professional tailors in Sri Lanka by location, service, or name</p>
+            
+            <div class="search-container">
+                <form class="search-form" id="searchForm">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search by city, service, or tailor name (e.g., Colombo, saree fitting, alterations)..."
+                        autocomplete="off"
+                        autofocus
+                        value=""
+                    >
+                    <a href="/taiors"><button type="submit" class="btn" id="searchButton">
+                        <i class="fas fa-search"></i>
+                        Search Tailors
+                    </button></a>
+                </form>
+                
+                <div id="keywordsContainer" class="search-keywords" style="display: none;">
+                    <!-- Keywords will be displayed here -->
+                </div>
+                
+                <div class="current-search" id="currentSearch" style="display: none;">
+                    Showing results for: <strong id="searchTermDisplay"></strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Results Header -->
+        <div class="results-header">
+            <h2 class="section-title" id="resultsTitle">Search Results</h2>
+            <div class="results-count" id="resultsCount">Enter a search term above</div>
+        </div>
+
+        <!-- Results Grid -->
+        <div class="tailors-grid" id="tailorsGrid">
+            <!-- Tailor cards will be loaded here -->
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Loading tailors...</p>
+        </div>
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No tailors found</h3>
+            <p>Try a different search term or browse popular searches below.</p>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination" style="display: none;"></div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <h3>Popular Searches</h3>
+            <div class="links-grid">
+                <a href="/t?search=colombo" class="link-item">
+                    <i class="fas fa-city"></i> Colombo
+                </a>
+                <a href="/t?search=kandy" class="link-item">
+                    <i class="fas fa-mountain"></i> Kandy
+                </a>
+                <a href="/t?search=galle" class="link-item">
+                    <i class="fas fa-umbrella-beach"></i> Galle
+                </a>
+                <a href="/t?search=saree+fitting" class="link-item">
+                    <i class="fas fa-vest"></i> Saree Fitting
+                </a>
+                <a href="/t?search=alterations" class="link-item">
+                    <i class="fas fa-cut"></i> Alterations
+                </a>
+                <a href="/t?search=custom+suits" class="link-item">
+                    <i class="fas fa-suitcase"></i> Custom Suits
+                </a>
+                <a href="/t?search=wedding" class="link-item">
+                    <i class="fas fa-heart"></i> Wedding
+                </a>
+                <a href="/t?search=blouse+stitching" class="link-item">
+                    <i class="fas fa-tshirt"></i> Blouse Stitching
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - EXACT COPY OF PROVIDED FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Platform Section -->
+                <div>
+                    <h4>Tailors.lk</h4>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px; font-size: 0.85rem;">
+                        Connecting Sri Lanka's tailoring community since 2024.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/Tailors.lk.find" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/Tailors.lk" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/Tailorslk" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@tailorslk" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://linkedin.com/company/tailors-lk" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- For Users Section -->
+                <div>
+                    <h4>For Users</h4>
+                    <ul class="footer-links">
+                        <li><a href="/services"><i class="fas fa-scissors"></i> Services</a></li>
+                        <li><a href="/tailors"><i class="fas fa-list"></i> All Tailors</a></li>
+                        <li><a href="/fabrics"><i class="fas fa-tshirt"></i> Fabrics</a></li>
+                        <li><a href="/reviews"><i class="fas fa-star"></i> Reviews</a></li>
+                        <li><a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a></li>
+                        <li><a href="/specials"><i class="fas fa-percentage"></i> Specials</a></li>
+                    </ul>
+                </div>
+                
+                <!-- For Partners Section -->
+                <div>
+                    <h4>For Partners</h4>
+                    <ul class="footer-links">
+                        <li><a href="/for-tailors"><i class="fas fa-user-tie"></i> For Tailors</a></li>
+                        <li><a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a></li>
+                        <li><a href="/for-brands"><i class="fas fa-tag"></i> For Brands</a></li>
+                        <li><a href="/partnerships"><i class="fas fa-handshake"></i> Partnerships</a></li>
+                        <li><a href="/tools"><i class="fas fa-tools"></i> Tools</a></li>
+                        <li><a href="/careers"><i class="fas fa-users"></i> Careers</a></li>
+                        <li><a href="/community"><i class="fas fa-users"></i> Community</a></li>
+                        <li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Cities Section -->
+                <div>
+                    <h4>Find by City</h4>
+                    <ul class="footer-links">
+                        <li><a href="/colombo"><i class="fas fa-city"></i> Colombo</a></li>
+                        <li><a href="/kandy"><i class="fas fa-mountain"></i> Kandy</a></li>
+                        <li><a href="/galle"><i class="fas fa-umbrella-beach"></i> Galle</a></li>
+                        <li><a href="/jaffna"><i class="fas fa-landmark"></i> Jaffna</a></li>
+                        <li><a href="/trinco"><i class="fas fa-anchor"></i> Trincomalee</a></li>
+                        <li><a href="/ella"><i class="fas fa-hiking"></i> Ella</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company Section -->
+                <div>
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="/our-story"><i class="fas fa-book"></i> Our Story</a></li>
+                        <li><a href="/our-team"><i class="fas fa-users"></i> Our Team</a></li>
+                        <li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                        <li><a href="/faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal Section -->
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="/terms"><i class="fas fa-file-contract"></i> Terms</a></li>
+                        <li><a href="/privacy"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+                        <li><a href="/cookies"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
+                        <li><a href="/legal"><i class="fas fa-balance-scale"></i> Legal</a></li>
+                        <li><a href="/policies"><i class="fas fa-file-alt"></i> All Policies</a></li>
+                    </ul>
+                    
+                    <!-- Contact Info - FIXED ALIGNMENT -->
+                    <div class="contact-info">
+                        <h4>Contact Info</h4>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+94758244216">+94 75 824 4216</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="/cdn-cgi/l/email-protection#3d49585c507d495c5451524f4e135150"><span class="__cf_email__" data-cfemail="8cf8e9ede1ccf8ede5e0e3fefea1e3e4">[email&#160;protected]</span></a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Colombo, Sri Lanka</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> Tailors.lk. All rights reserved. | Uplifting Sri Lanka's tailoring tradition</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JSON data URLs - same as main site
+        const TAILORS_JSON_URLS = [
+            '/data/tailors.json',
+            '/tailors.json',
+            'https://data.tailors.lk/tailors.json'
+        ];
+
+        // Global variables
+        let allTailors = [];
+        let filteredTailors = [];
+        let currentPage = 1;
+        const itemsPerPage = 9; // Show 9 tailors per page
+
+        // DOM Elements
+        const searchInput = document.getElementById('searchInput');
+        const searchForm = document.getElementById('searchForm');
+        const searchButton = document.getElementById('searchButton');
+        const keywordsContainer = document.getElementById('keywordsContainer');
+        const currentSearchEl = document.getElementById('currentSearch');
+        const searchTermDisplay = document.getElementById('searchTermDisplay');
+        const resultsTitle = document.getElementById('resultsTitle');
+        const resultsCount = document.getElementById('resultsCount');
+        const tailorsGrid = document.getElementById('tailorsGrid');
+        const loadingEl = document.getElementById('loading');
+        const noResultsEl = document.getElementById('noResults');
+        const paginationEl = document.getElementById('pagination');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Set current year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Setup mobile menu
+            setupMobileMenu();
+            
+            // Load tailors from JSON
+            await loadTailors();
+            
+            // Parse URL parameter
+            const searchTerm = getSearchTermFromURL();
+            
+            if (searchTerm) {
+                searchInput.value = searchTerm;
+                performSearch(searchTerm);
+            } else {
+                // Show initial state
+                loadingEl.style.display = 'none';
+                showInitialMessage();
+            }
+            
+            // Setup event listeners
+            setupEventListeners();
+        });
+
+        // Setup mobile menu
+        function setupMobileMenu() {
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        }
+
+        // Get search term from URL
+        function getSearchTermFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Try multiple possible parameter names - prioritize "search" parameter
+            let searchTerm = urlParams.get('search') || 
+                           urlParams.get('q') || 
+                           urlParams.get('term') || 
+                           urlParams.get('s') ||
+                           '';
+            
+            // If no parameter found, check for direct search term after ?
+            if (!searchTerm) {
+                const url = window.location.search;
+                if (url && url.length > 1) {
+                    // Remove the leading ? and decode
+                    const rawTerm = url.substring(1);
+                    try {
+                        searchTerm = decodeURIComponent(rawTerm);
+                    } catch (e) {
+                        searchTerm = rawTerm;
+                    }
+                }
+            }
+            
+            // Clean up the search term
+            if (searchTerm) {
+                searchTerm = searchTerm
+                    .replace(/\+/g, ' ')  // Replace + with spaces
+                    .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+                    .trim();
+                
+                return searchTerm;
+            }
+            
+            return '';
+        }
+
+        // Load tailors from JSON
+        async function loadTailors() {
+            let loaded = false;
+            
+            for (const url of TAILORS_JSON_URLS) {
+                try {
+                    const response = await fetch(url);
+                    
+                    if (!response.ok) continue;
+                    
+                    const data = await response.json();
+                    
+                    if (data && Array.isArray(data.tailors) && data.tailors.length > 0) {
+                        allTailors = data.tailors;
+                        console.log(`Loaded ${allTailors.length} tailors from ${url}`);
+                        loaded = true;
+                        break;
+                    }
+                } catch (error) {
+                    console.log(`Error loading from ${url}:`, error.message);
+                    continue;
+                }
+            }
+            
+            if (!loaded) {
+                // Fallback: try to load from root
+                try {
+                    const response = await fetch('/tailors.lk');
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data && Array.isArray(data.tailors)) {
+                            allTailors = data.tailors;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Failed to load tailors:', error);
+                    showErrorState('Unable to load tailors data. Please try again later.');
+                }
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search form submission
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleSearch();
+            });
+
+            // Search button click - FIXED
+            searchButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                handleSearch();
+            });
+
+            // Enter key in search input
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleSearch();
+                }
+            });
+
+            // Handle browser back/forward
+            window.addEventListener('popstate', function() {
+                const searchTerm = getSearchTermFromURL();
+                if (searchTerm) {
+                    searchInput.value = searchTerm;
+                    performSearch(searchTerm);
+                } else {
+                    searchInput.value = '';
+                    showInitialMessage();
+                }
+            });
+        }
+
+        // Handle search
+        function handleSearch() {
+            const searchTerm = searchInput.value.trim();
+            
+            if (!searchTerm) {
+                alert('Please enter a search term');
+                searchInput.focus();
+                return;
+            }
+            
+            // Update URL with search parameter
+            updateURL(searchTerm);
+            
+            // Perform search
+            performSearch(searchTerm);
+        }
+
+        // Update URL with search term
+        function updateURL(searchTerm) {
+            const encodedTerm = encodeURIComponent(searchTerm).replace(/%20/g, '+');
+            const newUrl = `/t?search=${encodedTerm}`;
+            history.pushState({ searchTerm: searchTerm }, '', newUrl);
+        }
+
+        // Parse search terms into keywords
+        function parseKeywords(searchTerm) {
+            // Split by spaces, commas, or "and"/"or"
+            const keywords = searchTerm
+                .toLowerCase()
+                .split(/[\s,\+]+|and|or/)
+                .filter(keyword => keyword.trim().length > 0)
+                .map(keyword => keyword.trim());
+            
+            return [...new Set(keywords)]; // Remove duplicates
+        }
+
+        // Display keywords
+        function displayKeywords(keywords) {
+            if (keywords.length === 0) {
+                keywordsContainer.style.display = 'none';
+                return;
+            }
+            
+            const keywordsHTML = keywords.map(keyword => 
+                `<span class="keyword-tag"><i class="fas fa-tag"></i> ${keyword}</span>`
+            ).join('');
+            
+            keywordsContainer.innerHTML = keywordsHTML;
+            keywordsContainer.style.display = 'flex';
+        }
+
+        // Perform search
+        function performSearch(searchTerm) {
+            currentPage = 1;
+            
+            // Parse keywords
+            const keywords = parseKeywords(searchTerm);
+            
+            // Show keywords and search term
+            displayKeywords(keywords);
+            searchTermDisplay.textContent = searchTerm;
+            currentSearchEl.style.display = 'block';
+            resultsTitle.textContent = 'Search Results';
+            
+            // Show loading state
+            loadingEl.style.display = 'block';
+            tailorsGrid.style.display = 'none';
+            noResultsEl.style.display = 'none';
+            paginationEl.style.display = 'none';
+            
+            // Filter tailors with multiple keywords
+            filterTailorsWithKeywords(keywords, searchTerm);
+        }
+
+        // Filter tailors based on multiple keywords
+        function filterTailorsWithKeywords(keywords, originalSearchTerm) {
+            if (keywords.length === 0 || !allTailors.length) {
+                filteredTailors = [];
+                setTimeout(() => renderResults(keywords), 300);
+                return;
+            }
+            
+            // For each tailor, calculate a relevance score
+            filteredTailors = allTailors.map(tailor => {
+                let score = 0;
+                let matches = [];
+                
+                // Check each keyword
+                keywords.forEach(keyword => {
+                    let keywordScore = 0;
+                    
+                    // Name match (highest weight)
+                    if (tailor.name && tailor.name.toLowerCase().includes(keyword)) {
+                        keywordScore += 10;
+                        matches.push(`name:${keyword}`);
+                    }
+                    
+                    // City match (high weight)
+                    if (tailor.city && tailor.city.toLowerCase().includes(keyword)) {
+                        keywordScore += 8;
+                        matches.push(`city:${keyword}`);
+                    }
+                    
+                    // Area match (high weight)
+                    if (tailor.area && tailor.area.toLowerCase().includes(keyword)) {
+                        keywordScore += 7;
+                        matches.push(`area:${keyword}`);
+                    }
+                    
+                    // Services match (medium weight)
+                    if (tailor.services && Array.isArray(tailor.services)) {
+                        for (const service of tailor.services) {
+                            if (service.toLowerCase().includes(keyword)) {
+                                keywordScore += 5;
+                                matches.push(`service:${keyword}`);
+                                break;
+                            }
+                        }
+                    }
+                    
+                    // Description match (low weight)
+                    if (tailor.description && tailor.description.toLowerCase().includes(keyword)) {
+                        keywordScore += 3;
+                        matches.push(`desc:${keyword}`);
+                    }
+                    
+                    // Tags match (medium weight)
+                    if (tailor.tags && Array.isArray(tailor.tags)) {
+                        for (const tag of tailor.tags) {
+                            if (tag.toLowerCase().includes(keyword)) {
+                                keywordScore += 4;
+                                matches.push(`tag:${keyword}`);
+                                break;
+                            }
+                        }
+                    }
+                    
+                    // Specialties match (high weight)
+                    if (tailor.specialties && Array.isArray(tailor.specialties)) {
+                        for (const specialty of tailor.specialties) {
+                            if (specialty.toLowerCase().includes(keyword)) {
+                                keywordScore += 6;
+                                matches.push(`specialty:${keyword}`);
+                                break;
+                            }
+                        }
+                    }
+                    
+                    // If keyword matches, add to score
+                    if (keywordScore > 0) {
+                        score += keywordScore;
+                    }
+                });
+                
+                // Bonus for exact phrase match
+                const searchLower = originalSearchTerm.toLowerCase();
+                if (tailor.name && tailor.name.toLowerCase().includes(searchLower)) {
+                    score += 15;
+                    matches.push('exact:name');
+                }
+                if (tailor.city && tailor.city.toLowerCase().includes(searchLower)) {
+                    score += 12;
+                    matches.push('exact:city');
+                }
+                
+                // Bonus for verified and featured tailors
+                if (tailor.verified && tailor.featured) score += 20;
+                else if (tailor.verified) score += 15;
+                else if (tailor.featured) score += 10;
+                
+                // Bonus for higher ratings
+                const rating = parseFloat(tailor.rating) || 0;
+                score += rating * 2;
+                
+                return {
+                    tailor: tailor,
+                    score: score,
+                    matches: [...new Set(matches)], // Remove duplicate matches
+                    keywordCount: matches.length
+                };
+            })
+            .filter(item => item.score > 0) // Only include tailors with some match
+            .sort((a, b) => {
+                // Sort by score descending
+                if (b.score !== a.score) return b.score - a.score;
+                
+                // If scores are equal, sort by number of unique keywords matched
+                if (b.keywordCount !== a.keywordCount) return b.keywordCount - a.keywordCount;
+                
+                // Then by rating
+                const aRating = parseFloat(a.tailor.rating) || 0;
+                const bRating = parseFloat(b.tailor.rating) || 0;
+                if (bRating !== aRating) return bRating - aRating;
+                
+                // Then by review count
+                const aReviews = a.tailor.review_count || 0;
+                const bReviews = b.tailor.review_count || 0;
+                return bReviews - aReviews;
+            })
+            .map(item => item.tailor); // Extract just the tailor objects
+            
+            // Render results after a short delay
+            setTimeout(() => renderResults(keywords), 300);
+        }
+
+        // Show initial message
+        function showInitialMessage() {
+            tailorsGrid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                    <i class="fas fa-search" style="font-size: 3rem; color: var(--border); margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--teal); margin-bottom: 10px;">Search for Tailors</h3>
+                    <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                        Enter a city, service, or tailor name in the search box above to find professional tailors in Sri Lanka.
+                        <br><br>
+                        <strong>Tip:</strong> You can search for multiple terms like "Galle saree fitting" or "Colombo alterations wedding"
+                    </p>
+                </div>
+            `;
+            tailorsGrid.style.display = 'grid';
+        }
+
+        // Show error state
+        function showErrorState(message) {
+            loadingEl.style.display = 'none';
+            tailorsGrid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #e74c3c; margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--teal); margin-bottom: 10px;">Error Loading Data</h3>
+                    <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                        ${message}
+                    </p>
+                </div>
+            `;
+            tailorsGrid.style.display = 'grid';
+        }
+
+        // Render results
+        function renderResults(keywords = []) {
+            loadingEl.style.display = 'none';
+            
+            if (filteredTailors.length === 0) {
+                noResultsEl.style.display = 'block';
+                resultsCount.textContent = '0 results found';
+                
+                // Show keyword-specific message
+                if (keywords.length > 0) {
+                    const keywordText = keywords.map(k => `<strong>${k}</strong>`).join(', ');
+                    noResultsEl.innerHTML = `
+                        <i class="fas fa-search"></i>
+                        <h3>No tailors found</h3>
+                        <p>No tailors found matching your search for ${keywordText}.</p>
+                        <p style="margin-top: 10px; font-size: 0.9rem;">
+                            Try simplifying your search or browse popular searches below.
+                        </p>
+                    `;
+                }
+                return;
+            }
+            
+            // Update results count
+            const resultText = `${filteredTailors.length} ${filteredTailors.length === 1 ? 'tailor' : 'tailors'} found`;
+            resultsCount.textContent = resultText;
+            
+            // Get tailors for current page
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageTailors = filteredTailors.slice(startIndex, endIndex);
+            
+            // Render tailors
+            renderTailors(pageTailors, keywords);
+            
+            // Show/hide pagination
+            if (filteredTailors.length > itemsPerPage) {
+                renderPagination();
+                paginationEl.style.display = 'flex';
+            } else {
+                paginationEl.style.display = 'none';
+            }
+            
+            // Show grid
+            tailorsGrid.style.display = 'grid';
+            
+            // Scroll to results
+            setTimeout(() => {
+                tailorsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // Render tailors to grid
+        function renderTailors(tailorsList, keywords = []) {
+            tailorsGrid.innerHTML = '';
+            
+            tailorsList.forEach(tailor => {
+                const card = document.createElement('div');
+                card.className = 'tailor-card';
+                
+                // Generate stars HTML
+                const stars = generateStars(tailor.rating);
+                
+                // Generate badge HTML
+                let badgeHTML = '';
+                if (tailor.verified && tailor.featured) {
+                    badgeHTML = `<span class="badge top-rated-badge"><i class="fas fa-crown"></i> Top Rated</span>`;
+                } else if (tailor.verified) {
+                    badgeHTML = `<span class="badge verified-badge"><i class="fas fa-check-circle"></i> Verified</span>`;
+                } else if (tailor.featured) {
+                    badgeHTML = `<span class="badge featured-badge"><i class="fas fa-star"></i> Featured</span>`;
+                }
+                
+                // Highlight services that match keywords
+                const servicesHTML = (tailor.services || ['Tailoring Services']).slice(0, 3).map(service => {
+                    let highlightedService = service;
+                    if (keywords.length > 0) {
+                        keywords.forEach(keyword => {
+                            if (service.toLowerCase().includes(keyword)) {
+                                highlightedService = `<strong style="color: var(--teal);">${service}</strong>`;
+                            }
+                        });
+                    }
+                    return `<span class="service-tag">${highlightedService}</span>`;
+                }).join('');
+                
+                card.innerHTML = `
+                    <div class="tailor-header">
+                        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                            <h3 class="tailor-name">
+                                ${tailor.name || 'Professional Tailor'}
+                                ${badgeHTML}
+                            </h3>
+                            <span style="margin-left: auto; display: flex; align-items: center; gap: 4px;">
+                                ${stars}
+                                <span style="font-size: 0.85rem; color: var(--text-light);">${tailor.rating || 'N/A'}</span>
+                            </span>
+                        </div>
+                        <div class="tailor-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${tailor.area ? `${tailor.area}, ${tailor.city || ''}` : 'Location not specified'}
+                        </div>
+                    </div>
+                    <div class="tailor-body">
+                        <p style="color: var(--text-light); margin-bottom: 14px; font-size: 0.9rem; min-height: 42px;">
+                            ${tailor.description || 'Professional tailoring services available for all your needs.'}
+                        </p>
+                        
+                        <div class="tailor-services">
+                            ${servicesHTML}
+                            ${(tailor.services || []).length > 3 ? 
+                                `<span class="service-tag">+${tailor.services.length - 3} more</span>` : ''
+                            }
+                        </div>
+                        
+                        <div class="tailor-contact">
+                            ${tailor.whatsapp ? `
+                                <a href="https://wa.me/${tailor.whatsapp}" class="btn btn-sm" target="_blank" style="flex: 1;">
+                                    <i class="fab fa-whatsapp"></i>
+                                    WhatsApp
+                                </a>
+                            ` : ''}
+                            <a href="${tailor.profile_url || '/'}" class="btn btn-outline btn-sm" style="flex: 1;">
+                                <i class="fas fa-eye"></i>
+                                View Profile
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                tailorsGrid.appendChild(card);
+            });
+        }
+
+        // Generate star ratings HTML
+        function generateStars(rating) {
+            let stars = '';
+            const numRating = parseFloat(rating) || 0;
+            const fullStars = Math.floor(numRating);
+            const hasHalfStar = numRating % 1 >= 0.5;
+            
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    stars += '<i class="fas fa-star" style="color: #f2c265;"></i>';
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    stars += '<i class="fas fa-star-half-alt" style="color: #f2c265;"></i>';
+                } else {
+                    stars += '<i class="far fa-star" style="color: #ddd;"></i>';
+                }
+            }
+            
+            return stars;
+        }
+
+        // Render pagination
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredTailors.length / itemsPerPage);
+            let paginationHTML = '';
+            
+            // Previous button
+            if (currentPage > 1) {
+                paginationHTML += `<button class="page-btn" onclick="changePage(${currentPage - 1})">
+                    <i class="fas fa-chevron-left"></i>
+                </button>`;
+            } else {
+                paginationHTML += `<button class="page-btn disabled">
+                    <i class="fas fa-chevron-left"></i>
+                </button>`;
+            }
+            
+            // Page numbers
+            if (totalPages <= 7) {
+                // Show all pages
+                for (let i = 1; i <= totalPages; i++) {
+                    if (i === currentPage) {
+                        paginationHTML += `<button class="page-btn active">${i}</button>`;
+                    } else {
+                        paginationHTML += `<button class="page-btn" onclick="changePage(${i})">${i}</button>`;
+                    }
+                }
+            } else {
+                // Complex pagination with ellipsis
+                if (currentPage <= 3) {
+                    // Show first 4 pages, ellipsis, last page
+                    for (let i = 1; i <= 4; i++) {
+                        if (i === currentPage) {
+                            paginationHTML += `<button class="page-btn active">${i}</button>`;
+                        } else {
+                            paginationHTML += `<button class="page-btn" onclick="changePage(${i})">${i}</button>`;
+                        }
+                    }
+                    paginationHTML += `<span class="page-ellipsis">...</span>`;
+                    paginationHTML += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
+                } else if (currentPage >= totalPages - 2) {
+                    // Show first page, ellipsis, last 4 pages
+                    paginationHTML += `<button class="page-btn" onclick="changePage(1)">1</button>`;
+                    paginationHTML += `<span class="page-ellipsis">...</span>`;
+                    for (let i = totalPages - 3; i <= totalPages; i++) {
+                        if (i === currentPage) {
+                            paginationHTML += `<button class="page-btn active">${i}</button>`;
+                        } else {
+                            paginationHTML += `<button class="page-btn" onclick="changePage(${i})">${i}</button>`;
+                        }
+                    }
+                } else {
+                    // Show first page, ellipsis, current-1, current, current+1, ellipsis, last page
+                    paginationHTML += `<button class="page-btn" onclick="changePage(1)">1</button>`;
+                    paginationHTML += `<span class="page-ellipsis">...</span>`;
+                    for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                        if (i === currentPage) {
+                            paginationHTML += `<button class="page-btn active">${i}</button>`;
+                        } else {
+                            paginationHTML += `<button class="page-btn" onclick="changePage(${i})">${i}</button>`;
+                        }
+                    }
+                    paginationHTML += `<span class="page-ellipsis">...</span>`;
+                    paginationHTML += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
+                }
+            }
+            
+            // Next button
+            if (currentPage < totalPages) {
+                paginationHTML += `<button class="page-btn" onclick="changePage(${currentPage + 1})">
+                    <i class="fas fa-chevron-right"></i>
+                </button>`;
+            } else {
+                paginationHTML += `<button class="page-btn disabled">
+                    <i class="fas fa-chevron-right"></i>
+                </button>`;
+            }
+            
+            // Page info
+            paginationHTML += `<span class="page-info">Page ${currentPage} of ${totalPages}</span>`;
+            
+            paginationEl.innerHTML = paginationHTML;
+        }
+
+        // Change page
+        function changePage(page) {
+            currentPage = page;
+            const searchTerm = searchInput.value.trim();
+            const keywords = parseKeywords(searchTerm);
+            renderResults(keywords);
+            
+            // Update URL with page number
+            const encodedTerm = encodeURIComponent(searchTerm).replace(/%20/g, '+');
+            const newUrl = `/t?search=${encodedTerm}&page=${page}`;
+            history.pushState({ searchTerm: searchTerm, page: page }, '', newUrl);
+            
+            // Scroll to top of results
+            window.scrollTo({
+                top: tailorsGrid.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+
+        // Expose to global scope
+        window.changePage = changePage;
+    </script>
+</body>
+</html>
