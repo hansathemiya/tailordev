@@ -1184,6 +1184,25 @@
             flex-wrap: wrap;
         }
 
+        /* WhatsApp button styling fix for mobile */
+        #claim-subdomain {
+            min-height: 44px; /* Minimum tap target size for mobile */
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+        }
+
+        /* Ensure all WhatsApp links are properly clickable on mobile */
+        a[href^="https://wa.me"],
+        a[href^="whatsapp://"],
+        a[href^="https://api.whatsapp.com"] {
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
         /* Footer */
         footer {
             background: var(--teal-dark);
@@ -1826,7 +1845,7 @@
                             <li>Multiple contact actions (Call, WhatsApp, Message)</li>
                             <li>Improved discovery on Tailors.lk</li>
                             <li>Accept online payments through Tailors.lk within limits</li>
-                            <li>Email inbox: yourname@mail.tailors.lk (receive only)</li>
+                            <li>Email inbox: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91f8efe5e8e5fce4f0d1fce0e8e5bff0e5efe3e5e8f9f0">[email&#160;protected]</a> (receive only)</li>
                         </ul>
                         
                         <div class="plan-cta">
@@ -2021,10 +2040,10 @@
                 <div id="availability-result" class="availability-result">
                     <p id="result-message"></p>
                     <div id="available-actions" style="margin-top: 10px; display: none;">
-                        <a href="#" id="claim-subdomain" class="btn btn-sm btn-primary" target="_blank">
+                        <button id="claim-subdomain" class="btn btn-sm btn-primary">
                             <i class="fab fa-whatsapp"></i>
                             Claim This Name on WhatsApp
-                        </a>
+                        </button>
                     </div>
                 </div>
                 
@@ -2255,7 +2274,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
-                                <a href="mailto:team@tailors.lk">team@tailors.lk</a>
+                                <a href="mailto:team@taiolors.lk">team@tailors.lk</a>
                             </li>
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
@@ -2406,6 +2425,43 @@
                 }
             }
 
+            // WhatsApp link generator for mobile compatibility
+            function generateWhatsAppURL(message) {
+                // Mobile-friendly WhatsApp URL generation
+                const encodedMessage = encodeURIComponent(message)
+                    .replace(/%20/g, '+')
+                    .replace(/'/g, '%27')
+                    .replace(/"/g, '%22');
+                
+                // Try multiple URL formats for compatibility
+                const urls = [
+                    `https://wa.me/94758244216?text=${encodedMessage}`,
+                    `https://api.whatsapp.com/send?phone=94758244216&text=${encodedMessage}`,
+                    `whatsapp://send?phone=94758244216&text=${encodedMessage}`
+                ];
+                
+                return urls;
+            }
+
+            // Open WhatsApp with fallback mechanism
+            function openWhatsApp(message) {
+                const urls = generateWhatsAppURL(message);
+                
+                // Try app first, then web
+                if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                    // Mobile device - try WhatsApp app first
+                    window.location.href = urls[2]; // whatsapp:// protocol
+                    
+                    // Fallback to web after delay if app not installed
+                    setTimeout(function() {
+                        window.location.href = urls[0]; // wa.me
+                    }, 1000);
+                } else {
+                    // Desktop - use web version
+                    window.open(urls[1], '_blank'); // api.whatsapp.com
+                }
+            }
+
             // Check subdomain availability against JSON dataset
             window.checkSubdomainAvailability = async function() {
                 const input = document.getElementById('subdomain-input');
@@ -2469,9 +2525,19 @@
                         resultMessage.innerHTML = `<i class="fas fa-check-circle"></i> <strong>${subdomain}.tailors.lk</strong> is available!`;
                         availableActions.style.display = 'block';
                         
-                        // Update claim button with WhatsApp prefilled message
+                        // Setup WhatsApp button with proper mobile handling
                         const whatsappMessage = `Hi Tailors.lk, I want to claim the subdomain: ${subdomain}.tailors.lk for my tailoring business`;
-                        claimButton.href = `https://wa.me/94758244216?text=${encodeURIComponent(whatsappMessage)}`;
+                        
+                        // Remove previous event listeners
+                        const newClaimButton = claimButton.cloneNode(true);
+                        claimButton.parentNode.replaceChild(newClaimButton, claimButton);
+                        
+                        // Add new event listener
+                        newClaimButton.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            openWhatsApp(whatsappMessage);
+                            return false;
+                        });
                     }
                     
                     resultDiv.style.display = 'block';
@@ -2497,9 +2563,18 @@
                         resultMessage.innerHTML = `<i class="fas fa-check-circle"></i> <strong>${subdomain}.tailors.lk</strong> appears to be available!`;
                         availableActions.style.display = 'block';
                         
-                        // Update claim button with WhatsApp prefilled message
+                        // Setup WhatsApp button
                         const whatsappMessage = `Hi Tailors.lk, I want to claim the subdomain: ${subdomain}.tailors.lk for my tailoring business`;
-                        claimButton.href = `https://wa.me/94758244216?text=${encodeURIComponent(whatsappMessage)}`;
+                        
+                        // Remove previous event listeners
+                        const newClaimButton = claimButton.cloneNode(true);
+                        claimButton.parentNode.replaceChild(newClaimButton, claimButton);
+                        
+                        newClaimButton.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            openWhatsApp(whatsappMessage);
+                            return false;
+                        });
                     } else {
                         resultDiv.className = 'availability-result unavailable';
                         resultMessage.innerHTML = `<i class="fas fa-times-circle"></i> <strong>${subdomain}.tailors.lk</strong> may already be in use.`;
@@ -2616,6 +2691,7 @@
             // Form submission for subdomain search
             document.getElementById('subdomain-input').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
+                    e.preventDefault();
                     checkSubdomainAvailability();
                 }
             });
@@ -2640,6 +2716,9 @@
                     }
                 });
             });
+
+            // Test WhatsApp functionality
+            console.log('WhatsApp functionality initialized for mobile compatibility');
         });
     </script>
 </body>
