@@ -1184,23 +1184,26 @@
             flex-wrap: wrap;
         }
 
-        /* WhatsApp button styling fix for mobile */
-        #claim-subdomain {
-            min-height: 44px; /* Minimum tap target size for mobile */
-            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-        }
-
-        /* Ensure all WhatsApp links are properly clickable on mobile */
-        a[href^="https://wa.me"],
-        a[href^="whatsapp://"],
-        a[href^="https://api.whatsapp.com"] {
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-select: none;
+        /* WhatsApp button specific styles */
+        .whatsapp-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            padding: 10px 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: var(--radius-sm);
             text-decoration: none;
+            font-weight: 600;
+            gap: 8px;
+            transition: var(--transition);
+            min-height: 44px;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -1845,7 +1848,7 @@
                             <li>Multiple contact actions (Call, WhatsApp, Message)</li>
                             <li>Improved discovery on Tailors.lk</li>
                             <li>Accept online payments through Tailors.lk within limits</li>
-                            <li>Email inbox: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91f8efe5e8e5fce4f0d1fce0e8e5bff0e5efe3e5e8f9f0">[email&#160;protected]</a> (receive only)</li>
+                            <li>Email inbox: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9af3e4f3e3daeefbf3f6f5e8e9b4f6f1">[email&#160;protected]</a> (receive only)</li>
                         </ul>
                         
                         <div class="plan-cta">
@@ -2040,10 +2043,10 @@
                 <div id="availability-result" class="availability-result">
                     <p id="result-message"></p>
                     <div id="available-actions" style="margin-top: 10px; display: none;">
-                        <button id="claim-subdomain" class="btn btn-sm btn-primary">
+                        <a href="#" id="claim-subdomain" class="whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                             Claim This Name on WhatsApp
-                        </button>
+                        </a>
                     </div>
                 </div>
                 
@@ -2274,7 +2277,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
-                                <a href="mailto:team@taiolors.lk">team@tailors.lk</a>
+                                <a href="mailto:team@tailors.lk">team@tailors.lk</a>
                             </li>
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
@@ -2290,6 +2293,143 @@
             </div>
         </div>
     </footer>
+
+    <!-- Inline JSON data for unavailable subdomains -->
+    <script type="application/json" id="unavailable-subdomains">
+    {
+        "unavailable": [
+            "dev",
+            "register",
+            "4biz",
+            "admin",
+            "api",
+            "blog",
+            "support",
+            "help",
+            "info",
+            "mail",
+            "webmail",
+            "ftp",
+            "test",
+            "staging",
+            "demo",
+            "shop",
+            "store",
+            "blog",
+            "news",
+            "app",
+            "apps",
+            "beta",
+            "secure",
+            "account",
+            "accounts",
+            "login",
+            "signin",
+            "signup",
+            "register",
+            "auth",
+            "authentication",
+            "dashboard",
+            "panel",
+            "adminpanel",
+            "control",
+            "cp",
+            "cpanel",
+            "whm",
+            "webdisk",
+            "webhost",
+            "host",
+            "hosting",
+            "server",
+            "servers",
+            "ns1",
+            "ns2",
+            "ns3",
+            "ns4",
+            "dns",
+            "dns1",
+            "dns2",
+            "mx",
+            "mx1",
+            "mx2",
+            "mail1",
+            "mail2",
+            "smtp",
+            "pop",
+            "pop3",
+            "imap",
+            "web",
+            "www",
+            "www1",
+            "www2",
+            "ftp",
+            "file",
+            "files",
+            "download",
+            "downloads",
+            "upload",
+            "uploads",
+            "image",
+            "images",
+            "img",
+            "video",
+            "videos",
+            "media",
+            "cdn",
+            "cdn1",
+            "cdn2",
+            "static",
+            "assets",
+            "asset",
+            "content",
+            "contents",
+            "data",
+            "database",
+            "db",
+            "sql",
+            "mysql",
+            "mongo",
+            "redis",
+            "cache",
+            "cached",
+            "temp",
+            "tmp",
+            "log",
+            "logs",
+            "backup",
+            "backups",
+            "archive",
+            "archives",
+            "old",
+            "new",
+            "legacy",
+            "beta",
+            "alpha",
+            "gamma",
+            "delta",
+            "epsilon",
+            "zeta",
+            "eta",
+            "theta",
+            "iota",
+            "kappa",
+            "lambda",
+            "mu",
+            "nu",
+            "xi",
+            "omicron",
+            "pi",
+            "rho",
+            "sigma",
+            "tau",
+            "upsilon",
+            "phi",
+            "chi",
+            "psi",
+            "omega"
+        ]
+    }
+    </script>
 
     <!-- Schema Markup -->
     <script type="application/ld+json">
@@ -2313,7 +2453,6 @@
     }
     </script>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
@@ -2346,6 +2485,51 @@
                 });
             });
 
+            // Load form data from localStorage
+            function loadFormData() {
+                const formData = localStorage.getItem('tailorApplicationFormData');
+                if (formData) {
+                    try {
+                        const data = JSON.parse(formData);
+                        Object.keys(data).forEach(key => {
+                            const element = document.getElementById(key);
+                            if (element && (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT')) {
+                                element.value = data[key];
+                            }
+                        });
+                        console.log('Form data loaded from localStorage');
+                    } catch (e) {
+                        console.error('Error loading form data:', e);
+                    }
+                }
+            }
+
+            // Save form data to localStorage
+            function saveFormData() {
+                const form = document.getElementById('tailorApplicationForm');
+                if (!form) return;
+                
+                const formData = {};
+                const formElements = form.querySelectorAll('input, textarea, select');
+                
+                formElements.forEach(element => {
+                    if (element.name && !element.name.startsWith('_')) {
+                        formData[element.id] = element.value;
+                    }
+                });
+                
+                localStorage.setItem('tailorApplicationFormData', JSON.stringify(formData));
+            }
+
+            // Auto-save form data on input
+            document.querySelectorAll('#tailorApplicationForm input, #tailorApplicationForm textarea, #tailorApplicationForm select').forEach(element => {
+                element.addEventListener('input', saveFormData);
+                element.addEventListener('change', saveFormData);
+            });
+
+            // Load form data on page load
+            loadFormData();
+
             // Subdomain search functionality
             window.updateSubdomainPreview = function() {
                 const input = document.getElementById('subdomain-input');
@@ -2370,15 +2554,26 @@
                     .substring(0, 30);            // Limit length
             }
 
+            // Get unavailable subdomains from inline JSON
+            function getUnavailableSubdomains() {
+                try {
+                    const jsonElement = document.getElementById('unavailable-subdomains');
+                    if (jsonElement && jsonElement.textContent) {
+                        const data = JSON.parse(jsonElement.textContent);
+                        return data.unavailable || [];
+                    }
+                } catch (e) {
+                    console.error('Error parsing unavailable subdomains:', e);
+                }
+                return ['dev', 'register', '4biz', 'piana']; // Fallback to basic list
+            }
+
             // Generate suggestions based on input
             function generateSuggestions(baseName) {
                 const suggestions = [];
                 const cleanBase = cleanSubdomain(baseName);
                 
-                // Remove common words that might be too generic
-                const genericWords = ['tailor', 'fashion', 'style', 'design', 'clothing', 'boutique'];
-                
-                // Add variations
+                // Add base name
                 suggestions.push(cleanBase);
                 
                 // Add with location suffixes (common Sri Lankan cities)
@@ -2388,17 +2583,14 @@
                 });
                 
                 // Add with specialty suffixes
-                const specialties = ['bridal', 'mens', 'womens', 'kids', 'custom', 'alterations'];
+                const specialties = ['bridal', 'mens', 'womens', 'kids', 'custom', 'alterations', 'tailors'];
                 specialties.forEach(spec => {
                     suggestions.push(`${cleanBase}-${spec}`);
                 });
                 
-                // Filter out generic names and duplicates
-                return [...new Set(suggestions.filter(s => {
-                    // Check if it's too generic
-                    const words = s.split('-');
-                    return !words.every(w => genericWords.includes(w));
-                }))].slice(0, 6); // Return max 6 suggestions
+                // Filter out unavailable names
+                const unavailable = getUnavailableSubdomains();
+                return suggestions.filter(s => !unavailable.includes(s)).slice(0, 6);
             }
 
             // Display suggestions
@@ -2425,45 +2617,8 @@
                 }
             }
 
-            // WhatsApp link generator for mobile compatibility
-            function generateWhatsAppURL(message) {
-                // Mobile-friendly WhatsApp URL generation
-                const encodedMessage = encodeURIComponent(message)
-                    .replace(/%20/g, '+')
-                    .replace(/'/g, '%27')
-                    .replace(/"/g, '%22');
-                
-                // Try multiple URL formats for compatibility
-                const urls = [
-                    `https://wa.me/94758244216?text=${encodedMessage}`,
-                    `https://api.whatsapp.com/send?phone=94758244216&text=${encodedMessage}`,
-                    `whatsapp://send?phone=94758244216&text=${encodedMessage}`
-                ];
-                
-                return urls;
-            }
-
-            // Open WhatsApp with fallback mechanism
-            function openWhatsApp(message) {
-                const urls = generateWhatsAppURL(message);
-                
-                // Try app first, then web
-                if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                    // Mobile device - try WhatsApp app first
-                    window.location.href = urls[2]; // whatsapp:// protocol
-                    
-                    // Fallback to web after delay if app not installed
-                    setTimeout(function() {
-                        window.location.href = urls[0]; // wa.me
-                    }, 1000);
-                } else {
-                    // Desktop - use web version
-                    window.open(urls[1], '_blank'); // api.whatsapp.com
-                }
-            }
-
-            // Check subdomain availability against JSON dataset
-            window.checkSubdomainAvailability = async function() {
+            // Check subdomain availability - UPDATED: Always show as available unless in reserved list
+            window.checkSubdomainAvailability = function() {
                 const input = document.getElementById('subdomain-input');
                 const resultDiv = document.getElementById('availability-result');
                 const resultMessage = document.getElementById('result-message');
@@ -2483,106 +2638,49 @@
                     return;
                 }
                 
-                // Show loading state
-                const originalBtnContent = checkBtn.innerHTML;
-                checkBtn.innerHTML = '<span class="spinner"></span> Checking...';
-                checkBtn.disabled = true;
-                input.classList.add('loading');
+                // Check against reserved list
+                const unavailable = getUnavailableSubdomains();
+                const isReserved = unavailable.includes(subdomain);
                 
-                try {
-                    // Fetch subdomain data from JSON file
-                    const response = await fetch('https://data.tailors.lk/subd.json');
-                    const subdomainData = await response.json();
+                // Generate suggestions
+                const suggestions = generateSuggestions(input.value.trim());
+                displaySuggestions(suggestions);
+                
+                if (isReserved) {
+                    resultDiv.className = 'availability-result unavailable';
+                    resultMessage.innerHTML = `<i class="fas fa-times-circle"></i> <strong>${subdomain}.tailors.lk</strong> is reserved for platform use.`;
+                    availableActions.style.display = 'none';
+                } else {
+                    resultDiv.className = 'availability-result available';
+                    resultMessage.innerHTML = `<i class="fas fa-check-circle"></i> <strong>${subdomain}.tailors.lk</strong> is available! This name can be yours with a Signature or Pro plan.`;
+                    availableActions.style.display = 'block';
                     
-                    // Check if subdomain exists in taken or reserved lists
-                    const isTaken = subdomainData.taken.includes(subdomain);
-                    const isReserved = subdomainData.reserved.includes(subdomain);
-                    const isPremium = subdomainData.premium.includes(subdomain);
+                    // Fixed WhatsApp URL - Using simple encoding that works on mobile
+                    const whatsappMessage = `Hi Tailors.lk, I want to claim the subdomain: ${subdomain}.tailors.lk for my tailoring business`;
+                    // Use minimal encoding - replace spaces with %20
+                    const simpleEncoded = whatsappMessage.replace(/ /g, '%20');
                     
-                    // Reset button
-                    checkBtn.innerHTML = originalBtnContent;
-                    checkBtn.disabled = false;
-                    input.classList.remove('loading');
+                    // Set the href with a working WhatsApp URL
+                    claimButton.href = `https://wa.me/94758244216?text=${simpleEncoded}`;
                     
-                    // Generate and display suggestions
-                    const suggestions = generateSuggestions(input.value.trim());
-                    displaySuggestions(suggestions);
-                    
-                    if (isTaken) {
-                        resultDiv.className = 'availability-result unavailable';
-                        resultMessage.innerHTML = `<i class="fas fa-times-circle"></i> <strong>${subdomain}.tailors.lk</strong> is already registered by another tailor.`;
-                        availableActions.style.display = 'none';
-                    } else if (isReserved) {
-                        resultDiv.className = 'availability-result reserved';
-                        resultMessage.innerHTML = `<i class="fas fa-lock"></i> <strong>${subdomain}.tailors.lk</strong> is reserved for future use.`;
-                        availableActions.style.display = 'none';
-                    } else if (isPremium) {
-                        resultDiv.className = 'availability-result reserved';
-                        resultMessage.innerHTML = `<i class="fas fa-crown"></i> <strong>${subdomain}.tailors.lk</strong> is available for premium members only. <a href="#plans" style="color: inherit; text-decoration: underline;">Learn more</a>`;
-                        availableActions.style.display = 'none';
-                    } else {
-                        resultDiv.className = 'availability-result available';
-                        resultMessage.innerHTML = `<i class="fas fa-check-circle"></i> <strong>${subdomain}.tailors.lk</strong> is available!`;
-                        availableActions.style.display = 'block';
-                        
-                        // Setup WhatsApp button with proper mobile handling
-                        const whatsappMessage = `Hi Tailors.lk, I want to claim the subdomain: ${subdomain}.tailors.lk for my tailoring business`;
-                        
-                        // Remove previous event listeners
-                        const newClaimButton = claimButton.cloneNode(true);
-                        claimButton.parentNode.replaceChild(newClaimButton, claimButton);
-                        
-                        // Add new event listener
-                        newClaimButton.addEventListener('click', function(e) {
+                    // Add click handler for mobile
+                    claimButton.onclick = function(e) {
+                        // For mobile, try to open WhatsApp app first
+                        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                            const whatsappAppUrl = `whatsapp://send?phone=94758244216&text=${simpleEncoded}`;
+                            window.location.href = whatsappAppUrl;
+                            setTimeout(() => {
+                                // Fallback to web if app doesn't open
+                                window.location.href = `https://wa.me/94758244216?text=${simpleEncoded}`;
+                            }, 500);
                             e.preventDefault();
-                            openWhatsApp(whatsappMessage);
-                            return false;
-                        });
-                    }
-                    
-                    resultDiv.style.display = 'block';
-                    
-                } catch (error) {
-                    // Fallback to local check if JSON fetch fails
-                    console.error('Error fetching subdomain data:', error);
-                    
-                    // Reset button
-                    checkBtn.innerHTML = originalBtnContent;
-                    checkBtn.disabled = false;
-                    input.classList.remove('loading');
-                    
-                    // Generate and display suggestions
-                    const suggestions = generateSuggestions(input.value.trim());
-                    displaySuggestions(suggestions);
-                    
-                    // Simulate check with 50% availability for demo
-                    const isAvailable = Math.random() > 0.5;
-                    
-                    if (isAvailable) {
-                        resultDiv.className = 'availability-result available';
-                        resultMessage.innerHTML = `<i class="fas fa-check-circle"></i> <strong>${subdomain}.tailors.lk</strong> appears to be available!`;
-                        availableActions.style.display = 'block';
-                        
-                        // Setup WhatsApp button
-                        const whatsappMessage = `Hi Tailors.lk, I want to claim the subdomain: ${subdomain}.tailors.lk for my tailoring business`;
-                        
-                        // Remove previous event listeners
-                        const newClaimButton = claimButton.cloneNode(true);
-                        claimButton.parentNode.replaceChild(newClaimButton, claimButton);
-                        
-                        newClaimButton.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            openWhatsApp(whatsappMessage);
-                            return false;
-                        });
-                    } else {
-                        resultDiv.className = 'availability-result unavailable';
-                        resultMessage.innerHTML = `<i class="fas fa-times-circle"></i> <strong>${subdomain}.tailors.lk</strong> may already be in use.`;
-                        availableActions.style.display = 'none';
-                    }
-                    
-                    resultDiv.style.display = 'block';
+                        }
+                        // For desktop, let the href work normally
+                    };
                 }
+                
+                resultDiv.style.display = 'block';
+                resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
             };
 
             // Form submission handling for application form
@@ -2620,16 +2718,19 @@
                         // Since we're using no-cors, we can't check response status
                         // Assume success and show custom message
                         
-                        // Reset form
-                        applicationForm.reset();
+                        // NOTE: Form data is NOT cleared from localStorage on successful submission
+                        // This ensures data persists even if submission fails
                         
                         // Show success message
                         successMessage.classList.add('active');
                         successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         
+                        // Clear form (optional - you can remove this if you want to keep form data)
+                        // this.reset();
+                        
                     } catch (error) {
                         console.error('Form submission error:', error);
-                        alert('There was an error submitting your application. Please try again or contact us directly via WhatsApp.');
+                        alert('There was an error submitting your application. Please try again or contact us directly via WhatsApp. Your form data has been saved.');
                     } finally {
                         // Restore button state
                         submitBtn.innerHTML = originalBtnContent;
@@ -2691,7 +2792,6 @@
             // Form submission for subdomain search
             document.getElementById('subdomain-input').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
-                    e.preventDefault();
                     checkSubdomainAvailability();
                 }
             });
@@ -2716,9 +2816,6 @@
                     }
                 });
             });
-
-            // Test WhatsApp functionality
-            console.log('WhatsApp functionality initialized for mobile compatibility');
         });
     </script>
 </body>
