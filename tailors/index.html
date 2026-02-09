@@ -627,149 +627,32 @@
             margin-bottom: 10px;
         }
 
-        /* New Sections */
-        .learn-section {
-            padding: 60px 0;
-            background: linear-gradient(135deg, rgba(31, 78, 95, 0.05) 0%, rgba(13, 54, 69, 0.05) 100%);
-            text-align: center;
-        }
-
-        .learn-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .learn-section h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--teal);
-            margin-bottom: 12px;
-        }
-
-        .learn-section p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        /* Newsletter Messages */
-        .newsletter-message {
-            margin-top: 12px;
-            padding: 10px 14px;
-            border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            text-align: center;
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .newsletter-success {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .newsletter-error {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--error);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .newsletter-warning {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--warning);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
         /* Testimonials Section */
         .testimonials-section {
             padding: 60px 0;
             background: var(--bg);
         }
 
+        /* Testimonials grid updated */
         .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin: 40px 0;
-        }
-
-        .testimonial-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .stars {
-            color: #f2c265;
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-        }
-
-        .testimonial-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text);
-            margin-bottom: 20px;
-            font-style: italic;
-            position: relative;
-        }
-
-        .testimonial-text::before {
-            content: '"';
-            font-size: 3rem;
-            color: var(--gold-light);
-            position: absolute;
-            top: -15px;
-            left: -10px;
-            opacity: 0.3;
-            font-family: Georgia, serif;
-        }
-
-        .customer-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-        }
-
-        .customer-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--teal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .customer-details h4 {
-            font-size: 1rem;
-            color: var(--teal);
-            margin-bottom: 4px;
-        }
-
-        .customer-details p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        .testimonials-cta {
             text-align: center;
-            margin-top: 40px;
+            padding: 40px 0;
+        }
+
+        .testimonials-grid h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 10px;
+        }
+
+        .testimonials-grid p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1rem;
         }
 
         /* FAQ Section */
@@ -1094,10 +977,6 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 25px;
             }
-            
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 768px) {
@@ -1143,18 +1022,6 @@
                 display: none;
             }
             
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .learn-section h2 {
-                font-size: 1.7rem;
-            }
-            
-            .learn-section p {
-                font-size: 1rem;
-            }
-            
             .pagination {
                 gap: 4px;
             }
@@ -1198,12 +1065,6 @@
         /* Animations */
         .fade-in {
             animation: fadeIn 0.5s ease;
-        }
-
-        /* Target the placeholder text */ 
-        #learn-email::placeholder { 
-            color: rgb(0, 0, 0); 
-            opacity: 1; 
         }
 
         @keyframes fadeIn {
@@ -1281,6 +1142,11 @@
         <div class="container hero-content">
             <h1>Find Trusted Tailors in Sri Lanka</h1>
             <p class="hero-subtitle">Connect with local professionals for blouse stitching, saree fitting, bespoke suits, alterations, and more</p>
+            
+            <!-- Hidden wildcard search field for URL parameters -->
+            <div id="wildcard-search-container" style="display: none;">
+                <input type="text" id="wildcard-search-input" />
+            </div>
             
             <!-- Enhanced Search Form -->
             <div class="search-panel">
@@ -1395,7 +1261,6 @@
                 <a href="#directory" class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopularService('alterations')">Alterations</a>
                 <a href="#directory" class="btn btn-sm btn-outline" style="color: white; border-color: rgba(255,255,255,0.3); font-size: 0.85rem;" onclick="searchPopularService('saree')">Saree Fitting</a>
             </div>
-            </div>
         </div>
     </section>
 
@@ -1491,219 +1356,150 @@
         </div>
     </section>
 
-    <!-- Learn Tailoring Section -->
-    <section class="learn-section">
-        <div class="container">
-            <div class="learn-content">
-                <h2>Learn Tailoring with Us</h2>
-                <p>Courses, guides and masterclasses — launching soon.</p>
-                <div class="newsletter-form" style="max-width: 400px; margin: 30px auto;">
-                    <input type="email" placeholder="Enter your email" style="background: #ecf3ab; color:#000100;" class="newsletter-input" id="learn-email" style="background:#041139;  border:1px solid #050505;" />
-                    <button class="btn btn-primary" id="notify-me">
-                        <i class="fas fa-bell"></i>
-                        Notify Me
-                    </button>
-                </div>
-                <div class="newsletter-message" id="learn-message"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - Updated to just show CTA -->
     <section class="testimonials-section">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 10px;">What Clients Say</h2>
-            <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Discover what our customers have to say about their experiences with tailors on our platform.
-            </p>
-            
             <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card fade-in">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        Found the perfect tailor for my wedding saree blouse through Tailors.lk. The fitting was perfect and the craftsmanship was exceptional. Highly recommended!
-                    </p>
-                    <div class="customer-info">
-                        <div class="customer-avatar" style="background: #2a6579;">
-                            SP
-                        </div>
-                        <div class="customer-details">
-                            <h4>Sandani Perera</h4>
-                            <p>Colombo</p>
-                        </div>
-                    </div>
+                <h2>What Clients Say</h2>
+                <p>Discover what our customers have to say about their experiences with tailors on our platform.</p>
+                <div class="testimonials-cta">
+                    <a href="/reviews" class="btn btn-outline">
+                        <i class="fas fa-comments"></i>
+                        View All Reviews
+                    </a>
                 </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card fade-in">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        As an expat in Kandy, I needed a reliable tailor for alterations. The platform connected me with a professional who understood exactly what I needed. Great service!
-                    </p>
-                    <div class="customer-info">
-                        <div class="customer-avatar" style="background: #b9915f;">
-                            MR
-                        </div>
-                        <div class="customer-details">
-                            <h4>Michael Roberts</h4>
-                            <p>Kandy</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card fade-in">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        Needed emergency alterations for a business trip. Found a tailor who completed the work in just a few hours through Tailors.lk. Saved my trip!
-                    </p>
-                    <div class="customer-info">
-                        <div class="customer-avatar" style="background: #0d3645;">
-                            AK
-                        </div>
-                        <div class="customer-details">
-                            <h4>Anjali Kumar</h4>
-                            <p>Galle</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonials-cta">
-                <a href="/reviews" class="btn btn-outline">
-                    <i class="fas fa-comments"></i>
-                    Read All Reviews
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQ Section - Updated for "tailors near me" SEO -->
     <section class="faq-section" id="faq">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 10px;">Frequently Asked Questions</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 10px;">Frequently Asked Questions About Finding Tailors</h2>
             <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Find answers to common questions about using Tailors.lk to find professional tailoring services in Sri Lanka.
+                Find answers to common questions about finding trusted tailors near you in Sri Lanka.
             </p>
             
             <div class="faq-container">
-                <!-- FAQ Item 1 -->
+                <!-- FAQ Item 1 - Updated for "tailors near me" -->
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(1)">
-                        <span>How can I contact a tailor if I have a problem?</span>
+                        <span>How can I find the best tailors near me?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-1">
-                        Each tailor's profile on Tailors.lk includes their direct WhatsApp number, phone number, or social media links. You can also click the "Contact" button to message them via WhatsApp. For urgent issues, look for the "Emergency Service" filter to find tailors who can respond quickly.
+                        Finding tailors near you is easy with Tailors.lk! Simply use our search panel above and enter your location (city, area, or postal code). You can also use the "Use My Location" button to automatically detect your area. We'll show you verified tailors in your vicinity with ratings, services offered, and contact information. Popular searches include "tailors near me in Colombo", "tailors near me in Kandy", and "tailors near me in Galle".
                     </div>
                 </div>
                 
-                <!-- FAQ Item 2 -->
+                <!-- FAQ Item 2 - Updated for SEO -->
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(2)">
-                        <span>What services are typically offered by tailors on Tailors.lk?</span>
+                        <span>What should I look for in a local tailor near me?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-2">
-                        Tailors on our platform offer a wide range of professional services including:
+                        When searching for tailors near your location, consider these important factors:
                         <ul>
-                            <li>Saree fitting and draping</li>
-                            <li>Bespoke suit tailoring</li>
-                            <li>Alterations for dresses, shirts, and formal wear</li>
-                            <li>Hemming, button sewing, and fabric repairs</li>
-                            <li>Custom design and embroidery</li>
-                            <li>Emergency alterations for events or travel</li>
+                            <li><strong>Location proximity:</strong> How close is the tailor to your home or workplace?</li>
+                            <li><strong>Specialization:</strong> Does the tailor specialize in the services you need (saree fitting, suits, alterations)?</li>
+                            <li><strong>Customer reviews:</strong> Check ratings and feedback from other local customers</li>
+                            <li><strong>Experience level:</strong> Look for tailors with appropriate experience for your needs</li>
+                            <li><strong>Availability:</strong> Can they accommodate your timeline?</li>
+                            <li><strong>Price range:</strong> Ensure their pricing fits your budget</li>
                         </ul>
-                        You can browse each tailor's profile to see their specific services and reviews from real customers.
+                        Our platform helps you compare all these factors when searching for "tailors near me".
                     </div>
                 </div>
                 
-                <!-- FAQ Item 3 -->
+                <!-- FAQ Item 3 - Updated for "near me" SEO -->
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(3)">
-                        <span>How do I find a trusted tailor near me on Tailors.lk?</span>
+                        <span>How do I contact a tailor near me?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-3">
-                        Use our powerful search panel on the homepage! Enter your city (e.g., Colombo, Kandy, Galle) or a specific area, then select your service (like saree fitting or alterations). You can also filter by experience level, price range, or rating to find the perfect tailor. Our platform verifies and features top-rated tailors for your convenience.
+                        Once you find tailors near your location, contacting them is simple! Each tailor's profile includes their direct contact information:
+                        <ul>
+                            <li><strong>WhatsApp number:</strong> For quick messaging and photo sharing</li>
+                            <li><strong>Phone number:</strong> For direct calls</li>
+                            <li><strong>Location address:</strong> To visit their shop</li>
+                            <li><strong>Working hours:</strong> To know when they're available</li>
+                        </ul>
+                        Simply click the "Contact" button on any tailor's profile to message them directly via WhatsApp. For urgent needs, look for tailors with "Emergency Service" availability near you.
                     </div>
                 </div>
                 
-                <!-- FAQ Item 4 -->
+                <!-- FAQ Item 4 - Updated for SEO -->
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(4)">
-                        <span>How are tailors verified on Tailors.lk?</span>
+                        <span>Are tailors on Tailors.lk verified and trustworthy?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-4">
-                        We ensure quality by verifying every tailor through a multi-step process:
+                        Yes! We ensure that every tailor listed near you goes through a verification process:
                         <ol>
-                            <li><strong>Profile Submission:</strong> Tailors submit their business details, photos, and service list.</li>
-                            <li><strong>Document Check:</strong> We verify licenses, business registration, or professional certifications.</li>
-                            <li><strong>Customer Reviews:</strong> Only tailors with real, verified reviews can appear on our directory.</li>
-                            <li><strong>Featured Badge:</strong> Top-rated tailors (4.5+ stars, 5+ reviews) receive a "Featured" badge for visibility.</li>
+                            <li><strong>Profile verification:</strong> We verify business details and contact information</li>
+                            <li><strong>Customer reviews:</strong> Only tailors with real, verified customer feedback appear in search results</li>
+                            <li><strong>Featured status:</strong> Top-rated tailors (4.5+ stars) receive special badges</li>
+                            <li><strong>Location accuracy:</strong> We verify that tailors are actually located where they claim to be</li>
                         </ol>
-                        You can trust that every tailor listed has been vetted for professionalism and quality.
+                        When you search for "tailors near me", you can trust that every result has been vetted for quality and reliability.
                     </div>
                 </div>
                 
-                <!-- FAQ Item 5 -->
+                <!-- FAQ Item 5 - New for "near me" SEO -->
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(5)">
-                        <span>Is Tailors.lk free for customers to use?</span>
+                        <span>What areas in Sri Lanka are covered by Tailors.lk?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-5">
-                        Absolutely! Finding and connecting with tailors is completely free for customers. We help you discover local professionals without any cost. Tailors, however, pay a small fee to join our directory and get featured listings, which helps us maintain a high-quality, verified platform for you.
+                        Tailors.lk covers tailors across all major cities and regions in Sri Lanka! You can find tailors near you in:
+                        <ul>
+                            <li><strong>Colombo and suburbs:</strong> Colombo 1-15, Dehiwala, Mount Lavinia, Rajagiriya, Nugegoda, Kohuwala</li>
+                            <li><strong>Kandy and surrounding areas:</strong> Peradeniya, Katugastota, Gampola</li>
+                            <li><strong>Galle and Southern Province:</strong> Galle Fort, Unawatuna, Hikkaduwa, Matara</li>
+                            <li><strong>Other major cities:</strong> Jaffna, Trincomalee, Kurunegala, Ratnapura, Hambantota</li>
+                            <li><strong>Popular tourist areas:</strong> Ella, Nuwara Eliya, Negombo, Bentota</li>
+                        </ul>
+                        No matter where you are in Sri Lanka, you can find trusted tailors near your location through our platform.
                     </div>
                 </div>
                 
-                <!-- FAQ Item 6 -->
+                <!-- FAQ Item 6 - Updated for SEO -->
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(6)">
-                        <span>Can I book an appointment or contact a tailor directly?</span>
+                        <span>Can I get emergency tailoring services near me?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-6">
-                        Yes! Each tailor's profile includes their WhatsApp number, phone number, and sometimes a direct link to their website or social media. You can also click the "Contact" button to message them directly via WhatsApp. For urgent needs, look for the "Emergency Service" filter to find tailors who can accommodate same-day or next-day appointments.
+                        Absolutely! When searching for tailors near your location, use our "Advanced Filters" and select "Emergency Service" under availability. This will show you tailors in your area who can accommodate urgent requests such as:
+                        <ul>
+                            <li>Same-day alterations for important events</li>
+                            <li>Quick repairs for damaged clothing</li>
+                            <li>Emergency wedding attire adjustments</li>
+                            <li>Last-minute business suit alterations</li>
+                        </ul>
+                        Many tailors near you offer emergency services - just look for the "Available Today" or "Emergency Service" indicators in their profiles.
                     </div>
                 </div>
                 
-                <!-- FAQ Item 7 -->
+                <!-- FAQ Item 7 - Updated for SEO -->
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(7)">
-                        <span>What makes Tailors.lk different from other tailoring directories?</span>
+                        <span>Is Tailors.lk free to use for finding tailors near me?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer" id="faq-answer-7">
-                        Tailors.lk is built for Sri Lankan users, with a focus on local, verified professionals. We offer:
+                        Yes, finding and contacting tailors near your location is completely free for customers! We help you discover local professionals without any cost. Our platform offers:
                         <ul>
-                            <li>Real customer reviews and ratings</li>
-                            <li>Advanced filters (experience, price, availability, rating)</li>
-                            <li>Emergency service options</li>
-                            <li>Verified and featured tailors for trust and quality</li>
-                            <li>A seamless, mobile-friendly search experience</li>
-                            <li>Free access for customers — no hidden fees or paywalls</li>
+                            <li>Free search for tailors in your area</li>
+                            <li>Free access to tailor profiles and contact information</li>
+                            <li>Free customer reviews and ratings</li>
+                            <li>Free use of all search filters to find the perfect tailor near you</li>
                         </ul>
+                        Tailors pay a small fee to join our directory, which helps us maintain a high-quality, verified platform for finding reliable tailors near your location.
                     </div>
                 </div>
             </div>
@@ -1876,6 +1672,7 @@
         const ratingFilter = document.getElementById('rating-filter');
         const availabilityFilter = document.getElementById('availability-filter');
         const paginationEl = document.getElementById('pagination');
+        const wildcardSearchInput = document.getElementById('wildcard-search-input');
 
         // Current search state
         let currentSearch = {
@@ -1885,7 +1682,8 @@
             experience: '',
             price: '',
             rating: '',
-            availability: ''
+            availability: '',
+            wildcard: ''
         };
 
         // Initialize
@@ -1893,7 +1691,7 @@
             // Set current year
             document.getElementById('current-year').textContent = new Date().getFullYear();
             
-            // Parse URL parameters
+            // Parse URL parameters - including wildcard search
             parseURLParameters();
             
             // Load tailors from JSON
@@ -1903,14 +1701,17 @@
             setupEventListeners();
         });
 
-        // Parse URL parameters for search
+        // Parse URL parameters for search - UPDATED for wildcard search
         function parseURLParameters() {
             const urlParams = new URLSearchParams(window.location.search);
             
-            // Get search parameters from URL
+            // Get regular search parameters from URL
             const locationParam = urlParams.get('location') || urlParams.get('city') || '';
             const serviceParam = urlParams.get('service') || urlParams.get('services') || '';
             const tailorParam = urlParams.get('tailor') || urlParams.get('name') || '';
+            
+            // Get wildcard search parameter
+            const wildcardParam = urlParams.get('search') || urlParams.get('q') || '';
             
             // Update search inputs with URL parameters
             if (locationParam) {
@@ -1926,6 +1727,15 @@
             if (tailorParam) {
                 tailorSearch.value = decodeURIComponent(tailorParam);
                 currentSearch.tailor = tailorParam.toLowerCase();
+            }
+            
+            // Handle wildcard search parameter
+            if (wildcardParam) {
+                currentSearch.wildcard = wildcardParam;
+                // Set wildcard search input value (though hidden)
+                if (wildcardSearchInput) {
+                    wildcardSearchInput.value = wildcardParam;
+                }
             }
             
             // Also check for other parameters
@@ -1955,7 +1765,51 @@
             }
         }
 
-        // Update URL with search parameters
+        // Perform wildcard search - searches across multiple fields
+        function performWildcardSearch(keywords) {
+            if (!keywords || keywords.trim() === '') return allTailors;
+            
+            // Split keywords by space, +, or %20
+            const keywordArray = keywords.split(/[\s\+%20]+/).filter(k => k.trim() !== '');
+            
+            if (keywordArray.length === 0) return allTailors;
+            
+            // Return tailors that match ANY of the keywords in ANY of the searchable fields
+            return allTailors.filter(tailor => {
+                // Check if any keyword matches any searchable field
+                return keywordArray.some(keyword => {
+                    const keywordLower = keyword.toLowerCase();
+                    
+                    // Search in multiple fields
+                    return (
+                        // Name search
+                        (tailor.name && tailor.name.toLowerCase().includes(keywordLower)) ||
+                        // Area search
+                        (tailor.area && tailor.area.toLowerCase().includes(keywordLower)) ||
+                        // City search
+                        (tailor.city && tailor.city.toLowerCase().includes(keywordLower)) ||
+                        // Description search
+                        (tailor.description && tailor.description.toLowerCase().includes(keywordLower)) ||
+                        // Services search
+                        (tailor.services && tailor.services.some(service => 
+                            service.toLowerCase().includes(keywordLower)
+                        )) ||
+                        // Specializations search
+                        (tailor.specializations && tailor.specializations.some(specialization => 
+                            specialization.toLowerCase().includes(keywordLower)
+                        )) ||
+                        // Fabric options search
+                        (tailor.fabric_options && tailor.fabric_options.some(fabric => 
+                            fabric.toLowerCase().includes(keywordLower)
+                        )) ||
+                        // Address search
+                        (tailor.address && tailor.address.toLowerCase().includes(keywordLower))
+                    );
+                });
+            });
+        }
+
+        // Update URL with search parameters - UPDATED for wildcard
         function updateURL() {
             const params = new URLSearchParams();
             
@@ -1969,6 +1823,10 @@
             
             if (currentSearch.tailor) {
                 params.set('tailor', currentSearch.tailor);
+            }
+            
+            if (currentSearch.wildcard) {
+                params.set('search', currentSearch.wildcard);
             }
             
             if (currentSearch.experience) {
@@ -2033,7 +1891,8 @@
             
             // If we have URL parameters, perform search immediately
             if (currentSearch.location || currentSearch.service || currentSearch.tailor || 
-                currentSearch.experience || currentSearch.price || currentSearch.rating || currentSearch.availability) {
+                currentSearch.experience || currentSearch.price || currentSearch.rating || 
+                currentSearch.availability || currentSearch.wildcard) {
                 performSearch();
             } else {
                 // Otherwise render all tailors
@@ -2078,7 +1937,8 @@
             if (allTailors.length > 0) {
                 // If we have URL parameters, perform search immediately
                 if (currentSearch.location || currentSearch.service || currentSearch.tailor || 
-                    currentSearch.experience || currentSearch.price || currentSearch.rating || currentSearch.availability) {
+                    currentSearch.experience || currentSearch.price || currentSearch.rating || 
+                    currentSearch.availability || currentSearch.wildcard) {
                     performSearch();
                 } else {
                     // Otherwise render all tailors
@@ -2260,9 +2120,16 @@
             history.replaceState({}, '', newUrl);
         }
 
-        // Get filtered tailors based on current search
+        // Get filtered tailors based on current search - UPDATED for wildcard
         function getFilteredTailors() {
-            return allTailors.filter(tailor => {
+            // First perform wildcard search if specified
+            let filteredByWildcard = allTailors;
+            if (currentSearch.wildcard) {
+                filteredByWildcard = performWildcardSearch(currentSearch.wildcard);
+            }
+            
+            // Then apply other filters to the wildcard results
+            return filteredByWildcard.filter(tailor => {
                 // Text search filters
                 const matchesLocation = !currentSearch.location || 
                     (tailor.area && tailor.area.toLowerCase().includes(currentSearch.location)) ||
@@ -2349,12 +2216,6 @@
                 });
             });
 
-            // Newsletter form submission - DUAL SUBMISSION
-            document.getElementById('notify-me').addEventListener('click', () => subscribeToLearning());
-            document.getElementById('learn-email').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') subscribeToLearning();
-            });
-
             // Footer newsletter submission - DUAL SUBMISSION
             document.getElementById('footer-subscribe').addEventListener('click', () => subscribeFooterNewsletter());
             document.getElementById('footer-email').addEventListener('keypress', (e) => {
@@ -2394,20 +2255,6 @@
             }
         }
 
-        // Subscribe to learning notifications - DUAL SUBMISSION
-        async function subscribeToLearning() {
-            const emailInput = document.getElementById('learn-email');
-            const email = emailInput.value.trim();
-            const messageEl = document.getElementById('learn-message');
-            
-            if (!validateEmail(email)) {
-                showMessage(messageEl, 'Please enter a valid email address', 'error');
-                return;
-            }
-            
-            await submitToBoth(email, 'learning', messageEl, emailInput);
-        }
-
         // Subscribe to footer newsletter - DUAL SUBMISSION
         async function subscribeFooterNewsletter() {
             const emailInput = document.getElementById('footer-email');
@@ -2444,9 +2291,7 @@
                 
                 if (googleSuccess || formSubmitSuccess) {
                     // Show success message
-                    const successMessage = source === 'learning' 
-                        ? 'Thank you! You will be notified when our courses launch.' 
-                        : 'Thank you! You have been subscribed to our newsletter.';
+                    const successMessage = 'Thank you! You have been subscribed to our newsletter.';
                     
                     showMessage(messageEl, successMessage, 'success');
                     
@@ -2454,9 +2299,7 @@
                     emailInput.value = '';
                     
                     // Update button to show success
-                    button.innerHTML = source === 'learning' 
-                        ? '<i class="fas fa-check"></i> Notified!' 
-                        : '<i class="fas fa-check"></i> Subscribed!';
+                    button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
                     
                     // Log submission status for debugging
                     console.log(`${source} submission results:`, {
@@ -2501,7 +2344,7 @@
                 formData.append(GOOGLE_FORM_EMAIL_ID, email);
                 
                 // Add source information
-                formData.append('entry.123456789', source === 'learning' ? 'Learning Notifications' : 'Newsletter Subscription');
+                formData.append('entry.123456789', 'Newsletter Subscription');
                 
                 // Submit to Google Forms with no-cors mode
                 const response = await fetch(GOOGLE_FORM_URL, {
@@ -2524,7 +2367,7 @@
             try {
                 const formData = new FormData();
                 formData.append('email', email);
-                formData.append('_subject', `Tailors.lk ${source === 'learning' ? 'Learning' : 'Newsletter'} Subscription`);
+                formData.append('_subject', `Tailors.lk Newsletter Subscription`);
                 formData.append('_template', 'table');
                 formData.append('_captcha', 'false');
                 formData.append('source', source);
@@ -2673,7 +2516,7 @@
             return stars;
         }
 
-        // Perform search with all filters
+        // Perform search with all filters - UPDATED for wildcard
         function performSearch() {
             // Reset to page 1 when searching
             currentPage = 1;
@@ -2686,7 +2529,8 @@
                 experience: experienceFilter.value,
                 price: priceFilter.value,
                 rating: ratingFilter.value,
-                availability: availabilityFilter.value
+                availability: availabilityFilter.value,
+                wildcard: currentSearch.wildcard // Preserve wildcard search
             };
 
             // Update URL with search parameters
@@ -2699,7 +2543,7 @@
             renderTailorsWithPagination(filtered, currentPage);
             
             // Scroll to results if search was initiated from hero
-            if (currentSearch.location || currentSearch.service || currentSearch.tailor) {
+            if (currentSearch.location || currentSearch.service || currentSearch.tailor || currentSearch.wildcard) {
                 document.getElementById('directory').scrollIntoView({ 
                     behavior: 'smooth',
                     block: 'start'
@@ -2779,7 +2623,8 @@
                 experience: '',
                 price: '',
                 rating: '',
-                availability: ''
+                availability: '',
+                wildcard: ''
             };
             
             // Reset to page 1
@@ -2814,6 +2659,7 @@
         window.searchPopular = searchPopular;
         window.changePage = changePage;
         window.toggleFAQ = toggleFAQ;
+        window.searchPopularService = searchPopularService;
     </script>
 </body>
 </html>
