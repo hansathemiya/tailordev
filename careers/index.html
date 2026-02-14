@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
     <title>Careers at Tailors.lk | Jobs in Tailoring Platform Sri Lanka</title>
     <meta name="description" content="Join Tailors.lk - Sri Lanka's national tailoring platform. Explore career opportunities in tailoring, technology, sales, operations, and content. Apply now for positions across Colombo and nationwide." />
     <meta name="keywords" content="tailoring jobs Sri Lanka, fashion careers Colombo, tailoring platform careers, digital jobs Sri Lanka, sales jobs tailoring, operations careers, technology jobs fashion" />
@@ -52,6 +52,7 @@
             background: var(--bg);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         .container {
@@ -134,6 +135,7 @@
             border: none;
             cursor: pointer;
             padding: 8px;
+            z-index: 1002;
         }
 
         .hamburger span {
@@ -143,38 +145,90 @@
             transition: var(--transition);
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
+        /* Mobile Slider Menu (overlay style) with close button */
+        .mobile-slider-menu {
             position: fixed;
-            top: 62px;
-            left: 0;
-            right: 0;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100vh;
             background: var(--card-bg);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            border-top: 1px solid var(--border);
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 999;
-        }
-
-        .mobile-menu.active {
+            box-shadow: var(--shadow-hover);
+            border-left: 1px solid var(--border);
+            padding: 70px 20px 30px;
+            transition: right 0.3s ease;
+            z-index: 1001;
             display: flex;
+            flex-direction: column;
+            gap: 8px;
+            overflow-y: auto;
         }
 
-        .mobile-menu a {
-            padding: 10px 14px;
+        .mobile-slider-menu.active {
+            right: 0;
+        }
+
+        /* Close button inside slider menu */
+        .menu-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(31, 78, 95, 0.08);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--teal);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            z-index: 1003;
+        }
+
+        .menu-close-btn:hover {
+            background: rgba(31, 78, 95, 0.15);
+            transform: rotate(90deg);
+        }
+
+        .mobile-slider-menu a {
+            padding: 14px 16px;
             border-radius: var(--radius-xs);
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .mobile-menu a:hover {
+        .mobile-slider-menu a:hover {
             background: rgba(31, 78, 95, 0.06);
+        }
+
+        .mobile-slider-menu .btn {
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
         }
 
         /* Buttons */
@@ -458,9 +512,9 @@
             margin-bottom: 10px;
         }
 
-        /* Application Form - Compact Design */
+        /* APPLICATION FORM - COMPACT ON DESKTOP, FULL SIZE ON MOBILE */
         .careers-form {
-            max-width: 800px;
+            max-width: 800px; /* Default size */
             margin: 0 auto;
         }
 
@@ -605,6 +659,62 @@
         .form-note a {
             color: var(--teal);
             text-decoration: underline;
+        }
+
+        /* DESKTOP COMPACT FORM (min-width: 1024px) */
+        @media (min-width: 1024px) {
+            .careers-form {
+                max-width: 650px; /* Smaller on desktop */
+            }
+            
+            .form-grid {
+                gap: 12px;
+            }
+            
+            .form-group label {
+                font-size: 0.8rem;
+                margin-bottom: 4px;
+            }
+            
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="tel"],
+            .form-group select,
+            .form-group textarea {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .form-group textarea {
+                min-height: 70px;
+            }
+            
+            .file-label {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .file-name {
+                font-size: 0.8rem;
+            }
+            
+            .file-hint {
+                font-size: 0.7rem;
+            }
+            
+            .checkbox-wrapper label {
+                font-size: 0.8rem;
+            }
+            
+            .btn-submit {
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+            
+            .form-note {
+                font-size: 0.75rem;
+                margin-top: 10px;
+            }
         }
 
         /* CTA Section */
@@ -852,6 +962,7 @@
             display: flex;
             gap: 12px;
             margin-top: 16px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -907,6 +1018,7 @@
             gap: 8px;
             max-width: 500px;
             margin: 0 auto;
+            flex-wrap: wrap;
         }
 
         .newsletter-input {
@@ -1004,6 +1116,15 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 25px;
             }
+            
+            /* On tablet, keep form at default size (not compact) */
+            .careers-form {
+                max-width: 700px;
+            }
+            
+            .form-grid {
+                gap: 18px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1051,6 +1172,7 @@
 
             .form-grid {
                 grid-template-columns: 1fr;
+                gap: 15px; /* Mobile gap */
             }
 
             .cta-buttons {
@@ -1075,6 +1197,74 @@
 
             .success-content {
                 padding: 40px 25px;
+            }
+
+            /* Mobile footer optimizations */
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                width: 100%;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
+            }
+            
+            /* MOBILE FORM - FULL SIZE (original) */
+            .careers-form {
+                max-width: 100%;
+            }
+            
+            .form-group label {
+                font-size: 0.95rem;
+                margin-bottom: 8px;
+            }
+            
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="tel"],
+            .form-group select,
+            .form-group textarea {
+                padding: 12px 16px;
+                font-size: 0.95rem;
+            }
+            
+            .form-group textarea {
+                min-height: 80px;
+            }
+            
+            .file-label {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .file-name {
+                font-size: 0.9rem;
+            }
+            
+            .file-hint {
+                font-size: 0.85rem;
+            }
+            
+            .checkbox-wrapper label {
+                font-size: 0.95rem;
+            }
+            
+            .btn-submit {
+                padding: 14px;
+                font-size: 1.1rem;
+            }
+            
+            .form-note {
+                font-size: 0.9rem;
+                margin-top: 15px;
             }
         }
 
@@ -1112,6 +1302,19 @@
 
             .success-actions {
                 flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .contact-info-item {
+                justify-content: center;
             }
         }
     </style>
@@ -1155,24 +1358,30 @@
                 <span></span>
             </button>
         </div>
-
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="/">Home</a>
-            <a href="#directory">Find Tailors</a>
-            <a href="/services">Services</a>
-            <a href="/learn">Learn</a>
-            <a href="/about">About</a>
-            <a href="/for-businesses">For Businesses</a>
-            <a href="/contact">Contact</a>
-            <a href="tel:+94758244216" class="btn btn-call" style="margin-top: 10px;">
-                <i class="fas fa-phone"></i>
-                Call Us
-            </a>
-            <a href="https://tailors.lk/register" class="btn btn-primary" style="margin-top: 10px;">
-                Join as Tailor
-            </a>
-        </div>
     </header>
+
+    <!-- Overlay (click to close) -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Mobile Slider Menu (with close button) -->
+    <div class="mobile-slider-menu" id="mobileSliderMenu">
+        <button class="menu-close-btn" id="menuCloseBtn" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <a href="#directory"><i class="fas fa-cut"></i> Find Tailors</a>
+        <a href="/services"><i class="fas fa-concierge-bell"></i> Services</a>
+        <a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a>
+        <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+        <a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a>
+        <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="tel:+94758244216" class="btn btn-call">
+            <i class="fas fa-phone"></i> Call Us
+        </a>
+        <a href="https://tailors.lk/register" class="btn btn-primary">
+            <i class="fas fa-user-plus"></i> Join as Tailor
+        </a>
+    </div>
 
     <!-- Careers Page Content -->
     <main class="careers-container">
@@ -1397,7 +1606,7 @@
             </div>
         </section>
 
-        <!-- 5) APPLICATION FORM -->
+        <!-- 5) APPLICATION FORM - COMPACT ON DESKTOP, FULL ON MOBILE -->
         <section class="careers-section fade-in" id="application-form">
             <h2>Application Form</h2>
             <p class="form-intro">Submit your application for opportunities at Tailors.lk</p>
@@ -1702,26 +1911,50 @@
         </div>
     </footer>
 
-
     <script>
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Mobile menu toggle
+        // Mobile slider menu, overlay, and close button
         const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileSlider = document.getElementById('mobileSliderMenu');
+        const overlay = document.getElementById('overlay');
+        const menuCloseBtn = document.getElementById('menuCloseBtn');
         
-        if (hamburger && mobileMenu) {
-            hamburger.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
-                hamburger.classList.toggle('active');
+        function openMenu() {
+            mobileSlider.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+        }
+        
+        function closeMenu() {
+            mobileSlider.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = ''; // restore scrolling
+        }
+        
+        if (hamburger && mobileSlider && overlay) {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mobileSlider.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
             });
             
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                    mobileMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
+            // Close when clicking overlay
+            overlay.addEventListener('click', closeMenu);
+            
+            // Close when clicking close button
+            if (menuCloseBtn) {
+                menuCloseBtn.addEventListener('click', closeMenu);
+            }
+            
+            // Close when pressing Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileSlider.classList.contains('active')) {
+                    closeMenu();
                 }
             });
         }
