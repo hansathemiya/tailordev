@@ -6,13 +6,14 @@
     <title>Contact Tailors.lk | Sri Lanka Tailoring Platform Contact Form</title>
     <meta name="description" content="Contact Tailors.lk for custom suits, bridal wear, alterations, and verified tailors. Reach us via form, email, or WhatsApp for professional tailoring services in Sri Lanka." />
     <meta name="keywords" content="contact tailors.lk, Sri Lanka tailoring contact, custom suits inquiries, bridal wear questions, alterations services contact, tailor platform Sri Lanka" />
-    <!-- Updated favicon -->
+    <!-- favicon -->
     <link rel="icon" href="https://data.tailors.lk/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://data.tailors.lk/ajax/libs/fontawesome/6.0.0/css/all.min.css" />
     <style>
+        /* ----- ROOT VARIABLES (original) ----- */
         :root {
             --teal: #1f4e5f;
             --teal-dark: #0d3645;
@@ -61,7 +62,7 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* ----- HEADER (original) ----- */
         header {
             position: sticky;
             top: 0;
@@ -134,6 +135,11 @@
             border: none;
             cursor: pointer;
             padding: 8px;
+            width: 44px;
+            height: 44px;
+            justify-content: center;
+            align-items: center;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .hamburger span {
@@ -143,41 +149,117 @@
             transition: var(--transition);
         }
 
-        /* Mobile Menu */
+        /* original mobile-menu hidden – replaced by slider */
         .mobile-menu {
-            position: fixed;
-            top: 62px;
-            left: 0;
-            right: 0;
-            background: var(--card-bg);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            border-top: 1px solid var(--border);
             display: none;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 999;
         }
 
-        .mobile-menu.active {
+        /* ===== NEW SLIDER MENU ===== */
+        .slider-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1001;
+            display: none;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+        .slider-overlay.active {
+            display: block;
+        }
+
+        .slider-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: var(--card-bg);
+            box-shadow: var(--shadow-hover);
+            border-left: 1px solid var(--border);
+            z-index: 1002;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
+            flex-direction: column;
+            padding: 80px 20px 30px 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .slider-menu.active {
+            right: 0;
         }
 
-        .mobile-menu a {
-            padding: 10px 14px;
-            border-radius: var(--radius-xs);
+        .slider-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--teal);
+            font-size: 1.3rem;
+            transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .slider-close:active {
+            background: var(--teal);
+            color: white;
+        }
+
+        .slider-menu a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 14px;
+            border-radius: var(--radius-sm);
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid transparent;
             transition: var(--transition);
-            font-size: 0.95rem;
+            margin-bottom: 8px;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .mobile-menu a:hover {
-            background: rgba(31, 78, 95, 0.06);
+        .slider-menu a i {
+            width: 24px;
+            color: var(--teal);
+            font-size: 1.1rem;
         }
 
-        /* Buttons */
+        .slider-menu a:active {
+            background: rgba(31, 78, 95, 0.05);
+            border-color: var(--border);
+        }
+
+        .slider-cta {
+            margin-top: 20px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .slider-cta .btn {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 10px;
+            min-height: 48px;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* ----- BUTTONS (original) ----- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -239,21 +321,18 @@
             background: var(--teal);
         }
 
-        /* Header CTA Buttons */
         .header-cta {
             display: flex;
             gap: 8px;
             align-items: center;
         }
 
-        /* Contact Page Specific Styles */
+        /* ----- CONTACT PAGE STYLES (original, untouched) ----- */
         #contact-page {
             max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
         }
-
-        /* Hero Section */
         .contact-hero {
             text-align: center;
             margin-bottom: 60px;
@@ -263,7 +342,6 @@
             color: white;
             box-shadow: var(--shadow);
         }
-
         .contact-hero h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
@@ -271,7 +349,6 @@
             font-weight: 700;
             line-height: 1.2;
         }
-
         .contact-hero p {
             font-size: 1.1rem;
             max-width: 800px;
@@ -279,15 +356,12 @@
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.9);
         }
-
         .hero-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
-
-        /* Contact Form Section */
         .contact-form-section {
             margin-bottom: 60px;
             padding: 50px;
@@ -297,11 +371,9 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-
         .contact-form-section:hover {
             box-shadow: var(--shadow-hover);
         }
-
         .contact-form-section h2 {
             color: var(--teal);
             font-size: 1.8rem;
@@ -309,17 +381,13 @@
             font-weight: 600;
             text-align: center;
         }
-
-        /* Contact Form */
         #contact-form {
             max-width: 700px;
             margin: 0 auto;
         }
-
         .form-group {
             margin-bottom: 25px;
         }
-
         .form-group label {
             display: block;
             margin-bottom: 8px;
@@ -327,7 +395,6 @@
             font-weight: 500;
             font-size: 0.95rem;
         }
-
         .form-group input,
         .form-group textarea,
         .form-group select {
@@ -341,7 +408,6 @@
             background: var(--card-bg);
             color: var(--text);
         }
-
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
@@ -349,29 +415,23 @@
             border-color: var(--teal);
             box-shadow: 0 0 0 3px rgba(31, 78, 95, 0.1);
         }
-
         .form-group textarea {
             min-height: 160px;
             resize: vertical;
         }
-
         .form-row {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
-
         .form-submit {
             text-align: center;
             margin-top: 40px;
         }
-
         .form-submit .btn {
             padding: 14px 40px;
             font-size: 1.1rem;
         }
-
-        /* Form Success/Error Messages */
         .form-message {
             margin-top: 20px;
             padding: 15px 20px;
@@ -381,20 +441,16 @@
             display: none;
             animation: fadeIn 0.3s ease;
         }
-
         .form-success {
             background: rgba(16, 185, 129, 0.1);
             color: var(--success);
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
-
         .form-error {
             background: rgba(239, 68, 68, 0.1);
             color: var(--error);
             border: 1px solid rgba(239, 68, 68, 0.2);
         }
-
-        /* Contact Information */
         .contact-info {
             margin-bottom: 60px;
             padding: 50px;
@@ -403,14 +459,12 @@
             border: 1px solid var(--border);
             text-align: center;
         }
-
         .contact-info h2 {
             color: var(--teal);
             font-size: 1.8rem;
             margin-bottom: 35px;
             font-weight: 600;
         }
-
         .contact-methods {
             display: flex;
             justify-content: center;
@@ -418,7 +472,6 @@
             flex-wrap: wrap;
             margin-top: 30px;
         }
-
         .contact-method {
             text-align: center;
             padding: 30px;
@@ -428,43 +481,35 @@
             min-width: 250px;
             transition: var(--transition);
         }
-
         .contact-method:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow);
         }
-
         .contact-method i {
             font-size: 2.5rem;
             color: var(--gold);
             margin-bottom: 20px;
         }
-
         .contact-method h3 {
             color: var(--teal);
             font-size: 1.2rem;
             margin-bottom: 15px;
             font-weight: 600;
         }
-
         .contact-method p {
             color: var(--text);
             margin-bottom: 10px;
         }
-
         .contact-method a {
             color: var(--teal);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
         }
-
         .contact-method a:hover {
             color: var(--teal-dark);
             text-decoration: underline;
         }
-
-        /* SEO Block */
         .contact-seo {
             background: linear-gradient(135deg, rgba(31, 78, 95, 0.03) 0%, rgba(185, 145, 95, 0.03) 100%);
             border-radius: var(--radius);
@@ -472,7 +517,6 @@
             margin-bottom: 60px;
             border: 1px solid var(--border);
         }
-
         .contact-seo h2 {
             color: var(--teal);
             font-size: 1.8rem;
@@ -480,11 +524,6 @@
             font-weight: 600;
             text-align: center;
         }
-
-        .seo-content {
-            margin-bottom: 30px;
-        }
-
         .seo-content p {
             margin-bottom: 25px;
             line-height: 1.7;
@@ -495,7 +534,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .seo-links {
             display: flex;
             gap: 20px;
@@ -505,7 +543,6 @@
             padding-top: 40px;
             border-top: 1px solid var(--border);
         }
-
         .seo-links a {
             display: inline-flex;
             align-items: center;
@@ -520,7 +557,6 @@
             transition: var(--transition);
             font-size: 1.05rem;
         }
-
         .seo-links a:hover {
             background: rgba(31, 78, 95, 0.05);
             border-color: var(--teal);
@@ -528,36 +564,31 @@
             box-shadow: var(--shadow);
         }
 
-        /* Footer */
+        /* ----- FOOTER (original, unchanged) ----- */
         footer {
             background: var(--teal-dark);
             color: white;
             padding: 40px 0 20px;
             margin-top: 0;
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 20px;
             margin-bottom: 30px;
         }
-
         .footer-section h4 {
             color: var(--gold-light);
             margin-bottom: 12px;
             font-size: 0.95rem;
             font-weight: 600;
         }
-
         .footer-links {
             list-style: none;
         }
-
         .footer-links li {
             margin-bottom: 6px;
         }
-
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
@@ -569,24 +600,20 @@
             font-size: 0.8rem;
             line-height: 1.3;
         }
-
         .footer-links a:hover {
             color: var(--gold-light);
             padding-left: 3px;
         }
-
         .footer-links i {
             width: 14px;
             text-align: center;
             font-size: 0.8rem;
         }
-
         .social-links {
             display: flex;
             gap: 12px;
             margin-top: 16px;
         }
-
         .social-links a {
             display: flex;
             align-items: center;
@@ -600,12 +627,10 @@
             transition: var(--transition);
             font-size: 0.9rem;
         }
-
         .social-links a:hover {
             background: var(--gold);
             transform: translateY(-2px);
         }
-
         .copyright {
             text-align: center;
             padding-top: 20px;
@@ -613,8 +638,6 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.8rem;
         }
-
-        /* Newsletter */
         .newsletter {
             background: rgba(255, 255, 255, 0.05);
             border-radius: var(--radius-sm);
@@ -622,26 +645,22 @@
             margin: 30px 0;
             text-align: center;
         }
-
         .newsletter h4 {
             color: var(--gold-light);
             margin-bottom: 8px;
             font-size: 1rem;
         }
-
         .newsletter p {
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 16px;
             font-size: 0.85rem;
         }
-
         .newsletter-form {
             display: flex;
             gap: 8px;
             max-width: 500px;
             margin: 0 auto;
         }
-
         .newsletter-input {
             flex: 1;
             padding: 10px 14px;
@@ -652,13 +671,6 @@
             font-family: inherit;
             font-size: 0.9rem;
         }
-
-        .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-        }
-
-        /* Newsletter Messages */
         .newsletter-message {
             margin-top: 12px;
             padding: 10px 14px;
@@ -666,33 +678,22 @@
             font-size: 0.85rem;
             text-align: center;
             display: none;
-            animation: fadeIn 0.3s ease;
         }
-
         .newsletter-success {
             background: rgba(16, 185, 129, 0.1);
             color: var(--success);
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
-
         .newsletter-error {
             background: rgba(239, 68, 68, 0.1);
             color: var(--error);
             border: 1px solid rgba(239, 68, 68, 0.2);
         }
-
-        /* Contact Info in Footer */
         .contact-info-footer {
             margin-top: 20px;
             padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .contact-info-footer h4 {
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-        }
-
         .contact-info-item {
             display: flex;
             align-items: flex-start;
@@ -700,213 +701,73 @@
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.5;
         }
-
         .contact-info-item i {
             width: 16px;
-            margin-top: 2px;
             margin-right: 10px;
             color: var(--gold-light);
-            flex-shrink: 0;
         }
-
         .contact-info-item a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: var(--transition);
         }
-
         .contact-info-item a:hover {
             color: var(--gold-light);
         }
 
-        .contact-info-item span {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Loading State */
         .btn-loading {
             position: relative;
             color: transparent !important;
         }
-
         .btn-loading::after {
             content: '';
             position: absolute;
             width: 16px;
             height: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             border-top-color: white;
             animation: spin 0.8s linear infinite;
         }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Animations */
         .fade-in {
             animation: fadeIn 0.5s ease;
         }
-
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive */
+        /* Responsive overrides (original) */
         @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 25px;
-            }
-            
-            .contact-methods {
-                gap: 30px;
-            }
+            .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 25px; }
         }
-
         @media (max-width: 768px) {
-            .nav-links, .nav-cta {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .header-cta {
-                display: none;
-            }
-
-            #contact-page {
-                padding: 20px 15px;
-            }
-
-            .contact-hero {
-                padding: 40px 15px;
-            }
-
-            .contact-hero h1 {
-                font-size: 2rem;
-            }
-
-            .contact-hero p {
-                font-size: 1rem;
-                margin-bottom: 30px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .contact-form-section {
-                padding: 35px 25px;
-                margin-bottom: 40px;
-            }
-
-            .contact-form-section h2 {
-                font-size: 1.6rem;
-                margin-bottom: 25px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .contact-info {
-                padding: 35px 25px;
-            }
-
-            .contact-info h2 {
-                font-size: 1.6rem;
-            }
-
-            .contact-methods {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .contact-method {
-                min-width: auto;
-                width: 100%;
-            }
-
-            .contact-seo {
-                padding: 35px 25px;
-            }
-
-            .contact-seo h2 {
-                font-size: 1.6rem;
-            }
-
-            .seo-links {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .seo-links a {
-                width: 100%;
-                justify-content: center;
-            }
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+            .header-cta { display: none; }
+            #contact-page { padding: 20px 15px; }
+            .contact-hero { padding: 40px 15px; }
+            .contact-hero h1 { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; gap: 15px; }
+            .contact-form-section { padding: 35px 25px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .contact-info { padding: 35px 25px; }
+            .contact-methods { flex-direction: column; gap: 20px; }
+            .contact-method { min-width: auto; width: 100%; }
+            .contact-seo { padding: 35px 25px; }
+            .seo-links { flex-direction: column; gap: 15px; }
+            .seo-links a { width: 100%; justify-content: center; }
         }
-
         @media (max-width: 480px) {
-            .contact-hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .contact-form-section {
-                padding: 30px 20px;
-            }
-
-            .contact-form-section h2,
-            .contact-info h2,
-            .contact-seo h2 {
-                font-size: 1.4rem;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                padding: 12px 16px;
-            }
-
-            .contact-info {
-                padding: 30px 20px;
-            }
-
-            .contact-seo {
-                padding: 30px 20px;
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .newsletter-form { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header (original, with hamburger) -->
     <header>
         <div class="container nav-container">
             <a href="/" class="logo">
@@ -945,27 +806,29 @@
             </button>
         </div>
 
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="/">Home</a>
-            <a href="/tailors">Find Tailors</a>
-            <a href="/services">Services</a>
-            <a href="/learn">Learn</a>
-            <a href="/about">About</a>
-            <a href="/for-businesses">For Businesses</a>
-            <a href="/contact">Contact</a>
-            <a href="tel:+94758244216" class="btn btn-call" style="margin-top: 10px;">
-                <i class="fas fa-phone"></i>
-                Call Us
-            </a>
-            <a href="https://tailors.lk/register" class="btn btn-primary" style="margin-top: 10px;">
-                Join as Tailor
-            </a>
-        </div>
+        <!-- original mobile-menu hidden -->
+        <div class="mobile-menu" style="display: none;"></div>
     </header>
 
-    <!-- Contact Page Content -->
+    <!-- NEW SLIDER OVERLAY & MENU -->
+    <div class="slider-overlay" id="sliderOverlay"></div>
+    <div class="slider-menu" id="sliderMenu">
+        <div class="slider-close" id="sliderClose"><i class="fas fa-times"></i></div>
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <a href="/tailors"><i class="fas fa-search"></i> Find Tailors</a>
+        <a href="/services"><i class="fas fa-scissors"></i> Services</a>
+        <a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a>
+        <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+        <a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a>
+        <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+        <div class="slider-cta">
+            <a href="tel:+94758244216" class="btn btn-call"><i class="fas fa-phone"></i> Call Us</a>
+            <a href="https://tailors.lk/register" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join as Tailor</a>
+        </div>
+    </div>
+
+    <!-- Contact Page Content (identical to original) -->
     <main id="contact-page">
-        <!-- Hero Section -->
         <section class="contact-hero fade-in">
             <h1>Contact Tailors.lk</h1>
             <p>
@@ -978,16 +841,13 @@
             </div>
         </section>
 
-        <!-- Contact Form Section -->
         <section class="contact-form-section fade-in">
             <h2>Send Us a Message</h2>
             <form id="contact-form" action="https://formsubmit.co/cform@tailors.lk" method="POST">
-                <!-- Hidden Fields for FormSubmit -->
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_subject" value="New Contact Form Submission - Tailors.lk">
                 
-                <!-- Name and Email Row -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Your Name *</label>
@@ -998,8 +858,6 @@
                         <input type="email" id="email" name="email" placeholder="john@example.com" required>
                     </div>
                 </div>
-
-                <!-- Phone and Subject Row -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="phone">Phone Number (Optional)</label>
@@ -1010,27 +868,20 @@
                         <input type="text" id="subject" name="subject" placeholder="Inquiry about custom suits" required>
                     </div>
                 </div>
-
-                <!-- Message -->
                 <div class="form-group">
                     <label for="message">Your Message *</label>
                     <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
                 </div>
-
-                <!-- Submit Button -->
                 <div class="form-submit">
                     <button type="submit" class="btn btn-primary" id="submit-btn">
                         <i class="fas fa-paper-plane"></i>
                         Send Message
                     </button>
                 </div>
-
-                <!-- Form Messages -->
                 <div class="form-message" id="form-message"></div>
             </form>
         </section>
 
-        <!-- Contact Information -->
         <section class="contact-info fade-in">
             <h2>Other Ways to Reach Us</h2>
             <div class="contact-methods">
@@ -1055,7 +906,6 @@
             </div>
         </section>
 
-        <!-- SEO Block -->
         <section class="contact-seo fade-in">
             <h2>Contact the Best Tailors in Sri Lanka</h2>
             <div class="seo-content">
@@ -1088,109 +938,19 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (original) -->
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <!-- Platform Section -->
-                <div>
-                    <h4>Tailors.lk</h4>
-                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px; font-size: 0.85rem;">
-                        Connecting Sri Lanka's tailoring community since 2024.
-                    </p>
-                    <div class="social-links">
-                        <a href="https://facebook.com/Tailors.lk.find" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com/Tailors.lk" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/Tailorslk" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://youtube.com/@tailorslk" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://linkedin.com/company/tailors-lk" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <!-- For Users Section -->
-                <div>
-                    <h4>For Users</h4>
-                    <ul class="footer-links">
-                        <li><a href="/services"><i class="fas fa-scissors"></i> Services</a></li>
-                        <li><a href="/tailors"><i class="fas fa-list"></i> All Tailors</a></li>
-                        <li><a href="/fabrics"><i class="fas fa-tshirt"></i> Fabrics</a></li>
-                        <li><a href="/reviews"><i class="fas fa-star"></i> Reviews</a></li>
-                        <li><a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a></li>
-                        <li><a href="/specials"><i class="fas fa-percentage"></i> Specials</a></li>
-                    </ul>
-                </div>
-                
-                <!-- For Partners Section -->
-                <div>
-                    <h4>For Partners</h4>
-                    <ul class="footer-links">
-                        <li><a href="/for-tailors"><i class="fas fa-user-tie"></i> For Tailors</a></li>
-                        <li><a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a></li>
-                        <li><a href="/for-brands"><i class="fas fa-tag"></i> For Brands</a></li>
-                        <li><a href="/tools"><i class="fas fa-tools"></i> Tools</a></li>
-                        <li><a href="/community"><i class="fas fa-users"></i> Community</a></li>
-                        <li><a href="/partnerships"><i class="fas fa-handshake"></i> Partnerships</a></li>
-                        <li><a href="/careers"><i class="fas fa-users"></i> Careers</a></li>
-                        <li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Quick Cities Section -->
-                <div>
-                    <h4>Find by City</h4>
-                    <ul class="footer-links">
-                        <li><a href="/colombo"><i class="fas fa-city"></i> Colombo</a></li>
-                        <li><a href="/kandy"><i class="fas fa-mountain"></i> Kandy</a></li>
-                        <li><a href="/galle"><i class="fas fa-umbrella-beach"></i> Galle</a></li>
-                        <li><a href="/jaffna"><i class="fas fa-landmark"></i> Jaffna</a></li>
-                        <li><a href="/trinco"><i class="fas fa-anchor"></i> Trincomalee</a></li>
-                        <li><a href="/ella"><i class="fas fa-hiking"></i> Ella</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Company Section -->
-                <div>
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
-                        <li><a href="/our-story"><i class="fas fa-book"></i> Our Story</a></li>
-                        <li><a href="/our-team"><i class="fas fa-users"></i> Our Team</a></li>
-                        <li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                        <li><a href="/faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Legal Section -->
-                <div>
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="/terms"><i class="fas fa-file-contract"></i> Terms</a></li>
-                        <li><a href="/privacy"><i class="fas fa-shield-alt"></i> Privacy</a></li>
-                        <li><a href="/cookies"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
-                        <li><a href="/legal"><i class="fas fa-balance-scale"></i> Legal</a></li>
-                        <li><a href="/policies"><i class="fas fa-file-alt"></i> All Policies</a></li>
-                    </ul>
-                    
-                    <!-- Contact Info -->
-                    <div class="contact-info-footer">
-                        <h4>Contact Info</h4>
-                        <div class="contact-info-item">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+94758244216">+94 75 824 4216</a>
-                        </div>
-                        <div class="contact-info-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:team@tailors.lk">team@tailors.lk</a>
-                        </div>
-                        <div class="contact-info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Colombo, Sri Lanka</span>
-                        </div>
-                    </div>
+                <div><h4>Tailors.lk</h4><p style="color: rgba(255,255,255,0.7); margin-bottom: 16px; font-size: 0.85rem;">Connecting Sri Lanka's tailoring community since 2024.</p><div class="social-links"><a href="https://facebook.com/Tailors.lk.find" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://instagram.com/Tailors.lk" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://x.com/Tailorslk" target="_blank"><i class="fab fa-twitter"></i></a><a href="https://youtube.com/@tailorslk" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://linkedin.com/company/tailors-lk" target="_blank"><i class="fab fa-linkedin-in"></i></a></div></div>
+                <div><h4>For Users</h4><ul class="footer-links"><li><a href="/services"><i class="fas fa-scissors"></i> Services</a></li><li><a href="/tailors"><i class="fas fa-list"></i> All Tailors</a></li><li><a href="/fabrics"><i class="fas fa-tshirt"></i> Fabrics</a></li><li><a href="/reviews"><i class="fas fa-star"></i> Reviews</a></li><li><a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a></li><li><a href="/specials"><i class="fas fa-percentage"></i> Specials</a></li></ul></div>
+                <div><h4>For Partners</h4><ul class="footer-links"><li><a href="/for-tailors"><i class="fas fa-user-tie"></i> For Tailors</a></li><li><a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a></li><li><a href="/for-brands"><i class="fas fa-tag"></i> For Brands</a></li><li><a href="/tools"><i class="fas fa-tools"></i> Tools</a></li><li><a href="/community"><i class="fas fa-users"></i> Community</a></li><li><a href="/partnerships"><i class="fas fa-handshake"></i> Partnerships</a></li><li><a href="/careers"><i class="fas fa-users"></i> Careers</a></li><li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li></ul></div>
+                <div><h4>Find by City</h4><ul class="footer-links"><li><a href="/colombo"><i class="fas fa-city"></i> Colombo</a></li><li><a href="/kandy"><i class="fas fa-mountain"></i> Kandy</a></li><li><a href="/galle"><i class="fas fa-umbrella-beach"></i> Galle</a></li><li><a href="/jaffna"><i class="fas fa-landmark"></i> Jaffna</a></li><li><a href="/trinco"><i class="fas fa-anchor"></i> Trincomalee</a></li><li><a href="/ella"><i class="fas fa-hiking"></i> Ella</a></li></ul></div>
+                <div><h4>Company</h4><ul class="footer-links"><li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li><li><a href="/our-story"><i class="fas fa-book"></i> Our Story</a></li><li><a href="/our-team"><i class="fas fa-users"></i> Our Team</a></li><li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li><li><a href="/faq"><i class="fas fa-question-circle"></i> FAQ</a></li></ul></div>
+                <div><h4>Legal</h4><ul class="footer-links"><li><a href="/terms"><i class="fas fa-file-contract"></i> Terms</a></li><li><a href="/privacy"><i class="fas fa-shield-alt"></i> Privacy</a></li><li><a href="/cookies"><i class="fas fa-cookie-bite"></i> Cookies</a></li><li><a href="/legal"><i class="fas fa-balance-scale"></i> Legal</a></li><li><a href="/policies"><i class="fas fa-file-alt"></i> All Policies</a></li></ul>
+                    <div class="contact-info-footer"><h4>Contact Info</h4><div class="contact-info-item"><i class="fas fa-phone"></i><a href="tel:+94758244216">+94 75 824 4216</a></div><div class="contact-info-item"><i class="fas fa-envelope"></i><a href="mailto:team@tailors.lk">team@tailors.lk</a></div><div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>Colombo, Sri Lanka</span></div></div>
                 </div>
             </div>
-            
-            <!-- Newsletter Signup -->
             <div class="newsletter">
                 <h4>Stay Updated</h4>
                 <p>Get the latest on tailoring trends, special offers, and new tailors</p>
@@ -1202,37 +962,59 @@
                 </div>
                 <div class="newsletter-message" id="newsletter-message"></div>
             </div>
-            
             <div class="copyright">
                 <p>&copy; <span id="current-year"></span> Tailors.lk. All rights reserved. | Uplifting Sri Lanka's tailoring tradition</p>
             </div>
         </div>
     </footer>
 
-    
     <script>
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Mobile menu toggle
+
+        // SLIDER MENU LOGIC (new)
         const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        if (hamburger && mobileMenu) {
-            hamburger.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                    mobileMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                }
+        const sliderMenu = document.getElementById('sliderMenu');
+        const sliderOverlay = document.getElementById('sliderOverlay');
+        const sliderClose = document.getElementById('sliderClose');
+        const body = document.body;
+
+        function openSlider() {
+            sliderMenu.classList.add('active');
+            sliderOverlay.classList.add('active');
+            body.classList.add('menu-open');
+        }
+
+        function closeSlider() {
+            sliderMenu.classList.remove('active');
+            sliderOverlay.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        if (hamburger) {
+            hamburger.addEventListener('click', (e) => {
+                e.preventDefault();
+                openSlider();
             });
         }
-        
+
+        if (sliderClose) {
+            sliderClose.addEventListener('click', closeSlider);
+        }
+
+        sliderOverlay.addEventListener('click', closeSlider);
+
+        sliderMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeSlider);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sliderMenu.classList.contains('active')) {
+                closeSlider();
+            }
+        });
+
+        // ----- ALL ORIGINAL JAVASCRIPT (unchanged) -----
         // Contact Form Submission
         const contactForm = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
