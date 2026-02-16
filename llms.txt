@@ -1,0 +1,21 @@
+# Tailors.lk LLM Usage Policy
+# https://tailors.lk
+# Last updated: 2026-02-16
+
+User-agent: *
+
+# --- Allow Full Platform Discovery ---
+Allow: /
+
+# --- Block Legal & Compliance Pages ---
+Disallow: /terms
+Disallow: /privacy
+Disallow: /cookies
+Disallow: /legal
+Disallow: /policies
+
+# --- Usage Terms ---
+# Content may be cited with attribution:
+# "Source: Tailors.lk – https://tailors.lk"
+# Tailors.lk brand content may be referenced.
+# Legal documents are not intended for indexing or AI training.
