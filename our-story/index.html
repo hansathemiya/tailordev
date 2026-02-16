@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Our Story – Tailors.lk | Sri Lanka's Tailoring Platform Origin</title>
     <meta name="description" content="Discover the story behind Tailors.lk - how we became Sri Lanka's growing platform for custom tailoring, bespoke suits, bridal wear, alterations, and professional clothing services." />
     <meta name="keywords" content="Tailors.lk story, Sri Lanka tailoring platform, custom tailoring marketplace, bespoke suits Colombo, bridal wear Sri Lanka, alterations services, tailoring industry Sri Lanka" />
@@ -127,7 +127,6 @@
             margin-left: 0;
         }
 
-        /* HAMBURGER – updated for slide menu */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -157,107 +156,104 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* SLIDER MENU (mobile) – replaces old mobile-menu */
-        .slider-menu {
-            position: fixed;
-            top: 0;
-            right: -320px;
-            width: 280px;
-            max-width: 80vw;
-            height: 100vh;
-            background: var(--card-bg);
-            box-shadow: -5px 0 30px rgba(31, 78, 95, 0.2);
-            z-index: 1001;
-            padding: 80px 20px 30px;
-            transition: right 0.35s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overflow-y: auto;
-            border-left: 1px solid var(--border);
-        }
-
-        .slider-menu.active {
-            right: 0;
-        }
-
-        .slider-menu a {
-            padding: 14px 16px;
-            border-radius: var(--radius-xs);
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            font-size: 1rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .slider-menu a i {
-            width: 20px;
-            color: var(--teal);
-        }
-
-        .slider-menu a:hover {
-            background: rgba(31, 78, 95, 0.06);
-        }
-
-        .slider-header {
-            display: flex;
-            justify-content: flex-end;
-            padding: 0 0 10px 0;
-            margin-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .slider-close {
-            background: none;
-            border: none;
-            color: var(--teal);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 5px 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            border-radius: var(--radius-xs);
-         }
-
-        .slider-close:hover {
-             background: rgba(31, 78, 95, 0.1);
-             transform: scale(1.1);
-        }
-
-        .slider-close i {
-             font-size: 1.3rem;
-        }
-
-        .slider-menu .btn {
-            margin-top: 15px;
-            justify-content: center;
-            border-bottom: none;
-        }
-
-        .overlay {
+        /* ===== SLIDER MENU (exactly matching Kandy page) ===== */
+        .slider-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.4);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
+            background: rgba(0,0,0,0.5);
+            z-index: 1001;
+            display: none;
             backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+        .slider-overlay.active {
+            display: block;
         }
 
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
+        .slider-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100vh;
+            background: var(--card-bg);
+            box-shadow: var(--shadow-hover);
+            border-left: 1px solid var(--border);
+            z-index: 1002;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 80px 20px 30px 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .slider-menu.active {
+            right: 0;
+        }
+
+        .slider-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--teal);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .slider-close:active {
+            background: var(--teal);
+            color: white;
+        }
+
+        .slider-menu a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 14px;
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid transparent;
+            transition: var(--transition);
+            margin-bottom: 6px;
+        }
+        .slider-menu a i {
+            width: 24px;
+            color: var(--teal);
+            font-size: 1.1rem;
+        }
+        .slider-menu a:active {
+            background: rgba(31, 78, 95, 0.05);
+            border-color: var(--border);
+        }
+
+        .slider-cta {
+            margin-top: 20px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+        .slider-cta .btn {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         /* Buttons */
@@ -328,7 +324,7 @@
             align-items: center;
         }
 
-        /* Our Story Page Specific Styles */
+        /* Our Story Page Specific Styles - maintaining original text sizes */
         #our-story-page {
             max-width: 1000px;
             margin: 0 auto;
@@ -806,7 +802,7 @@
             }
         }
 
-        /* Responsive – all existing + slider adjustments */
+        /* Responsive – maintaining original breakpoints */
         @media (max-width: 1024px) {
             .footer-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -981,31 +977,24 @@
         </div>
     </header>
 
-    <!-- SLIDER MENU (mobile) + overlay -->
-    <div class="overlay" id="overlay"></div>
+    <!-- SLIDER OVERLAY & MENU (exactly matching Kandy page) -->
+    <div class="slider-overlay" id="sliderOverlay"></div>
     <div class="slider-menu" id="sliderMenu">
-          <!-- Close button at the top of slider -->
-       <div class="slider-header">
-          <button class="slider-close" id="sliderClose" aria-label="Close menu">
-             <i class="fas fa-times"></i>
-          </button>
-       </div>
+        <div class="slider-close" id="sliderClose"><i class="fas fa-times"></i></div>
         <a href="/"><i class="fas fa-home"></i> Home</a>
-        <a href="/tailors"><i class="fas fa-cut"></i> Find Tailors</a>
-        <a href="/services"><i class="fas fa-palette"></i> Services</a>
+        <a href="/tailors"><i class="fas fa-search"></i> Find Tailors</a>
+        <a href="/services"><i class="fas fa-scissors"></i> Services</a>
         <a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a>
         <a href="/about"><i class="fas fa-info-circle"></i> About</a>
         <a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a>
         <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="tel:+94758244216" class="btn btn-call" style="justify-content: center;">
-            <i class="fas fa-phone"></i> Call Us
-        </a>
-        <a href="https://tailors.lk/register" class="btn btn-primary" style="justify-content: center;">
-            <i class="fas fa-user-plus"></i> Join as Tailor
-        </a>
+        <div class="slider-cta">
+            <a href="tel:+94758244216" class="btn btn-call"><i class="fas fa-phone"></i> Call Us</a>
+            <a href="https://tailors.lk/register" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join as Tailor</a>
+        </div>
     </div>
 
-    <!-- Our Story Page Content -->
+    <!-- Our Story Page Content (maintaining original content and text sizes) -->
     <main id="our-story-page">
         <!-- Hero Section -->
         <section class="story-hero fade-in">
@@ -1162,7 +1151,7 @@
         </section>
     </main>
 
-    <!-- Footer (unchanged) -->
+    <!-- Footer (with newsletter preserved) -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1201,8 +1190,8 @@
                         <li><a href="/for-tailors"><i class="fas fa-user-tie"></i> For Tailors</a></li>
                         <li><a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a></li>
                         <li><a href="/for-brands"><i class="fas fa-tag"></i> For Brands</a></li>
-                        <li><a href="/community"><i class="fas fa-users"></i> Community</a></li>
                         <li><a href="/tools"><i class="fas fa-tools"></i> Tools</a></li>
+                        <li><a href="/community"><i class="fas fa-users"></i> Community</a></li>
                         <li><a href="/partnerships"><i class="fas fa-handshake"></i> Partnerships</a></li>
                         <li><a href="/careers"><i class="fas fa-users"></i> Careers</a></li>
                         <li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li>
@@ -1264,7 +1253,7 @@
                 </div>
             </div>
             
-            <!-- Newsletter Signup -->
+            <!-- Newsletter Signup (preserved) -->
             <div class="newsletter">
                 <h4>Stay Updated</h4>
                 <p>Get the latest on tailoring trends, special offers, and new tailors</p>
@@ -1288,55 +1277,51 @@
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Slider menu elements
+        // Slider menu logic (exactly matching Kandy page)
         const hamburger = document.getElementById('hamburger');
         const sliderMenu = document.getElementById('sliderMenu');
-        const overlay = document.getElementById('overlay');
-
-        function closeSlider() {
-            sliderMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+        const sliderOverlay = document.getElementById('sliderOverlay');
+        const sliderClose = document.getElementById('sliderClose');
+        const body = document.body;
 
         function openSlider() {
             sliderMenu.classList.add('active');
-            overlay.classList.add('active');
-            hamburger.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            sliderOverlay.classList.add('active');
+            body.classList.add('menu-open');
         }
 
-        if (hamburger && sliderMenu && overlay) {
+        function closeSlider() {
+            sliderMenu.classList.remove('active');
+            sliderOverlay.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        if (hamburger) {
             hamburger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (sliderMenu.classList.contains('active')) {
-                    closeSlider();
-                } else {
-                    openSlider();
-                }
+                e.preventDefault();
+                openSlider();
             });
-            // Close button functionality
-       const sliderClose = document.getElementById('sliderClose');
-        if (sliderClose) {
-       sliderClose.addEventListener('click', closeSlider);
-       }
-
-            // Close when clicking overlay
-            overlay.addEventListener('click', closeSlider);
-
-            // Close on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && sliderMenu.classList.contains('active')) {
-                    closeSlider();
-                }
-            });
-
-            // Prevent clicks inside slider from closing
-            sliderMenu.addEventListener('click', (e) => e.stopPropagation());
         }
+
+        if (sliderClose) {
+            sliderClose.addEventListener('click', closeSlider);
+        }
+
+        sliderOverlay.addEventListener('click', closeSlider);
+
+        // close slider on link click
+        sliderMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeSlider);
+        });
+
+        // escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sliderMenu.classList.contains('active')) {
+                closeSlider();
+            }
+        });
         
-        // Scroll animation for story sections (unchanged)
+        // Scroll animation for story sections (maintained from original)
         const storySections = document.querySelectorAll('.story-section');
         
         function checkVisibility() {
@@ -1353,7 +1338,7 @@
         checkVisibility();
         window.addEventListener('scroll', checkVisibility);
         
-        // Newsletter submission (unchanged)
+        // Newsletter submission (maintained from original)
         const footerSubscribe = document.getElementById('footer-subscribe');
         const newsletterMessage = document.getElementById('newsletter-message');
         const footerEmail = document.getElementById('footer-email');
