@@ -6,7 +6,7 @@
     <title>Our Team Behind Tailors.lk | Tailoring Platform Sri Lanka</title>
     <meta name="description" content="Discover the team structure behind Tailors.lk. Learn how our verification, operations, digital, and partnership systems power Sri Lanka's professional tailoring marketplace." />
     <meta name="keywords" content="Tailors.lk team, tailoring platform Sri Lanka, professional tailoring network, verified tailors Sri Lanka, tailoring marketplace operations" />
-    <!-- Updated favicon -->
+    <!-- favicon -->
     <link rel="icon" href="https://data.tailors.lk/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,7 +43,7 @@
 
         html {
             scroll-behavior: smooth;
-            font-size: 15px;
+            font-size: 15px; /* Same as Our Story page */
         }
 
         body {
@@ -52,6 +52,7 @@
             background: var(--bg);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         .container {
@@ -134,6 +135,8 @@
             border: none;
             cursor: pointer;
             padding: 8px;
+            z-index: 1002;
+            position: relative;
         }
 
         .hamburger span {
@@ -143,38 +146,114 @@
             transition: var(--transition);
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== SLIDER MENU (exactly matching Kandy page) ===== */
+        .slider-overlay {
             position: fixed;
-            top: 62px;
+            top: 0;
             left: 0;
-            right: 0;
-            background: var(--card-bg);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            border-top: 1px solid var(--border);
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1001;
             display: none;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 999;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+        .slider-overlay.active {
+            display: block;
         }
 
-        .mobile-menu.active {
+        .slider-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100vh;
+            background: var(--card-bg);
+            box-shadow: var(--shadow-hover);
+            border-left: 1px solid var(--border);
+            z-index: 1002;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
+            flex-direction: column;
+            padding: 80px 20px 30px 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .slider-menu.active {
+            right: 0;
         }
 
-        .mobile-menu a {
-            padding: 10px 14px;
-            border-radius: var(--radius-xs);
+        .slider-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--teal);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .slider-close:active {
+            background: var(--teal);
+            color: white;
+        }
+
+        .slider-menu a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 14px;
+            border-radius: var(--radius-sm);
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid transparent;
             transition: var(--transition);
-            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+        .slider-menu a i {
+            width: 24px;
+            color: var(--teal);
+            font-size: 1.1rem;
+        }
+        .slider-menu a:active {
+            background: rgba(31, 78, 95, 0.05);
+            border-color: var(--border);
         }
 
-        .mobile-menu a:hover {
-            background: rgba(31, 78, 95, 0.06);
+        .slider-cta {
+            margin-top: 20px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+        .slider-cta .btn {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         /* Buttons */
@@ -239,14 +318,18 @@
             background: var(--teal);
         }
 
-        /* Header CTA Buttons */
+        .btn-lg {
+            padding: 14px 28px;
+            font-size: 1rem;
+        }
+
         .header-cta {
             display: flex;
             gap: 8px;
             align-items: center;
         }
 
-        /* Our Team Page Specific Styles */
+        /* ----- OUR TEAM PAGE STYLES (preserving all original design) ----- */
         .team-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -523,26 +606,17 @@
             flex-wrap: wrap;
         }
 
-        /* SEO Content */
-        .seo-content {
-            margin-bottom: 30px;
-        }
-
-        .seo-content p {
-            margin-bottom: 20px;
-            line-height: 1.7;
-            color: var(--text);
-        }
-
         /* Internal Links */
         .internal-links {
             display: flex;
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
+            margin: 60px 0 40px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
         }
 
         .internal-link {
@@ -565,7 +639,7 @@
             transform: translateY(-2px);
         }
 
-        /* Footer */
+        /* ----- FOOTER (preserving newsletter) ----- */
         footer {
             background: var(--teal-dark);
             color: white;
@@ -651,7 +725,7 @@
             font-size: 0.8rem;
         }
 
-        /* Newsletter */
+        /* Newsletter - preserved */
         .newsletter {
             background: rgba(255, 255, 255, 0.05);
             border-radius: var(--radius-sm);
@@ -693,6 +767,27 @@
         .newsletter-input::placeholder {
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
+        }
+
+        .newsletter-message {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+        }
+
+        .newsletter-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .newsletter-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.2);
         }
 
         /* Contact Info in Footer */
@@ -737,7 +832,28 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Animations */
+        /* loading states */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+            pointer-events: none;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         .fade-in {
             animation: fadeIn 0.5s ease;
         }
@@ -753,7 +869,7 @@
             }
         }
 
-        /* Responsive */
+        /* Responsive - matching Our Story page */
         @media (max-width: 1024px) {
             .footer-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -779,11 +895,11 @@
             }
 
             .team-hero {
-                padding: 30px 15px;
+                padding: 40px 15px;
             }
 
             .team-hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero-subtitle {
@@ -796,7 +912,12 @@
             }
 
             .team-section {
-                padding: 25px;
+                padding: 35px 25px;
+                margin-bottom: 40px;
+            }
+
+            .team-section h2 {
+                font-size: 1.6rem;
             }
 
             .architecture-grid,
@@ -813,6 +934,7 @@
             .internal-links {
                 flex-direction: column;
                 align-items: center;
+                padding: 30px 20px;
             }
 
             .internal-link {
@@ -827,11 +949,11 @@
 
         @media (max-width: 480px) {
             .team-hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
 
             .team-section {
-                padding: 20px;
+                padding: 30px 20px;
             }
 
             .team-section h2 {
@@ -839,13 +961,29 @@
             }
 
             .role-card {
-                padding: 20px;
+                padding: 25px 20px;
             }
 
             .role-icon {
                 width: 60px;
                 height: 60px;
                 font-size: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
         }
     </style>
@@ -889,24 +1027,24 @@
                 <span></span>
             </button>
         </div>
-
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="/">Home</a>
-            <a href="/tailors">Find Tailors</a>
-            <a href="/services">Services</a>
-            <a href="/learn">Learn</a>
-            <a href="/about">About</a>
-            <a href="/for-businesses">For Businesses</a>
-            <a href="/contact">Contact</a>
-            <a href="tel:+94758244216" class="btn btn-call" style="margin-top: 10px;">
-                <i class="fas fa-phone"></i>
-                Call Us
-            </a>
-            <a href="https://tailors.lk/register" class="btn btn-primary" style="margin-top: 10px;">
-                Join as Tailor
-            </a>
-        </div>
     </header>
+
+    <!-- SLIDER OVERLAY & MENU (exactly matching Kandy page) -->
+    <div class="slider-overlay" id="sliderOverlay"></div>
+    <div class="slider-menu" id="sliderMenu">
+        <div class="slider-close" id="sliderClose"><i class="fas fa-times"></i></div>
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <a href="/tailors"><i class="fas fa-search"></i> Find Tailors</a>
+        <a href="/services"><i class="fas fa-scissors"></i> Services</a>
+        <a href="/learn"><i class="fas fa-graduation-cap"></i> Learn</a>
+        <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+        <a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a>
+        <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+        <div class="slider-cta">
+            <a href="tel:+94758244216" class="btn btn-call"><i class="fas fa-phone"></i> Call Us</a>
+            <a href="https://tailors.lk/register" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join as Tailor</a>
+        </div>
+    </div>
 
     <!-- Our Team Page Content -->
     <main class="team-container">
@@ -1112,7 +1250,7 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (with newsletter preserved) -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1151,8 +1289,8 @@
                         <li><a href="/for-tailors"><i class="fas fa-user-tie"></i> For Tailors</a></li>
                         <li><a href="/for-businesses"><i class="fas fa-briefcase"></i> For Businesses</a></li>
                         <li><a href="/for-brands"><i class="fas fa-tag"></i> For Brands</a></li>
-                        <li><a href="/community"><i class="fas fa-users"></i> Community</a></li>
                         <li><a href="/tools"><i class="fas fa-tools"></i> Tools</a></li>
+                        <li><a href="/community"><i class="fas fa-users"></i> Community</a></li>
                         <li><a href="/partnerships"><i class="fas fa-handshake"></i> Partnerships</a></li>
                         <li><a href="/careers"><i class="fas fa-users"></i> Careers</a></li>
                         <li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li>
@@ -1214,7 +1352,7 @@
                 </div>
             </div>
             
-            <!-- Newsletter Signup -->
+            <!-- Newsletter Signup (preserved) -->
             <div class="newsletter">
                 <h4>Stay Updated</h4>
                 <p>Get the latest on tailoring trends, special offers, and new tailors</p>
@@ -1237,26 +1375,51 @@
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Mobile menu toggle
+        // Slider menu logic (exactly matching Kandy page)
         const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        if (hamburger && mobileMenu) {
-            hamburger.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                    mobileMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                }
+        const sliderMenu = document.getElementById('sliderMenu');
+        const sliderOverlay = document.getElementById('sliderOverlay');
+        const sliderClose = document.getElementById('sliderClose');
+        const body = document.body;
+
+        function openSlider() {
+            sliderMenu.classList.add('active');
+            sliderOverlay.classList.add('active');
+            body.classList.add('menu-open');
+        }
+
+        function closeSlider() {
+            sliderMenu.classList.remove('active');
+            sliderOverlay.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        if (hamburger) {
+            hamburger.addEventListener('click', (e) => {
+                e.preventDefault();
+                openSlider();
             });
         }
+
+        if (sliderClose) {
+            sliderClose.addEventListener('click', closeSlider);
+        }
+
+        sliderOverlay.addEventListener('click', closeSlider);
+
+        // close slider on link click
+        sliderMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeSlider);
+        });
+
+        // escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sliderMenu.classList.contains('active')) {
+                closeSlider();
+            }
+        });
         
-        // Newsletter submission
+        // Newsletter submission (preserved from original)
         const footerSubscribe = document.getElementById('footer-subscribe');
         const newsletterMessage = document.getElementById('newsletter-message');
         const footerEmail = document.getElementById('footer-email');
@@ -1265,25 +1428,21 @@
             footerSubscribe.addEventListener('click', async function() {
                 const email = footerEmail.value.trim();
                 
-                // Validate email
                 if (!email || !email.includes('@') || !email.includes('.')) {
                     showMessage('Please enter a valid email address.', 'error');
                     return;
                 }
                 
-                // Show loading state
                 const originalText = footerSubscribe.innerHTML;
                 footerSubscribe.classList.add('btn-loading');
                 footerSubscribe.disabled = true;
                 
                 try {
-                    // Submit to both endpoints simultaneously
                     const [googleFormsResult, formSubmitResult] = await Promise.allSettled([
                         submitToGoogleForms(email),
                         submitToFormSubmit(email)
                     ]);
                     
-                    // Check results
                     const googleSuccess = googleFormsResult.status === 'fulfilled' && googleFormsResult.value.success;
                     const formSubmitSuccess = formSubmitResult.status === 'fulfilled' && formSubmitResult.value.success;
                     
@@ -1298,14 +1457,12 @@
                     console.error('Newsletter subscription error:', error);
                     showMessage('An error occurred. Please try again later.', 'error');
                 } finally {
-                    // Restore button state
                     footerSubscribe.classList.remove('btn-loading');
                     footerSubscribe.innerHTML = originalText;
                     footerSubscribe.disabled = false;
                 }
             });
             
-            // Also allow Enter key submission
             footerEmail.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     footerSubscribe.click();
@@ -1313,16 +1470,14 @@
             });
         }
         
-        // Function to submit to Google Forms
         async function submitToGoogleForms(email) {
             try {
                 const googleFormsURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
                 const formData = new FormData();
-                
                 formData.append('entry.YOUR_EMAIL_FIELD_ID', email);
                 formData.append('entry.YOUR_TIMESTAMP_FIELD_ID', new Date().toISOString());
                 
-                const response = await fetch(googleFormsURL, {
+                await fetch(googleFormsURL, {
                     method: 'POST',
                     mode: 'no-cors',
                     body: formData
@@ -1336,14 +1491,13 @@
             }
         }
         
-        // Function to submit to FormSubmit
         async function submitToFormSubmit(email) {
             try {
                 const formSubmitURL = 'https://formsubmit.co/ajax/newsletter@tailors.lk';
                 
                 const formData = new FormData();
                 formData.append('email', email);
-                formData.append('_subject', 'Newsletter Subscription from Tailors.lk Our Team Page');
+                formData.append('_subject', 'Newsletter Subscription from Tailors.lk');
                 formData.append('_template', 'table');
                 formData.append('_captcha', 'false');
                 formData.append('source', 'our-team-page');
@@ -1370,7 +1524,6 @@
             }
         }
         
-        // Function to show messages
         function showMessage(message, type = 'success') {
             if (!newsletterMessage) return;
             
@@ -1378,21 +1531,19 @@
             newsletterMessage.className = `newsletter-message newsletter-${type}`;
             newsletterMessage.style.display = 'block';
             
-            // Auto-hide success messages after 5 seconds
             if (type === 'success') {
                 setTimeout(() => {
                     newsletterMessage.style.display = 'none';
                 }, 5000);
             }
             
-            // Auto-hide error messages after 8 seconds
             if (type === 'error') {
                 setTimeout(() => {
                     newsletterMessage.style.display = 'none';
                 }, 8000);
             }
         }
-        
+
         // Abstract visuals animation enhancement
         document.addEventListener('DOMContentLoaded', function() {
             const visualItems = document.querySelectorAll('.visual-item');
