@@ -1,0 +1,47 @@
+User-agent: *
+
+# --- Block Legal & Compliance Pages ---
+Disallow: /terms
+Disallow: /privacy
+Disallow: /cookies
+Disallow: /legal
+Disallow: /policies
+
+# --- Optional: Block Duplicate / Inconsistent Paths ---
+Disallow: /partnership
+
+# --- Allow Core SEO Pages Explicitly (not required but clear) ---
+Allow: /
+Allow: /services
+Allow: /learn
+Allow: /about
+Allow: /for-businesses
+Allow: /contact
+Allow: /register
+Allow: /reviews
+Allow: /fabrics
+Allow: /specials
+Allow: /for-tailors
+Allow: /for-brands
+Allow: /partnerships
+Allow: /tools
+Allow: /careers
+Allow: /community
+Allow: /faq
+
+# --- City Pages (SEO Assets) ---
+Allow: /colombo
+Allow: /kandy
+Allow: /galle
+Allow: /jaffna
+Allow: /trinco
+Allow: /ella
+
+# --- Tailor Profiles ---
+Allow: /t/
+
+# --- Service Pages ---
+Allow: /services/
+
+# --- Sitemap ---
+Sitemap: https://tailors.lk/sitemap.xml
