@@ -16,6 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://data.tailors.lk/ajax/libs/fontawesome/6.0.0/css/all.min.css" />
 
+  <script src="https://t.contentsquare.net/uxa/e167583c8a668.js"></script>
+  
   <style>
     /* ----- ALL EXISTING STYLES PRESERVED ----- */
     :root {
@@ -176,6 +178,8 @@
       transition: var(--transition);
       border: 2px solid transparent;
       text-decoration: none;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-primary {
@@ -219,20 +223,27 @@
       font-size: 1rem;
     }
 
+    /* Fixed loading animation */
     .btn-loading {
       position: relative;
       color: transparent !important;
+      pointer-events: none;
     }
 
     .btn-loading::after {
       content: '';
       position: absolute;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       border-top-color: white;
       animation: spin 0.8s linear infinite;
+      z-index: 2;
     }
 
     @keyframes spin {
@@ -315,6 +326,11 @@
       font-size: 1.1rem;
       color: var(--teal);
       text-decoration: none;
+    }
+
+    .mobile-menu-logo img {
+      width: 24px;
+      height: 24px;
     }
 
     .mobile-menu-close {
@@ -967,6 +983,21 @@
     .modal-close:hover {
       background: var(--teal-light);
       transform: translateY(-2px);
+    }
+
+    /* Local storage indicator */
+    .draft-saved {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      justify-content: center;
+    }
+
+    .draft-saved i {
+      color: var(--gold-light);
     }
 
     /* Mobile Menu CTA Buttons */
@@ -1681,8 +1712,13 @@
               <textarea id="contact-message" class="form-control" rows="4" placeholder="Tell us about your business and partnership interests..."></textarea>
             </div>
 
+            <div class="draft-saved" id="draftIndicator" style="display: none;">
+              <i class="fas fa-save"></i>
+              <span>Draft saved locally</span>
+            </div>
+
             <div style="text-align: center; margin-top: 30px;">
-              <button type="submit" class="btn btn-primary btn-lg" style="background: white; color: var(--teal); border: none;">
+              <button type="submit" class="btn btn-primary btn-lg" id="submitBtn" style="background: white; color: var(--teal); border: none;">
                 <i class="fas fa-paper-plane"></i>
                 Submit Partnership Inquiry
               </button>
@@ -1894,15 +1930,109 @@
           }
         });
 
-        // Partnership form submission handling - Single submission to FormSubmit.co
-        const partnershipForm = document.getElementById('partnership-contact-form');
+        // ========== LOCAL STORAGE IMPLEMENTATION ==========
+        const STORAGE_KEY = 'tailorslk_partnership_draft';
+        const form = document.getElementById('partnership-contact-form');
+        const draftIndicator = document.getElementById('draftIndicator');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        // Get all form fields
+        const nameField = document.getElementById('contact-name');
+        const businessField = document.getElementById('contact-business');
+        const emailField = document.getElementById('contact-email');
+        const phoneField = document.getElementById('contact-phone');
+        const partnershipField = document.getElementById('contact-partnership');
+        const messageField = document.getElementById('contact-message');
+
+        // Function to save form data to localStorage
+        function saveFormDraft() {
+          const formData = {
+            name: nameField.value,
+            business: businessField.value,
+            email: emailField.value,
+            phone: phoneField.value,
+            partnership: partnershipField.value,
+            message: messageField.value,
+            timestamp: new Date().toISOString()
+          };
+          
+          // Only save if at least one field has value
+          const hasData = Object.values(formData).some(value => value && value !== '');
+          if (hasData) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+            draftIndicator.style.display = 'flex';
+            
+            // Hide indicator after 3 seconds
+            setTimeout(() => {
+              draftIndicator.style.display = 'none';
+            }, 3000);
+          }
+        }
+
+        // Function to load form data from localStorage
+        function loadFormDraft() {
+          const savedData = localStorage.getItem(STORAGE_KEY);
+          if (savedData) {
+            try {
+              const formData = JSON.parse(savedData);
+              
+              // Check if data is not too old (optional - 24 hours)
+              const savedTime = new Date(formData.timestamp).getTime();
+              const currentTime = new Date().getTime();
+              const hoursDiff = (currentTime - savedTime) / (1000 * 60 * 60);
+              
+              if (hoursDiff < 24) { // Only restore if less than 24 hours old
+                nameField.value = formData.name || '';
+                businessField.value = formData.business || '';
+                emailField.value = formData.email || '';
+                phoneField.value = formData.phone || '';
+                partnershipField.value = formData.partnership || '';
+                messageField.value = formData.message || '';
+                
+                // Show restored message
+                if (Object.values(formData).some(value => value && value !== '')) {
+                  showFormMessage('Draft restored from your last session', 'success');
+                }
+              } else {
+                // Clear old data
+                localStorage.removeItem(STORAGE_KEY);
+              }
+            } catch (e) {
+              console.error('Error loading draft:', e);
+              localStorage.removeItem(STORAGE_KEY);
+            }
+          }
+        }
+
+        // Function to clear form draft
+        function clearFormDraft() {
+          localStorage.removeItem(STORAGE_KEY);
+          draftIndicator.style.display = 'none';
+        }
+
+        // Add input event listeners to save on typing (with debounce)
+        let saveTimeout;
+        const formFields = [nameField, businessField, emailField, phoneField, partnershipField, messageField];
+        
+        formFields.forEach(field => {
+          if (field) {
+            field.addEventListener('input', function() {
+              clearTimeout(saveTimeout);
+              saveTimeout = setTimeout(saveFormDraft, 1000); // Save 1 second after user stops typing
+            });
+          }
+        });
+
+        // Load saved draft on page load
+        loadFormDraft();
+
+        // ========== FORM SUBMISSION ==========
         const formMessage = document.getElementById('form-message');
 
-        if (partnershipForm) {
-          partnershipForm.addEventListener('submit', async function(e) {
+        if (form) {
+          form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
 
             // Validate form
@@ -1910,21 +2040,24 @@
               return;
             }
 
-            // Show loading state
+            // Show loading state - FIXED: Force reflow and ensure class is applied
             submitBtn.classList.add('btn-loading');
             submitBtn.disabled = true;
+            
+            // Force a reflow to ensure styles are applied
+            void submitBtn.offsetWidth;
 
             // Clear any existing messages
             clearFormMessage();
 
             // Collect form data
             const formData = {
-              name: document.getElementById('contact-name').value,
-              business: document.getElementById('contact-business').value,
-              email: document.getElementById('contact-email').value,
-              phone: document.getElementById('contact-phone').value,
-              partnership: document.getElementById('contact-partnership').value,
-              message: document.getElementById('contact-message').value,
+              name: nameField.value,
+              business: businessField.value,
+              email: emailField.value,
+              phone: phoneField.value,
+              partnership: partnershipField.value,
+              message: messageField.value,
               timestamp: new Date().toISOString(),
               source: 'partnerships-page'
             };
@@ -1934,6 +2067,9 @@
               const result = await submitToFormSubmit(formData);
               
               if (result.success) {
+                // Clear the saved draft since submission was successful
+                clearFormDraft();
+                
                 // Show custom popup modal
                 showModal(
                   'success', 
@@ -1942,7 +2078,7 @@
                 );
                 
                 // Clear form
-                this.reset();
+                form.reset();
               } else {
                 // Show error popup modal
                 showModal(
@@ -1959,7 +2095,7 @@
                 'An unexpected error occurred. Please try again later.'
               );
             } finally {
-              // Restore button state
+              // Restore button state - ensure loading class is removed
               submitBtn.classList.remove('btn-loading');
               submitBtn.innerHTML = originalText;
               submitBtn.disabled = false;
@@ -1969,27 +2105,27 @@
 
         // Form validation
         function validateForm() {
-          const name = document.getElementById('contact-name').value.trim();
-          const email = document.getElementById('contact-email').value.trim();
-          const phone = document.getElementById('contact-phone').value.trim();
+          const name = nameField.value.trim();
+          const email = emailField.value.trim();
+          const phone = phoneField.value.trim();
 
           clearFormMessage();
 
           if (!name) {
             showFormMessage('Please enter your full name.', 'error');
-            document.getElementById('contact-name').focus();
+            nameField.focus();
             return false;
           }
 
           if (!email || !validateEmail(email)) {
             showFormMessage('Please enter a valid email address.', 'error');
-            document.getElementById('contact-email').focus();
+            emailField.focus();
             return false;
           }
 
           if (!phone) {
             showFormMessage('Please enter your phone number.', 'error');
-            document.getElementById('contact-phone').focus();
+            phoneField.focus();
             return false;
           }
 
