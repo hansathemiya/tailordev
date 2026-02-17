@@ -15,68 +15,97 @@
     <script src="https://t.contentsquare.net/uxa/e167583c8a668.js"></script>
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "B2B Tailoring & Brand Services",
-        "provider": {
-            "@type": "Organization",
-            "name": "Tailors.lk",
-            "description": "Sri Lanka's leading tailoring platform connecting brands with verified tailors",
-            "url": "https://tailors.lk",
-            "logo": "https://data.tailors.lk/logo.png",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Colombo",
-                "addressCountry": "LK"
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Tailoring Solutions for Brands & Businesses in Sri Lanka",
+  "description": "From corporate uniforms to bulk production and creative partnerships, Tailors.lk connects brands with verified tailoring expertise across Sri Lanka.",
+  "url": "https://dev.tailors.lk/for-brands/",
+  "mainEntity": {
+    "@type": "Service",
+    "name": "B2B Tailoring and Uniform Services",
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://tailors.lk/#organization",
+      "name": "Tailors.lk",
+      "url": "https://tailors.lk/"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Brand & Business Services",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Services for Brands",
+          "itemListElement": [
+            {
+              "@type": "Service",
+              "name": "Bulk & Corporate Tailoring",
+              "description": "Professional uniform production for corporate offices, hotels, and businesses across Sri Lanka. We handle everything from design to delivery for bulk orders, ensuring consistency and quality."
             },
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "B2B Services",
-                "email": "team@tailors.lk",
-                "availableLanguage": ["English", "Sinhala", "Tamil"]
+            {
+              "@type": "Service",
+              "name": "Custom Uniform Design",
+              "description": "Complete uniform design service including style development, branding integration, fit consistency, and scalable production planning."
+            },
+            {
+              "@type": "Service",
+              "name": "Event & Campaign Outfits",
+              "description": "Specialized outfits for product launches, promotional campaigns, corporate events, and exhibitions."
+            },
+            {
+              "@type": "Service",
+              "name": "Production Outsourcing",
+              "description": "Complete manufacturing and fulfillment solutions for brands needing production capacity."
+            },
+            {
+              "@type": "Service",
+              "name": "Digital Services for Clothing Brands",
+              "description": "Comprehensive digital support including website development, content strategy, and online visibility enhancement."
             }
+          ]
         },
-        "areaServed": {
-            "@type": "Country",
-            "name": "Sri Lanka"
-        },
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Brand Services",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Corporate Uniform Tailoring"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Bulk Tailoring Production"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Brand Production Outsourcing"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Digital Services for Clothing Brands"
-                    }
-                }
-            ]
+        {
+          "@type": "OfferCatalog",
+          "name": "Industries We Serve",
+          "itemListElement": [
+            {
+              "@type": "Service",
+              "name": "Hotels & Resorts",
+              "description": "Professional staff uniforms and hospitality wear for Sri Lankan hotels and resorts."
+            },
+            {
+              "@type": "Service",
+              "name": "Corporate Offices",
+              "description": "Custom office wear and professional uniforms for corporate teams across industries."
+            },
+            {
+              "@type": "Service",
+              "name": "Event Organizers",
+              "description": "Bespoke outfits for exhibitions, conferences, and special events nationwide."
+            },
+            {
+              "@type": "Service",
+              "name": "Fashion Brands",
+              "description": "Production partnerships and manufacturing support for clothing brands."
+            },
+            {
+              "@type": "Service",
+              "name": "Boutiques & Retailers",
+              "description": "Private label production and custom collections for retail businesses."
+            },
+            {
+              "@type": "Service",
+              "name": "Startups & SMEs",
+              "description": "Scalable production solutions and brand development for growing businesses."
+            }
+          ]
         }
+      ]
     }
-    </script>
+  }
+}
+</script>
     
     <style>
         :root {
