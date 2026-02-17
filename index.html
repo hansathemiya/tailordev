@@ -13,82 +13,284 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://data.tailors.lk/ajax/libs/fontawesome/6.0.0/css/all.min.css" />
     <script src="https://t.contentsquare.net/uxa/e167583c8a668.js"></script>
-    <script type="application/ld+json">
+ <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://tailors.lk/#website",
   "name": "Tailors.lk",
-  "url": "https://tailors.lk",
-  "description": "Find trusted tailors in Sri Lanka. Browse professional tailoring services for blouse stitching, saree fitting, bespoke suits, alterations and more.",
+  "url": "https://tailors.lk/",
+  "description": "Find trusted tailors in Sri Lanka for blouse stitching, saree fitting, bespoke suits, alterations, and more. Connect with local professionals across Colombo, Kandy, Galle, and other cities.",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://tailors.lk/#organization",
+    "name": "Tailors.lk",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://data.tailors.lk/logo.png"
+    }
+  },
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://tailors.lk/search?location={location}&service={service}"
+      "urlTemplate": "https://tailors.lk/tailors?location={search_term_string}"
     },
-    "query-input": {
-      "@type": "PropertyValueSpecification",
-      "valueRequired": true,
-      "valueName": "location"
+    "query-input": "required name=search_term_string"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "Featured Tailors in Sri Lanka",
+    "description": "A curated list of professional tailors featured on the Tailors.lk homepage.",
+    "numberOfItems": 9,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "LocalBusiness",
+          "@id": "https://tailors.lk/t/golden-nuwaraeliya-atelier",
+          "url": "https://tailors.lk/t/golden-nuwaraeliya-atelier",
+          "name": "Golden NuwaraEliya Atelier",
+          "description": "Professional tailoring services in Nuwara Eliya specializing in Bespoke Suits, Kandyan Traditional.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Nuwara Eliya",
+            "addressRegion": "Central Province",
+            "addressCountry": "LK"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "42"
+          },
+          "priceRange": "$$",
+          "knowsAbout": ["Bespoke Suits", "Kandyan Traditional", "Leather Repair", "Curtain Making", "Applique", "Quilting"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "LocalBusiness",
+          "@id": "https://tailors.lk/t/premier-kandy-style",
+          "url": "https://tailors.lk/t/premier-kandy-style",
+          "name": "Premier Kandy Style",
+          "description": "Professional tailoring services in Kandy specializing in Formal Wear.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kandy",
+            "addressRegion": "Central Province",
+            "addressCountry": "LK"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "88"
+          },
+          "priceRange": "$$",
+          "knowsAbout": ["Formal Wear", "Dresses", "Kandyan Dress", "Applique", "Saree Fitting"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "LocalBusiness",
+          "@id": "https://tailors.lk/t/modern-kegalle-tailors",
+          "url": "https://tailors.lk/t/modern-kegalle-tailors",
+          "name": "Modern Kegalle Tailors",
+          "description": "Professional tailoring services in Kegalle specializing in Kandyan Traditional, Fusion Wear.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kegalle",
+            "addressRegion": "Sabaragamuwa Province",
+            "addressCountry": "LK"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "62"
+          },
+          "priceRange": "$$$",
+          "knowsAbout": ["Kandyan Traditional", "Fusion Wear", "Wedding Attire", "Saree Fitting", "Dresses"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "LocalBusiness",
+          "@id": "https://tailors.lk/t/classic-badulla-style",
+          "url": "https://tailors.lk/t/classic-badulla-style",
+          "name": "Classic Badulla Style",
+          "description": "Professional tailoring services in Badulla specializing in Evening Gowns.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Badulla",
+            "addressRegion": "Uva Province",
+            "addressCountry": "LK"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "56"
+          },
+          "priceRange": "$$$",
+          "knowsAbout": ["Evening Gowns", "Alterations", "Patchwork", "Applique"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "LocalBusiness",
+          "@id": "https://tailors.lk/t/golden-polonnaruwa-stitching",
+          "url": "https://tailors.lk/t/golden-polonnaruwa-stitching",
+          "name": "Golden Polonnaruwa Stitching",
+          "description": "Professional tailoring services in Polonnaruwa specializing in Women's Ethnic, Cultural Attire.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Polonnaruwa",
+            "addressRegion": "North Central Province",
+            "addressCountry": "LK"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "31"
+          },
+          "priceRange": "$",
+          "knowsAbout": ["Women's Ethnic", "Cultural Attire", "Dresses", "Zari Work", "Patchwork"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "LocalBusiness",
+          "@id": "https://tailors.lk/t/heritage-nuwaraeliya-stitching",
+          "url": "https://tailors.lk/t/heritage-nuwaraeliya-stitching",
+          "name": "Heritage NuwaraEliya Stitching",
+          "description": "Professional tailoring services in Nuwara Eliya specializing in Western Fashion, Formal Wear.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Nuwara Eliya",
+            "addressRegion": "Central Province",
+            "addressCountry": "LK"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "40"
+          },
+          "priceRange": "$",
+          "knowsAbout": ["Western Fashion", "Formal Wear", "Batik", "Shirts & Trousers", "Applique"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "LocalBusiness",
+          "@id": "https://tailors.lk/t/golden-trincomalee-designs",
+          "url": "https://tailors.lk/t/golden-trincomalee-designs",
+          "name": "Golden Trincomalee Designs",
+          "description": "Professional tailoring services in Trincomalee specializing in Men's Formal, Kandyan Traditional.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Trincomalee",
+            "addressRegion": "Eastern Province",
+            "addressCountry": "LK"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "33"
+          },
+          "priceRange": "$$",
+          "knowsAbout": ["Men's Formal", "Kandyan Traditional", "Zari Work", "Children's Wear"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "LocalBusiness",
+          "@id": "https://tailors.lk/t/royal-ampara-tailors",
+          "url": "https://tailors.lk/t/royal-ampara-tailors",
+          "name": "Royal Ampara Tailors",
+          "description": "Professional tailoring services in Ampara specializing in Batik Clothing.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ampara",
+            "addressRegion": "Eastern Province",
+            "addressCountry": "LK"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "20"
+          },
+          "priceRange": "$$",
+          "knowsAbout": ["Batik Clothing", "Shirts & Trousers", "Bed Sheet Stitching"]
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "item": {
+          "@type": "LocalBusiness",
+          "@id": "https://tailors.lk/t/heritage-puttalam-stitching",
+          "url": "https://tailors.lk/t/heritage-puttalam-stitching",
+          "name": "Heritage Puttalam Stitching",
+          "description": "Professional tailoring services in Puttalam specializing in Kandyan Traditional, Men's Formal.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Puttalam",
+            "addressRegion": "North Western Province",
+            "addressCountry": "LK"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "11"
+          },
+          "priceRange": "$",
+          "knowsAbout": ["Kandyan Traditional", "Men's Formal", "Quilting", "Western Wear", "Children's Wear", "Bed Sheet Stitching"]
+        }
+      }
+    ]
+  },
+  "about": [
+    {
+      "@type": "Service",
+      "name": "Tailor Directory",
+      "description": "Find verified professional tailors across Sri Lanka for all your clothing needs."
+    },
+    {
+      "@type": "Service",
+      "name": "Bespoke Suit Tailoring",
+      "description": "Custom-made suits for business, weddings, and formal occasions."
+    },
+    {
+      "@type": "Service",
+      "name": "Saree Blouse Stitching",
+      "description": "Expert saree blouse tailoring with custom designs and perfect fitting."
+    },
+    {
+      "@type": "Service",
+      "name": "Alterations & Repairs",
+      "description": "Professional hemming, resizing, zip replacement, and clothing repairs."
+    },
+    {
+      "@type": "Service",
+      "name": "Wedding Wear Tailoring",
+      "description": "Custom wedding outfits including bridal gowns, groom suits, and traditional attire."
     }
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Tailors.lk",
-    "url": "https://tailors.lk",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://data.tailors.lk/logo.png",
-      "width": 512,
-      "height": 512
-    }
-  }
+  ]
 }
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Tailors.lk",
-  "url": "https://tailors.lk",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://data.tailors.lk/logo.png",
-    "width": 512,
-    "height": 512
-  },
-  "sameAs": [
-    "https://www.facebook.com/Tailors.lk.find",
-    "https://instagram.com/Tailors.lk",
-    "https://x.com/Tailorslk",
-    "https://youtube.com/@tailorslk"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "telephone": "+94758244216",
-    "areaServed": "LK",
-    "availableLanguage": ["en", "si", "ta"],
-    "email": "team@tailors.lk"
-  },
-  "description": "Tailors.lk is a tailoring services discovery platform in Sri Lanka connecting customers with local professional tailors.",
-  "founder": {
-    "@type": "Person",
-    "name": "Tailors.lk Team"
-  },
-  "foundingDate": "2024",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "LK",
-    "addressLocality": "Colombo"
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Sri Lanka"
-  }
-}
-</script>
+</script>   
 
 <script type="application/ld+json">
 {
